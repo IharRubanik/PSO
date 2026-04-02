@@ -1,0 +1,194 @@
+/* Figma: Clients section, node 262:4713, 1920x886px */
+.section {
+  position: relative;
+  width: 100%;
+  height: 886px;
+  overflow: hidden;
+}
+
+/* Background image layer */
+.bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+/* Figma: gradient from rgba(0,0,0,0.4) → rgba(0,0,0,0.6) at 70.278% */
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.4) 0%,
+    rgba(0, 0, 0, 0.6) 70.278%
+  );
+  z-index: 1;
+}
+
+/* Figma: title at left:60px, top:160px, width:890px */
+.titleWrap {
+  position: absolute;
+  top: 160px;
+  left: 60px;
+  width: 890px;
+  z-index: 3;
+}
+
+/* Figma: Furore 68px, #f2f2f2, uppercase, line-height: normal */
+.title {
+  font-family: var(--font-heading);
+  font-size: 68px;
+  line-height: normal;
+  color: #f2f2f2;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+/* ===== Crosshair divider ===== */
+/* Figma: SVG full-width 1920px, top:369px, height:110px */
+.divider {
+  position: absolute;
+  top: 369px;
+  left: 0;
+  width: 100%;
+  height: 110px;
+  z-index: 3;
+}
+
+/* ===== Marquee ===== */
+/* Figma: top:526px, height:200px */
+.marqueeWrapper {
+  position: absolute;
+  top: 526px;
+  left: 0;
+  right: 0;
+  height: 200px;
+  overflow: hidden;
+  z-index: 3;
+}
+
+.marqueeTrack {
+  display: flex;
+  gap: 20px;
+  width: max-content;
+  height: 200px;
+  animation: marqueeScroll 24s linear infinite;
+}
+
+@keyframes marqueeScroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    /* move by exactly 25% (one copy of the 4 repeated groups) */
+    transform: translateX(-25%);
+  }
+}
+
+/* Figma: card width:433px, height:200px, padding:40px 20px,
+   backdrop-blur(7.5px), bg:rgba(24,21,19,0.3) */
+.card {
+  position: relative;
+  flex-shrink: 0;
+  width: 433px;
+  height: 200px;
+  padding: 40px 20px;
+  backdrop-filter: blur(7.5px);
+  -webkit-backdrop-filter: blur(7.5px);
+  background: rgba(24, 21, 19, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+/* Figma: Furore 28px, line-height:1.3, #f2f2f2, text-center, uppercase */
+.cardTitle {
+  font-family: var(--font-heading);
+  font-size: 28px;
+  line-height: 1.3;
+  color: #f2f2f2;
+  text-transform: uppercase;
+  margin: 0;
+  position: relative;
+  z-index: 1;
+}
+
+/* ===== RESPONSIVE 768px ===== */
+@media (max-width: 768px) {
+  .section {
+    height: auto;
+    min-height: 600px;
+    padding-bottom: 60px;
+  }
+
+  .titleWrap {
+    position: relative;
+    top: auto;
+    left: auto;
+    width: auto;
+    padding: 80px 30px 0;
+    z-index: 3;
+  }
+
+  .title {
+    font-size: 42px;
+  }
+
+  .divider {
+    display: none;
+  }
+
+  .marqueeWrapper {
+    position: relative;
+    top: auto;
+    left: auto;
+    right: auto;
+    margin-top: 40px;
+    height: 180px;
+  }
+
+  .marqueeTrack {
+    height: 180px;
+  }
+
+  .card {
+    width: 320px;
+    height: 180px;
+    padding: 30px 16px;
+  }
+
+  .cardTitle {
+    font-size: 22px;
+  }
+}
+
+/* ===== RESPONSIVE 480px ===== */
+@media (max-width: 480px) {
+  .titleWrap {
+    padding: 60px 15px 0;
+  }
+
+  .title {
+    font-size: 32px;
+  }
+
+  .marqueeWrapper {
+    height: 160px;
+    margin-top: 32px;
+  }
+
+  .marqueeTrack {
+    height: 160px;
+  }
+
+  .card {
+    width: 260px;
+    height: 160px;
+    padding: 24px 12px;
+  }
+
+  .cardTitle {
+    font-size: 18px;
+  }
+}

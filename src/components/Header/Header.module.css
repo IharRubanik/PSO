@@ -1,0 +1,323 @@
+/* ===== HEADER ===== */
+/* Figma: w=1920, bar h=100, logo area h=215 */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  transition: background 0.4s ease, backdrop-filter 0.4s ease;
+}
+
+.bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100px;
+  padding: 0 60px;
+  background: rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(2.5px);
+  -webkit-backdrop-filter: blur(2.5px);
+  transition: background 0.4s ease, backdrop-filter 0.4s ease;
+}
+
+.scrolled .bar {
+  background: rgba(20, 17, 15, 0.95);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* ===== NAVIGATION ===== */
+/* Figma: gap=35px between items, font=Proxima Nova Bold 20px, uppercase */
+.nav {
+  display: flex;
+  gap: 35px;
+  align-items: center;
+}
+
+.navLink {
+  font-family: var(--font-body-bold);
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1.2;
+  text-transform: uppercase;
+  color: var(--color-white);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  height: 24px;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.navText {
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.navHover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: var(--color-gold-light);
+  font-family: var(--font-accent);
+  font-weight: 500;
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+}
+
+.navLink:hover .navText {
+  transform: translateY(-100%);
+}
+
+.navLink:hover .navHover {
+  transform: translateY(0);
+}
+
+.navLinkActive .navText {
+  color: var(--color-gold-light);
+  font-family: var(--font-accent);
+  font-weight: 500;
+}
+
+/* ===== LOGO ===== */
+/* Figma: w=151.507px, h=215px, centered horizontally */
+.logo {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 0;
+  width: 152px;
+  height: 215px;
+  z-index: 5;
+  display: block;
+}
+
+.logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* ===== RIGHT SIDE ===== */
+/* Figma: gap=32px */
+.right {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+/* Figma: Proxima Nova Bold 20px white */
+.phone {
+  font-family: var(--font-body-bold);
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1.2;
+  color: var(--color-white);
+  white-space: nowrap;
+  transition: color 0.3s ease;
+}
+
+.phone:hover {
+  color: var(--color-gold-light);
+}
+
+/* Figma: border 1px rgba(255,255,255,0.4), bg=#262525, px=18 py=14 */
+.cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 18px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  background: var(--color-dark);
+  color: var(--color-white);
+  font-family: var(--font-body-bold);
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1.2;
+  text-transform: uppercase;
+  cursor: pointer;
+  white-space: nowrap;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.3s ease, background 0.3s ease;
+}
+
+.cta:hover {
+  border-color: var(--color-gold);
+  background: rgba(194, 161, 109, 0.15);
+}
+
+/* Figma: gap=6px, Proxima Nova Bold 20px uppercase */
+.lang {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.langActive {
+  font-family: var(--font-body-bold);
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1.2;
+  text-transform: uppercase;
+  color: var(--color-white);
+  padding-right: 6px;
+  border-right: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.langInactive {
+  font-family: var(--font-body-bold);
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1.2;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* ===== BURGER ===== */
+.burger {
+  display: none;
+  width: 52px;
+  height: 52px;
+  cursor: pointer;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px;
+}
+
+.burger span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: var(--color-white);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.burgerActive span:nth-child(1) {
+  transform: translateY(5px) rotate(45deg);
+}
+
+.burgerActive span:nth-child(2) {
+  opacity: 0;
+}
+
+.burgerActive span:nth-child(3) {
+  transform: translateY(-5px) rotate(-45deg);
+}
+
+/* ===== MOBILE NAV ===== */
+.mobileNav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--color-bg);
+  z-index: 99;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+
+.mobileNavActive {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.mobileNavLink {
+  font-family: var(--font-heading);
+  font-size: 36px;
+  color: var(--color-white);
+  text-transform: uppercase;
+  transition: color 0.3s ease;
+}
+
+.mobileNavLink:hover {
+  color: var(--color-gold-light);
+}
+
+.mobileNavPhone {
+  font-family: var(--font-body-bold);
+  font-weight: 700;
+  font-size: 24px;
+  color: var(--color-gold-light);
+  margin-top: 20px;
+}
+
+.mobileNavCta {
+  padding: 14px 40px;
+  border: 1px solid var(--color-gold);
+  color: var(--color-white);
+  font-family: var(--font-body-bold);
+  font-weight: 700;
+  font-size: 20px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.mobileNavCta:hover {
+  background: rgba(194, 161, 109, 0.2);
+}
+
+/* ===== RESPONSIVE 768px ===== */
+@media (max-width: 768px) {
+  .bar {
+    padding: 0 30px;
+  }
+
+  .nav {
+    display: none;
+  }
+
+  .phone {
+    display: none;
+  }
+
+  .lang {
+    display: none;
+  }
+
+  .burger {
+    display: flex;
+  }
+
+  .logo {
+    width: 120px;
+    height: 175px;
+  }
+}
+
+/* ===== RESPONSIVE 480px ===== */
+@media (max-width: 480px) {
+  .bar {
+    padding: 0 15px;
+    height: 70px;
+  }
+
+  .logo {
+    width: 61px;
+    height: 121px;
+  }
+
+  .burger {
+    width: 40px;
+    height: 40px;
+    padding: 10px;
+  }
+
+  .cta {
+    font-size: 16px;
+    padding: 10px 14px;
+  }
+}

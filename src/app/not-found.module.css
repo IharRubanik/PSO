@@ -1,0 +1,168 @@
+.wrapper {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-bg);
+  overflow: hidden;
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+}
+
+.errorCode {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+.digit {
+  font-family: var(--font-heading);
+  font-size: 250px;
+  line-height: 1;
+  color: var(--color-white);
+}
+
+.crosshairWrapper {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.crosshair {
+  animation: rotate 10s linear infinite;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.centerDot {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--color-gold);
+  transform: translate(-50%, -50%);
+}
+
+.title {
+  font-family: var(--font-body-bold);
+  font-weight: 700;
+  font-size: 24px;
+  color: var(--color-white);
+  margin-bottom: 16px;
+}
+
+.subtitle {
+  font-family: var(--font-body);
+  font-size: 18px;
+  color: var(--color-text);
+  opacity: 0.8;
+  max-width: 400px;
+  line-height: 1.5;
+  margin-bottom: 40px;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 65px;
+  padding: 0 40px;
+  border: 1px solid var(--color-gold);
+  font-family: var(--font-body-bold);
+  font-weight: 700;
+  font-size: 20px;
+  text-transform: uppercase;
+  color: var(--color-white);
+  background: transparent;
+  transition: background 0.3s ease;
+  cursor: pointer;
+}
+
+.button:hover {
+  background: rgba(194, 161, 109, 0.2);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .digit {
+    font-size: 150px;
+  }
+
+  .crosshairWrapper {
+    width: 130px;
+    height: 130px;
+  }
+
+  .crosshair {
+    width: 130px;
+    height: 130px;
+  }
+
+  .title {
+    font-size: 20px;
+  }
+
+  .subtitle {
+    font-size: 16px;
+    max-width: 320px;
+  }
+
+  .button {
+    height: 55px;
+    font-size: 16px;
+    padding: 0 30px;
+  }
+}
+
+@media (max-width: 480px) {
+  .digit {
+    font-size: 100px;
+  }
+
+  .crosshairWrapper {
+    width: 90px;
+    height: 90px;
+  }
+
+  .crosshair {
+    width: 90px;
+    height: 90px;
+  }
+
+  .title {
+    font-size: 18px;
+  }
+
+  .subtitle {
+    font-size: 14px;
+    max-width: 280px;
+  }
+
+  .button {
+    height: 50px;
+    font-size: 14px;
+  }
+}

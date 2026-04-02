@@ -1,0 +1,446 @@
+/* Figma: Services section, h=1228, top padding 160px */
+.section {
+  position: relative;
+  padding: 160px 0 100px;
+  overflow: hidden;
+}
+
+.container {
+  max-width: 1920px;
+  margin: 0 auto;
+  padding: 0 60px;
+  position: relative;
+  z-index: 2;
+}
+
+/* Figma: title left, description right on same row */
+.header {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 0;
+  margin-bottom: 50px;
+}
+
+/* Figma: Furore 68px uppercase #f2f2f2, line-height: normal */
+.sectionTitle {
+  font-family: var(--font-heading);
+  font-size: 68px;
+  line-height: normal;
+  color: #f2f2f2;
+  text-transform: uppercase;
+  flex-shrink: 0;
+  width: 547px;
+}
+
+/* Figma: Proxima Nova Regular 24px, color #d9d2ce, line-height 1.2, width 1140px */
+.description {
+  width: 1140px;
+  max-width: 1140px;
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 1.2;
+  color: #d9d2ce;
+  padding-top: 10px;
+}
+
+/* Figma: 3 columns, gap 20px */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  position: relative;
+}
+
+/* Figma: card 587x380px, overflow:clip */
+.card {
+  position: relative;
+  height: 380px;
+  overflow: clip;
+  cursor: pointer;
+  display: block;
+  text-decoration: none;
+}
+
+.cardBg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  transition: transform 0.6s ease;
+}
+
+/* Figma default: gradient to bottom, transparent → rgba(0,0,0,0.7) at 70.278% */
+.cardOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.7) 70.278%
+  );
+  z-index: 1;
+  transition: background 0.4s ease;
+}
+
+/* ===== Crosshair number badge ===== */
+/* Figma default: 110x110, hover: 90x90 */
+.cardNumber {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: 110px;
+  height: 110px;
+  z-index: 3;
+  transition: width 0.4s ease, height 0.4s ease;
+}
+
+.crosshairLineH {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-0.5px);
+}
+
+.crosshairLineV {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateX(-0.5px);
+}
+
+.crosshairRing {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 80px;
+  height: 80px;
+  transform: translate(-50%, -50%);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+  transition: width 0.4s ease, height 0.4s ease;
+}
+
+/* Figma default: 60px, hover: 48px */
+.crosshairCenter {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 60px;
+  height: 60px;
+  transform: translate(-50%, -50%);
+  background: #393634;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: width 0.4s ease, height 0.4s ease;
+}
+
+/* Figma: Furore, gold gradient, default 24px, hover ~20px */
+.crosshairText {
+  font-family: var(--font-heading);
+  font-size: 24px;
+  background: var(--gold-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  transition: font-size 0.4s ease;
+}
+
+/* ===== Card slider block ===== */
+/* Figma: entire txt/button block slides from bottom: -151px to bottom: 0 */
+.cardSlider {
+  position: absolute;
+  bottom: -151px;
+  left: 0;
+  width: 100%;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  border-radius: 5px;
+  transition: bottom 0.4s ease;
+}
+
+.cardSliderText {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 20px 20px 0;
+}
+
+/* Figma: Furore 28px uppercase, line-height 1.3 */
+.cardTitle {
+  font-family: var(--font-heading);
+  font-size: 28px;
+  color: #d9d9d9;
+  text-transform: uppercase;
+  line-height: 1.3;
+  white-space: pre-line;
+  transition: color 0.3s ease;
+}
+
+.cardTitleLight {
+  color: #f2f2f2;
+}
+
+/* Figma default: opacity 0, Onest Regular 20px #e5dfda h=80px
+   Figma hover: opacity 0.8, Proxima Nova Regular 20px #d9d2ce */
+.cardDescription {
+  font-family: var(--font-accent);
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 1.3;
+  color: #e5dfda;
+  opacity: 0;
+  height: 80px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  transition: opacity 0.4s ease;
+}
+
+/* Figma: bg #393634, padding 16px 20px, Onest Medium 16px #e0c7a0 uppercase */
+.cardMore {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #393634;
+  padding: 16px 20px;
+  width: 100%;
+}
+
+.cardMoreText {
+  font-family: var(--font-accent);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.3;
+  color: #e0c7a0;
+  text-transform: uppercase;
+}
+
+.arrowIcon {
+  flex-shrink: 0;
+  color: #e0c7a0;
+}
+
+/* ===== Gold "+" dividers between card rows ===== */
+/* Positioned at the intersection of column gaps and row gaps */
+.gridDivider {
+  position: absolute;
+  /* Vertically: center of row gap = card_height + gap/2 - divider/2 = 380 + 10 - 20 = 370 */
+  top: 370px;
+  width: 40px;
+  height: 40px;
+  z-index: 5;
+  pointer-events: none;
+}
+
+/* First gap: center between col 1 and col 2 */
+/* col_width = (100% - 40px) / 3; gap_center_1 = col_width + 10px; divider_left = gap_center_1 - 20px */
+.gridDivider1 {
+  left: calc((100% - 40px) / 3 - 10px);
+}
+
+/* Second gap: center between col 2 and col 3 */
+/* gap_center_2 = col_width * 2 + 20px + 10px; divider_left = gap_center_2 - 20px */
+.gridDivider2 {
+  left: calc((100% - 40px) / 3 * 2 + 10px);
+}
+
+.gridDivider::before,
+.gridDivider::after {
+  content: "";
+  position: absolute;
+  background: var(--color-gold);
+}
+
+.gridDivider::before {
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  transform: translateY(-0.5px);
+}
+
+.gridDivider::after {
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  transform: translateX(-0.5px);
+}
+
+/* ===== HOVER states ===== */
+
+/* BG zooms */
+.card:hover .cardBg {
+  transform: scale(1.08);
+}
+
+/* Figma hover: gradient darkens to 0.3 → 0.9 */
+.card:hover .cardOverlay {
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.3) 0%,
+    rgba(0, 0, 0, 0.9) 70.278%
+  );
+}
+
+/* Slider slides up to bottom: 0 */
+.card:hover .cardSlider {
+  bottom: 0;
+}
+
+/* Description fades in at 0.8 opacity, switches to Proxima Nova */
+.card:hover .cardDescription {
+  opacity: 0.8;
+  font-family: var(--font-body);
+  color: #d9d2ce;
+}
+
+/* Crosshair shrinks: 110→90, ring 80→65, center 60→48, text 24→20 */
+.card:hover .cardNumber {
+  width: 90px;
+  height: 90px;
+}
+
+.card:hover .crosshairRing {
+  width: 65px;
+  height: 65px;
+}
+
+.card:hover .crosshairCenter {
+  width: 48px;
+  height: 48px;
+}
+
+.card:hover .crosshairText {
+  font-size: 20px;
+}
+
+/* ===== RESPONSIVE ===== */
+
+@media (max-width: 1200px) {
+  .header {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .sectionTitle {
+    width: auto;
+    font-size: 52px;
+  }
+
+  .description {
+    width: auto;
+    max-width: 700px;
+    font-size: 20px;
+    padding-top: 0;
+  }
+
+  .gridDivider {
+    display: none;
+  }
+}
+
+/* Figma 768px */
+@media (max-width: 768px) {
+  .section {
+    padding: 80px 0 60px;
+  }
+
+  .container {
+    padding: 0 30px;
+  }
+
+  .header {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .sectionTitle {
+    font-size: 42px;
+    width: auto;
+  }
+
+  .description {
+    width: auto;
+    max-width: 100%;
+    font-size: 18px;
+    padding-top: 0;
+  }
+
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .card {
+    height: 300px;
+  }
+
+  .cardTitle {
+    font-size: 22px;
+  }
+
+  .cardNumber {
+    width: 80px;
+    height: 80px;
+  }
+
+  .crosshairRing {
+    width: 60px;
+    height: 60px;
+  }
+
+  .crosshairCenter {
+    width: 44px;
+    height: 44px;
+  }
+
+  .crosshairText {
+    font-size: 18px;
+  }
+}
+
+/* Figma 375px */
+@media (max-width: 480px) {
+  .section {
+    padding: 60px 0 40px;
+  }
+
+  .container {
+    padding: 0 15px;
+  }
+
+  .sectionTitle {
+    font-size: 32px;
+  }
+
+  .description {
+    font-size: 16px;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .card {
+    height: 280px;
+  }
+
+  .cardTitle {
+    font-size: 20px;
+  }
+}

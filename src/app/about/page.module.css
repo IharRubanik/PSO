@@ -1,0 +1,187 @@
+.aboutSection {
+  position: relative;
+  overflow: hidden;
+}
+
+.licensesSection {
+  position: relative;
+  overflow: hidden;
+}
+
+.armamentSection {
+  position: relative;
+  overflow: hidden;
+}
+
+.armamentBg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.armamentOverlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(20, 17, 15, 0.85);
+  z-index: 1;
+}
+
+.container {
+  position: relative;
+  z-index: 2;
+  max-width: 1800px;
+  margin: 0 auto;
+  padding: 100px 60px;
+}
+
+.sectionTitle {
+  font-family: var(--font-heading);
+  font-size: 68px;
+  line-height: 1;
+  color: var(--color-white);
+  text-transform: uppercase;
+  margin-bottom: 60px;
+}
+
+/* Two-column grid */
+.aboutGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+
+.aboutGridReversed {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+
+.aboutImage {
+  position: relative;
+  width: 100%;
+  height: 500px;
+  overflow: hidden;
+}
+
+.aboutText {
+  font-family: var(--font-body);
+  font-size: 20px;
+  line-height: 1.6;
+  color: var(--color-text);
+  opacity: 0.8;
+}
+
+.aboutText p {
+  margin-bottom: 24px;
+}
+
+.aboutText p:last-child {
+  margin-bottom: 0;
+}
+
+.aboutText .sectionTitle {
+  opacity: 1;
+}
+
+/* Licenses grid */
+.licensesGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.licenseCard {
+  position: relative;
+  border: 1px solid var(--color-border);
+  background: rgba(24, 21, 19, 0.5);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  padding: 40px 30px;
+  min-height: 450px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: border-color 0.3s ease, transform 0.3s ease;
+}
+
+.licenseCard:hover {
+  border-color: var(--color-gold);
+  transform: translateY(-5px);
+}
+
+.licenseTitle {
+  font-family: var(--font-heading);
+  font-size: 22px;
+  text-transform: uppercase;
+  color: var(--color-white);
+  line-height: 1.3;
+}
+
+.licenseIssuer {
+  font-family: var(--font-body);
+  font-size: 16px;
+  color: var(--color-text);
+  opacity: 0.6;
+  line-height: 1.4;
+  margin-top: auto;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+  .licensesGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .licenseCard {
+    min-height: 350px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 80px 30px;
+  }
+
+  .sectionTitle {
+    font-size: 42px;
+    margin-bottom: 40px;
+  }
+
+  .aboutGrid,
+  .aboutGridReversed {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .aboutImage {
+    height: 350px;
+  }
+
+  .aboutText {
+    font-size: 18px;
+  }
+
+  .licensesGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 60px 15px;
+  }
+
+  .sectionTitle {
+    font-size: 32px;
+  }
+
+  .aboutImage {
+    height: 250px;
+  }
+
+  .aboutText {
+    font-size: 16px;
+  }
+}

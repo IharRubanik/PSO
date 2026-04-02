@@ -1,0 +1,192 @@
+.stats {
+  position: relative;
+  width: 100%;
+  height: 288px;
+  background: var(--color-bg);
+  overflow: hidden;
+}
+
+.container {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  padding: 0 60px;
+}
+
+/* 4 cards in a row; Figma positions: left:60, 520, 980, 1440 → 460px per slot, 25px gap */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 435px);
+  gap: 25px;
+  align-items: center;
+  height: 100%;
+  /* top:40px per Figma — use padding to push cards down within the 288px height */
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+/* Figma: item w=435, content area h=208 with py=40 px=20, gap=24 */
+/* Actual: item is the 208px frame, content inside has vertical padding */
+.item {
+  position: relative;
+  width: 435px;
+  height: 208px;
+  padding: 30px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 24px;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.itemVisible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Figma: SVG frame positioned over item, slightly oversized (inset -0.48% -0.23%) */
+.frame {
+  position: absolute;
+  inset: -0.48% -0.23%;
+  width: calc(100% + 0.46%);
+  height: calc(100% + 0.96%);
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Figma: Furore 80px, gold gradient, line-height 1.2 */
+.number {
+  font-family: var(--font-heading);
+  font-size: 80px;
+  line-height: 1.2;
+  background: linear-gradient(90deg, #c2a16d 0%, #e2caa4 55.77%, #c2a16d 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  margin: 0;
+  display: flex;
+  align-items: baseline;
+  gap: 0;
+}
+
+.prefix,
+.suffix {
+  font-family: var(--font-heading);
+  font-size: 80px;
+  line-height: 1;
+  /* inherits gradient via parent background-clip */
+}
+
+/* Figma: Proxima Nova Regular 20px, #e5dfda, opacity 0.8, line-height 1.2 */
+.label {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 1.2;
+  color: var(--color-text-light);
+  opacity: 0.8;
+  margin: 0;
+}
+
+/* ===== RESPONSIVE 1600px ===== */
+@media (max-width: 1600px) {
+  .stats {
+    height: auto;
+    padding: 40px 0;
+  }
+
+  .container {
+    height: auto;
+    padding: 0 60px;
+  }
+
+  .grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    height: auto;
+    padding: 0;
+  }
+
+  .item {
+    width: 100%;
+    height: auto;
+    min-height: 160px;
+  }
+}
+
+/* ===== RESPONSIVE 1024px ===== */
+@media (max-width: 1024px) {
+  .container {
+    padding: 0 40px;
+  }
+
+  .number {
+    font-size: 64px;
+  }
+
+  .prefix,
+  .suffix {
+    font-size: 64px;
+  }
+
+  .label {
+    font-size: 18px;
+  }
+}
+
+/* ===== RESPONSIVE 768px ===== */
+@media (max-width: 768px) {
+  .stats {
+    padding: 60px 0;
+  }
+
+  .container {
+    padding: 0 30px;
+  }
+
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .number {
+    font-size: 56px;
+  }
+
+  .prefix,
+  .suffix {
+    font-size: 56px;
+  }
+
+  .label {
+    font-size: 16px;
+  }
+}
+
+/* ===== RESPONSIVE 480px ===== */
+@media (max-width: 480px) {
+  .container {
+    padding: 0 15px;
+  }
+
+  .item {
+    padding: 24px 16px;
+    gap: 16px;
+  }
+
+  .number {
+    font-size: 44px;
+  }
+
+  .prefix,
+  .suffix {
+    font-size: 44px;
+  }
+
+  .label {
+    font-size: 14px;
+  }
+}

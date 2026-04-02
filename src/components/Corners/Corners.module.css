@@ -1,0 +1,36 @@
+.corners {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.tl, .tr, .bl, .br {
+  position: absolute;
+  border-color: var(--corner-color, var(--color-gold));
+  border-style: solid;
+}
+
+.tl {
+  top: 0;
+  left: 0;
+  border-width: var(--corner-stroke, 1px) 0 0 var(--corner-stroke, 1px);
+}
+
+.tr {
+  top: 0;
+  right: 0;
+  border-width: var(--corner-stroke, 1px) var(--corner-stroke, 1px) 0 0;
+}
+
+.bl {
+  bottom: 0;
+  left: 0;
+  border-width: 0 0 var(--corner-stroke, 1px) var(--corner-stroke, 1px);
+}
+
+.br {
+  bottom: 0;
+  right: 0;
+  border-width: 0 var(--corner-stroke, 1px) var(--corner-stroke, 1px) 0;
+}
