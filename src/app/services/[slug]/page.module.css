@@ -6,89 +6,163 @@
 .container {
   position: relative;
   z-index: 2;
-  max-width: 1800px;
+  max-width: 100%;
   margin: 0 auto;
-  padding: 100px 60px;
+  padding: 8.33vw 3.13vw;
 }
 
 .sectionTitle {
   font-family: var(--font-heading);
-  font-size: 68px;
-  line-height: 1;
+  font-size: 3.54vw;
+  line-height: normal;
   color: var(--color-white);
   text-transform: uppercase;
-  margin-bottom: 60px;
+  margin-bottom: 3.13vw;
+  width: 46.35vw;
+}
+
+.stepsSectionTitle {
+  composes: sectionTitle;
+  margin-bottom: 7.19vw;
+}
+
+.clientsSectionTitle {
+  composes: sectionTitle;
+  margin-bottom: 3.13vw;
 }
 
 /* Two-column grid */
 .twoColGrid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px;
+  grid-template-columns: 44.79vw 46.35vw;
+  gap: 2.6vw;
   align-items: start;
 }
 
 .imageBlock {
   position: relative;
   width: 100%;
-  height: 500px;
+  height: 28.13vw;
   overflow: hidden;
 }
 
 .textBlock {
   font-family: var(--font-body);
-  font-size: 20px;
-  line-height: 1.6;
-  color: var(--color-text);
+  font-size: 1.25vw;
+  line-height: 1.2;
+  color: #e5dfda;
   opacity: 0.8;
 }
 
 .textBlock p {
-  margin-bottom: 24px;
+  margin-bottom: 1.25vw;
 }
 
 .textBlock p:last-child {
   margin-bottom: 0;
 }
 
+/* Steps section — no top padding per Figma */
+.stepsContainer {
+  position: relative;
+  z-index: 2;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 3.13vw 8.33vw;
+}
+
 /* Steps grid */
 .stepsGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+  gap: 1.04vw;
 }
 
 .stepCard {
-  position: relative;
-  padding: 40px 30px;
-  min-height: 300px;
   display: flex;
   flex-direction: column;
+  gap: 0.63vw;
+  align-items: flex-start;
+}
+
+/* Crosshair icon */
+.stepCrosshair {
+  position: relative;
+  width: 5.73vw;
+  height: 5.73vw;
+  overflow: hidden;
+}
+
+.stepCrosshairLineH {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-0.5px);
+}
+
+.stepCrosshairLineV {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateX(-0.5px);
+}
+
+.stepCrosshairRing {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 5.21vw;
+  height: 5.21vw;
+  transform: translate(-50%, -50%);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+}
+
+.stepCrosshairCenter {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 3.07vw;
+  height: 3.07vw;
+  transform: translate(-50%, -50%);
+  background: #393634;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .stepNumber {
   font-family: var(--font-heading);
-  font-size: 64px;
-  color: var(--color-gold);
-  opacity: 0.3;
-  line-height: 1;
-  margin-bottom: 20px;
+  font-size: 1.25vw;
+  line-height: normal;
+  text-transform: uppercase;
+  background: var(--gold-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
 }
 
 .stepTitle {
   font-family: var(--font-heading);
-  font-size: 22px;
+  font-size: 1.46vw;
   text-transform: uppercase;
   color: var(--color-white);
   line-height: 1.3;
-  margin-bottom: 16px;
 }
 
 .stepText {
   font-family: var(--font-body);
-  font-size: 18px;
-  line-height: 1.5;
-  color: var(--color-text);
+  font-size: 1.25vw;
+  line-height: 1.2;
+  color: var(--color-white);
   opacity: 0.8;
 }
 
@@ -96,6 +170,30 @@
 .clientsSection {
   position: relative;
   overflow: hidden;
+  min-height: 48.44vw;
+}
+
+.clientsContainer {
+  position: relative;
+  z-index: 2;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 4.17vw 3.13vw;
+  min-height: 48.44vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.clientsDivider {
+  position: absolute;
+  top: calc(50% - 4.8vw);
+  left: 0;
+  width: 100%;
+  height: 5.73vw;
+  transform: translateY(-50%);
+  z-index: 3;
+  pointer-events: none;
 }
 
 .clientsBg {
@@ -107,24 +205,32 @@
 .clientsOverlay {
   position: absolute;
   inset: 0;
-  background: rgba(20, 17, 15, 0.85);
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6) 70.28%);
   z-index: 1;
 }
 
 .clientsGrid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.04vw;
+}
+
+.clientsGrid > * {
+  width: calc(25% - 0.78vw);
 }
 
 .clientCard {
   position: relative;
-  backdrop-filter: blur(7.5px);
-  -webkit-backdrop-filter: blur(7.5px);
   background: rgba(24, 21, 19, 0.3);
-  padding: 40px 20px;
+  padding: 1.04vw 0.78vw;
+  min-height: 8.33vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
   transition: background 0.3s ease, transform 0.3s ease;
+  -webkit-backdrop-filter: blur(7.5px);
+  backdrop-filter: blur(7.5px);
 }
 
 .clientCard:hover {
@@ -133,11 +239,11 @@
 }
 
 .clientCardTitle {
-  font-family: var(--font-heading);
-  font-size: 28px;
-  line-height: 1.3;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 1.25vw;
+  line-height: 1.2;
   color: var(--color-white);
-  text-transform: uppercase;
 }
 
 /* ===== RESPONSIVE ===== */
@@ -152,8 +258,29 @@
     padding: 80px 30px;
   }
 
+  .stepsContainer {
+    padding: 0 30px 80px;
+  }
+
+  .clientsSection {
+    min-height: auto;
+  }
+
+  .clientsContainer {
+    padding: 40px 30px;
+    min-height: auto;
+  }
+
   .sectionTitle {
     font-size: 42px;
+    margin-bottom: 40px;
+  }
+
+  .stepsSectionTitle {
+    margin-bottom: 40px;
+  }
+
+  .clientsSectionTitle {
     margin-bottom: 40px;
   }
 
@@ -170,18 +297,30 @@
     font-size: 18px;
   }
 
-  .clientsGrid {
-    grid-template-columns: repeat(2, 1fr);
+  .clientsDivider {
+    display: none;
+  }
+
+  .clientsGrid > * {
+    width: calc(50% - 10px);
   }
 
   .clientCardTitle {
-    font-size: 22px;
+    font-size: 18px;
   }
 }
 
 @media (max-width: 480px) {
   .container {
     padding: 60px 15px;
+  }
+
+  .stepsContainer {
+    padding: 0 15px 60px;
+  }
+
+  .clientsContainer {
+    padding: 30px 15px;
   }
 
   .sectionTitle {
@@ -196,8 +335,8 @@
     font-size: 16px;
   }
 
-  .clientsGrid {
-    grid-template-columns: 1fr;
+  .clientsGrid > * {
+    width: 100%;
   }
 
   .stepNumber {

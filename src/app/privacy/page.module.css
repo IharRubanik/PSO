@@ -2,63 +2,85 @@
   position: relative;
   overflow: hidden;
   min-height: 100vh;
-  padding-top: 160px;
+  padding-top: calc(6.25vw + 16px + 59px);
   padding-bottom: 100px;
 }
 
 .container {
   position: relative;
   z-index: 2;
-  max-width: 900px;
+  max-width: 1194px;
   margin: 0 auto;
-  padding: 0 60px;
+  padding: 0 3.13vw;
 }
 
 .breadcrumbs {
+  position: absolute;
+  top: 6.25vw;
+  left: 3.13vw;
+  z-index: 3;
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 0;
   font-family: var(--font-body);
-  font-size: 16px;
-  margin-bottom: 20px;
+  font-weight: 400;
+  font-size: 0.83vw;
+  line-height: 1.3;
 }
 
 .separator {
-  color: var(--color-border);
+  display: inline-block;
+  width: 0.31vw;
+  height: 0.31vw;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.4);
+  margin: 0 0.42vw;
+  vertical-align: middle;
 }
 
 .breadcrumbLink {
-  color: var(--color-border);
-  transition: color 0.3s ease;
+  color: #d9d2ce;
+  opacity: 0.4;
+  transition: opacity 0.3s ease;
 }
 
 .breadcrumbLink:hover {
-  color: var(--color-gold-light);
+  opacity: 0.8;
 }
 
 .breadcrumbActive {
-  color: var(--color-gold-light);
+  color: #f2f2f2;
+  opacity: 0.8;
 }
 
 .pageTitle {
   font-family: var(--font-heading);
-  font-size: 68px;
-  line-height: 1.1;
+  font-size: 3.54vw;
+  line-height: normal;
   color: var(--color-white);
   text-transform: uppercase;
-  margin-bottom: 60px;
+  margin-bottom: 2.6vw;
+}
+
+.intro {
+  font-family: var(--font-body);
+  font-size: 1.25vw;
+  line-height: 1.2;
+  color: var(--color-text);
+  opacity: 0.8;
+  margin-bottom: 3.13vw;
 }
 
 .content {
   font-family: var(--font-body);
-  font-size: 18px;
-  line-height: 1.7;
+  font-size: 1.04vw;
+  line-height: 1.5;
   color: var(--color-text);
-  opacity: 0.85;
+  opacity: 0.8;
 }
 
 .block {
-  margin-bottom: 40px;
+  margin-bottom: 2.6vw;
 }
 
 .block:last-child {
@@ -66,20 +88,23 @@
 }
 
 .blockTitle {
-  font-family: var(--font-body-bold);
-  font-weight: 700;
-  font-size: 22px;
+  font-family: var(--font-heading);
+  font-size: 1.46vw;
   color: var(--color-white);
-  margin-bottom: 16px;
+  text-transform: uppercase;
+  margin-bottom: 1.25vw;
+  line-height: 1.3;
 }
 
+
 .content p {
-  margin-bottom: 16px;
+  margin-bottom: 1.04vw;
 }
 
 .content p:last-child {
   margin-bottom: 0;
 }
+
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
@@ -94,6 +119,10 @@
   .pageTitle {
     font-size: 42px;
     margin-bottom: 40px;
+  }
+
+  .intro {
+    font-size: 18px;
   }
 
   .content {
@@ -116,6 +145,10 @@
 
   .pageTitle {
     font-size: 32px;
+  }
+
+  .intro {
+    font-size: 16px;
   }
 
   .content {

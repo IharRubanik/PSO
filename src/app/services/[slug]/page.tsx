@@ -11,17 +11,17 @@ const STEPS = [
   {
     number: "01",
     title: "Анализ рисков",
-    text: "Проводим комплексную оценку угроз и уязвимостей, определяем уровень необходимой защиты и разрабатываем профиль безопасности.",
+    text: "Мы изучаем особенности деятельности клиента, маршруты передвижения и возможные риски для разработки эффективной стратегии безопасности.",
   },
   {
     number: "02",
     title: "Разработка плана безопасности",
-    text: "Создаём индивидуальный план мероприятий с учётом специфики клиента, маршрутов, графика и особых требований.",
+    text: "Формируется индивидуальный план охраны с учетом графика клиента, уровня угроз и необходимых мер защиты.",
   },
   {
     number: "03",
     title: "Подбор сотрудников",
-    text: "Назначаем команду охранников с релевантным опытом, проводим инструктаж и обеспечиваем постоянную координацию.",
+    text: "Назначаются подготовленные специалисты, обладающие опытом работы в сфере личной охраны и сопровождения.",
   },
 ];
 
@@ -43,7 +43,7 @@ export default function ServiceDetailPage() {
           { label: "Главная", href: "/" },
           { label: "Личная охрана" },
         ]}
-        bgImage="/assets/images/service2.jpg"
+        bgImage="/assets/images/service-personal-security.jpg"
       />
 
       {/* Особенности услуги */}
@@ -58,7 +58,7 @@ export default function ServiceDetailPage() {
             <AnimatedSection direction="left">
               <div className={styles.imageBlock}>
                 <Image
-                  src="/assets/images/service1.jpg"
+                  src="/assets/images/service-about.jpg"
                   alt="Особенности услуги"
                   fill
                   style={{ objectFit: "cover" }}
@@ -69,20 +69,28 @@ export default function ServiceDetailPage() {
             <AnimatedSection direction="right" delay={0.2}>
               <div className={styles.textBlock}>
                 <p>
-                  Личная охрана — это комплекс мер по обеспечению физической
-                  безопасности клиента в любых условиях. Наши телохранители
-                  обладают многолетним опытом работы в силовых структурах и
-                  специальных подразделениях.
+                  Наша компания — это команда профессионалов с многолетним опытом
+                  работы в сфере безопасности. Мы предоставляем полный спектр
+                  охранных услуг для бизнеса, государственных организаций и
+                  частных клиентов.
                 </p>
                 <p>
-                  Мы обеспечиваем круглосуточное сопровождение, организацию
-                  безопасных маршрутов передвижения, контроль окружающей
-                  обстановки и оперативное реагирование на любые угрозы.
+                  Главная задача нашей работы — обеспечить надежную защиту
+                  имущества, сотрудников и посетителей объектов. Мы используем
+                  современные технологии безопасности, тщательно отбираем
+                  персонал и постоянно повышаем уровень подготовки сотрудников.
                 </p>
                 <p>
-                  Каждый проект личной охраны начинается с детального анализа
-                  рисков и разработки индивидуального плана безопасности,
-                  учитывающего все аспекты жизни и деятельности клиента.
+                  Главная задача нашей работы — обеспечить надежную защиту
+                  имущества, сотрудников и посетителей объектов. Мы используем
+                  современные технологии безопасности, тщательно отбираем
+                  персонал и постоянно повышаем уровень подготовки сотрудников.
+                </p>
+                <p>
+                  Главная задача нашей работы — обеспечить надежную защиту
+                  имущества, сотрудников и посетителей объектов. Мы используем
+                  современные технологии безопасности, тщательно отбираем
+                  персонал и постоянно повышаем уровень подготовки сотрудников.
                 </p>
               </div>
             </AnimatedSection>
@@ -93,17 +101,23 @@ export default function ServiceDetailPage() {
       {/* Этапы сотрудничества */}
       <section className={styles.section}>
         <div className="noise-overlay" />
-        <div className={styles.container}>
+        <div className={styles.stepsContainer}>
           <AnimatedSection>
-            <h2 className={styles.sectionTitle}>Этапы сотрудничества</h2>
+            <h2 className={styles.stepsSectionTitle}>Этапы сотрудничества</h2>
           </AnimatedSection>
 
           <div className={styles.stepsGrid}>
             {STEPS.map((step, i) => (
               <AnimatedSection key={i} delay={i * 0.15}>
                 <div className={styles.stepCard}>
-                  <Corners size={30} />
-                  <span className={styles.stepNumber}>{step.number}</span>
+                  <div className={styles.stepCrosshair}>
+                    <div className={styles.stepCrosshairLineH} />
+                    <div className={styles.stepCrosshairLineV} />
+                    <div className={styles.stepCrosshairRing} />
+                    <div className={styles.stepCrosshairCenter}>
+                      <span className={styles.stepNumber}>{step.number}</span>
+                    </div>
+                  </div>
                   <h3 className={styles.stepTitle}>{step.title}</h3>
                   <p className={styles.stepText}>{step.text}</p>
                 </div>
@@ -117,7 +131,7 @@ export default function ServiceDetailPage() {
       <section className={styles.clientsSection}>
         <div className={styles.clientsBg}>
           <Image
-            src="/assets/images/partners-bg.jpg"
+            src="/assets/images/service-clients-bg.png"
             alt=""
             fill
             style={{ objectFit: "cover" }}
@@ -126,16 +140,24 @@ export default function ServiceDetailPage() {
         <div className={styles.clientsOverlay} />
         <div className="noise-overlay" />
 
-        <div className={styles.container}>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/assets/images/crosshair-divider-full.svg"
+          alt=""
+          className={styles.clientsDivider}
+          aria-hidden="true"
+        />
+
+        <div className={styles.clientsContainer}>
           <AnimatedSection>
-            <h2 className={styles.sectionTitle}>Кому подойдёт наша услуга</h2>
+            <h2 className={styles.clientsSectionTitle}>Кому подойдёт наша услуга</h2>
           </AnimatedSection>
 
           <div className={styles.clientsGrid}>
             {TARGET_CLIENTS.map((client, i) => (
               <AnimatedSection key={i} delay={i * 0.1}>
                 <div className={styles.clientCard}>
-                  <Corners size={30} />
+                  <Corners size={30} color="rgba(255,255,255,0.3)" />
                   <h3 className={styles.clientCardTitle}>{client}</h3>
                 </div>
               </AnimatedSection>

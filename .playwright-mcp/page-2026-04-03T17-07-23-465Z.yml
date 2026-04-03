@@ -1,0 +1,145 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - navigation [ref=e4]:
+        - link "Главная Главная" [ref=e5] [cursor=pointer]:
+          - /url: /
+          - generic [ref=e6]: Главная
+          - generic [ref=e7]: Главная
+        - link "Услуги Услуги" [ref=e8] [cursor=pointer]:
+          - /url: /services/personal-guard
+          - generic [ref=e9]: Услуги
+          - generic [ref=e10]: Услуги
+        - link "О компании О компании" [ref=e11] [cursor=pointer]:
+          - /url: /about
+          - generic [ref=e12]: О компании
+          - generic [ref=e13]: О компании
+        - link "Контакты Контакты" [ref=e14] [cursor=pointer]:
+          - /url: /contacts
+          - generic [ref=e15]: Контакты
+          - generic [ref=e16]: Контакты
+      - link "Фантом Групп" [ref=e17] [cursor=pointer]:
+        - /url: /
+        - img "Фантом Групп" [ref=e18]
+      - generic [ref=e19]:
+        - link "8 999 999-99-99" [ref=e20] [cursor=pointer]:
+          - /url: tel:+79999999999
+        - button "Оставить заявку" [ref=e21] [cursor=pointer]
+        - generic [ref=e22]:
+          - link "Ru" [ref=e23] [cursor=pointer]:
+            - /url: "#"
+          - link "EN" [ref=e24] [cursor=pointer]:
+            - /url: "#"
+  - generic:
+    - link "Главная":
+      - /url: /
+    - link "Услуги":
+      - /url: /services/personal-guard
+    - link "О компании":
+      - /url: /about
+    - link "Контакты":
+      - /url: /contacts
+    - link "8 999 999-99-99":
+      - /url: tel:+79999999999
+    - button "Оставить заявку"
+  - main [ref=e25]:
+    - generic [ref=e26]:
+      - generic [ref=e29]:
+        - link "Главная" [ref=e31] [cursor=pointer]:
+          - /url: /
+        - generic [ref=e32]: •Личная охрана
+      - heading "Личная охрана" [level=1] [ref=e33]
+    - generic [ref=e35]:
+      - heading "Особенности услуги" [level=2] [ref=e37]
+      - generic [ref=e38]:
+        - img "Особенности услуги" [ref=e41]
+        - generic [ref=e43]:
+          - paragraph [ref=e44]: Личная охрана — это комплекс мер по обеспечению физической безопасности клиента в любых условиях. Наши телохранители обладают многолетним опытом работы в силовых структурах и специальных подразделениях.
+          - paragraph [ref=e45]: Мы обеспечиваем круглосуточное сопровождение, организацию безопасных маршрутов передвижения, контроль окружающей обстановки и оперативное реагирование на любые угрозы.
+          - paragraph [ref=e46]: Каждый проект личной охраны начинается с детального анализа рисков и разработки индивидуального плана безопасности, учитывающего все аспекты жизни и деятельности клиента.
+    - generic [ref=e48]:
+      - heading "Этапы сотрудничества" [level=2] [ref=e50]
+      - generic [ref=e51]:
+        - generic [ref=e53]:
+          - generic [ref=e54]: "01"
+          - heading "Анализ рисков" [level=3] [ref=e55]
+          - paragraph [ref=e56]: Проводим комплексную оценку угроз и уязвимостей, определяем уровень необходимой защиты и разрабатываем профиль безопасности.
+        - generic [ref=e58]:
+          - generic [ref=e59]: "02"
+          - heading "Разработка плана безопасности" [level=3] [ref=e60]
+          - paragraph [ref=e61]: Создаём индивидуальный план мероприятий с учётом специфики клиента, маршрутов, графика и особых требований.
+        - generic [ref=e63]:
+          - generic [ref=e64]: "03"
+          - heading "Подбор сотрудников" [level=3] [ref=e65]
+          - paragraph [ref=e66]: Назначаем команду охранников с релевантным опытом, проводим инструктаж и обеспечиваем постоянную координацию.
+    - generic [ref=e70]:
+      - heading "Кому подойдёт наша услуга" [level=2] [ref=e72]
+      - generic [ref=e73]:
+        - heading "Руководителям и собственникам бизнеса" [level=3] [ref=e76]
+        - heading "Высокопоставленным и публичным лицам" [level=3] [ref=e79]
+        - heading "VIP-гостям, участникам закрытых мероприятий и делегаций" [level=3] [ref=e82]
+        - heading "Людям, находящимся в зоне риска" [level=3] [ref=e85]
+        - heading "Гостям, путешественникам и бизнесменам" [level=3] [ref=e88]
+        - heading "Членам семей руководителей и бизнес-элиты" [level=3] [ref=e91]
+    - generic [ref=e94]:
+      - generic [ref=e95]:
+        - heading "Обсудить защиту" [level=2] [ref=e97]
+        - paragraph [ref=e99]: Оставьте заявку, и наш охранный менеджер персонально подберёт формат защиты — от физической охраны и постов до комплексных решений с видеонаблюдением и пультовой охраной
+        - paragraph [ref=e103]: Консультация без обязательств | Быстрый ответ менеджера | Индивидуальный подбор уровня охраны под ваш объект | Прозрачный расчет стоимости и условия сотрудничества
+      - generic [ref=e105]:
+        - generic [ref=e106]:
+          - textbox "Имя*" [ref=e107]
+          - textbox "Телефон*" [ref=e108]
+          - textbox "Почта" [ref=e109]
+          - textbox "Сообщение..." [ref=e110]
+        - generic [ref=e113] [cursor=pointer]:
+          - text: Я согласен(на) на обработку моих
+          - link "Персональных данных" [ref=e114]:
+            - /url: /privacy
+        - button "Отправить заявку" [ref=e115] [cursor=pointer]
+  - contentinfo [ref=e116]:
+    - generic [ref=e117]:
+      - img "Фантом Групп" [ref=e120]
+      - generic [ref=e122]:
+        - heading "Меню" [level=4] [ref=e123]
+        - navigation [ref=e124]:
+          - link "Главная Главная" [ref=e125] [cursor=pointer]:
+            - /url: /
+            - generic [ref=e126]: Главная
+            - generic [ref=e127]: Главная
+          - link "Услуги Услуги" [ref=e128] [cursor=pointer]:
+            - /url: /services
+            - generic [ref=e129]: Услуги
+            - generic [ref=e130]: Услуги
+          - link "О компании О компании" [ref=e131] [cursor=pointer]:
+            - /url: /about
+            - generic [ref=e132]: О компании
+            - generic [ref=e133]: О компании
+          - link "Контакты Контакты" [ref=e134] [cursor=pointer]:
+            - /url: /contacts
+            - generic [ref=e135]: Контакты
+            - generic [ref=e136]: Контакты
+      - generic [ref=e139]:
+        - heading "Позвонить нам" [level=4] [ref=e140]
+        - link "8 999 999-99-99" [ref=e141] [cursor=pointer]:
+          - /url: tel:89999999999
+        - heading "Написать нам" [level=4] [ref=e142]
+        - link "info@security-company.ru" [ref=e143] [cursor=pointer]:
+          - /url: mailto:info@security-company.ru
+        - heading "Соцсети" [level=4] [ref=e144]
+        - link "Telegram" [ref=e145] [cursor=pointer]:
+          - /url: https://t.me/
+      - generic [ref=e148]:
+        - heading "О защите данных" [level=4] [ref=e149]
+        - navigation [ref=e150]:
+          - link "Политика конфиденциальности Политика конфиденциальности" [ref=e151] [cursor=pointer]:
+            - /url: /privacy
+            - generic [ref=e152]: Политика конфиденциальности
+            - generic [ref=e153]: Политика конфиденциальности
+          - link "Условия использования Условия использования" [ref=e154] [cursor=pointer]:
+            - /url: /terms
+            - generic [ref=e155]: Условия использования
+            - generic [ref=e156]: Условия использования
+    - paragraph [ref=e158]: 2026©Фантом групп. Все права защищены
+  - button "Open Next.js Dev Tools" [ref=e164] [cursor=pointer]:
+    - img [ref=e165]

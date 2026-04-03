@@ -11,6 +11,11 @@
 .armamentSection {
   position: relative;
   overflow: hidden;
+  height: 48.44vw;
+}
+
+.armamentSection + .armamentSection {
+  margin-top: 8.33vw;
 }
 
 .armamentBg {
@@ -19,62 +24,99 @@
   z-index: 0;
 }
 
-.armamentOverlay {
+.armamentGradient {
   position: absolute;
-  inset: 0;
-  background: rgba(20, 17, 15, 0.85);
+  top: 0;
+  right: 0;
+  width: 67.71vw;
+  height: 100%;
+  background: linear-gradient(to left, rgba(22, 19, 18, 0.6), rgba(22, 19, 18, 0));
   z-index: 1;
+}
+
+.armamentContent {
+  position: relative;
+  z-index: 2;
+  padding: 8.33vw 3.13vw;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.armamentContent > *:first-child {
+  flex: 1 1 auto;
+}
+
+.armamentContent .sectionTitle {
+  margin-bottom: 0;
+}
+
+.armamentText {
+  width: 46.35vw;
+  flex-shrink: 0;
+  font-family: var(--font-body);
+  font-size: 1.25vw;
+  line-height: 1.2;
+  color: var(--color-text);
+  padding-top: 16px;
+}
+
+.armamentText p {
+  margin-bottom: 1.25vw;
+}
+
+.armamentText p:last-child {
+  margin-bottom: 0;
 }
 
 .container {
   position: relative;
   z-index: 2;
-  max-width: 1800px;
+  max-width: 100%;
   margin: 0 auto;
-  padding: 100px 60px;
+  padding: 8.33vw 3.13vw;
 }
 
 .sectionTitle {
   font-family: var(--font-heading);
-  font-size: 68px;
-  line-height: 1;
+  font-size: 3.54vw;
+  line-height: normal;
   color: var(--color-white);
   text-transform: uppercase;
-  margin-bottom: 60px;
+  margin-bottom: 3.13vw;
 }
 
 /* Two-column grid */
 .aboutGrid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px;
+  grid-template-columns: 44.79vw 46.35vw;
+  gap: 2.6vw;
   align-items: start;
 }
 
 .aboutGridReversed {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px;
+  grid-template-columns: 46.35vw 44.79vw;
+  gap: 2.6vw;
   align-items: start;
 }
 
 .aboutImage {
   position: relative;
   width: 100%;
-  height: 500px;
+  height: 28.13vw;
   overflow: hidden;
 }
 
 .aboutText {
   font-family: var(--font-body);
-  font-size: 20px;
-  line-height: 1.6;
-  color: var(--color-text);
-  opacity: 0.8;
+  font-size: 1.25vw;
+  line-height: 1.2;
+  color: #d9d2ce;
 }
 
 .aboutText p {
-  margin-bottom: 24px;
+  margin-bottom: 1.25vw;
 }
 
 .aboutText p:last-child {
@@ -85,57 +127,261 @@
   opacity: 1;
 }
 
-/* Licenses grid */
-.licensesGrid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
+/* Licenses */
+.licensesContainer {
+  position: relative;
+  z-index: 2;
+  max-width: 100%;
+  padding: 0 3.13vw;
+  padding-top: 0;
+  padding-bottom: 8.33vw;
+}
+
+.licensesContainer .sectionTitle {
+  max-width: 46.35vw;
+}
+
+.licensesSlider {
+  overflow: hidden;
+}
+
+.licensesCards {
+  display: flex;
   gap: 20px;
+  transition: transform 0.4s ease;
+}
+
+.licensesCards > * {
+  flex: 0 0 calc((100% - 60px) / 4);
+  min-width: 0;
 }
 
 .licenseCard {
   position: relative;
-  border: 1px solid var(--color-border);
-  background: rgba(24, 21, 19, 0.5);
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
-  padding: 40px 30px;
-  min-height: 450px;
+  height: 29.69vw;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  transition: border-color 0.3s ease, transform 0.3s ease;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.3s ease;
 }
 
 .licenseCard:hover {
-  border-color: var(--color-gold);
   transform: translateY(-5px);
+}
+
+.licenseCardBg {
+  position: absolute;
+  inset: 0;
+  background: #24211f;
+}
+
+.licenseCardBg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("/assets/images/license-card-bg.jpg") center / cover no-repeat;
+  opacity: 0.25;
+}
+
+.licenseCrosshair {
+  position: relative;
+  width: 110px;
+  height: 110px;
+  margin-top: 20px;
+  z-index: 1;
+}
+
+.crosshairSvg {
+  width: 100%;
+  height: 100%;
+}
+
+.crosshairNum {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--font-heading);
+  font-size: 24px;
+  text-transform: uppercase;
+  background: linear-gradient(90deg, #c2a16d 0%, #e2caa4 55.77%, #c2a16d 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  z-index: 2;
+}
+
+.licenseContent {
+  position: relative;
+  z-index: 1;
+  padding: 30px 20px;
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  border-radius: 5px;
+  width: 100%;
+  margin-top: 7px;
 }
 
 .licenseTitle {
   font-family: var(--font-heading);
-  font-size: 22px;
+  font-size: 1.46vw;
   text-transform: uppercase;
-  color: var(--color-white);
+  color: #d9d9d9;
   line-height: 1.3;
+  text-align: center;
+}
+
+.licenseBottom {
+  position: absolute;
+  bottom: -50px;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: bottom 0.3s ease;
+}
+
+.licenseCard:hover .licenseBottom {
+  bottom: 0;
 }
 
 .licenseIssuer {
+  position: relative;
+  z-index: 1;
   font-family: var(--font-body);
+  font-size: 18px;
+  color: var(--color-text-light);
+  opacity: 0.8;
+  line-height: 1.3;
+  letter-spacing: 0.45px;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 0 20px 20px;
+}
+
+.licenseFooter {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 15px;
+  background: var(--color-bg-light);
+  width: 100%;
+  height: 50px;
+}
+
+.licenseFooterText {
+  flex: 1;
+  font-family: "Onest", var(--font-body);
+  font-weight: 500;
   font-size: 16px;
-  color: var(--color-text);
-  opacity: 0.6;
-  line-height: 1.4;
-  margin-top: auto;
+  color: var(--color-gold-accent);
+  text-transform: uppercase;
+  line-height: 1.3;
+}
+
+.licensesProgressRow {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-top: 3.13vw;
+}
+
+.licensesProgressBar {
+  flex: 1;
+  height: 4px;
+  background: var(--color-bg-light);
+  overflow: hidden;
+}
+
+.licensesProgressFill {
+  height: 100%;
+  background: var(--color-gold-accent);
+  transition: width 0.4s ease;
+}
+
+.licensesNav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 100px;
+  background: var(--color-bg-light);
+  border: 1px solid var(--color-gold);
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.licensesNavBtn {
+  background: none;
+  border: none;
+  color: var(--color-gold);
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.2s;
+}
+
+.licensesNavBtn:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+/* License modal */
+.licenseModal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+
+.licenseModalClose {
+  position: absolute;
+  top: 30px;
+  right: 40px;
+  background: none;
+  border: none;
+  color: var(--color-white);
+  font-size: 40px;
+  cursor: pointer;
+  line-height: 1;
+  z-index: 1001;
+  transition: opacity 0.2s;
+}
+
+.licenseModalClose:hover {
+  opacity: 0.7;
+}
+
+.licenseModalContent {
+  max-width: 600px;
+  max-height: 85vh;
+  overflow: auto;
 }
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 1200px) {
-  .licensesGrid {
-    grid-template-columns: repeat(2, 1fr);
+  .licensesCards {
+    flex-wrap: wrap;
   }
 
   .licenseCard {
-    min-height: 350px;
+    width: calc(50% - 10px);
+    height: 450px;
+  }
+
+  .licenseTitle {
+    font-size: 22px;
   }
 }
 
@@ -161,10 +407,29 @@
 
   .aboutText {
     font-size: 18px;
+    line-height: 1.4;
   }
 
-  .licensesGrid {
-    grid-template-columns: 1fr;
+  .licensesCards {
+    flex-direction: column;
+  }
+
+  .licenseCard {
+    width: 100%;
+    height: 400px;
+  }
+
+  .licensesContainer {
+    padding: 0 30px 80px;
+  }
+
+  .licenseTitle {
+    font-size: 20px;
+  }
+
+  .licensesNav {
+    width: 70px;
+    height: 70px;
   }
 }
 

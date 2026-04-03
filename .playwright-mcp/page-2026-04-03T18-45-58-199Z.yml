@@ -1,0 +1,148 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - navigation [ref=e4]:
+        - link "Главная Главная" [ref=e5] [cursor=pointer]:
+          - /url: /
+          - generic [ref=e6]: Главная
+          - generic [ref=e7]: Главная
+        - link "Услуги Услуги" [ref=e8] [cursor=pointer]:
+          - /url: /services/personal-guard
+          - generic [ref=e9]: Услуги
+          - generic [ref=e10]: Услуги
+        - link "О компании О компании" [ref=e11] [cursor=pointer]:
+          - /url: /about
+          - generic [ref=e12]: О компании
+          - generic [ref=e13]: О компании
+        - link "Контакты Контакты" [ref=e14] [cursor=pointer]:
+          - /url: /contacts
+          - generic [ref=e15]: Контакты
+          - generic [ref=e16]: Контакты
+      - link "Фантом Групп" [ref=e17] [cursor=pointer]:
+        - /url: /
+        - img "Фантом Групп" [ref=e18]
+      - generic [ref=e19]:
+        - link "8 999 999-99-99" [ref=e20] [cursor=pointer]:
+          - /url: tel:+79999999999
+        - button "Оставить заявку" [ref=e21] [cursor=pointer]
+        - generic [ref=e22]:
+          - link "Ru" [ref=e23] [cursor=pointer]:
+            - /url: "#"
+          - link "EN" [ref=e24] [cursor=pointer]:
+            - /url: "#"
+  - generic:
+    - link "Главная":
+      - /url: /
+    - link "Услуги":
+      - /url: /services/personal-guard
+    - link "О компании":
+      - /url: /about
+    - link "Контакты":
+      - /url: /contacts
+    - link "8 999 999-99-99":
+      - /url: tel:+79999999999
+    - button "Оставить заявку"
+  - main [ref=e25]:
+    - generic [ref=e26]:
+      - generic [ref=e29]:
+        - link "Главная" [ref=e31] [cursor=pointer]:
+          - /url: /
+        - generic [ref=e32]: О компании
+      - heading "Кто мы и как обеспечиваем безопасность" [level=1] [ref=e34]
+    - generic [ref=e36]:
+      - heading "О нас" [level=2] [ref=e38]
+      - generic [ref=e39]:
+        - img "О компании" [ref=e42]
+        - generic [ref=e44]:
+          - paragraph [ref=e45]: Наша компания специализируется на предоставлении полного спектра охранных услуг для бизнеса и частных лиц. Мы работаем на рынке безопасности более 15 лет, обеспечивая надежную защиту объектов, людей и информации.
+          - paragraph [ref=e46]: Штат компании укомплектован профессионалами с опытом работы в силовых структурах и специальных подразделениях. Каждый сотрудник проходит строгий отбор и регулярную переподготовку для поддержания высочайшего уровня квалификации.
+          - paragraph [ref=e47]: Мы используем современные технические средства охраны и собственные методики оценки рисков, что позволяет нам разрабатывать индивидуальные решения для каждого клиента, гарантируя максимальную эффективность защиты.
+    - generic [ref=e49]:
+      - heading "Официальные лицензии компании" [level=2] [ref=e51]
+      - generic [ref=e52]:
+        - generic [ref=e54]:
+          - heading "Лицензия на частную охранную деятельность" [level=3] [ref=e55]
+          - paragraph [ref=e56]: Росгвардия, Управление лицензионно-разрешительной работы
+        - generic [ref=e58]:
+          - heading "Лицензия на монтаж технических средств охраны" [level=3] [ref=e59]
+          - paragraph [ref=e60]: Росгвардия, Управление лицензионно-разрешительной работы
+        - generic [ref=e62]:
+          - heading "Лицензия на проектирование средств безопасности" [level=3] [ref=e63]
+          - paragraph [ref=e64]: Министерство строительства и ЖКХ Российской Федерации
+        - generic [ref=e66]:
+          - heading "Допуск к сведениям, составляющим государственную тайну" [level=3] [ref=e67]
+          - paragraph [ref=e68]: Федеральная служба безопасности Российской Федерации
+    - generic [ref=e73]:
+      - img "Вооружение" [ref=e76]
+      - generic [ref=e78]:
+        - heading "Вооружение" [level=2] [ref=e79]
+        - paragraph [ref=e80]: Наши сотрудники оснащены современным служебным оружием и специальными средствами в соответствии с законодательством Российской Федерации. Весь арсенал проходит регулярную проверку и техническое обслуживание.
+        - paragraph [ref=e81]: Компания располагает полным комплектом разрешительной документации на хранение и использование служебного оружия. Каждый охранник имеет действующее удостоверение и лицензию на право ношения оружия.
+    - generic [ref=e84]:
+      - generic [ref=e86]:
+        - heading "Подготовка сотрудников" [level=2] [ref=e87]
+        - paragraph [ref=e88]: Все сотрудники компании проходят многоступенчатую систему подготовки, включающую физическую, тактическую и психологическую подготовку. Регулярные тренировки и аттестации обеспечивают постоянную боеготовность персонала.
+        - paragraph [ref=e89]: Программы обучения разработаны совместно с ведущими специалистами в области безопасности и включают работу с современным оборудованием, тактику действий в экстремальных ситуациях и методы оказания первой помощи.
+      - img "Подготовка сотрудников" [ref=e92]
+    - generic [ref=e95]:
+      - generic [ref=e96]:
+        - heading "Обсудить защиту" [level=2] [ref=e98]
+        - paragraph [ref=e100]: Оставьте заявку, и наш охранный менеджер персонально подберёт формат защиты — от физической охраны и постов до комплексных решений с видеонаблюдением и пультовой охраной
+        - paragraph [ref=e104]: Консультация без обязательств | Быстрый ответ менеджера | Индивидуальный подбор уровня охраны под ваш объект | Прозрачный расчет стоимости и условия сотрудничества
+      - generic [ref=e106]:
+        - generic [ref=e107]:
+          - textbox "Имя*" [ref=e108]
+          - textbox "Телефон*" [ref=e109]
+          - textbox "Почта" [ref=e110]
+          - textbox "Сообщение..." [ref=e111]
+        - generic [ref=e114] [cursor=pointer]:
+          - text: Я согласен(на) на обработку моих
+          - link "Персональных данных" [ref=e115]:
+            - /url: /privacy
+        - button "Отправить заявку" [ref=e116] [cursor=pointer]
+  - contentinfo [ref=e117]:
+    - generic [ref=e118]:
+      - img "Фантом Групп" [ref=e121]
+      - generic [ref=e123]:
+        - heading "Меню" [level=4] [ref=e124]
+        - navigation [ref=e125]:
+          - link "Главная Главная" [ref=e126] [cursor=pointer]:
+            - /url: /
+            - generic [ref=e127]: Главная
+            - generic [ref=e128]: Главная
+          - link "Услуги Услуги" [ref=e129] [cursor=pointer]:
+            - /url: /services
+            - generic [ref=e130]: Услуги
+            - generic [ref=e131]: Услуги
+          - link "О компании О компании" [ref=e132] [cursor=pointer]:
+            - /url: /about
+            - generic [ref=e133]: О компании
+            - generic [ref=e134]: О компании
+          - link "Контакты Контакты" [ref=e135] [cursor=pointer]:
+            - /url: /contacts
+            - generic [ref=e136]: Контакты
+            - generic [ref=e137]: Контакты
+      - generic [ref=e140]:
+        - heading "Позвонить нам" [level=4] [ref=e141]
+        - link "8 999 999-99-99" [ref=e142] [cursor=pointer]:
+          - /url: tel:89999999999
+        - heading "Написать нам" [level=4] [ref=e143]
+        - link "info@security-company.ru" [ref=e144] [cursor=pointer]:
+          - /url: mailto:info@security-company.ru
+        - heading "Соцсети" [level=4] [ref=e145]
+        - link "Telegram" [ref=e146] [cursor=pointer]:
+          - /url: https://t.me/
+      - generic [ref=e149]:
+        - heading "О защите данных" [level=4] [ref=e150]
+        - navigation [ref=e151]:
+          - link "Политика конфиденциальности Политика конфиденциальности" [ref=e152] [cursor=pointer]:
+            - /url: /privacy
+            - generic [ref=e153]: Политика конфиденциальности
+            - generic [ref=e154]: Политика конфиденциальности
+          - link "Условия использования Условия использования" [ref=e155] [cursor=pointer]:
+            - /url: /terms
+            - generic [ref=e156]: Условия использования
+            - generic [ref=e157]: Условия использования
+    - paragraph [ref=e159]: 2026©Фантом групп. Все права защищены
+  - button "Open Next.js Dev Tools" [ref=e165] [cursor=pointer]:
+    - img [ref=e166]

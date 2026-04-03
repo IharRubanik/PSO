@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ContactForm } from "@/components/ContactForm/ContactForm";
 import { AnimatedSection } from "@/components/UI/AnimatedSection";
+import { YandexMap } from "@/components/YandexMap/YandexMap";
 import styles from "./page.module.css";
 
 export default function ContactsPage() {
@@ -17,7 +18,7 @@ export default function ContactsPage() {
             <Link href="/" className={styles.breadcrumbLink}>
               Главная
             </Link>
-            <span className={styles.separator}>/</span>
+            <span className={styles.separator} />
             <span className={styles.breadcrumbActive}>Контакты</span>
           </div>
 
@@ -39,11 +40,27 @@ export default function ContactsPage() {
                   Москва, 1-й Красногвардейский проезд дом 22 с 1
                 </p>
               </div>
+              <div className={styles.infoDivider}>
+                <Image
+                  src="/assets/images/crosshair-separator.svg"
+                  alt=""
+                  width={40}
+                  height={47}
+                />
+              </div>
               <div className={styles.infoItem}>
                 <h4 className={styles.infoLabel}>Позвонить нам</h4>
                 <a href="tel:89999999999" className={styles.infoValue}>
                   8 999 999-99-99
                 </a>
+              </div>
+              <div className={styles.infoDivider}>
+                <Image
+                  src="/assets/images/crosshair-separator.svg"
+                  alt=""
+                  width={40}
+                  height={47}
+                />
               </div>
               <div className={styles.infoItem}>
                 <h4 className={styles.infoLabel}>Написать нам</h4>
@@ -53,6 +70,14 @@ export default function ContactsPage() {
                 >
                   info@security-company.ru
                 </a>
+              </div>
+              <div className={styles.infoDivider}>
+                <Image
+                  src="/assets/images/crosshair-separator.svg"
+                  alt=""
+                  width={40}
+                  height={47}
+                />
               </div>
               <div className={styles.infoItem}>
                 <h4 className={styles.infoLabel}>Соцсети</h4>
@@ -70,12 +95,7 @@ export default function ContactsPage() {
 
           <AnimatedSection delay={0.4}>
             <div className={styles.mapWrapper}>
-              <Image
-                src="/assets/images/map.jpg"
-                alt="Карта"
-                fill
-                style={{ objectFit: "cover" }}
-              />
+              <YandexMap />
             </div>
           </AnimatedSection>
         </div>
