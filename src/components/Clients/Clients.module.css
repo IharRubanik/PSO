@@ -2,7 +2,7 @@
 .section {
   position: relative;
   width: 100%;
-  height: 886px;
+  height: 46.15vw;
   overflow: hidden;
 }
 
@@ -28,16 +28,16 @@
 /* Figma: title at left:60px, top:160px, width:890px */
 .titleWrap {
   position: absolute;
-  top: 160px;
-  left: 60px;
-  width: 890px;
+  top: 8.33vw;
+  left: 3.13vw;
+  width: 46.35vw;
   z-index: 3;
 }
 
 /* Figma: Furore 68px, #f2f2f2, uppercase, line-height: normal */
 .title {
   font-family: var(--font-heading);
-  font-size: 68px;
+  font-size: 3.54vw;
   line-height: normal;
   color: #f2f2f2;
   text-transform: uppercase;
@@ -48,10 +48,10 @@
 /* Figma: SVG full-width 1920px, top:369px, height:110px */
 .divider {
   position: absolute;
-  top: 369px;
+  top: 19.22vw;
   left: 0;
   width: 100%;
-  height: 110px;
+  height: 5.73vw;
   z-index: 3;
 }
 
@@ -59,19 +59,19 @@
 /* Figma: top:526px, height:200px */
 .marqueeWrapper {
   position: absolute;
-  top: 526px;
+  top: 27.4vw;
   left: 0;
   right: 0;
-  height: 200px;
+  height: 10.42vw;
   overflow: hidden;
   z-index: 3;
 }
 
 .marqueeTrack {
   display: flex;
-  gap: 20px;
+  gap: 1.04vw;
   width: max-content;
-  height: 200px;
+  height: 10.42vw;
   animation: marqueeScroll 24s linear infinite;
 }
 
@@ -90,9 +90,9 @@
 .card {
   position: relative;
   flex-shrink: 0;
-  width: 433px;
-  height: 200px;
-  padding: 40px 20px;
+  width: 22.55vw;
+  height: 10.42vw;
+  padding: 2.08vw 1.04vw;
   backdrop-filter: blur(7.5px);
   -webkit-backdrop-filter: blur(7.5px);
   background: rgba(24, 21, 19, 0.3);
@@ -105,7 +105,7 @@
 /* Figma: Furore 28px, line-height:1.3, #f2f2f2, text-center, uppercase */
 .cardTitle {
   font-family: var(--font-heading);
-  font-size: 28px;
+  font-size: 1.46vw;
   line-height: 1.3;
   color: #f2f2f2;
   text-transform: uppercase;

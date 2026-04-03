@@ -1,6 +1,6 @@
 .banner {
   position: relative;
-  height: 700px;
+  height: 36.46vw;
   overflow: hidden;
   display: flex;
   align-items: flex-end;
@@ -21,10 +21,10 @@
 
 .frame {
   position: absolute;
-  top: 160px;
-  left: 60px;
-  right: 60px;
-  bottom: 60px;
+  top: 8.33vw;
+  left: 3.13vw;
+  right: 3.13vw;
+  bottom: 3.13vw;
   z-index: 2;
   pointer-events: none;
 }
@@ -32,16 +32,16 @@
 .content {
   position: relative;
   z-index: 3;
-  padding: 0 100px 80px;
+  padding: 0 5.21vw 4.17vw;
 }
 
 .breadcrumbs {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 0.42vw;
   font-family: var(--font-body);
-  font-size: 16px;
-  margin-bottom: 20px;
+  font-size: 0.83vw;
+  margin-bottom: 1.04vw;
 }
 
 .separator {
@@ -63,11 +63,11 @@
 
 .title {
   font-family: var(--font-heading);
-  font-size: 68px;
+  font-size: 3.54vw;
   text-transform: uppercase;
   color: var(--color-white);
   line-height: 1.1;
-  max-width: 850px;
+  max-width: 44.27vw;
 }
 
 /* ===== RESPONSIVE ===== */

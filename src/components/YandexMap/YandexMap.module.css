@@ -19,8 +19,8 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 142px;
-  height: 142px;
+  width: 7.4vw;
+  height: 7.4vw;
   transform: translate(-50%, -50%);
   z-index: 1000;
   pointer-events: none;
@@ -42,8 +42,8 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 14px;
-  height: 14px;
+  width: 0.73vw;
+  height: 0.73vw;
   transform: translate(-50%, -50%);
   background: #d2b689;
   border-radius: 50%;

@@ -2,7 +2,7 @@
 .hero {
   position: relative;
   width: 100%;
-  height: 930px;
+  height: 48.44vw;
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -30,10 +30,10 @@
 /* Figma: frame bottom=60 left=60 right=60 top=160 */
 .frame {
   position: absolute;
-  bottom: 60px;
-  left: 60px;
-  right: 60px;
-  top: 160px;
+  bottom: 3.13vw;
+  left: 3.13vw;
+  right: 3.13vw;
+  top: 8.33vw;
   z-index: 3;
   pointer-events: none;
 }
@@ -41,27 +41,27 @@
 /* Figma: H/txt at x=107, w=859 */
 .content {
   position: absolute;
-  left: 107px;
-  bottom: 230px;
+  left: 5.57vw;
+  bottom: 11.98vw;
   z-index: 4;
-  max-width: 859px;
+  max-width: 44.74vw;
 }
 
 /* Figma: Furore Regular 90px, line-height 1.1, uppercase, #f2f2f2 */
 .title {
   font-family: var(--font-heading);
-  font-size: 90px;
+  font-size: 4.69vw;
   line-height: 1.1;
   color: var(--color-white);
   text-transform: uppercase;
-  margin-bottom: 40px;
+  margin-bottom: 2.08vw;
 }
 
 /* Figma: Proxima Nova Regular 24px, line-height 1.2, #f2f2f2 */
 .subtitle {
   font-family: var(--font-body);
   font-weight: 400;
-  font-size: 24px;
+  font-size: 1.25vw;
   line-height: 1.2;
   color: var(--color-white);
 }
@@ -72,8 +72,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 688px;
-  height: 65px;
+  width: 35.83vw;
+  height: 3.39vw;
   border: 1px solid var(--color-gold);
   background: rgba(38, 37, 37, 0.2);
   backdrop-filter: blur(10px);
@@ -81,7 +81,7 @@
   color: var(--color-white);
   font-family: var(--font-body-bold);
   font-weight: 700;
-  font-size: 20px;
+  font-size: 1.04vw;
   line-height: 1.2;
   text-transform: uppercase;
   cursor: pointer;
@@ -97,8 +97,8 @@
 /* Figma desktop: CTA absolute right=110px, bottom~100px */
 .cta {
   position: absolute;
-  right: 110px;
-  bottom: 100px;
+  right: 5.73vw;
+  bottom: 5.21vw;
   z-index: 4;
 }
 

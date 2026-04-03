@@ -13,8 +13,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 100px;
-  padding: 0 60px;
+  height: 5.21vw;
+  padding: 0 3.13vw;
   background: rgba(0, 0, 0, 0.15);
   backdrop-filter: blur(2.5px);
   -webkit-backdrop-filter: blur(2.5px);
@@ -31,14 +31,14 @@
 /* Figma: gap=35px between items, font=Proxima Nova Bold 20px, uppercase */
 .nav {
   display: flex;
-  gap: 35px;
+  gap: 1.82vw;
   align-items: center;
 }
 
 .navLink {
   font-family: var(--font-body-bold);
   font-weight: 700;
-  font-size: 20px;
+  font-size: 1.04vw;
   line-height: 1.2;
   text-transform: uppercase;
   color: var(--color-white);
@@ -47,7 +47,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  height: 24px;
+  height: 1.25vw;
   white-space: nowrap;
   cursor: pointer;
 }
@@ -89,8 +89,8 @@
   left: 50%;
   transform: translateX(-50%);
   top: 0;
-  width: 152px;
-  height: 215px;
+  width: 7.92vw;
+  height: 11.2vw;
   z-index: 5;
   display: block;
 }
@@ -106,14 +106,14 @@
 .right {
   display: flex;
   align-items: center;
-  gap: 32px;
+  gap: 1.67vw;
 }
 
 /* Figma: Proxima Nova Bold 20px white */
 .phone {
   font-family: var(--font-body-bold);
   font-weight: 700;
-  font-size: 20px;
+  font-size: 1.04vw;
   line-height: 1.2;
   color: var(--color-white);
   white-space: nowrap;
@@ -129,13 +129,13 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 14px 18px;
+  padding: 0.73vw 0.94vw;
   border: 1px solid rgba(255, 255, 255, 0.4);
   background: var(--color-dark);
   color: var(--color-white);
   font-family: var(--font-body-bold);
   font-weight: 700;
-  font-size: 20px;
+  font-size: 1.04vw;
   line-height: 1.2;
   text-transform: uppercase;
   cursor: pointer;
@@ -153,25 +153,25 @@
 /* Figma: gap=6px, Proxima Nova Bold 20px uppercase */
 .lang {
   display: flex;
-  gap: 6px;
+  gap: 0.31vw;
   align-items: center;
 }
 
 .langActive {
   font-family: var(--font-body-bold);
   font-weight: 700;
-  font-size: 20px;
+  font-size: 1.04vw;
   line-height: 1.2;
   text-transform: uppercase;
   color: var(--color-white);
-  padding-right: 6px;
+  padding-right: 0.31vw;
   border-right: 1px solid rgba(255, 255, 255, 0.4);
 }
 
 .langInactive {
   font-family: var(--font-body-bold);
   font-weight: 700;
-  font-size: 20px;
+  font-size: 1.04vw;
   line-height: 1.2;
   text-transform: uppercase;
   color: rgba(255, 255, 255, 0.6);
@@ -180,20 +180,20 @@
 /* ===== BURGER ===== */
 .burger {
   display: none;
-  width: 52px;
-  height: 52px;
+  width: 2.71vw;
+  height: 2.71vw;
   cursor: pointer;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  padding: 14px;
+  gap: 0.42vw;
+  padding: 0.73vw;
 }
 
 .burger span {
   display: block;
   width: 100%;
-  height: 2px;
+  height: 0.1vw;
   background: var(--color-white);
   transition: transform 0.3s ease, opacity 0.3s ease;
 }
@@ -223,7 +223,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 30px;
+  gap: 1.56vw;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.4s ease;
@@ -236,7 +236,7 @@
 
 .mobileNavLink {
   font-family: var(--font-heading);
-  font-size: 36px;
+  font-size: 1.88vw;
   color: var(--color-white);
   text-transform: uppercase;
   transition: color 0.3s ease;
@@ -249,18 +249,18 @@
 .mobileNavPhone {
   font-family: var(--font-body-bold);
   font-weight: 700;
-  font-size: 24px;
+  font-size: 1.25vw;
   color: var(--color-gold-light);
-  margin-top: 20px;
+  margin-top: 1.04vw;
 }
 
 .mobileNavCta {
-  padding: 14px 40px;
+  padding: 0.73vw 2.08vw;
   border: 1px solid var(--color-gold);
   color: var(--color-white);
   font-family: var(--font-body-bold);
   font-weight: 700;
-  font-size: 20px;
+  font-size: 1.04vw;
   text-transform: uppercase;
   cursor: pointer;
   transition: background 0.3s ease;

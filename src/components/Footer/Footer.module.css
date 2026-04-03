@@ -1,7 +1,7 @@
 /* Figma: h=616px, border-top #5a5755 */
 .footer {
   position: relative;
-  height: 616px;
+  height: 32.08vw;
   border-top: 1px solid var(--color-border);
   background: #14110f;
   overflow: hidden;
@@ -13,28 +13,28 @@
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  padding: 119px 60px 0;
+  padding: 6.2vw 3.13vw 0;
   /* Figma columns: logo ends ~343px, sep at 732, menu ~911, sep at 1286, contacts ~1145, sep after, legal at 1365 */
-  gap: 20px;
+  gap: 1.04vw;
 }
 
 /* ===== SEPARATOR (crosshair) ===== */
 .separator {
   flex-shrink: 0;
-  width: 40px;
-  height: 47px;
+  width: 2.08vw;
+  height: 2.45vw;
   display: flex;
   align-items: center;
   justify-content: center;
   align-self: flex-start;
-  margin-top: 8px;
+  margin-top: 0.42vw;
 }
 
 /* ===== LOGO ===== */
 .logoBlock {
   position: relative;
-  width: 283px;
-  height: 289px;
+  width: 14.74vw;
+  height: 15.05vw;
   flex-shrink: 0;
   display: flex;
   align-items: center;
@@ -42,7 +42,7 @@
 }
 
 .logo {
-  width: 159px;
+  width: 8.28vw;
   height: auto;
 }
 
@@ -55,34 +55,34 @@
 }
 
 .columnContacts {
-  width: 234px;
-  flex: 0 0 234px;
+  width: 12.19vw;
+  flex: 0 0 12.19vw;
 }
 
 .columnTitle {
   font-family: var(--font-body-bold);
   font-weight: 700;
-  font-size: 20px;
+  font-size: 1.04vw;
   text-transform: uppercase;
   color: var(--color-white);
-  margin-bottom: 24px;
+  margin-bottom: 1.25vw;
 }
 
 .mt {
-  margin-top: 40px;
+  margin-top: 2.08vw;
 }
 
 /* ===== NAV LINKS — slide hover effect ===== */
 .nav {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 0.83vw;
 }
 
 .navLink {
   font-family: var(--font-body-bold);
   font-weight: 700;
-  font-size: 20px;
+  font-size: 1.04vw;
   text-transform: uppercase;
   color: var(--color-border);
   position: relative;
@@ -90,7 +90,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  height: 24px;
+  height: 1.25vw;
   white-space: nowrap;
   cursor: pointer;
 }
@@ -123,7 +123,7 @@
 .contactValue {
   font-family: var(--font-body-bold);
   font-weight: 700;
-  font-size: 20px;
+  font-size: 1.04vw;
   color: var(--color-border);
   transition: color 0.3s ease;
 }
@@ -140,16 +140,16 @@
   right: 0;
   z-index: 2;
   border-top: 1px solid var(--color-border);
-  height: 80px;
+  height: 4.17vw;
   display: flex;
   align-items: center;
-  padding: 0 60px;
+  padding: 0 3.13vw;
 }
 
 .copyright {
   font-family: var(--font-body);
   font-weight: 400;
-  font-size: 16px;
+  font-size: 0.83vw;
   color: var(--color-text);
   opacity: 0.8;
 }

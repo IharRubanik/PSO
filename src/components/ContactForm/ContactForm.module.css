@@ -1,29 +1,29 @@
 /* Figma: section h=873px */
 .section {
   position: relative;
-  height: 873px;
+  height: 45.47vw;
   overflow: hidden;
 }
 
 .container {
   position: relative;
   z-index: 2;
-  max-width: 1920px;
+  max-width: 100vw;
   margin: 0 auto;
-  padding: 0 60px;
-  min-height: 873px;
+  padding: 0 3.13vw;
+  min-height: 45.47vw;
   display: flex;
   align-items: stretch;
 }
 
 .grid {
   display: grid;
-  grid-template-columns: 890px 890px;
+  grid-template-columns: 46.35vw 46.35vw;
   gap: 0;
-  column-gap: calc(100% - 890px - 890px);
+  column-gap: calc(100% - 46.35vw - 46.35vw);
   width: 100%;
-  padding-top: 160px;
-  padding-bottom: 160px;
+  padding-top: 8.33vw;
+  padding-bottom: 8.33vw;
   align-items: flex-start;
 }
 
@@ -32,15 +32,15 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 890px;
-  height: 553px;
-  padding-right: 40px;
+  width: 46.35vw;
+  height: 28.8vw;
+  padding-right: 2.08vw;
 }
 
 /* Figma: Furore 68px, line-height normal */
 .title {
   font-family: var(--font-heading);
-  font-size: 68px;
+  font-size: 3.54vw;
   line-height: normal;
   color: var(--color-white);
   text-transform: uppercase;
@@ -49,30 +49,30 @@
 .description {
   font-family: var(--font-body);
   font-weight: 400;
-  font-size: 24px;
+  font-size: 1.25vw;
   line-height: 1.2;
   color: var(--color-text);
-  margin-top: 50px;
+  margin-top: 2.6vw;
 }
 
 .features {
   display: flex;
   align-items: flex-start;
-  gap: 24px;
+  gap: 1.25vw;
   margin-top: auto;
-  padding-top: 50px;
+  padding-top: 2.6vw;
 }
 
 .featureIcon {
   flex-shrink: 0;
-  width: 110px;
-  height: 110px;
+  width: 5.73vw;
+  height: 5.73vw;
 }
 
 .featureText {
   font-family: var(--font-body);
   font-weight: 400;
-  font-size: 20px;
+  font-size: 1.04vw;
   line-height: 1.3;
   color: var(--color-text);
   opacity: 0.8;
@@ -82,28 +82,28 @@
 .form {
   display: flex;
   flex-direction: column;
-  gap: 24px;
-  padding-top: 20px; /* right col top:180px vs left top:160px → 20px offset */
+  gap: 1.25vw;
+  padding-top: 1.04vw; /* right col top:180px vs left top:160px → 20px offset */
 }
 
 /* Figma: inputs container has inner gap=16 */
 .inputsGroup {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 0.83vw;
 }
 
 .input {
   width: 100%;
-  height: 65px;
-  padding: 14px 30px;
+  height: 3.39vw;
+  padding: 0.73vw 1.56vw;
   border: 1px solid var(--color-border);
   background: transparent;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   font-family: var(--font-body);
   font-weight: 400;
-  font-size: 20px;
+  font-size: 1.04vw;
   color: var(--color-white);
   transition: border-color 0.3s ease;
 }
@@ -118,7 +118,7 @@
 }
 
 .textarea {
-  min-height: 150px;
+  min-height: 7.81vw;
   height: auto;
   resize: vertical;
 }
@@ -127,7 +127,7 @@
 .checkbox {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 0.42vw;
   cursor: pointer;
 }
 
@@ -136,8 +136,8 @@
 }
 
 .checkmark {
-  width: 24px;
-  height: 24px;
+  width: 1.25vw;
+  height: 1.25vw;
   border: 1px solid var(--color-border);
   flex-shrink: 0;
   position: relative;
@@ -152,19 +152,19 @@
 .checkbox input:checked + .checkmark::after {
   content: "";
   position: absolute;
-  top: 4px;
-  left: 8px;
-  width: 6px;
-  height: 12px;
+  top: 0.21vw;
+  left: 0.42vw;
+  width: 0.31vw;
+  height: 0.63vw;
   border: solid var(--color-gold);
-  border-width: 0 2px 2px 0;
+  border-width: 0 0.1vw 0.1vw 0;
   transform: rotate(45deg);
 }
 
 .checkboxText {
   font-family: var(--font-body);
   font-weight: 400;
-  font-size: 16px;
+  font-size: 0.83vw;
   color: var(--color-text);
 }
 
@@ -181,14 +181,14 @@
 /* ===== SUBMIT ===== */
 .submit {
   width: 100%;
-  height: 65px;
+  height: 3.39vw;
   border: 1px solid var(--color-gold);
   background: rgba(38, 37, 37, 0.2);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   font-family: var(--font-body-bold);
   font-weight: 700;
-  font-size: 20px;
+  font-size: 1.04vw;
   text-transform: uppercase;
   color: var(--color-white);
   cursor: pointer;
