@@ -1,5 +1,7 @@
+/* Figma: section h=873px */
 .section {
   position: relative;
+  height: 873px;
   overflow: hidden;
 }
 
@@ -25,17 +27,21 @@
   align-items: flex-start;
 }
 
-/* ===== LEFT COLUMN ===== */
+/* Figma: left column w=890, h=553, pr=40, justify-between */
 .left {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   width: 890px;
+  height: 553px;
+  padding-right: 40px;
 }
 
+/* Figma: Furore 68px, line-height normal */
 .title {
   font-family: var(--font-heading);
   font-size: 68px;
-  line-height: 1;
+  line-height: normal;
   color: var(--color-white);
   text-transform: uppercase;
 }
@@ -72,12 +78,19 @@
   opacity: 0.8;
 }
 
-/* ===== FORM (right column) ===== */
+/* Figma: form right col, left=970, top=180, w=890, outer gap=24 */
 .form {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 24px;
   padding-top: 20px; /* right col top:180px vs left top:160px → 20px offset */
+}
+
+/* Figma: inputs container has inner gap=16 */
+.inputsGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
 .input {
@@ -196,10 +209,16 @@
 
   .left {
     width: auto;
+    height: auto;
+    padding-right: 0;
   }
 }
 
 @media (max-width: 768px) {
+  .section {
+    height: auto;
+  }
+
   .container {
     padding: 0 30px;
     min-height: auto;

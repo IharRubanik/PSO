@@ -66,7 +66,7 @@ export function ContactForm() {
               <div className={styles.features}>
                 <div className={styles.featureIcon}>
                   <Image
-                    src="/assets/images/icon-warning.svg"
+                    src="/assets/images/icon-shield-crosshair.svg"
                     alt=""
                     width={110}
                     height={110}
@@ -84,31 +84,33 @@ export function ContactForm() {
           {/* Right column */}
           <AnimatedSection delay={0.3} direction="right">
             <form className={styles.form} onSubmit={handleSubmit}>
-              <input
-                type="text"
-                name="name"
-                placeholder="Имя*"
-                className={styles.input}
-                required
-              />
-              <input
-                type="tel"
-                name="phone"
-                placeholder="Телефон*"
-                className={styles.input}
-                required
-              />
-              <input
-                type="email"
-                name="email"
-                placeholder="Почта"
-                className={styles.input}
-              />
-              <textarea
-                name="message"
-                placeholder="Сообщение..."
-                className={`${styles.input} ${styles.textarea}`}
-              />
+              <div className={styles.inputsGroup}>
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="Имя*"
+                  className={styles.input}
+                  required
+                />
+                <input
+                  type="tel"
+                  name="phone"
+                  placeholder="Телефон*"
+                  className={styles.input}
+                  required
+                />
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Почта"
+                  className={styles.input}
+                />
+                <textarea
+                  name="message"
+                  placeholder="Сообщение..."
+                  className={`${styles.input} ${styles.textarea}`}
+                />
+              </div>
 
               <label className={styles.checkbox}>
                 <input type="checkbox" required />

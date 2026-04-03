@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { AnimatedSection } from "../UI/AnimatedSection";
+import { YandexMap } from "../YandexMap/YandexMap";
 import styles from "./ContactInfo.module.css";
 
 export function ContactInfo() {
@@ -25,7 +26,7 @@ export function ContactInfo() {
 
             <div className={styles.separator}>
               <Image
-                src="/assets/images/crosshair-divider.svg"
+                src="/assets/images/crosshair-separator.svg"
                 alt=""
                 width={40}
                 height={47}
@@ -42,7 +43,7 @@ export function ContactInfo() {
 
             <div className={styles.separator}>
               <Image
-                src="/assets/images/crosshair-divider.svg"
+                src="/assets/images/crosshair-separator.svg"
                 alt=""
                 width={40}
                 height={47}
@@ -62,7 +63,7 @@ export function ContactInfo() {
 
             <div className={styles.separator}>
               <Image
-                src="/assets/images/crosshair-divider.svg"
+                src="/assets/images/crosshair-separator.svg"
                 alt=""
                 width={40}
                 height={47}
@@ -84,16 +85,10 @@ export function ContactInfo() {
           </div>
         </AnimatedSection>
 
-        <AnimatedSection delay={0.4}>
-          <div className={styles.mapWrapper}>
-            <Image
-              src="/assets/images/map.jpg"
-              alt="Карта"
-              fill
-              style={{ objectFit: "cover" }}
-            />
-          </div>
-        </AnimatedSection>
+        {/* Figma: map at top=429, full-width, h=642 */}
+        <div className={styles.mapWrapper}>
+          <YandexMap />
+        </div>
       </div>
     </section>
   );

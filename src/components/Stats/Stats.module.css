@@ -16,7 +16,7 @@
 /* 4 cards in a row; Figma positions: left:60, 520, 980, 1440 → 460px per slot, 25px gap */
 .grid {
   display: grid;
-  grid-template-columns: repeat(4, 435px);
+  grid-template-columns: repeat(4, 1fr);
   gap: 25px;
   align-items: center;
   height: 100%;
@@ -29,7 +29,7 @@
 /* Actual: item is the 208px frame, content inside has vertical padding */
 .item {
   position: relative;
-  width: 435px;
+  width: 100%;
   height: 208px;
   padding: 30px 20px;
   display: flex;

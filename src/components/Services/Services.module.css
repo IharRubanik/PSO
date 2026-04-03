@@ -263,7 +263,7 @@
 .gridDivider::after {
   content: "";
   position: absolute;
-  background: var(--color-gold);
+  background: rgba(255, 255, 255, 0.3);
 }
 
 .gridDivider::before {

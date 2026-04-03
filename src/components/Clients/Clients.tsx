@@ -56,7 +56,7 @@ export function Clients() {
         <div className={styles.marqueeTrack}>
           {repeated.map((client, i) => (
             <div key={`${client}-${i}`} className={styles.card}>
-              <Corners size={30} />
+              <Corners size={30} color="rgba(255,255,255,0.3)" strokeWidth={2} />
               <h3 className={styles.cardTitle}>{client}</h3>
             </div>
           ))}

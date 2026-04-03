@@ -32,7 +32,7 @@ export function Hero() {
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 1.2, ease: "easeOut", delay: 0.3 }}
       >
-        <Corners size={40} />
+        <Corners size={40} color="rgba(255,255,255,0.3)" strokeWidth={2} />
       </motion.div>
 
       {/* Content */}

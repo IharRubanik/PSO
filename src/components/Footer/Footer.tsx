@@ -27,7 +27,7 @@ export function Footer() {
         {/* Col 1: Logo */}
         <AnimatedSection>
           <div className={styles.logoBlock}>
-            <Corners size={30} />
+            <Corners size={30} color="rgba(255,255,255,0.3)" strokeWidth={2} />
             <Image
               src="/assets/images/logo.svg"
               alt="Фантом Групп"
@@ -37,16 +37,6 @@ export function Footer() {
             />
           </div>
         </AnimatedSection>
-
-        {/* Separator 1 — at x:732 */}
-        <div className={styles.separator} aria-hidden="true">
-          <Image
-            src="/assets/images/crosshair-divider.svg"
-            alt=""
-            width={40}
-            height={47}
-          />
-        </div>
 
         {/* Col 2: Menu */}
         <AnimatedSection delay={0.1}>
@@ -67,10 +57,10 @@ export function Footer() {
           </div>
         </AnimatedSection>
 
-        {/* Separator 2 — at x:1286.25 */}
+        {/* Separator 1 — at x:732 (between menu and contacts) */}
         <div className={styles.separator} aria-hidden="true">
           <Image
-            src="/assets/images/crosshair-divider.svg"
+            src="/assets/images/crosshair-separator.svg"
             alt=""
             width={40}
             height={47}
@@ -107,10 +97,10 @@ export function Footer() {
           </div>
         </AnimatedSection>
 
-        {/* Separator 3 */}
+        {/* Separator 2 — at x:1286 (between contacts and legal) */}
         <div className={styles.separator} aria-hidden="true">
           <Image
-            src="/assets/images/crosshair-divider.svg"
+            src="/assets/images/crosshair-separator.svg"
             alt=""
             width={40}
             height={47}
