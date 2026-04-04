@@ -48,9 +48,11 @@ export default function RootLayout({
       className={`${furore.variable} ${proximaNovaRegular.variable} ${proximaNovaBold.variable} ${onest.variable}`}
     >
       <body>
-        <Header />
-        <main>{children}</main>
-        <Footer />
+        <div id="page-root">
+          <Header />
+          <main>{children}</main>
+          <Footer />
+        </div>
       </body>
     </html>
   );

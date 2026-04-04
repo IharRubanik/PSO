@@ -1,6 +1,9 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import { Corners } from "@/components/Corners/Corners";
+import { AnimatedSection } from "@/components/UI/AnimatedSection";
 import styles from "./PageBanner.module.css";
 
 interface Breadcrumb {
@@ -67,7 +70,9 @@ export function PageBanner({ title, breadcrumbs, bgImage, bgPosition = "center 3
           </span>
         ))}
       </div>
-      <h1 className={styles.title}>{title}</h1>
+      <AnimatedSection className={styles.titleWrap} direction="up">
+        <h1 className={styles.title}>{title}</h1>
+      </AnimatedSection>
     </section>
   );
 }

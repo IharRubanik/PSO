@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
+import { RequestModal } from "@/components/RequestModal/RequestModal";
 import styles from "./Header.module.css";
 
 const NAV_ITEMS = [
@@ -16,21 +17,20 @@ const NAV_ITEMS = [
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
   const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 100);
     };
+    handleScroll();
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const scrollToForm = () => {
-    const form = document.getElementById("contact-form");
-    if (form) {
-      form.scrollIntoView({ behavior: "smooth" });
-    }
+  const openRequestModal = () => {
+    setModalOpen(true);
     setMenuOpen(false);
   };
 
@@ -74,7 +74,7 @@ export function Header() {
             <a href="tel:+79999999999" className={styles.phone}>
               8 999 999-99-99
             </a>
-            <button className={styles.cta} onClick={scrollToForm}>
+            <button className={styles.cta} onClick={openRequestModal}>
               Оставить заявку
             </button>
             <div className={styles.lang}>
@@ -113,10 +113,12 @@ export function Header() {
         <a href="tel:+79999999999" className={styles.mobileNavPhone}>
           8 999 999-99-99
         </a>
-        <button className={styles.mobileNavCta} onClick={scrollToForm}>
+        <button className={styles.mobileNavCta} onClick={openRequestModal}>
           Оставить заявку
         </button>
       </div>
+
+      <RequestModal open={modalOpen} onClose={() => setModalOpen(false)} />
     </>
   );
 }

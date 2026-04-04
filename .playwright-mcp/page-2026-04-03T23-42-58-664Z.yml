@@ -1,0 +1,131 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - navigation [ref=e4]:
+        - link "Главная Главная" [ref=e5] [cursor=pointer]:
+          - /url: /
+          - generic [ref=e6]: Главная
+          - generic [ref=e7]: Главная
+        - link "Услуги Услуги" [ref=e8] [cursor=pointer]:
+          - /url: /services/personal-guard
+          - generic [ref=e9]: Услуги
+          - generic [ref=e10]: Услуги
+        - link "О компании О компании" [ref=e11] [cursor=pointer]:
+          - /url: /about
+          - generic [ref=e12]: О компании
+          - generic [ref=e13]: О компании
+        - link "Контакты Контакты" [ref=e14] [cursor=pointer]:
+          - /url: /contacts
+          - generic [ref=e15]: Контакты
+          - generic [ref=e16]: Контакты
+      - link "Фантом Групп" [ref=e17] [cursor=pointer]:
+        - /url: /
+        - img "Фантом Групп" [ref=e18]
+      - generic [ref=e19]:
+        - link "8 999 999-99-99" [ref=e20] [cursor=pointer]:
+          - /url: tel:+79999999999
+        - button "Оставить заявку" [ref=e21] [cursor=pointer]
+        - generic [ref=e22]:
+          - link "Ru" [ref=e23] [cursor=pointer]:
+            - /url: "#"
+          - link "EN" [ref=e24] [cursor=pointer]:
+            - /url: "#"
+  - generic:
+    - link "Главная":
+      - /url: /
+    - link "Услуги":
+      - /url: /services/personal-guard
+    - link "О компании":
+      - /url: /about
+    - link "Контакты":
+      - /url: /contacts
+    - link "8 999 999-99-99":
+      - /url: tel:+79999999999
+    - button "Оставить заявку"
+  - main [ref=e25]:
+    - generic [ref=e26]:
+      - generic [ref=e27]:
+        - link "Главная" [ref=e28] [cursor=pointer]:
+          - /url: /
+        - generic [ref=e30]: Контакты
+      - heading "Контакты" [level=1] [ref=e33]
+    - generic [ref=e35]:
+      - generic [ref=e37]:
+        - generic [ref=e38]:
+          - heading "Адрес" [level=4] [ref=e39]
+          - paragraph [ref=e40]: Москва, 1-й Красногвардейский проезд дом 22 с 1
+        - generic [ref=e42]:
+          - heading "Позвонить нам" [level=4] [ref=e43]
+          - link "8 999 999-99-99" [ref=e44] [cursor=pointer]:
+            - /url: tel:89999999999
+        - generic [ref=e46]:
+          - heading "Написать нам" [level=4] [ref=e47]
+          - link "info@security-company.ru" [ref=e48] [cursor=pointer]:
+            - /url: mailto:info@security-company.ru
+        - generic [ref=e50]:
+          - heading "Соцсети" [level=4] [ref=e51]
+          - link "Telegram" [ref=e52] [cursor=pointer]:
+            - /url: https://t.me/
+      - img "Карта" [ref=e56]
+    - generic [ref=e59]:
+      - generic [ref=e60]:
+        - heading "Обсудить защиту" [level=2] [ref=e62]
+        - paragraph [ref=e64]: Оставьте заявку, и наш охранный менеджер персонально подберёт формат защиты — от физической охраны и постов до комплексных решений с видеонаблюдением и пультовой охраной
+        - paragraph [ref=e68]: Консультация без обязательств | Быстрый ответ менеджера | Индивидуальный подбор уровня охраны под ваш объект | Прозрачный расчет стоимости и условия сотрудничества
+      - generic [ref=e70]:
+        - generic [ref=e71]:
+          - textbox "Имя*" [ref=e72]
+          - textbox "Телефон*" [ref=e73]
+          - textbox "Почта" [ref=e74]
+          - textbox "Сообщение..." [ref=e75]
+        - generic [ref=e78] [cursor=pointer]:
+          - text: Я согласен(на) на обработку моих
+          - link "Персональных данных" [ref=e79]:
+            - /url: /privacy
+        - button "Отправить заявку" [ref=e80] [cursor=pointer]
+  - contentinfo [ref=e81]:
+    - generic [ref=e82]:
+      - img "Фантом Групп" [ref=e85]
+      - generic [ref=e87]:
+        - heading "Меню" [level=4] [ref=e88]
+        - navigation [ref=e89]:
+          - link "Главная Главная" [ref=e90] [cursor=pointer]:
+            - /url: /
+            - generic [ref=e91]: Главная
+            - generic [ref=e92]: Главная
+          - link "Услуги Услуги" [ref=e93] [cursor=pointer]:
+            - /url: /services
+            - generic [ref=e94]: Услуги
+            - generic [ref=e95]: Услуги
+          - link "О компании О компании" [ref=e96] [cursor=pointer]:
+            - /url: /about
+            - generic [ref=e97]: О компании
+            - generic [ref=e98]: О компании
+          - link "Контакты Контакты" [ref=e99] [cursor=pointer]:
+            - /url: /contacts
+            - generic [ref=e100]: Контакты
+            - generic [ref=e101]: Контакты
+      - generic [ref=e104]:
+        - heading "Позвонить нам" [level=4] [ref=e105]
+        - link "8 999 999-99-99" [ref=e106] [cursor=pointer]:
+          - /url: tel:89999999999
+        - heading "Написать нам" [level=4] [ref=e107]
+        - link "info@security-company.ru" [ref=e108] [cursor=pointer]:
+          - /url: mailto:info@security-company.ru
+        - heading "Соцсети" [level=4] [ref=e109]
+        - link "Telegram" [ref=e110] [cursor=pointer]:
+          - /url: https://t.me/
+      - generic [ref=e113]:
+        - heading "О защите данных" [level=4] [ref=e114]
+        - navigation [ref=e115]:
+          - link "Политика конфиденциальности Политика конфиденциальности" [ref=e116] [cursor=pointer]:
+            - /url: /privacy
+            - generic [ref=e117]: Политика конфиденциальности
+            - generic [ref=e118]: Политика конфиденциальности
+          - link "Условия использования Условия использования" [ref=e119] [cursor=pointer]:
+            - /url: /terms
+            - generic [ref=e120]: Условия использования
+            - generic [ref=e121]: Условия использования
+    - paragraph [ref=e123]: 2026©Фантом групп. Все права защищены
+  - button "Open Next.js Dev Tools" [ref=e129] [cursor=pointer]:
+    - img [ref=e130]

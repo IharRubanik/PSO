@@ -13,15 +13,14 @@ export default function ContactsPage() {
       {/* Header section */}
       <section className={styles.headerSection}>
         <div className="noise-overlay" />
+        <div className={styles.breadcrumbs}>
+          <Link href="/" className={styles.breadcrumbLink}>
+            Главная
+          </Link>
+          <span className={styles.separator} />
+          <span className={styles.breadcrumbActive}>Контакты</span>
+        </div>
         <div className={styles.container}>
-          <div className={styles.breadcrumbs}>
-            <Link href="/" className={styles.breadcrumbLink}>
-              Главная
-            </Link>
-            <span className={styles.separator} />
-            <span className={styles.breadcrumbActive}>Контакты</span>
-          </div>
-
           <AnimatedSection>
             <h1 className={styles.pageTitle}>Контакты</h1>
           </AnimatedSection>

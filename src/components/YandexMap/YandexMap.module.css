@@ -4,17 +4,14 @@
   position: relative;
 }
 
-/* Fallback static image — dark filtered */
 .fallbackImage {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: saturate(0) brightness(0.25) contrast(1.2);
 }
 
-/* HTML pin overlay — positioned at center of map, above all ymaps layers */
 .pinOverlay {
   position: absolute;
   top: 50%;
@@ -30,12 +27,6 @@
   width: 100%;
   height: 100%;
   display: block;
-}
-
-/* Hide "Создать свою карту" and "Открыть в Яндекс Картах" links */
-.map :global([class*="gototech"]),
-.map :global([class*="gotoymaps"]) {
-  display: none !important;
 }
 
 .pinDot {
