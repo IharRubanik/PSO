@@ -28,12 +28,19 @@ async function loadApi(): Promise<"v3" | "v2"> {
         script.src = `https://api-maps.yandex.ru/v3/?apikey=${API_KEY}&lang=ru_RU`;
         script.async = true;
         script.onload = () => {
-          // Verify ymaps3 actually loaded
-          if (window.ymaps3) {
-            resolve();
-          } else {
-            reject(new Error("ymaps3 not available after script load"));
-          }
+          // ymaps3 may init async after script load, wait up to 3s
+          let attempts = 0;
+          const check = () => {
+            if (window.ymaps3) {
+              resolve();
+            } else if (attempts < 30) {
+              attempts++;
+              setTimeout(check, 100);
+            } else {
+              reject(new Error("ymaps3 not available after script load"));
+            }
+          };
+          check();
         };
         script.onerror = () => reject();
         document.head.appendChild(script);
