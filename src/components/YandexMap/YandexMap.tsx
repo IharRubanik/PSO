@@ -18,53 +18,60 @@ declare global {
   }
 }
 
+let apiLoadPromise: Promise<"v3" | "v2"> | null = null;
+
 // Try loading API 3.0 first, fallback to 2.1
-async function loadApi(): Promise<"v3" | "v2"> {
-  // Try v3
-  if (!window.ymaps3) {
-    try {
+function loadApi(): Promise<"v3" | "v2"> {
+  if (apiLoadPromise) return apiLoadPromise;
+
+  apiLoadPromise = (async () => {
+    // Try v3
+    if (!window.ymaps3) {
+      try {
+        await new Promise<void>((resolve, reject) => {
+          const script = document.createElement("script");
+          script.src = `https://api-maps.yandex.ru/v3/?apikey=${API_KEY}&lang=ru_RU`;
+          script.async = true;
+          script.onload = () => {
+            let attempts = 0;
+            const check = () => {
+              if (window.ymaps3) {
+                resolve();
+              } else if (attempts < 30) {
+                attempts++;
+                setTimeout(check, 100);
+              } else {
+                reject(new Error("ymaps3 not available after script load"));
+              }
+            };
+            check();
+          };
+          script.onerror = () => reject();
+          document.head.appendChild(script);
+        });
+        return "v3" as const;
+      } catch {
+        // v3 unavailable, falling back to 2.1
+      }
+    } else {
+      return "v3" as const;
+    }
+
+    // Fallback to v2
+    if (!window.ymaps) {
       await new Promise<void>((resolve, reject) => {
         const script = document.createElement("script");
-        script.src = `https://api-maps.yandex.ru/v3/?apikey=${API_KEY}&lang=ru_RU`;
+        script.src = `https://api-maps.yandex.ru/2.1/?apikey=${API_KEY}&lang=ru_RU`;
         script.async = true;
-        script.onload = () => {
-          // ymaps3 may init async after script load, wait up to 3s
-          let attempts = 0;
-          const check = () => {
-            if (window.ymaps3) {
-              resolve();
-            } else if (attempts < 30) {
-              attempts++;
-              setTimeout(check, 100);
-            } else {
-              reject(new Error("ymaps3 not available after script load"));
-            }
-          };
-          check();
-        };
-        script.onerror = () => reject();
+        script.onload = () => resolve();
+        script.onerror = () => reject(new Error("Failed to load Yandex Maps"));
         document.head.appendChild(script);
       });
-      return "v3";
-    } catch {
-      // v3 unavailable, falling back to 2.1
     }
-  } else {
-    return "v3";
-  }
+    return "v2" as const;
+  })();
 
-  // Fallback to v2
-  if (!window.ymaps) {
-    await new Promise<void>((resolve, reject) => {
-      const script = document.createElement("script");
-      script.src = `https://api-maps.yandex.ru/2.1/?apikey=${API_KEY}&lang=ru_RU`;
-      script.async = true;
-      script.onload = () => resolve();
-      script.onerror = () => reject(new Error("Failed to load Yandex Maps"));
-      document.head.appendChild(script);
-    });
-  }
-  return "v2";
+  return apiLoadPromise;
 }
 
 export function YandexMap() {
