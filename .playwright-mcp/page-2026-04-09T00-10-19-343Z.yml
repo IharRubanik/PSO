@@ -1,0 +1,184 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - banner [ref=e3]:
+      - generic [ref=e4]:
+        - link "Фантом Групп" [ref=e5] [cursor=pointer]:
+          - /url: /
+          - img "Фантом Групп" [ref=e6]
+        - button "Меню" [ref=e7] [cursor=pointer]
+    - main [ref=e11]:
+      - generic [ref=e15]:
+        - heading "Защищаем самое ценное" [level=1] [ref=e16]:
+          - text: Защищаем
+          - text: самое ценное
+        - paragraph [ref=e17]: Комплексные решения безопасности для бизнеса, частной собственности и мероприятий. Работаем круглосуточно и гарантируем оперативное реагирование.
+        - button "Связаться с нами" [ref=e18] [cursor=pointer]
+      - generic [ref=e20]:
+        - generic [ref=e21]:
+          - heading "Услуги" [level=2] [ref=e23]
+          - paragraph [ref=e25]: Комплексные решения безопасности для бизнеса, частной собственности и мероприятий. Работаем круглосуточно и гарантируем оперативное реагирование.
+        - generic [ref=e26]:
+          - link "Личная охрана 01 Личная охрана" [ref=e28] [cursor=pointer]:
+            - /url: /services/personal-guard
+            - img "Личная охрана" [ref=e30]
+            - generic [ref=e37]: "01"
+            - heading "Личная охрана" [level=3] [ref=e40]
+          - link "Группа быстрого реагирования 02 Группа быстрого реагирования" [ref=e42] [cursor=pointer]:
+            - /url: /services/rapid-response
+            - img "Группа быстрого реагирования" [ref=e44]
+            - generic [ref=e51]: "02"
+            - heading "Группа быстрого реагирования" [level=3] [ref=e54]
+          - link "Объектовая безопасность 03 Объектовая безопасность" [ref=e56] [cursor=pointer]:
+            - /url: /services/physical-security
+            - img "Объектовая безопасность" [ref=e58]
+            - generic [ref=e65]: "03"
+            - heading "Объектовая безопасность" [level=3] [ref=e68]
+          - link "Контрнаблюдение 04 Контрнаблюдение" [ref=e70] [cursor=pointer]:
+            - /url: /services/counter-surveillance
+            - img "Контрнаблюдение" [ref=e72]
+            - generic [ref=e79]: "04"
+            - heading "Контрнаблюдение" [level=3] [ref=e82]
+        - button "Показать все" [ref=e83] [cursor=pointer]
+      - generic [ref=e86]:
+        - heading "О компании" [level=2] [ref=e88]
+        - generic [ref=e89]:
+          - generic [ref=e90]:
+            - paragraph [ref=e91]: Наша компания — это команда профессионалов с многолетним опытом работы в сфере безопасности. Мы предоставляем полный спектр охранных услуг для бизнеса, государственных организаций и частных клиентов.
+            - paragraph [ref=e92]: Главная задача нашей работы — обеспечить надежную защиту имущества, сотрудников и посетителей объектов. Мы используем современные технологии безопасности, тщательно отбираем персонал и постоянно повышаем уровень подготовки сотрудников.
+          - link "Узнать больше" [ref=e93] [cursor=pointer]:
+            - /url: /about
+      - generic [ref=e96]:
+        - generic [ref=e97]:
+          - generic [ref=e99]: "0"
+          - paragraph [ref=e100]: лет успешной работы на рынке безопасности
+        - generic [ref=e101]:
+          - generic [ref=e102]:
+            - generic [ref=e103]: ">"
+            - generic [ref=e104]: "0"
+          - paragraph [ref=e105]: объектов находятся под нашей охраной
+        - generic [ref=e106]:
+          - generic [ref=e107]:
+            - generic [ref=e108]: ">"
+            - generic [ref=e109]: "0"
+          - paragraph [ref=e110]: специалистов в штате компании
+        - generic [ref=e111]:
+          - generic [ref=e113]: 24/7
+          - paragraph [ref=e114]: круглосуточный контроль безопасности
+      - generic [ref=e117]:
+        - heading "Что вы получаете от сотрудничества" [level=2] [ref=e119]
+        - generic [ref=e120]:
+          - generic [ref=e122]:
+            - generic [ref=e128]: "01"
+            - generic [ref=e129]:
+              - heading "профессиональную команду" [level=3] [ref=e130]
+              - paragraph [ref=e131]: Опытный штат бывших сотрудников спецслужб и ветеранов боевых действий.
+          - generic [ref=e133]:
+            - generic [ref=e139]: "02"
+            - generic [ref=e140]:
+              - heading "высокую степень безопасности" [level=3] [ref=e141]
+              - paragraph [ref=e142]: Взаимодействуем с государственными структурами с целью обеспечения упреждающей безопасности клиента.
+          - generic [ref=e144]:
+            - generic [ref=e150]: "03"
+            - generic [ref=e151]:
+              - heading "Комплексный анализ рисков" [level=3] [ref=e152]
+              - paragraph [ref=e153]: Закрываем вопросы безопасности клиента путем проведения глубокого анализа угроз, моделирования рисков, связанных с бизнесом и безопасностью клиента, выявления потенциальных точек уязвимости там, где обычная охрана их не видит.
+      - generic [ref=e154]:
+        - heading "Клиенты в ведущих секторах экономики" [level=2] [ref=e158]
+        - generic [ref=e160]:
+          - heading "Финансовый сектор" [level=3] [ref=e162]
+          - heading "Недвижимость" [level=3] [ref=e164]
+          - heading "логистика" [level=3] [ref=e166]
+          - heading "Промышленность" [level=3] [ref=e168]
+          - heading "Финансовый сектор" [level=3] [ref=e170]
+          - heading "Недвижимость" [level=3] [ref=e172]
+          - heading "логистика" [level=3] [ref=e174]
+          - heading "Промышленность" [level=3] [ref=e176]
+          - heading "Финансовый сектор" [level=3] [ref=e178]
+          - heading "Недвижимость" [level=3] [ref=e180]
+          - heading "логистика" [level=3] [ref=e182]
+          - heading "Промышленность" [level=3] [ref=e184]
+          - heading "Финансовый сектор" [level=3] [ref=e186]
+          - heading "Недвижимость" [level=3] [ref=e188]
+          - heading "логистика" [level=3] [ref=e190]
+          - heading "Промышленность" [level=3] [ref=e192]
+      - generic [ref=e194]:
+        - heading "Свяжитесь с нами" [level=2] [ref=e196]
+        - generic [ref=e198]:
+          - generic [ref=e199]:
+            - heading "Адрес" [level=4] [ref=e200]
+            - paragraph [ref=e201]: Москва, 1-й Красногвардейский проезд дом 22 с 1
+          - generic [ref=e202]:
+            - heading "Позвонить нам" [level=4] [ref=e203]
+            - link "8 999 999-99-99" [ref=e204] [cursor=pointer]:
+              - /url: tel:89999999999
+          - generic [ref=e205]:
+            - heading "Написать нам" [level=4] [ref=e206]
+            - link "info@security-company.ru" [ref=e207] [cursor=pointer]:
+              - /url: mailto:info@security-company.ru
+          - generic [ref=e208]:
+            - heading "Соцсети" [level=4] [ref=e209]
+            - link "Telegram" [ref=e210] [cursor=pointer]:
+              - /url: https://t.me/
+        - img "Карта" [ref=e213]
+      - generic [ref=e216]:
+        - generic [ref=e217]:
+          - heading "Обсудить защиту" [level=2] [ref=e219]
+          - paragraph [ref=e221]: Оставьте заявку, и наш охранный менеджер персонально подберёт формат защиты — от физической охраны и постов до комплексных решений с видеонаблюдением и пультовой охраной
+          - paragraph [ref=e225]: Консультация без обязательств | Быстрый ответ менеджера | Индивидуальный подбор уровня охраны под ваш объект | Прозрачный расчет стоимости и условия сотрудничества
+        - generic [ref=e227]:
+          - generic [ref=e228]:
+            - textbox "Имя*" [ref=e229]
+            - textbox "Телефон*" [ref=e230]
+            - textbox "Почта" [ref=e231]
+            - textbox "Сообщение..." [ref=e232]
+          - generic [ref=e235] [cursor=pointer]:
+            - text: Я согласен(на) на обработку моих
+            - link "Персональных данных" [ref=e236]:
+              - /url: /privacy
+          - button "Отправить заявку" [ref=e237] [cursor=pointer]
+    - contentinfo [ref=e238]:
+      - generic [ref=e239]:
+        - img "Фантом Групп" [ref=e242]
+        - generic [ref=e244]:
+          - heading "Меню" [level=4] [ref=e245]
+          - navigation [ref=e246]:
+            - link "Главная Главная" [ref=e247] [cursor=pointer]:
+              - /url: /
+              - generic [ref=e248]: Главная
+              - generic [ref=e249]: Главная
+            - link "Услуги Услуги" [ref=e250] [cursor=pointer]:
+              - /url: /services
+              - generic [ref=e251]: Услуги
+              - generic [ref=e252]: Услуги
+            - link "О компании О компании" [ref=e253] [cursor=pointer]:
+              - /url: /about
+              - generic [ref=e254]: О компании
+              - generic [ref=e255]: О компании
+            - link "Контакты Контакты" [ref=e256] [cursor=pointer]:
+              - /url: /contacts
+              - generic [ref=e257]: Контакты
+              - generic [ref=e258]: Контакты
+        - generic [ref=e261]:
+          - heading "Позвонить нам" [level=4] [ref=e262]
+          - link "8 999 999-99-99" [ref=e263] [cursor=pointer]:
+            - /url: tel:89999999999
+          - heading "Написать нам" [level=4] [ref=e264]
+          - link "info@security-company.ru" [ref=e265] [cursor=pointer]:
+            - /url: mailto:info@security-company.ru
+          - heading "Соцсети" [level=4] [ref=e266]
+          - link "Telegram" [ref=e267] [cursor=pointer]:
+            - /url: https://t.me/
+        - generic [ref=e270]:
+          - heading "О защите данных" [level=4] [ref=e271]
+          - navigation [ref=e272]:
+            - link "Политика конфиденциальности Политика конфиденциальности" [ref=e273] [cursor=pointer]:
+              - /url: /privacy
+              - generic [ref=e274]: Политика конфиденциальности
+              - generic [ref=e275]: Политика конфиденциальности
+            - link "Условия использования Условия использования" [ref=e276] [cursor=pointer]:
+              - /url: /terms
+              - generic [ref=e277]: Условия использования
+              - generic [ref=e278]: Условия использования
+      - paragraph [ref=e280]: 2026©Фантом групп. Все права защищены
+  - button "Open Next.js Dev Tools" [ref=e286] [cursor=pointer]:
+    - img [ref=e287]

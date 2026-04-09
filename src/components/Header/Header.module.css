@@ -216,21 +216,23 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   background: var(--color-bg);
-  z-index: 99;
+  z-index: 110;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 1.56vw;
   opacity: 0;
+  visibility: hidden;
   pointer-events: none;
-  transition: opacity 0.4s ease;
+  transition: opacity 0.4s ease, visibility 0.4s ease;
 }
 
 .mobileNavActive {
   opacity: 1;
+  visibility: visible;
   pointer-events: all;
 }
 
@@ -244,6 +246,10 @@
 
 .mobileNavLink:hover {
   color: var(--color-gold-light);
+}
+
+.mobileNavLinkActive {
+  color: #e0c7a0;
 }
 
 .mobileNavPhone {
@@ -270,12 +276,14 @@
   background: rgba(194, 161, 109, 0.2);
 }
 
-/* ===== RESPONSIVE 768px ===== */
-@media (max-width: 768px) {
+/* ===== TABLET 768px ===== */
+@media (max-width: 860px) {
   .bar {
-    padding: 0 30px;
+    height: 13.02vw;
+    padding: 0 3.91vw;
   }
 
+  /* Hide desktop nav, phone, lang */
   .nav {
     display: none;
   }
@@ -288,36 +296,307 @@
     display: none;
   }
 
+  /* Show burger — move to left via order */
   .burger {
     display: flex;
+    width: 6.77vw;
+    height: 6.77vw;
+    gap: 0.78vw;
+    padding: 1.3vw;
+    position: fixed;
+    left: 3.91vw;
+    top: 3.13vw;
+    z-index: 101;
   }
 
+  .burger span {
+    height: 0.26vw;
+  }
+
+  .burgerActive span:nth-child(1) {
+    transform: translateY(1.04vw) rotate(45deg);
+  }
+
+  .burgerActive span:nth-child(3) {
+    transform: translateY(-1.04vw) rotate(-45deg);
+  }
+
+  /* Logo — centered */
   .logo {
-    width: 120px;
-    height: 175px;
+    width: 19.01vw;
+    height: auto;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .logo img {
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  /* Right side — only CTA */
+  .right {
+    gap: 1.56vw;
+    margin-left: auto;
+  }
+
+  /* CTA button */
+  .cta {
+    width: 29.17vw;
+    height: 6.77vw;
+    font-size: 1.82vw;
+    padding: 0 2.08vw;
+  }
+
+  /* ===== Mobile nav — left panel 495px ===== */
+  .mobileNav {
+    width: 100%;
+    height: 100vh;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 33.59vw 0 0 3.91vw;
+    gap: 5.21vw;
+    background: rgba(22, 19, 17, 0.3);
+  }
+
+  /* Dark panel background (left 495px) — slides in from left */
+  .mobileNav::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 64.45vw;
+    height: 100%;
+    background: #14110f;
+    transform: translateX(-100%);
+    transition: transform 0.4s ease;
+  }
+
+  .mobileNavActive::before {
+    transform: translateX(0);
+  }
+
+  /* Line below header area */
+  .mobileNav::after {
+    content: "";
+    position: absolute;
+    top: 25.78vw;
+    left: 3.91vw;
+    width: 56.64vw;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  /* When menu open: header above menu, hide everything except burger */
+  .menuOpen {
+    z-index: 115;
+  }
+
+  .menuOpen .bar {
+    background: transparent;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+
+  .menuOpen .right .cta {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  /* Logo repositioned to center of 495px panel */
+  .menuOpen .logo {
+    left: 32.23vw;
+  }
+
+  .mobileNavLink {
+    font-family: var(--font-body-bold);
+    font-weight: 700;
+    font-size: 2.6vw;
+    color: var(--color-white);
+    text-transform: uppercase;
+    position: relative;
+    z-index: 1;
+  }
+
+  .mobileNavLinkActive {
+    color: #e0c7a0;
+  }
+
+  .mobileNavPhone {
+    font-family: var(--font-body-bold);
+    font-weight: 700;
+    font-size: 2.6vw;
+    color: var(--color-white);
+    padding-top: 7.81vw;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    width: 56.64vw;
+    margin-top: 0;
+    position: relative;
+    z-index: 1;
+  }
+
+  .mobileNavCta {
+    width: 56.64vw;
+    padding: 1.82vw 2.34vw;
+    font-size: 2.6vw;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    background: #262525;
+    text-align: center;
+    margin-top: -1.04vw;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Hide language switcher by default */
+  .lang {
+    display: none;
+  }
+
+  /* Show language switcher only when menu open */
+  .menuOpen .lang {
+    display: flex;
+    position: fixed;
+    bottom: 10.94vw;
+    left: 3.91vw;
+    z-index: 115;
+    gap: 1.56vw;
+  }
+
+  /* Line above language switcher */
+  .menuOpen .lang::before {
+    content: "";
+    position: absolute;
+    top: -5.21vw;
+    left: 0;
+    width: 56.64vw;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  .langActive {
+    font-size: 2.6vw;
+    padding-right: 0.78vw;
+  }
+
+  .langInactive {
+    font-size: 2.6vw;
   }
 }
 
-/* ===== RESPONSIVE 480px ===== */
-@media (max-width: 480px) {
+/* ===== MOBILE 375px ===== */
+@media (max-width: 640px) {
+  /* Figma: bar h 70px → 18.67vw, px 15px → 4vw */
   .bar {
-    padding: 0 15px;
-    height: 70px;
+    height: 18.67vw;
+    padding: 0 4vw;
+  }
+
+  /* Figma: burger 40×40 → 10.67vw */
+  .burger {
+    width: 10.67vw;
+    height: 10.67vw;
+    gap: 1.6vw;
+    padding: 2.67vw;
+    left: 4vw;
+    top: 4vw;
+  }
+
+  .burger span {
+    height: 0.53vw;
+  }
+
+  .burgerActive span:nth-child(1) {
+    transform: translateY(2.13vw) rotate(45deg);
+  }
+
+  .burgerActive span:nth-child(3) {
+    transform: translateY(-2.13vw) rotate(-45deg);
   }
 
   .logo {
-    width: 61px;
-    height: 121px;
+    width: 26vw;
+    height: auto;
   }
 
-  .burger {
-    width: 40px;
-    height: 40px;
-    padding: 10px;
+  .logo img {
+    width: 100% !important;
+    height: auto !important;
   }
 
+  /* CTA hidden on 375px */
   .cta {
-    font-size: 16px;
-    padding: 10px 14px;
+    display: none;
+  }
+
+  /* Figma: menu full-width 375px, bg #14110f */
+  .mobileNav {
+    width: 100%;
+    padding: 48.53vw 0 0 4vw;
+    gap: 6.4vw;
+  }
+
+  /* Full-width dark panel */
+  .mobileNav::before {
+    width: 100%;
+  }
+
+  /* Line below header: top 142px → 37.87vw, w 345px → 92vw */
+  .mobileNav::after {
+    top: 37.87vw;
+    left: 4vw;
+    width: 92vw;
+  }
+
+  /* Logo centered in full panel */
+  .menuOpen .logo {
+    left: 50%;
+  }
+
+  /* Figma: 20px → 5.33vw */
+  .mobileNavLink {
+    font-size: 5.33vw;
+    position: relative;
+    z-index: 1;
+  }
+
+  .mobileNavLinkActive.mobileNavLinkActive {
+    color: #e0c7a0;
+  }
+
+  /* Figma: 20px → 5.33vw, pt after line, w 345px → 92vw */
+  .mobileNavPhone {
+    font-size: 5.33vw;
+    padding-top: 10.67vw;
+    width: 92vw;
+  }
+
+  /* Figma: 345×50 → 92vw × 13.33vw, font 18px → 4.8vw */
+  .mobileNavCta {
+    width: 92vw;
+    padding: 3.73vw 4.8vw;
+    font-size: 4.8vw;
+  }
+
+  /* Figma: lang at top 616px, 20px → 5.33vw, gap 12px → 3.2vw */
+  .menuOpen .lang {
+    bottom: auto;
+    top: 164.27vw;
+    left: 4vw;
+    gap: 3.2vw;
+  }
+
+  .menuOpen .lang::before {
+    top: -5.33vw;
+    width: 92vw;
+  }
+
+  .langActive {
+    font-size: 5.33vw;
+    padding-right: 1.6vw;
+  }
+
+  .langInactive {
+    font-size: 5.33vw;
   }
 }

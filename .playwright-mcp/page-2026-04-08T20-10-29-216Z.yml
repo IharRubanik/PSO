@@ -1,0 +1,157 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - banner [ref=e3]:
+      - generic [ref=e4]:
+        - link "Фантом Групп" [ref=e5] [cursor=pointer]:
+          - /url: /
+          - img "Фантом Групп" [ref=e6]
+        - generic [ref=e7]:
+          - button "Оставить заявку" [ref=e8] [cursor=pointer]
+          - button "Меню" [ref=e9] [cursor=pointer]
+    - main [ref=e13]:
+      - generic [ref=e14]:
+        - generic [ref=e17]:
+          - link "Главная" [ref=e19] [cursor=pointer]:
+            - /url: /
+          - generic [ref=e20]: О компании
+        - heading "Кто мы и как обеспечиваем безопасность" [level=1] [ref=e23]
+      - generic [ref=e25]:
+        - heading "О нас" [level=2] [ref=e27]
+        - generic [ref=e28]:
+          - img "О компании" [ref=e31]
+          - generic [ref=e33]:
+            - paragraph [ref=e34]: Наша компания специализируется на предоставлении полного спектра охранных услуг для бизнеса и частных лиц. Мы работаем на рынке безопасности более 15 лет, обеспечивая надежную защиту объектов, людей и информации.
+            - paragraph [ref=e35]: Штат компании укомплектован профессионалами с опытом работы в силовых структурах и специальных подразделениях. Каждый сотрудник проходит строгий отбор и регулярную переподготовку для поддержания высочайшего уровня квалификации.
+            - paragraph [ref=e36]: Мы используем современные технические средства охраны и собственные методики оценки рисков, что позволяет нам разрабатывать индивидуальные решения для каждого клиента, гарантируя максимальную эффективность защиты.
+      - generic [ref=e38]:
+        - heading "Официальные лицензии компании" [level=2] [ref=e40]
+        - generic [ref=e42]:
+          - generic [ref=e44] [cursor=pointer]:
+            - generic [ref=e46]:
+              - img [ref=e47]
+              - generic [ref=e50]: "01"
+            - heading "Лицензия на охрану объектов и имущества" [level=3] [ref=e52]
+            - generic [ref=e53]:
+              - paragraph [ref=e54]: "[ Выдана: МВД России ]"
+              - generic [ref=e55]:
+                - generic [ref=e56]: смотреть
+                - img [ref=e57]
+          - generic [ref=e60] [cursor=pointer]:
+            - generic [ref=e62]:
+              - img [ref=e63]
+              - generic [ref=e66]: "02"
+            - heading "Лицензия на осуществление частной охранной деятельности" [level=3] [ref=e68]
+            - generic [ref=e69]:
+              - paragraph [ref=e70]: "[ Выдана: МВД России ]"
+              - generic [ref=e71]:
+                - generic [ref=e72]: смотреть
+                - img [ref=e73]
+          - generic [ref=e76] [cursor=pointer]:
+            - generic [ref=e78]:
+              - img [ref=e79]
+              - generic [ref=e82]: "03"
+            - heading "Лицензия на охрану с применением огнестрельного оружия" [level=3] [ref=e84]
+            - generic [ref=e85]:
+              - paragraph [ref=e86]: "[ Выдана: МВД России ]"
+              - generic [ref=e87]:
+                - generic [ref=e88]: смотреть
+                - img [ref=e89]
+          - generic [ref=e92] [cursor=pointer]:
+            - generic [ref=e94]:
+              - img [ref=e95]
+              - generic [ref=e98]: "04"
+            - heading "Лицензия на обеспечение внутриобъектового и пропускного режима" [level=3] [ref=e100]
+            - generic [ref=e101]:
+              - paragraph [ref=e102]: "[ Выдана: МВД России ]"
+              - generic [ref=e103]:
+                - generic [ref=e104]: смотреть
+                - img [ref=e105]
+          - generic [ref=e108] [cursor=pointer]:
+            - generic [ref=e110]:
+              - img [ref=e111]
+              - generic [ref=e114]: "05"
+            - heading "Допуск к сведениям, составляющим государственную тайну" [level=3] [ref=e116]
+            - generic [ref=e117]:
+              - paragraph [ref=e118]: "[ Выдана: ФСБ России ]"
+              - generic [ref=e119]:
+                - generic [ref=e120]: смотреть
+                - img [ref=e121]
+        - generic [ref=e126]:
+          - button "Назад" [disabled] [ref=e127]:
+            - img [ref=e128]
+          - button "Вперёд" [ref=e130] [cursor=pointer]:
+            - img [ref=e131]
+      - generic [ref=e136]:
+        - heading "Вооружение" [level=2] [ref=e138]
+        - generic [ref=e140]:
+          - paragraph [ref=e141]: Наша компания — это команда профессионалов с многолетним опытом работы в сфере безопасности. Мы предоставляем полный спектр охранных услуг для бизнеса, государственных организаций и частных клиентов.
+          - paragraph [ref=e142]: Главная задача нашей работы — обеспечить надежную защиту имущества, сотрудников и посетителей объектов. Мы используем современные технологии безопасности, тщательно отбираем персонал и постоянно повышаем уровень подготовки сотрудников.
+      - generic [ref=e146]:
+        - heading "Подготовка сотрудников" [level=2] [ref=e148]:
+          - text: Подготовка
+          - text: сотрудников
+        - generic [ref=e150]:
+          - paragraph [ref=e151]: Наша компания — это команда профессионалов с многолетним опытом работы в сфере безопасности. Мы предоставляем полный спектр охранных услуг для бизнеса, государственных организаций и частных клиентов.
+          - paragraph [ref=e152]: Главная задача нашей работы — обеспечить надежную защиту имущества, сотрудников и посетителей объектов. Мы используем современные технологии безопасности, тщательно отбираем персонал и постоянно повышаем уровень подготовки сотрудников.
+      - generic [ref=e155]:
+        - generic [ref=e156]:
+          - heading "Обсудить защиту" [level=2] [ref=e158]
+          - paragraph [ref=e160]: Оставьте заявку, и наш охранный менеджер персонально подберёт формат защиты — от физической охраны и постов до комплексных решений с видеонаблюдением и пультовой охраной
+          - paragraph [ref=e164]: Консультация без обязательств | Быстрый ответ менеджера | Индивидуальный подбор уровня охраны под ваш объект | Прозрачный расчет стоимости и условия сотрудничества
+        - generic [ref=e166]:
+          - generic [ref=e167]:
+            - textbox "Имя*" [ref=e168]
+            - textbox "Телефон*" [ref=e169]
+            - textbox "Почта" [ref=e170]
+            - textbox "Сообщение..." [ref=e171]
+          - generic [ref=e174] [cursor=pointer]:
+            - text: Я согласен(на) на обработку моих
+            - link "Персональных данных" [ref=e175]:
+              - /url: /privacy
+          - button "Отправить заявку" [ref=e176] [cursor=pointer]
+    - contentinfo [ref=e177]:
+      - generic [ref=e178]:
+        - img "Фантом Групп" [ref=e181]
+        - generic [ref=e183]:
+          - heading "Меню" [level=4] [ref=e184]
+          - navigation [ref=e185]:
+            - link "Главная Главная" [ref=e186] [cursor=pointer]:
+              - /url: /
+              - generic [ref=e187]: Главная
+              - generic [ref=e188]: Главная
+            - link "Услуги Услуги" [ref=e189] [cursor=pointer]:
+              - /url: /services
+              - generic [ref=e190]: Услуги
+              - generic [ref=e191]: Услуги
+            - link "О компании О компании" [ref=e192] [cursor=pointer]:
+              - /url: /about
+              - generic [ref=e193]: О компании
+              - generic [ref=e194]: О компании
+            - link "Контакты Контакты" [ref=e195] [cursor=pointer]:
+              - /url: /contacts
+              - generic [ref=e196]: Контакты
+              - generic [ref=e197]: Контакты
+        - generic [ref=e200]:
+          - heading "Позвонить нам" [level=4] [ref=e201]
+          - link "8 999 999-99-99" [ref=e202] [cursor=pointer]:
+            - /url: tel:89999999999
+          - heading "Написать нам" [level=4] [ref=e203]
+          - link "info@security-company.ru" [ref=e204] [cursor=pointer]:
+            - /url: mailto:info@security-company.ru
+          - heading "Соцсети" [level=4] [ref=e205]
+          - link "Telegram" [ref=e206] [cursor=pointer]:
+            - /url: https://t.me/
+        - generic [ref=e208]:
+          - heading "О защите данных" [level=4] [ref=e209]
+          - navigation [ref=e210]:
+            - link "Политика конфиденциальности Политика конфиденциальности" [ref=e211] [cursor=pointer]:
+              - /url: /privacy
+              - generic [ref=e212]: Политика конфиденциальности
+              - generic [ref=e213]: Политика конфиденциальности
+            - link "Условия использования Условия использования" [ref=e214] [cursor=pointer]:
+              - /url: /terms
+              - generic [ref=e215]: Условия использования
+              - generic [ref=e216]: Условия использования
+      - paragraph [ref=e218]: 2026©Фантом групп. Все права защищены
+  - button "Open Next.js Dev Tools" [ref=e224] [cursor=pointer]:
+    - img [ref=e225]

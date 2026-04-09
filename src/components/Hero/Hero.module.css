@@ -107,84 +107,94 @@
   display: none;
 }
 
-/* ===== RESPONSIVE 768px ===== */
 /* Figma 768px: hero=1024px, frame 30/160/708x804, text left=55 top=535, button w=658 h=65 */
-@media (max-width: 768px) {
+@media (max-width: 860px) {
+  /* 768x1024 → aspect ratio ~133% */
   .hero {
-    height: 1024px;
+    height: 133.33vw;
   }
 
-  .content {
-    left: 55px;
-    right: 55px;
-    bottom: auto;
-    top: 535px;
-    max-width: none;
-  }
-
-  .title {
-    font-size: 56px;
-    margin-bottom: 24px;
-  }
-
-  .subtitle {
-    font-size: 18px;
-  }
-
+  /* Frame: 30px padding from edges, top 160px */
   .frame {
-    left: 30px;
-    right: 30px;
-    top: 160px;
-    bottom: 60px;
+    bottom: 3.91vw;
+    left: 3.91vw;
+    right: 3.91vw;
+    top: 20.83vw;
   }
 
-  /* Hide desktop CTA, show mobile CTA inside content */
+  /* Content: x=55, y=535 in 768px viewport */
+  .content {
+    left: 7.16vw;
+    bottom: auto;
+    top: 69.66vw;
+    max-width: 85vw;
+  }
+
+  /* Title ~56px at 768px */
+  .title {
+    font-size: 7.29vw;
+    margin-bottom: 2.6vw;
+  }
+
+  /* Subtitle ~18px at 768px */
+  .subtitle {
+    font-size: 2.34vw;
+  }
+
+  /* Hide desktop CTA */
   .cta {
     display: none;
   }
 
+  /* Show mobile CTA: w=658 h=65 at 768px */
   .ctaMobile {
     display: flex;
-    width: 100%;
-    margin-top: 34px;
+    width: 85.68vw;
+    height: 8.46vw;
+    font-size: 2.08vw;
+    margin-top: 3.91vw;
   }
 }
 
-/* ===== RESPONSIVE 375px ===== */
-/* Figma 375px: hero=812px, frame 15/120/345x642, text left=15 top=319, title ~44px, button w=345 h=50 */
-@media (max-width: 480px) {
+/* Figma 375px */
+@media (max-width: 640px) {
   .hero {
-    height: 812px;
+    height: 170.67vw;
   }
 
+  /* Frame: 15px from sides, bottom 30px */
+  .frame {
+    bottom: 8vw;
+    left: 4vw;
+    right: 4vw;
+    top: 33.6vw;
+  }
+
+  /* Content: bottom 80px, left/right 15px */
   .content {
-    left: 15px;
-    right: 15px;
-    bottom: auto;
-    top: 319px;
-    max-width: none;
+    left: 4vw;
+    bottom: 21.33vw;
+    top: auto;
+    max-width: 92vw;
   }
 
+  /* Figma: Furore 40px → 10.67vw, lh 1.1 */
   .title {
-    font-size: 44px;
-    margin-bottom: 24px;
+    font-size: 10.67vw;
+    margin-bottom: 6.4vw;
   }
 
+  /* Figma: Proxima Nova 18px → 4.8vw, lh 1.3 */
   .subtitle {
-    font-size: 16px;
+    font-size: 4.8vw;
     line-height: 1.3;
   }
 
-  .frame {
-    left: 15px;
-    right: 15px;
-    top: 120px;
-    bottom: 50px;
-  }
-
+  /* CTA: w=345 → 92vw, h=50 → 13.33vw, font 18px → 4.8vw */
   .ctaMobile {
-    width: 100%;
-    height: 50px;
-    font-size: 16px;
+    width: 92vw;
+    height: 13.33vw;
+    font-size: 4.8vw;
+    margin-top: 6.4vw;
   }
 }

@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { AnimatedSection } from "../UI/AnimatedSection";
@@ -45,6 +46,8 @@ const SERVICES = [
 ];
 
 export function Services() {
+  const [showAll, setShowAll] = useState(false);
+
   return (
     <section className={styles.section}>
       <div className="noise-overlay" />
@@ -63,7 +66,11 @@ export function Services() {
         </div>
         <div className={styles.grid}>
           {SERVICES.map((service, i) => (
-            <AnimatedSection key={service.slug} delay={i * 0.1}>
+            <AnimatedSection
+              key={service.slug}
+              delay={i * 0.1}
+              className={!showAll && i >= 4 ? styles.hiddenOnMobile : undefined}
+            >
               <Link href={`/services/${service.slug}`} className={styles.card}>
                 <div className={styles.cardBg}>
                   <Image src={service.image} alt={service.title} fill style={{ objectFit: "cover" }} />
@@ -113,6 +120,14 @@ export function Services() {
           <div className={`${styles.gridDivider} ${styles.gridDivider1}`} />
           <div className={`${styles.gridDivider} ${styles.gridDivider2}`} />
         </div>
+        {!showAll && (
+          <button
+            className={styles.showAllBtn}
+            onClick={() => setShowAll(true)}
+          >
+            Показать все
+          </button>
+        )}
       </div>
     </section>
   );

@@ -1,0 +1,139 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - banner [ref=e3]:
+      - generic [ref=e4]:
+        - link "Фантом Групп" [ref=e5] [cursor=pointer]:
+          - /url: /
+          - img "Фантом Групп" [ref=e6]
+        - generic [ref=e7]:
+          - button "Оставить заявку" [ref=e8] [cursor=pointer]
+          - button "Меню" [ref=e9] [cursor=pointer]
+    - generic:
+      - link "Главная":
+        - /url: /
+      - link "Услуги":
+        - /url: /services/personal-guard
+      - link "О компании":
+        - /url: /about
+      - link "Контакты":
+        - /url: /contacts
+      - link "8 999 999-99-99":
+        - /url: tel:+79999999999
+      - button "Оставить заявку"
+    - main [ref=e13]:
+      - generic [ref=e17]:
+        - heading "Защищаем самое ценное" [level=1] [ref=e18]:
+          - text: Защищаем
+          - text: самое ценное
+        - paragraph [ref=e19]: Комплексные решения безопасности для бизнеса, частной собственности и мероприятий. Работаем круглосуточно и гарантируем оперативное реагирование.
+        - button "Связаться с нами" [ref=e20] [cursor=pointer]
+      - generic [ref=e22]:
+        - generic [ref=e23]:
+          - heading "Услуги" [level=2] [ref=e25]
+          - paragraph [ref=e27]: Комплексные решения безопасности для бизнеса, частной собственности и мероприятий. Работаем круглосуточно и гарантируем оперативное реагирование.
+        - generic [ref=e28]:
+          - link "Личная охрана 01 Личная охрана подробнее" [ref=e30] [cursor=pointer]:
+            - /url: /services/personal-guard
+          - link "Группа быстрого реагирования 02 Группа быстрого реагирования подробнее" [ref=e48] [cursor=pointer]:
+            - /url: /services/rapid-response
+          - link "Объектовая безопасность 03 Объектовая безопасность подробнее" [ref=e66] [cursor=pointer]:
+            - /url: /services/physical-security
+          - link "Контрнаблюдение 04 Контрнаблюдение подробнее" [ref=e84] [cursor=pointer]:
+            - /url: /services/counter-surveillance
+          - link "Инкассация и иные задачи по запросу 05 Инкассация и иные задачи по запросу подробнее" [ref=e102] [cursor=pointer]:
+            - /url: /services/collection
+          - link "Комплексная защита для первых лиц и бизнеса 06 Комплексная защита для первых лиц и бизнеса подробнее" [ref=e120] [cursor=pointer]:
+            - /url: /services/complex-protection
+      - generic [ref=e139]:
+        - heading "О компании" [level=2] [ref=e141]
+        - generic [ref=e142]:
+          - generic [ref=e143]
+          - link "Узнать больше" [ref=e146] [cursor=pointer]:
+            - /url: /about
+      - generic [ref=e149]:
+        - generic [ref=e150]:
+          - img
+          - generic [ref=e152]: "12"
+          - paragraph [ref=e153]: лет успешной работы на рынке безопасности
+        - generic [ref=e154]:
+          - img
+          - generic [ref=e155]
+          - paragraph [ref=e158]: объектов находятся под нашей охраной
+        - generic [ref=e159]:
+          - img
+          - generic [ref=e160]
+          - paragraph [ref=e163]: специалистов в штате компании
+        - generic [ref=e164]:
+          - img
+          - generic [ref=e166]: 24/7
+          - paragraph [ref=e167]: круглосуточный контроль безопасности
+      - generic [ref=e170]:
+        - heading "Что вы получаете от сотрудничества" [level=2] [ref=e172]
+        - generic [ref=e173]:
+          - generic [ref=e175]
+          - generic [ref=e186]
+          - generic [ref=e197]
+      - generic [ref=e207]:
+        - heading "Клиенты в ведущих секторах экономики" [level=2] [ref=e211]
+        - generic [ref=e214]:
+          - heading "Финансовый сектор" [level=3] [ref=e216]
+          - heading "Недвижимость" [level=3] [ref=e218]
+          - heading "логистика" [level=3] [ref=e220]
+          - heading "Промышленность" [level=3] [ref=e222]
+          - heading "Финансовый сектор" [level=3] [ref=e224]
+          - heading "Недвижимость" [level=3] [ref=e226]
+          - heading "логистика" [level=3] [ref=e228]
+          - heading "Промышленность" [level=3] [ref=e230]
+          - heading "Финансовый сектор" [level=3] [ref=e232]
+          - heading "Недвижимость" [level=3] [ref=e234]
+          - heading "логистика" [level=3] [ref=e236]
+          - heading "Промышленность" [level=3] [ref=e238]
+          - heading "Финансовый сектор" [level=3] [ref=e240]
+          - heading "Недвижимость" [level=3] [ref=e242]
+          - heading "логистика" [level=3] [ref=e244]
+          - heading "Промышленность" [level=3] [ref=e246]
+      - generic [ref=e248]:
+        - heading "Свяжитесь с нами" [level=2] [ref=e250]
+        - generic [ref=e252]:
+          - generic [ref=e253]
+          - img [ref=e257]
+          - generic [ref=e258]
+          - generic [ref=e261]
+          - img [ref=e265]
+          - generic [ref=e266]
+        - generic [ref=e347]:
+          - img [ref=e355]
+          - generic [ref=e358]
+          - generic [ref=e363]
+      - generic [ref=e274]:
+        - generic [ref=e275]:
+          - heading "Обсудить защиту" [level=2] [ref=e277]
+          - paragraph [ref=e279]: Оставьте заявку, и наш охранный менеджер персонально подберёт формат защиты — от физической охраны и постов до комплексных решений с видеонаблюдением и пультовой охраной
+          - paragraph [ref=e283]: Консультация без обязательств | Быстрый ответ менеджера | Индивидуальный подбор уровня охраны под ваш объект | Прозрачный расчет стоимости и условия сотрудничества
+        - generic [ref=e285]:
+          - generic [ref=e286]
+          - generic [ref=e293] [cursor=pointer]
+          - button "Отправить заявку" [ref=e295] [cursor=pointer]
+    - contentinfo [ref=e296]:
+      - generic [ref=e297]:
+        - img "Фантом Групп" [ref=e300]
+        - generic [ref=e302]:
+          - heading "Меню" [level=4] [ref=e303]
+          - navigation [ref=e304]
+        - generic [ref=e319]:
+          - heading "Позвонить нам" [level=4] [ref=e320]
+          - link "8 999 999-99-99" [ref=e321] [cursor=pointer]:
+            - /url: tel:89999999999
+          - heading "Написать нам" [level=4] [ref=e322]
+          - link "info@security-company.ru" [ref=e323] [cursor=pointer]:
+            - /url: mailto:info@security-company.ru
+          - heading "Соцсети" [level=4] [ref=e324]
+          - link "Telegram" [ref=e325] [cursor=pointer]:
+            - /url: https://t.me/
+        - generic [ref=e327]:
+          - heading "О защите данных" [level=4] [ref=e328]
+          - navigation [ref=e329]
+      - paragraph [ref=e337]: 2026©Фантом групп. Все права защищены
+  - button "Open Next.js Dev Tools" [ref=e343] [cursor=pointer]:
+    - img [ref=e344]
+  - alert [ref=e367]

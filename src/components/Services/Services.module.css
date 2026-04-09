@@ -330,117 +330,313 @@
   font-size: 1.04vw;
 }
 
-/* ===== RESPONSIVE ===== */
-
-@media (max-width: 1200px) {
-  .header {
-    flex-direction: column;
-    gap: 20px;
-  }
-
-  .sectionTitle {
-    width: auto;
-    font-size: 52px;
-  }
-
-  .description {
-    width: auto;
-    max-width: 700px;
-    font-size: 20px;
-    padding-top: 0;
-  }
-
-  .gridDivider {
-    display: none;
-  }
-}
-
 /* Figma 768px */
-@media (max-width: 768px) {
+@media (max-width: 860px) {
   .section {
-    padding: 80px 0 60px;
+    padding: 10.42vw 0 15.63vw;
   }
 
   .container {
-    padding: 0 30px;
+    padding: 0 3.91vw;
   }
 
+  /* Stack header vertically */
   .header {
     flex-direction: column;
-    gap: 16px;
+    gap: 2.6vw;
+    margin-bottom: 3.91vw;
   }
 
   .sectionTitle {
-    font-size: 42px;
-    width: auto;
+    font-size: 5.47vw;
+    width: 100%;
   }
 
   .description {
-    width: auto;
+    width: 100%;
     max-width: 100%;
-    font-size: 18px;
-    padding-top: 0;
+    font-size: 2.34vw;
   }
 
+  /* 2 columns grid */
   .grid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 1.3vw;
   }
 
+  /* Cards ~344x300px at 768px → ~44.79vw x 39.06vw */
   .card {
-    height: 300px;
+    height: 39.06vw;
   }
 
-  .cardTitle {
-    font-size: 22px;
-  }
-
+  /* Crosshair: 110px at 768 = 14.32vw */
   .cardNumber {
-    width: 80px;
-    height: 80px;
+    width: 14.32vw;
+    height: 14.32vw;
+    top: 2.6vw;
+    left: 2.6vw;
   }
 
   .crosshairRing {
-    width: 60px;
-    height: 60px;
+    width: 13vw;
+    height: 13vw;
   }
 
   .crosshairCenter {
-    width: 44px;
-    height: 44px;
+    width: 7.81vw;
+    height: 7.81vw;
   }
 
   .crosshairText {
-    font-size: 18px;
-  }
-}
-
-/* Figma 375px */
-@media (max-width: 480px) {
-  .section {
-    padding: 60px 0 40px;
+    font-size: 3.13vw;
   }
 
-  .container {
-    padding: 0 15px;
+  /* Card slider: always fully visible on tablet */
+  .cardSlider {
+    bottom: 0;
+    gap: 3.13vw;
   }
 
-  .sectionTitle {
-    font-size: 32px;
-  }
-
-  .description {
-    font-size: 16px;
-  }
-
-  .grid {
-    grid-template-columns: 1fr;
-  }
-
-  .card {
-    height: 280px;
+  .cardSliderText {
+    padding: 2.6vw 2.6vw 0;
+    gap: 0;
   }
 
   .cardTitle {
-    font-size: 20px;
+    font-size: 3.13vw;
+    line-height: 1.25;
+    white-space: normal;
+  }
+
+  /* Hide description on tablet */
+  .cardDescription {
+    display: none;
+  }
+
+  .cardMore {
+    padding: 2.08vw 2.6vw;
+  }
+
+  .cardMoreText {
+    font-size: 2.08vw;
+  }
+
+  /* Adjust dividers for 2-col grid */
+  .gridDivider {
+    top: 38.41vw;
+    width: 2.6vw;
+    height: 2.6vw;
+  }
+
+  .gridDivider1 {
+    left: calc(50% - 1.3vw);
+  }
+
+  /* Hide second divider (only 2 columns now) */
+  .gridDivider2 {
+    display: none;
+  }
+
+  /* Disable all hover effects on tablet */
+  .card:hover .cardSlider {
+    bottom: 0;
+  }
+
+  .card:hover .cardBg {
+    transform: none;
+  }
+
+  .card:hover .cardOverlay {
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, 0.7) 70.278%
+    );
+  }
+
+  .card:hover .cardNumber {
+    width: 14.32vw;
+    height: 14.32vw;
+  }
+
+  .card:hover .crosshairRing {
+    width: 13vw;
+    height: 13vw;
+  }
+
+  .card:hover .crosshairCenter {
+    width: 7.81vw;
+    height: 7.81vw;
+  }
+
+  .card:hover .crosshairText {
+    font-size: 3.13vw;
+  }
+}
+
+/* "Показать все" button — hidden on desktop/tablet */
+.showAllBtn {
+  display: none;
+}
+
+.hiddenOnMobile {
+  display: block;
+}
+
+/* Figma 375px */
+@media (max-width: 640px) {
+  .hiddenOnMobile {
+    display: none;
+  }
+
+  .showAllBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 13.33vw;
+    margin-top: 4vw;
+    border: 1px solid var(--color-border);
+    background: transparent;
+    color: var(--color-white);
+    font-family: var(--font-body-bold);
+    font-weight: 700;
+    font-size: 4.8vw;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+
+  .showAllBtn:hover {
+    background: rgba(255, 255, 255, 0.05);
+  }
+  .section {
+    padding: 10.67vw 0 10.67vw;
+  }
+
+  .container {
+    padding: 0 4vw;
+  }
+
+  /* Stack header vertically */
+  .header {
+    flex-direction: column;
+    gap: 5.33vw;
+    margin-bottom: 10.67vw;
+  }
+
+  /* Figma: Furore 32px → 8.53vw, lh 1.1 */
+  .sectionTitle {
+    font-size: 8.53vw;
+    width: 100%;
+  }
+
+  /* Figma: Proxima Nova 18px → 4.8vw, lh 1.3 */
+  .description {
+    width: 100%;
+    max-width: 100%;
+    font-size: 4.8vw;
+    line-height: 1.3;
+  }
+
+  /* 1 column */
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 4vw;
+  }
+
+  /* Figma: card 344×280 → 74.67vw */
+  .card {
+    height: 74.67vw;
+  }
+
+  /* Figma: crosshair 70×70 → 18.67vw */
+  .cardNumber {
+    width: 18.67vw;
+    height: 18.67vw;
+    top: 4vw;
+    left: 4vw;
+  }
+
+  .crosshairRing {
+    width: 16.53vw;
+    height: 16.53vw;
+  }
+
+  /* Figma: center 38px → 10.13vw */
+  .crosshairCenter {
+    width: 10.13vw;
+    height: 10.13vw;
+  }
+
+  .crosshairText {
+    font-size: 4.27vw;
+  }
+
+  /* Card slider: always visible */
+  .cardSlider {
+    bottom: 0;
+    gap: 0;
+  }
+
+  .cardSliderText {
+    padding: 4vw 4vw 6.4vw;
+    gap: 0;
+  }
+
+  /* Figma: Furore 20px → 5.33vw, lh 1.25 */
+  .cardTitle {
+    font-size: 5.33vw;
+    line-height: 1.25;
+    white-space: normal;
+  }
+
+  .cardDescription {
+    display: none;
+  }
+
+  .cardMore {
+    display: none;
+  }
+
+  /* Hide dividers on mobile */
+  .gridDivider {
+    display: none;
+  }
+
+  /* Disable hover effects */
+  .card:hover .cardSlider {
+    bottom: 0;
+  }
+
+  .card:hover .cardBg {
+    transform: none;
+  }
+
+  .card:hover .cardOverlay {
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, 0.7) 70.278%
+    );
+  }
+
+  .card:hover .cardNumber {
+    width: 18.67vw;
+    height: 18.67vw;
+  }
+
+  .card:hover .crosshairRing {
+    width: 16.53vw;
+    height: 16.53vw;
+  }
+
+  .card:hover .crosshairCenter {
+    width: 10.13vw;
+    height: 10.13vw;
+  }
+
+  .card:hover .crosshairText {
+    font-size: 4.27vw;
   }
 }

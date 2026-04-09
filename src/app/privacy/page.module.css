@@ -2,14 +2,14 @@
   position: relative;
   overflow: hidden;
   min-height: 100vh;
-  padding-top: calc(6.25vw + 16px + 59px);
-  padding-bottom: 100px;
+  padding-top: calc(6.25vw + 0.83vw + 3.07vw);
+  padding-bottom: 5.21vw;
 }
 
 .container {
   position: relative;
   z-index: 2;
-  max-width: 1194px;
+  max-width: 62.19vw;
   margin: 0 auto;
   padding: 0 3.13vw;
 }
@@ -51,6 +51,10 @@
 .breadcrumbActive {
   color: #f2f2f2;
   opacity: 0.8;
+}
+
+.backLink {
+  display: none;
 }
 
 .pageTitle {
@@ -96,7 +100,6 @@
   line-height: 1.3;
 }
 
-
 .content p {
   margin-bottom: 1.04vw;
 }
@@ -105,57 +108,136 @@
   margin-bottom: 0;
 }
 
-
-/* ===== RESPONSIVE ===== */
-@media (max-width: 768px) {
-  .section {
-    padding-top: 120px;
-  }
-
+/* ===== Figma 768px ===== */
+@media (max-width: 860px) {
   .container {
-    padding: 0 30px;
+    max-width: 100%;
+    padding: 0 3.91vw;
   }
 
+  /* Figma: top 120px → 15.63vw, left 30px → 3.91vw, 16px → 2.08vw */
+  .breadcrumbs {
+    top: 15.63vw;
+    left: 3.91vw;
+    font-size: 2.08vw;
+  }
+
+  .separator {
+    width: 0.52vw;
+    height: 0.52vw;
+    margin: 0 0.78vw;
+  }
+
+  /* Figma: breadcrumbs at 120px, content starts at 212px */
+  .section {
+    padding-top: calc(15.63vw + 16px + 59px);
+    padding-bottom: 6.51vw;
+  }
+
+  /* Figma: Furore 60px → 7.81vw, line-height 1.1, mb 50px → 6.51vw */
   .pageTitle {
-    font-size: 42px;
-    margin-bottom: 40px;
+    font-size: 7.81vw;
+    line-height: 1.1;
+    margin-bottom: 6.51vw;
   }
 
+  /* Figma: Proxima Nova 18px → 2.34vw, line-height 1.3, mb 24px → 3.13vw */
   .intro {
-    font-size: 18px;
+    font-size: 2.34vw;
+    line-height: 1.3;
+    margin-bottom: 3.13vw;
   }
 
+  /* Figma: Proxima Nova 18px → 2.34vw, line-height 1.3 */
   .content {
-    font-size: 16px;
+    font-size: 2.34vw;
+    line-height: 1.3;
   }
 
+  /* Figma: gap between paragraphs 24px → 3.13vw */
+  .content p {
+    margin-bottom: 3.13vw;
+  }
+
+  /* Figma: gap between blocks 50px → 6.51vw */
+  .block {
+    margin-bottom: 6.51vw;
+  }
+
+  /* Figma: Furore 24px → 3.13vw, line-height 1.25, mb 30px → 3.91vw */
   .blockTitle {
-    font-size: 20px;
+    font-size: 3.13vw;
+    line-height: 1.25;
+    margin-bottom: 3.91vw;
   }
 }
 
-@media (max-width: 480px) {
-  .section {
-    padding-top: 100px;
-  }
-
+/* ===== Figma 375px ===== */
+@media (max-width: 640px) {
   .container {
-    padding: 0 15px;
+    max-width: 100%;
+    padding: 0 4vw;
   }
 
+  .breadcrumbs {
+    display: none;
+  }
+
+  .backLink {
+    display: flex;
+    align-items: center;
+    gap: 2.13vw;
+    position: absolute;
+    top: 22.67vw;
+    left: 4vw;
+    z-index: 3;
+    font-family: var(--font-body);
+    font-size: 3.73vw;
+    color: #d9d2ce;
+    opacity: 0.8;
+    text-decoration: none;
+  }
+
+  /* Figma: content starts ~135px → 36vw */
+  .section {
+    padding-top: 36vw;
+    padding-bottom: 10.67vw;
+  }
+
+  /* Figma: Furore 32px → 8.53vw, lh 1.1, mb 40px → 10.67vw */
   .pageTitle {
-    font-size: 32px;
+    font-size: 8.53vw;
+    line-height: 1.1;
+    margin-bottom: 10.67vw;
   }
 
+  /* Figma: 16px → 4.27vw, lh 1.3 */
   .intro {
-    font-size: 16px;
+    font-size: 4.27vw;
+    line-height: 1.3;
+    margin-bottom: 6.4vw;
   }
 
+  /* Figma: 16px → 4.27vw, lh 1.3 */
   .content {
-    font-size: 15px;
+    font-size: 4.27vw;
+    line-height: 1.3;
   }
 
+  /* Figma: paragraph gap 16px → 4.27vw */
+  .content p {
+    margin-bottom: 4.27vw;
+  }
+
+  /* Figma: block gap 40px → 10.67vw */
+  .block {
+    margin-bottom: 10.67vw;
+  }
+
+  /* Figma: Furore 20px → 5.33vw, lh 1.25, mb 24px → 6.4vw */
   .blockTitle {
-    font-size: 18px;
+    font-size: 5.33vw;
+    line-height: 1.25;
+    margin-bottom: 6.4vw;
   }
 }

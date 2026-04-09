@@ -44,12 +44,13 @@ export function Clients() {
       </AnimatedSection>
 
       {/* Figma: crosshair divider SVG at top:369px, full-width 1920px, height:110px */}
-      <img
-        src="/assets/images/crosshair-divider-full.svg"
-        alt=""
-        className={styles.divider}
-        aria-hidden="true"
-      />
+      <div className={styles.dividerWrap} aria-hidden="true">
+        <img
+          src="/assets/images/crosshair-divider-full.svg"
+          alt=""
+          className={styles.divider}
+        />
+      </div>
 
       {/* Figma: marquee row at top:526px, height:200px */}
       <div className={styles.marqueeWrapper}>

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useCallback } from "react";
+import { useState, useRef, useCallback, useEffect } from "react";
 import Image from "next/image";
 import { PageBanner } from "@/components/PageBanner/PageBanner";
 import { ContactForm } from "@/components/ContactForm/ContactForm";
@@ -45,8 +45,21 @@ const VISIBLE_CARDS = 4;
 export default function AboutPage() {
   const [licenseModal, setLicenseModal] = useState<string | null>(null);
   const [slideIndex, setSlideIndex] = useState(0);
-  const maxSlide = LICENSES.length - VISIBLE_CARDS;
+  const [screenMode, setScreenMode] = useState<"desktop" | "tablet" | "mobile">("desktop");
+  const visibleCards = screenMode === "mobile" ? 1 : screenMode === "tablet" ? 2 : VISIBLE_CARDS;
+  const maxSlide = LICENSES.length - visibleCards;
   const sliderRef = useRef<HTMLDivElement>(null);
+  const touchStartX = useRef(0);
+
+  useEffect(() => {
+    const check = () => {
+      const w = window.innerWidth;
+      setScreenMode(w <= 640 ? "mobile" : w <= 860 ? "tablet" : "desktop");
+    };
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
 
   const slidePrev = useCallback(() => {
     setSlideIndex((prev) => Math.max(0, prev - 1));
@@ -55,6 +68,18 @@ export default function AboutPage() {
   const slideNext = useCallback(() => {
     setSlideIndex((prev) => Math.min(maxSlide, prev + 1));
   }, [maxSlide]);
+
+  const handleTouchStart = useCallback((e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+  }, []);
+
+  const handleTouchEnd = useCallback((e: React.TouchEvent) => {
+    const diff = touchStartX.current - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 50) {
+      if (diff > 0) slideNext();
+      else slidePrev();
+    }
+  }, [slideNext, slidePrev]);
 
   return (
     <>
@@ -129,18 +154,26 @@ export default function AboutPage() {
             </h2>
           </AnimatedSection>
 
-          <div className={styles.licensesSlider}>
+          <div
+            className={styles.licensesSlider}
+            onTouchStart={handleTouchStart}
+            onTouchEnd={handleTouchEnd}
+          >
             <div
               ref={sliderRef}
               className={styles.licensesCards}
               style={{
-                transform: `translateX(calc(-${slideIndex} * (calc((100% - 60px) / 4) + 20px)))`,
+                transform: screenMode === "mobile"
+                  ? `translateX(calc(-${slideIndex} * (84.27vw + 4vw)))`
+                  : screenMode === "tablet"
+                  ? `translateX(calc(-${slideIndex} * (calc((100% - 2vw) / 2) + 2vw)))`
+                  : `translateX(calc(-${slideIndex} * (calc((100% - 60px) / 4) + 20px)))`,
               }}
             >
             {LICENSES.map((license, i) => (
-              <AnimatedSection key={i} delay={i * 0.1}>
+              <div key={i} className={styles.licenseCardWrap}>
                 <div
-                  className={styles.licenseCard}
+                  className={`${styles.licenseCard} ${i === slideIndex ? styles.licenseCardActive : ""}`}
                   onClick={() => setLicenseModal(license.image)}
                 >
                   <div className={styles.licenseCardBg} />
@@ -192,7 +225,7 @@ export default function AboutPage() {
                     </div>
                   </div>
                 </div>
-              </AnimatedSection>
+              </div>
             ))}
             </div>
           </div>
@@ -202,7 +235,7 @@ export default function AboutPage() {
               <div
                 className={styles.licensesProgressFill}
                 style={{
-                  width: `${((slideIndex + VISIBLE_CARDS) / LICENSES.length) * 100}%`,
+                  width: `${((slideIndex + visibleCards) / LICENSES.length) * 100}%`,
                 }}
               />
             </div>

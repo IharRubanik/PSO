@@ -72,6 +72,10 @@
   opacity: 0.8;
 }
 
+.backLink {
+  display: none;
+}
+
 .titleWrap {
   position: absolute;
   bottom: 5.21vw;
@@ -88,49 +92,107 @@
   line-height: normal;
 }
 
-/* ===== RESPONSIVE ===== */
-@media (max-width: 768px) {
+/* ===== Figma 768px: block 768×700 ===== */
+@media (max-width: 860px) {
   .banner {
-    height: 500px;
+    height: 91.15vw;
   }
 
-  .content {
-    padding: 0 40px 60px;
+  .bg {
+    height: 100%;
   }
 
+  .overlay {
+    height: 91.15vw;
+  }
+
+  /* Figma: left:30, top:160(700-60-480), right:30, bottom:60 */
   .frame {
-    left: 30px;
-    right: 30px;
-    bottom: 30px;
-    top: 120px;
+    top: 20.83vw;
+    left: 3.91vw;
+    right: 3.91vw;
+    bottom: 7.81vw;
   }
 
+  /* Figma: left:30, top:120, font:16px */
+  .breadcrumbs {
+    top: 15.63vw;
+    left: 3.91vw;
+    font-size: 2.08vw;
+  }
+
+  .separator {
+    width: 0.52vw;
+    height: 0.52vw;
+    margin: 0 0.78vw;
+  }
+
+  /* Figma: left:55, bottom:120 */
+  .titleWrap {
+    bottom: 15.63vw;
+    left: 7.16vw;
+    max-width: 85.68vw;
+  }
+
+  /* Figma: Furore 60px, line-height:1.1 */
   .title {
-    font-size: 42px;
+    font-size: 7.81vw;
+    line-height: 1.1;
   }
 }
 
-@media (max-width: 480px) {
+/* ===== Figma 375px ===== */
+@media (max-width: 640px) {
+  /* Figma: banner h 400px → 106.67vw */
   .banner {
-    height: 400px;
+    height: 106.67vw;
   }
 
-  .content {
-    padding: 0 20px 40px;
+  .bg {
+    height: 100%;
   }
 
+  .overlay {
+    height: 106.67vw;
+  }
+
+  /* Figma: frame left/right 15px → 4vw, bottom 15px → 4vw */
   .frame {
-    left: 15px;
-    right: 15px;
-    bottom: 15px;
-    top: 100px;
-  }
-
-  .title {
-    font-size: 32px;
+    top: 33.6vw;
+    left: 4vw;
+    right: 4vw;
+    bottom: 4vw;
   }
 
   .breadcrumbs {
-    font-size: 14px;
+    display: none;
+  }
+
+  /* Figma: top 85px → 22.67vw, left 15px → 4vw, font 14px → 3.73vw */
+  .backLink {
+    display: flex;
+    align-items: center;
+    gap: 2.13vw;
+    position: absolute;
+    top: 22.67vw;
+    left: 4vw;
+    z-index: 3;
+    font-family: var(--font-body);
+    font-size: 3.73vw;
+    color: #d9d2ce;
+    opacity: 0.8;
+    text-decoration: none;
+  }
+
+  .titleWrap {
+    left: 3.91vw;
+    bottom: 20vw;
+    max-width: 92vw;
+  }
+
+  /* Figma: Furore 32px → 8.53vw, lh 1.1 */
+  .title {
+    font-size: 8.53vw;
+    line-height: 1.1;
   }
 }

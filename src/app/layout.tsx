@@ -2,8 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { Onest } from "next/font/google";
 import "./globals.css";
-import { Header } from "@/components/Header/Header";
-import { Footer } from "@/components/Footer/Footer";
+import { ClientLayout } from "@/components/UI/ClientLayout";
 
 const furore = localFont({
   src: "../../public/assets/fonts/furore/Furore.otf",
@@ -48,11 +47,7 @@ export default function RootLayout({
       className={`${furore.variable} ${proximaNovaRegular.variable} ${proximaNovaBold.variable} ${onest.variable}`}
     >
       <body>
-        <div id="page-root">
-          <Header />
-          <main>{children}</main>
-          <Footer />
-        </div>
+        <ClientLayout>{children}</ClientLayout>
       </body>
     </html>
   );

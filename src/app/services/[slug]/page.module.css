@@ -246,100 +246,296 @@
   color: var(--color-white);
 }
 
-/* ===== RESPONSIVE ===== */
-@media (max-width: 1200px) {
+/* ===== Figma 768px ===== */
+@media (max-width: 860px) {
+  /* Figma: 120px top gap between blocks */
+  .container {
+    padding: 15.63vw 3.91vw 0;
+  }
+
+  /* Figma: Furore 60px, line-height:1.1, width:708, mb ~50px → 6.51vw */
+  .sectionTitle {
+    font-size: 7.81vw;
+    line-height: 1.1;
+    margin-bottom: 6.51vw;
+    width: 92.19vw;
+  }
+
+  .stepsSectionTitle {
+    margin-bottom: 6.51vw;
+  }
+
+  .clientsSectionTitle {
+    margin-bottom: 3.91vw;
+  }
+
+  /* Figma: 1 column, gap image→text ~40px → 5.21vw */
+  .twoColGrid {
+    grid-template-columns: 1fr;
+    gap: 5.21vw;
+  }
+
+  /* Figma: image 708×445 → height 57.94vw */
+  .imageBlock {
+    height: 57.94vw;
+  }
+
+  /* Figma: Proxima Nova 20px, line-height:1.3 */
+  .textBlock {
+    font-size: 2.6vw;
+    line-height: 1.3;
+  }
+
+  /* Figma: gap between paragraphs 16px → 2.08vw */
+  .textBlock p {
+    margin-bottom: 2.08vw;
+  }
+
+  /* Figma 768: Steps — 120px top gap, padding 30px sides */
+  .stepsContainer {
+    padding: 15.63vw 3.91vw 3.91vw;
+  }
+
   .stepsGrid {
     grid-template-columns: 1fr;
+    gap: 5.21vw;
+  }
+
+  /* Figma: horizontal layout — icon left, title+text right */
+  .stepCard {
+    display: grid;
+    grid-template-columns: 14.32vw 1fr;
+    grid-template-rows: auto auto;
+    gap: 1.56vw 2.6vw;
+    align-items: start;
+  }
+
+  .stepCard .stepCrosshair {
+    grid-row: 1 / -1;
+  }
+
+  /* Figma: icon 110×110 → 14.32vw */
+  .stepCrosshair {
+    width: 14.32vw;
+    height: 14.32vw;
+  }
+
+  /* Figma: ring ~100px (99.796) → 12.99vw */
+  .stepCrosshairRing {
+    width: 12.99vw;
+    height: 12.99vw;
+  }
+
+  /* Figma: filled circle 58.991px → 7.68vw */
+  .stepCrosshairCenter {
+    width: 7.68vw;
+    height: 7.68vw;
+  }
+
+  /* Figma: number 24px → 3.13vw */
+  .stepNumber {
+    font-size: 3.13vw;
+  }
+
+  /* Figma: Furore 24px, line-height 1.25 */
+  .stepTitle {
+    font-size: 3.13vw;
+    line-height: 1.25;
+  }
+
+  /* Figma: Proxima Nova 20px, line-height 1.3, opacity 0.8 */
+  .stepText {
+    font-size: 2.6vw;
+    line-height: 1.3;
+  }
+
+  /* Figma 768: Clients section 768×1024, bg image */
+  .clientsSection {
+    min-height: 133.33vw;
+  }
+
+  /* Figma: title top:70, cards bottom:70 */
+  .clientsContainer {
+    padding: 9.11vw 3.91vw;
+    min-height: 133.33vw;
+  }
+
+  /* Figma: divider h:110, top: calc(50% - 164px) */
+  .clientsDivider {
+    height: 14.32vw;
+    top: calc(50% - 21.35vw);
+  }
+
+  /* Figma: 2 cols, gap 20px → 2.6vw, cards 344px wide */
+  .clientsGrid {
+    gap: 2.6vw;
+  }
+
+  .clientsGrid > * {
+    width: calc(50% - 1.3vw);
+  }
+
+  .clientCard {
+    padding: 2.6vw;
+    min-height: 18.23vw;
+    gap: 2.6vw;
+  }
+
+  /* Figma: Proxima Nova Bold 20px, line-height 1.3 */
+  .clientCardTitle {
+    font-size: 2.6vw;
+    line-height: 1.3;
   }
 }
 
-@media (max-width: 768px) {
+/* ===== Figma 375px ===== */
+@media (max-width: 640px) {
+  /* Figma: padding 15px → 4vw, top gap ~80px → 21.33vw */
   .container {
-    padding: 80px 30px;
+    padding: 21.33vw 4vw 0;
   }
 
+  /* Figma: Furore 32px → 8.53vw, lh 1.1, mb 40px → 10.67vw */
+  .sectionTitle {
+    font-size: 8.53vw;
+    line-height: 1.1;
+    margin-bottom: 10.67vw;
+    width: 92vw;
+  }
+
+  /* Figma: 1 column, gap 24px → 6.4vw */
+  .twoColGrid {
+    grid-template-columns: 1fr;
+    gap: 6.4vw;
+  }
+
+  /* Figma: image 345×217 → 57.87vw */
+  .imageBlock {
+    height: 57.87vw;
+  }
+
+  /* Figma: 18px → 4.8vw, lh 1.3 */
+  .textBlock {
+    font-size: 4.8vw;
+    line-height: 1.3;
+  }
+
+  /* Figma: paragraph gap 16px → 4.27vw */
+  .textBlock p {
+    margin-bottom: 4.27vw;
+  }
+
+  /* ===== Steps ===== */
+  .stepsSectionTitle {
+    margin-bottom: 10.67vw;
+  }
+
+  /* Figma: padding 15px → 4vw */
   .stepsContainer {
-    padding: 0 30px 80px;
+    padding: 21.33vw 4vw 21.33vw;
   }
 
+  /* Figma: 1 column, gap 32px → 8.53vw */
+  .stepsGrid {
+    grid-template-columns: 1fr;
+    gap: 8.53vw;
+  }
+
+  /* Figma: icon left, text right, gap 20px → 5.33vw */
+  .stepCard {
+    display: grid;
+    grid-template-columns: 18.67vw 1fr;
+    grid-template-rows: auto auto;
+    gap: 3.2vw 5.33vw;
+    align-items: start;
+  }
+
+  .stepCard .stepCrosshair {
+    grid-row: 1 / -1;
+  }
+
+  /* Figma: icon 70×70 → 18.67vw */
+  .stepCrosshair {
+    width: 18.67vw;
+    height: 18.67vw;
+  }
+
+  /* Figma: ring 63.5px → 16.93vw */
+  .stepCrosshairRing {
+    width: 16.93vw;
+    height: 16.93vw;
+  }
+
+  /* Figma: center 38px → 10.13vw */
+  .stepCrosshairCenter {
+    width: 10.13vw;
+    height: 10.13vw;
+  }
+
+  /* Figma: number 18px → 4.8vw */
+  .stepNumber {
+    font-size: 4.8vw;
+  }
+
+  /* Figma: Furore 20px → 5.33vw, lh 1.25 */
+  .stepTitle {
+    font-size: 5.33vw;
+    line-height: 1.25;
+  }
+
+  /* Figma: 18px → 4.8vw, lh 1.3 */
+  .stepText {
+    font-size: 4.8vw;
+    line-height: 1.3;
+  }
+
+  /* ===== Clients section ===== */
+  .clientsSectionTitle {
+    margin-bottom: 40vw;
+    width: 84vw;
+  }
+
+  /* Figma: py 50px → 13.33vw */
   .clientsSection {
     min-height: auto;
   }
 
   .clientsContainer {
-    padding: 40px 30px;
+    padding: 13.33vw 4vw;
     min-height: auto;
   }
 
-  .sectionTitle {
-    font-size: 42px;
-    margin-bottom: 40px;
-  }
-
-  .stepsSectionTitle {
-    margin-bottom: 40px;
-  }
-
-  .clientsSectionTitle {
-    margin-bottom: 40px;
-  }
-
-  .twoColGrid {
-    grid-template-columns: 1fr;
-    gap: 40px;
-  }
-
-  .imageBlock {
-    height: 350px;
-  }
-
-  .textBlock {
-    font-size: 18px;
-  }
-
   .clientsDivider {
-    display: none;
+    width: 100%;
+    height: 24.53vw;
+    top: 51.45vw;
+    left: 0;
   }
 
-  .clientsGrid > * {
-    width: calc(50% - 10px);
-  }
-
-  .clientCardTitle {
-    font-size: 18px;
-  }
-}
-
-@media (max-width: 480px) {
-  .container {
-    padding: 60px 15px;
-  }
-
-  .stepsContainer {
-    padding: 0 15px 60px;
-  }
-
-  .clientsContainer {
-    padding: 30px 15px;
-  }
-
-  .sectionTitle {
-    font-size: 32px;
-  }
-
-  .imageBlock {
-    height: 250px;
-  }
-
-  .textBlock {
-    font-size: 16px;
+  /* Figma: 1 column, gap 15px → 4vw */
+  .clientsGrid {
+    gap: 4vw;
   }
 
   .clientsGrid > * {
     width: 100%;
   }
 
-  .stepNumber {
-    font-size: 48px;
+  /* Figma: card padding 15px → 4vw, corners 20px → 5.33vw, 1px stroke */
+  .clientCard {
+    padding: 4vw;
+    min-height: auto;
+    --corner-stroke: 1px;
+  }
+
+  .clientCard span {
+    width: 5.33vw !important;
+    height: 5.33vw !important;
+  }
+
+  /* Figma: 18px → 4.8vw, lh 1.3 */
+  .clientCardTitle {
+    font-size: 4.8vw;
+    line-height: 1.3;
   }
 }

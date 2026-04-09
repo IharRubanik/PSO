@@ -17,7 +17,6 @@
   overflow: hidden;
 }
 
-
 .container {
   position: relative;
   z-index: 2;
@@ -100,130 +99,120 @@
   background: rgba(194, 161, 109, 0.2);
 }
 
-
-/* ===== RESPONSIVE 1440px ===== */
-@media (max-width: 1440px) {
+/* Figma 768px: fullscreen 768x1024 with bg image, title top-left, text bottom */
+@media (max-width: 860px) {
   .about {
-    height: auto;
-    padding: 160px 0 80px;
+    height: 133.33vw;
+  }
+
+  .bg {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 100%;
   }
 
   .container {
-    width: 100%;
-    position: relative;
+    height: 100%;
   }
 
+  /* Title: x:30, y:70 */
   .left {
     position: absolute;
-    left: 60px;
-    top: 0;
+    left: 3.91vw;
+    top: 9.11vw;
   }
 
+  .title {
+    font-size: 7.81vw;
+  }
+
+  /* Text block: x:30, y:648, w:708 */
   .right {
     position: absolute;
-    left: auto;
-    right: 60px;
-    top: 0;
-    width: 45%;
-    max-width: 587px;
+    left: 3.91vw;
+    top: auto;
+    bottom: 9.11vw;
+    width: calc(100% - 7.82vw);
     height: auto;
     overflow: visible;
+    gap: 4.56vw;
+    padding-top: 0;
   }
 
-  /* Spacer to give the absolutely-positioned children room */
-  .container::after {
-    content: "";
-    display: block;
-    min-height: 500px;
-  }
-
-}
-
-/* ===== RESPONSIVE 1024px ===== */
-@media (max-width: 1024px) {
-  .about {
-    padding: 120px 0 80px;
-  }
-
-  .left {
-    left: 40px;
-  }
-
-  .right {
-    right: 40px;
-    width: 50%;
-  }
-
-  .title {
-    font-size: 52px;
+  .textBlock {
+    gap: 3.13vw;
   }
 
   .text {
-    font-size: 20px;
-  }
-}
-
-/* ===== RESPONSIVE 768px ===== */
-@media (max-width: 768px) {
-  .about {
-    height: auto;
-    padding: 80px 0;
-  }
-
-  .container {
-    padding: 0 30px;
-    position: relative;
-  }
-
-  .left {
-    position: static;
-    display: block;
-    margin-bottom: 40px;
-  }
-
-  .right {
-    position: static;
-    width: 100%;
-    max-width: 100%;
-    height: auto;
-    overflow: visible;
-  }
-
-  .title {
-    font-size: 48px;
-  }
-
-  .text {
-    font-size: 18px;
-  }
-
-
-  .container::after {
-    display: none;
-  }
-}
-
-/* ===== RESPONSIVE 480px ===== */
-@media (max-width: 480px) {
-  .about {
-    padding: 60px 0;
-  }
-
-  .container {
-    padding: 0 15px;
-  }
-
-  .title {
-    font-size: 36px;
-  }
-
-  .text {
-    font-size: 16px;
+    font-size: 2.6vw;
+    line-height: 1.3;
   }
 
   .btn {
     width: 100%;
-    height: 50px;
-    font-size: 16px;
+    height: 8.46vw;
+    font-size: 2.6vw;
+    padding: 0;
+    align-self: stretch;
+  }
+}
+
+/* Figma 375px: 375×800 */
+@media (max-width: 640px) {
+  .about {
+    height: 213.33vw;
+  }
+
+  .bg {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 20vw;
+    height: 75.73vw;
+  }
+
+  /* Title: left 15px, top 0 */
+  .left {
+    position: absolute;
+    left: 4vw;
+    top: 0;
+  }
+
+  .title {
+    font-size: 8.53vw;
+  }
+
+  /* Text + button: left/right 15px, bottom 0 */
+  .right {
+    position: absolute;
+    left: 4vw;
+    top: auto;
+    bottom: 0;
+    width: calc(100% - 8vw);
+    height: auto;
+    overflow: visible;
+    gap: 6.4vw;
+    padding-top: 0;
+  }
+
+  .textBlock {
+    gap: 4.27vw;
+  }
+
+  /* Figma: 18px → 4.8vw, lh 1.3 */
+  .text {
+    font-size: 4.8vw;
+    line-height: 1.3;
+  }
+
+  /* Figma: w 345, h 55px → 14.67vw, font 18px → 4.8vw */
+  .btn {
+    width: 100%;
+    height: 14.67vw;
+    font-size: 4.8vw;
+    padding: 0;
+    align-self: stretch;
   }
 }

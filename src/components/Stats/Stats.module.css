@@ -91,102 +91,104 @@
   margin: 0;
 }
 
-/* ===== RESPONSIVE 1600px ===== */
-@media (max-width: 1600px) {
+/* Figma 768px: 2x2 grid, smaller numbers */
+@media (max-width: 860px) {
   .stats {
     height: auto;
-    padding: 40px 0;
   }
 
   .container {
-    height: auto;
-    padding: 0 60px;
-  }
-
-  .grid {
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
-    height: auto;
-    padding: 0;
-  }
-
-  .item {
-    width: 100%;
-    height: auto;
-    min-height: 160px;
-  }
-}
-
-/* ===== RESPONSIVE 1024px ===== */
-@media (max-width: 1024px) {
-  .container {
-    padding: 0 40px;
-  }
-
-  .number {
-    font-size: 64px;
-  }
-
-  .prefix,
-  .suffix {
-    font-size: 64px;
-  }
-
-  .label {
-    font-size: 18px;
-  }
-}
-
-/* ===== RESPONSIVE 768px ===== */
-@media (max-width: 768px) {
-  .stats {
-    padding: 60px 0;
-  }
-
-  .container {
-    padding: 0 30px;
+    padding: 0 3.91vw;
   }
 
   .grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-  }
-
-  .number {
-    font-size: 56px;
-  }
-
-  .prefix,
-  .suffix {
-    font-size: 56px;
-  }
-
-  .label {
-    font-size: 16px;
-  }
-}
-
-/* ===== RESPONSIVE 480px ===== */
-@media (max-width: 480px) {
-  .container {
-    padding: 0 15px;
+    gap: 2.6vw;
+    padding-top: 3.91vw;
+    padding-bottom: 3.91vw;
   }
 
   .item {
-    padding: 24px 16px;
-    gap: 16px;
+    height: 27.08vw;
+    padding: 5.21vw 2.6vw;
+    gap: 3.13vw;
+    overflow: clip;
   }
 
   .number {
-    font-size: 44px;
+    font-size: 10.42vw;
   }
 
   .prefix,
   .suffix {
-    font-size: 44px;
+    font-size: 10.42vw;
   }
 
   .label {
-    font-size: 14px;
+    font-size: 2.34vw;
+  }
+}
+
+/* Figma 375px: 2×2 grid, cards 165×151, gap 15px */
+@media (max-width: 640px) {
+  .stats {
+    height: auto;
+    padding-top: 13.33vw;
+    padding-bottom: 21.33vw;
+  }
+
+  .container {
+    padding: 0 4vw;
+  }
+
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 4vw;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  /* Figma: 165×151 → 44vw × 40.27vw, px 15 py 20 */
+  .item {
+    height: 40.27vw;
+    padding: 5.33vw 4vw;
+    gap: 4.27vw;
+  }
+
+  /* Figma: corners 30×30 → 8vw, hide SVG frame and use CSS corners */
+  .frame {
+    display: none;
+  }
+
+  .item {
+    background:
+      /* top-left */
+      linear-gradient(rgba(255,255,255,0.3), rgba(255,255,255,0.3)) 0 0 / 0.27vw 8vw no-repeat,
+      linear-gradient(rgba(255,255,255,0.3), rgba(255,255,255,0.3)) 0 0 / 8vw 0.27vw no-repeat,
+      /* top-right */
+      linear-gradient(rgba(255,255,255,0.3), rgba(255,255,255,0.3)) 100% 0 / 0.27vw 8vw no-repeat,
+      linear-gradient(rgba(255,255,255,0.3), rgba(255,255,255,0.3)) 100% 0 / 8vw 0.27vw no-repeat,
+      /* bottom-left */
+      linear-gradient(rgba(255,255,255,0.3), rgba(255,255,255,0.3)) 0 100% / 0.27vw 8vw no-repeat,
+      linear-gradient(rgba(255,255,255,0.3), rgba(255,255,255,0.3)) 0 100% / 8vw 0.27vw no-repeat,
+      /* bottom-right */
+      linear-gradient(rgba(255,255,255,0.3), rgba(255,255,255,0.3)) 100% 100% / 0.27vw 8vw no-repeat,
+      linear-gradient(rgba(255,255,255,0.3), rgba(255,255,255,0.3)) 100% 100% / 8vw 0.27vw no-repeat;
+  }
+
+  /* Figma: Furore 46px → 12.27vw */
+  .number {
+    font-size: 12.27vw;
+  }
+
+  .prefix,
+  .suffix {
+    font-size: 12.27vw;
+  }
+
+  /* Figma: 16px → 4.27vw, lh 1.3 */
+  .label {
+    font-size: 4.27vw;
+    line-height: 1.3;
   }
 }

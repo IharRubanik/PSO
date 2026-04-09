@@ -91,76 +91,118 @@ a.infoValue:hover {
   overflow: hidden;
 }
 
-/* ===== RESPONSIVE ===== */
-@media (max-width: 1200px) {
-  .infoGrid {
-    width: 100%;
-  }
-
-  .infoLabel {
-    font-size: 22px;
-  }
-
-  .infoValue {
-    font-size: 18px;
-  }
-}
-
-@media (max-width: 768px) {
+@media (max-width: 860px) {
   .section {
     height: auto;
   }
 
   .container {
-    padding: 80px 30px 0;
+    padding: 15.63vw 3.91vw 0;
   }
 
   .title {
-    font-size: 42px;
+    font-size: 7.81vw;
+    margin-bottom: 6.51vw;
   }
 
   .infoGrid {
     flex-wrap: wrap;
-    margin-top: 48px;
-    gap: 24px;
+    gap: 4.17vw 2.6vw;
+    width: 100%;
+    margin-top: 0;
+  }
+
+  .infoItem {
+    flex: 0 0 40.36vw;
+    gap: 1.56vw;
   }
 
   .separator {
+    width: 5.21vw;
+    height: 6.12vw;
+  }
+
+  /* Hide middle separator — only show 1st and 3rd */
+  .separator:nth-child(4) {
     display: none;
   }
 
+  .separator img {
+    width: 5.21vw;
+    height: 6.12vw;
+  }
+
   .infoLabel {
-    font-size: 20px;
+    font-size: 3.13vw;
+    line-height: 1.25;
   }
 
   .infoValue {
-    font-size: 16px;
+    font-size: 2.6vw;
+    line-height: 1.3;
   }
 
   .mapWrapper {
     position: relative;
     top: auto;
-    left: auto;
-    right: auto;
-    height: 350px;
-    margin-top: 48px;
+    height: 83.59vw;
+    margin-top: 8.59vw;
   }
 }
 
-@media (max-width: 480px) {
+/* Figma 375px: 375×980, vertical list, no separators */
+@media (max-width: 640px) {
+  .section {
+    height: auto;
+  }
+
   .container {
-    padding: 60px 15px 0;
+    padding: 29.33vw 4vw 0;
   }
 
+  /* Figma: Furore 32px → 8.53vw, lh 1.1 */
   .title {
-    font-size: 32px;
+    font-size: 8.53vw;
+    margin-bottom: 6.4vw;
   }
 
+  /* Figma: vertical column, gap 24px → 6.4vw */
   .infoGrid {
     flex-direction: column;
+    flex-wrap: nowrap;
+    gap: 6.4vw;
+    width: 100%;
+    margin-top: 0;
   }
 
+  .infoItem {
+    flex: none;
+    width: 100%;
+    gap: 3.2vw;
+  }
+
+  /* Hide all separators on 375px */
+  .separator {
+    display: none;
+  }
+
+  /* Figma: Furore 20px → 5.33vw, lh 1.25 */
+  .infoLabel {
+    font-size: 5.33vw;
+    line-height: 1.25;
+  }
+
+  /* Figma: Proxima Nova 18px → 4.8vw, lh 1.3 */
+  .infoValue {
+    font-size: 4.8vw;
+    line-height: 1.3;
+  }
+
+  /* Figma: map h 500px → 133.33vw */
   .mapWrapper {
-    height: 250px;
+    position: relative;
+    top: auto;
+    height: 133.33vw;
+    margin-top: 10.67vw;
   }
 }

@@ -16,27 +16,27 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: 20px;
+  padding: 1.04vw;
 }
 
 .errorCode {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 40px;
+  margin-bottom: 2.08vw;
 }
 
 .digit {
   font-family: var(--font-heading);
-  font-size: 250px;
+  font-size: 13.02vw;
   line-height: 1;
   color: var(--color-white);
 }
 
 .crosshairWrapper {
   position: relative;
-  width: 200px;
-  height: 200px;
+  width: 10.42vw;
+  height: 10.42vw;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -59,8 +59,8 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 4px;
-  height: 4px;
+  width: 0.21vw;
+  height: 0.21vw;
   border-radius: 50%;
   background: var(--color-gold);
   transform: translate(-50%, -50%);
@@ -69,31 +69,31 @@
 .title {
   font-family: var(--font-body-bold);
   font-weight: 700;
-  font-size: 24px;
+  font-size: 1.25vw;
   color: var(--color-white);
-  margin-bottom: 16px;
+  margin-bottom: 0.83vw;
 }
 
 .subtitle {
   font-family: var(--font-body);
-  font-size: 18px;
+  font-size: 0.94vw;
   color: var(--color-text);
   opacity: 0.8;
-  max-width: 400px;
+  max-width: 20.83vw;
   line-height: 1.5;
-  margin-bottom: 40px;
+  margin-bottom: 2.08vw;
 }
 
 .button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  height: 65px;
-  padding: 0 40px;
+  height: 3.39vw;
+  padding: 0 2.08vw;
   border: 1px solid var(--color-gold);
   font-family: var(--font-body-bold);
   font-weight: 700;
-  font-size: 20px;
+  font-size: 1.04vw;
   text-transform: uppercase;
   color: var(--color-white);
   background: transparent;
@@ -105,64 +105,122 @@
   background: rgba(194, 161, 109, 0.2);
 }
 
-/* ===== RESPONSIVE ===== */
-@media (max-width: 768px) {
+/* ===== Figma 768px ===== */
+@media (max-width: 860px) {
+  .content {
+    padding: 2.6vw;
+  }
+
+  .errorCode {
+    margin-bottom: 5.21vw;
+  }
+
   .digit {
-    font-size: 150px;
+    font-size: 32.55vw;
   }
 
   .crosshairWrapper {
-    width: 130px;
-    height: 130px;
+    width: 26.04vw;
+    height: 26.04vw;
   }
 
-  .crosshair {
-    width: 130px;
-    height: 130px;
+  .centerDot {
+    width: 0.52vw;
+    height: 0.52vw;
   }
 
   .title {
-    font-size: 20px;
+    font-size: 3.13vw;
+    margin-bottom: 2.08vw;
   }
 
   .subtitle {
-    font-size: 16px;
-    max-width: 320px;
+    font-size: 2.34vw;
+    max-width: 52.08vw;
+    margin-bottom: 5.21vw;
   }
 
   .button {
-    height: 55px;
-    font-size: 16px;
-    padding: 0 30px;
+    height: 8.46vw;
+    padding: 0 5.21vw;
+    font-size: 2.6vw;
   }
 }
 
-@media (max-width: 480px) {
+/* ===== Figma 375px ===== */
+@media (max-width: 640px) {
+  .content {
+    padding: 4vw;
+    position: relative;
+  }
+
+  /* Figma: frame with corners, inset 100px 15px 30px 15px */
+  .wrapper::after {
+    content: "";
+    position: absolute;
+    top: 26.67vw;
+    left: 4vw;
+    right: 4vw;
+    bottom: 8vw;
+    pointer-events: none;
+    z-index: 2;
+    background:
+      /* top-left */
+      linear-gradient(rgba(255,255,255,0.3), rgba(255,255,255,0.3)) 0 0 / 0.27vw 8vw no-repeat,
+      linear-gradient(rgba(255,255,255,0.3), rgba(255,255,255,0.3)) 0 0 / 8vw 0.27vw no-repeat,
+      /* top-right */
+      linear-gradient(rgba(255,255,255,0.3), rgba(255,255,255,0.3)) 100% 0 / 0.27vw 8vw no-repeat,
+      linear-gradient(rgba(255,255,255,0.3), rgba(255,255,255,0.3)) 100% 0 / 8vw 0.27vw no-repeat,
+      /* bottom-left */
+      linear-gradient(rgba(255,255,255,0.3), rgba(255,255,255,0.3)) 0 100% / 0.27vw 8vw no-repeat,
+      linear-gradient(rgba(255,255,255,0.3), rgba(255,255,255,0.3)) 0 100% / 8vw 0.27vw no-repeat,
+      /* bottom-right */
+      linear-gradient(rgba(255,255,255,0.3), rgba(255,255,255,0.3)) 100% 100% / 0.27vw 8vw no-repeat,
+      linear-gradient(rgba(255,255,255,0.3), rgba(255,255,255,0.3)) 100% 100% / 8vw 0.27vw no-repeat;
+  }
+
+  .errorCode {
+    margin-bottom: 6.4vw;
+  }
+
+  /* Figma: 404 block 280px wide, digits ~26vw, crosshair 169px → 45.07vw */
   .digit {
-    font-size: 100px;
+    font-size: 35.13vw;
   }
 
   .crosshairWrapper {
-    width: 90px;
-    height: 90px;
+    width: 40vw;
+    height: 40vw;
   }
 
   .crosshair {
-    width: 90px;
-    height: 90px;
+    width: 40vw;
+    height: 40vw;
   }
 
+  .centerDot {
+    width: 1.07vw;
+    height: 1.07vw;
+  }
+
+  /* Figma: 18px → 4.8vw, mb 4px → 1.07vw */
   .title {
-    font-size: 18px;
+    font-size: 4.8vw;
+    margin-bottom: 1.07vw;
   }
 
+  /* Figma: 18px → 4.8vw, full-width, mb 24px → 6.4vw */
   .subtitle {
-    font-size: 14px;
-    max-width: 280px;
+    font-size: 4.8vw;
+    max-width: 92vw;
+    margin-bottom: 6.4vw;
   }
 
+  /* Figma: w 100% (345px), h 55px → 14.67vw, font 18px → 4.8vw */
   .button {
-    height: 50px;
-    font-size: 14px;
+    width: 92vw;
+    height: 14.67vw;
+    padding: 0;
+    font-size: 4.8vw;
   }
 }

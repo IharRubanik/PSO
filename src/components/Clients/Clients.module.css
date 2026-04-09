@@ -46,13 +46,19 @@
 
 /* ===== Crosshair divider ===== */
 /* Figma: SVG full-width 1920px, top:369px, height:110px */
-.divider {
+.dividerWrap {
   position: absolute;
   top: 19.22vw;
   left: 0;
   width: 100%;
   height: 5.73vw;
   z-index: 3;
+}
+
+.divider {
+  width: 100%;
+  height: 100%;
+  display: block;
 }
 
 /* ===== Marquee ===== */
@@ -114,81 +120,114 @@
   z-index: 1;
 }
 
-/* ===== RESPONSIVE 768px ===== */
-@media (max-width: 768px) {
+/* Figma 768px: partners in 2 columns (static grid instead of marquee) */
+@media (max-width: 860px) {
   .section {
     height: auto;
-    min-height: 600px;
-    padding-bottom: 60px;
+    min-height: auto;
+    padding-bottom: 11.72vw;
   }
 
   .titleWrap {
     position: relative;
-    top: auto;
-    left: auto;
-    width: auto;
-    padding: 80px 30px 0;
-    z-index: 3;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 11.72vw 3.91vw 13.8vw;
   }
 
   .title {
-    font-size: 42px;
+    font-size: 7.81vw;
+  }
+
+  .dividerWrap {
+    position: relative;
+    top: 0;
+    height: 14.32vw;
   }
 
   .divider {
-    display: none;
+    width: 100%;
+    height: 100%;
   }
 
+  /* Marquee stays as scrolling row */
   .marqueeWrapper {
     position: relative;
-    top: auto;
-    left: auto;
-    right: auto;
-    margin-top: 40px;
-    height: 180px;
+    top: 0;
+    height: 26.04vw;
+    overflow: hidden;
+    padding: 0;
+    margin-top: 13.8vw;
   }
 
   .marqueeTrack {
-    height: 180px;
+    gap: 2.6vw;
+    height: 26.04vw;
   }
 
   .card {
-    width: 320px;
-    height: 180px;
-    padding: 30px 16px;
+    width: 44.79vw;
+    height: 26.04vw;
+    padding: 5.21vw 2.6vw;
   }
 
   .cardTitle {
-    font-size: 22px;
+    font-size: 3.13vw;
+    line-height: 1.25;
   }
 }
 
-/* ===== RESPONSIVE 480px ===== */
-@media (max-width: 480px) {
+/* Figma 375px: 375×640 */
+@media (max-width: 640px) {
+  .section {
+    height: auto;
+    min-height: auto;
+    padding-bottom: 13.07vw;
+  }
+
   .titleWrap {
-    padding: 60px 15px 0;
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 13.33vw 4.27vw 10.67vw;
   }
 
+  /* Figma: Furore 32px → 8.53vw, lh 1.1 */
   .title {
-    font-size: 32px;
+    font-size: 8.53vw;
+    line-height: 1.1;
   }
 
+  .dividerWrap {
+    display: none;
+  }
+
+  /* Figma: marquee h=137px → 36.53vw, gap 20px → 5.33vw */
   .marqueeWrapper {
-    height: 160px;
-    margin-top: 32px;
+    position: relative;
+    top: 0;
+    height: 36.53vw;
+    overflow: hidden;
+    margin-top: 0;
   }
 
   .marqueeTrack {
-    height: 160px;
+    gap: 5.33vw;
+    height: 36.53vw;
   }
 
+  /* Figma: card 255×135 → 68vw × 36vw, px 15 py 30 */
   .card {
-    width: 260px;
-    height: 160px;
-    padding: 24px 12px;
+    width: 68vw;
+    height: 36vw;
+    padding: 8vw 4vw;
   }
 
+  /* Figma: 20px → 5.33vw, lh 1.25 */
   .cardTitle {
-    font-size: 18px;
+    font-size: 5.33vw;
+    line-height: 1.25;
   }
 }

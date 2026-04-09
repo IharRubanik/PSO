@@ -36,7 +36,7 @@ export function Header() {
 
   return (
     <>
-      <header className={`${styles.header} ${scrolled ? styles.scrolled : ""}`}>
+      <header className={`${styles.header} ${scrolled ? styles.scrolled : ""} ${menuOpen ? styles.menuOpen : ""}`}>
         <div className={styles.bar}>
           {/* Left: Navigation */}
           <nav className={styles.nav}>
@@ -99,17 +99,26 @@ export function Header() {
       </header>
 
       {/* Mobile Nav */}
-      <div className={`${styles.mobileNav} ${menuOpen ? styles.mobileNavActive : ""}`}>
-        {NAV_ITEMS.map((item) => (
-          <Link
-            key={item.href}
-            href={item.href}
-            className={styles.mobileNavLink}
-            onClick={() => setMenuOpen(false)}
-          >
-            {item.label}
-          </Link>
-        ))}
+      <div
+        className={`${styles.mobileNav} ${menuOpen ? styles.mobileNavActive : ""}`}
+        style={{ backdropFilter: "blur(7.5px)", WebkitBackdropFilter: "blur(7.5px)" }}
+      >
+        {NAV_ITEMS.map((item) => {
+          const isActive =
+            item.href === "/"
+              ? pathname === "/"
+              : pathname.startsWith(item.href.split("/").slice(0, 2).join("/"));
+          return (
+            <Link
+              key={item.href}
+              href={item.href}
+              className={`${styles.mobileNavLink} ${isActive ? styles.mobileNavLinkActive : ""}`}
+              onClick={() => setMenuOpen(false)}
+            >
+              {item.label}
+            </Link>
+          );
+        })}
         <a href="tel:+79999999999" className={styles.mobileNavPhone}>
           8 999 999-99-99
         </a>
