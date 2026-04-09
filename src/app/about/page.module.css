@@ -677,9 +677,9 @@
 
   /* Figma: title top 50px, text below, padding 15px */
   .armamentContent {
-    padding: 13.33vw 4vw 13.33vw;
+    padding: 13.33vw 4vw;
     flex-direction: column;
-    gap: 5.33vw;
+    gap: 45.33vw;
   }
 
   /* Figma: Furore 32px → 8.53vw, lh 1.1 */
