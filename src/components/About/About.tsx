@@ -5,7 +5,18 @@ import Link from "next/link";
 import { AnimatedSection } from "../UI/AnimatedSection";
 import styles from "./About.module.css";
 
-export function About() {
+interface AboutProps {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  data: any;
+  locale: string;
+}
+
+export function About({ data, locale }: AboutProps) {
+  const sectionTitle = data?.sectionTitle ?? "";
+  const paragraph1 = data?.paragraph1 ?? "";
+  const paragraph2 = data?.paragraph2 ?? "";
+  const buttonText = data?.buttonText ?? "";
+
   return (
     <section className={styles.about} id="about">
       {/* Background */}
@@ -22,26 +33,21 @@ export function About() {
       <div className={styles.container}>
         {/* Title — absolute left */}
         <AnimatedSection direction="left" className={styles.left}>
-          <h2 className={styles.title}>О компании</h2>
+          <h2 className={styles.title}>{sectionTitle}</h2>
         </AnimatedSection>
 
         {/* Right block: text + button */}
         <AnimatedSection direction="right" delay={0.2} className={styles.right}>
           <div className={styles.textBlock}>
             <p className={styles.text}>
-              Наша компания — это команда профессионалов с многолетним опытом
-              работы в сфере безопасности. Мы предоставляем полный спектр охранных
-              услуг для бизнеса, государственных организаций и частных клиентов.
+              {paragraph1}
             </p>
             <p className={styles.text}>
-              Главная задача нашей работы — обеспечить надежную защиту имущества,
-              сотрудников и посетителей объектов. Мы используем современные
-              технологии безопасности, тщательно отбираем персонал и постоянно
-              повышаем уровень подготовки сотрудников.
+              {paragraph2}
             </p>
           </div>
-          <Link href="/about" className={styles.btn}>
-            Узнать больше
+          <Link href={`/${locale}/about`} className={styles.btn}>
+            {buttonText}
           </Link>
         </AnimatedSection>
 

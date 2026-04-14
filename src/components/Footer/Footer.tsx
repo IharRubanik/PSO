@@ -6,19 +6,45 @@ import { Corners } from "../Corners/Corners";
 import { AnimatedSection } from "../UI/AnimatedSection";
 import styles from "./Footer.module.css";
 
-const MENU_LINKS = [
-  { label: "Главная", href: "/" },
-  { label: "Услуги", href: "/services" },
-  { label: "О компании", href: "/about" },
-  { label: "Контакты", href: "/contacts" },
-];
+interface FooterProps {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  data: any;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  siteSettings: any;
+  locale: string;
+}
 
-const LEGAL_LINKS = [
-  { label: "Политика конфиденциальности", href: "/privacy" },
-  { label: "Условия использования", href: "/terms" },
-];
+export function Footer({ data, siteSettings, locale }: FooterProps) {
+  const menuLinks: { label: string; href: string }[] = Array.isArray(data?.menuLinks)
+    ? data.menuLinks.map((item: any) => ({
+        label: item.label ?? "",
+        href: item.href
+          ? `/${locale}${item.href === "/" ? "" : item.href}`
+          : `/${locale}`,
+      }))
+    : [];
 
-export function Footer() {
+  const legalLinks: { label: string; href: string }[] = Array.isArray(data?.legalLinks)
+    ? data.legalLinks.map((item: any) => ({
+        label: item.label ?? "",
+        href: item.href
+          ? `/${locale}${item.href === "/" ? "" : item.href}`
+          : `/${locale}`,
+      }))
+    : [];
+
+  const phone: string = siteSettings?.phone ?? "";
+  const email: string = siteSettings?.email ?? "";
+  const telegram: string = siteSettings?.telegram ?? "";
+
+  const colMenuTitle: string = data?.colMenuTitle ?? "";
+  const colPhoneTitle: string = data?.colPhoneTitle ?? "";
+  const colEmailTitle: string = data?.colEmailTitle ?? "";
+  const colSocialsTitle: string = data?.colSocialsTitle ?? "";
+  const colLegalTitle: string = data?.colLegalTitle ?? "";
+  const copyright: string = siteSettings?.copyright ?? "";
+  const logoAlt: string = data?.logoAlt ?? siteSettings?.companyName ?? "Логотип";
+
   return (
     <footer className={styles.footer}>
       <div className="noise-overlay" />
@@ -30,7 +56,7 @@ export function Footer() {
             <Corners size={30} color="rgba(255,255,255,0.3)" strokeWidth={2} />
             <Image
               src="/assets/images/logo.svg"
-              alt="Фантом Групп"
+              alt={logoAlt}
               width={159}
               height={277}
               className={styles.logo}
@@ -41,14 +67,10 @@ export function Footer() {
         {/* Col 2: Menu */}
         <AnimatedSection delay={0.1}>
           <div className={styles.column}>
-            <h4 className={styles.columnTitle}>Меню</h4>
+            <h4 className={styles.columnTitle}>{colMenuTitle}</h4>
             <nav className={styles.nav}>
-              {MENU_LINKS.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className={styles.navLink}
-                >
+              {menuLinks.map((link) => (
+                <Link key={link.href} href={link.href} className={styles.navLink}>
                   <span className={styles.navText}>{link.label}</span>
                   <span className={styles.navHover}>{link.label}</span>
                 </Link>
@@ -70,30 +92,40 @@ export function Footer() {
         {/* Col 3: Contacts */}
         <AnimatedSection delay={0.2}>
           <div className={`${styles.column} ${styles.columnContacts}`}>
-            <h4 className={styles.columnTitle}>Позвонить нам</h4>
-            <a href="tel:89999999999" className={styles.contactValue}>
-              8 999 999-99-99
-            </a>
+            {phone && (
+              <>
+                <h4 className={styles.columnTitle}>{colPhoneTitle}</h4>
+                <a
+                  href={`tel:${phone.replace(/\s|-/g, "")}`}
+                  className={styles.contactValue}
+                >
+                  {phone}
+                </a>
+              </>
+            )}
 
-            <h4 className={`${styles.columnTitle} ${styles.mt}`}>
-              Написать нам
-            </h4>
-            <a
-              href="mailto:info@security-company.ru"
-              className={styles.contactValue}
-            >
-              info@security-company.ru
-            </a>
+            {email && (
+              <>
+                <h4 className={`${styles.columnTitle} ${styles.mt}`}>{colEmailTitle}</h4>
+                <a href={`mailto:${email}`} className={styles.contactValue}>
+                  {email}
+                </a>
+              </>
+            )}
 
-            <h4 className={`${styles.columnTitle} ${styles.mt}`}>Соцсети</h4>
-            <a
-              href="https://t.me/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className={styles.contactValue}
-            >
-              Telegram
-            </a>
+            {telegram && (
+              <>
+                <h4 className={`${styles.columnTitle} ${styles.mt}`}>{colSocialsTitle}</h4>
+                <a
+                  href="https://t.me/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.contactValue}
+                >
+                  {telegram}
+                </a>
+              </>
+            )}
           </div>
         </AnimatedSection>
 
@@ -110,14 +142,10 @@ export function Footer() {
         {/* Col 4: Legal */}
         <AnimatedSection delay={0.3}>
           <div className={styles.column}>
-            <h4 className={styles.columnTitle}>О защите данных</h4>
+            <h4 className={styles.columnTitle}>{colLegalTitle}</h4>
             <nav className={styles.nav}>
-              {LEGAL_LINKS.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className={styles.navLink}
-                >
+              {legalLinks.map((link) => (
+                <Link key={link.href} href={link.href} className={styles.navLink}>
                   <span className={styles.navText}>{link.label}</span>
                   <span className={styles.navHover}>{link.label}</span>
                 </Link>
@@ -129,9 +157,7 @@ export function Footer() {
 
       {/* Bottom bar */}
       <div className={styles.bottom}>
-        <p className={styles.copyright}>
-          2026&copy;Фантом групп. Все права защищены
-        </p>
+        <p className={styles.copyright}>{copyright}</p>
       </div>
     </footer>
   );

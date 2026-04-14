@@ -5,15 +5,20 @@ import { AnimatedSection } from "../UI/AnimatedSection";
 import { Corners } from "../Corners/Corners";
 import styles from "./Clients.module.css";
 
-/* Figma: 4 client sectors, repeated for seamless marquee */
-const CLIENTS = [
-  "Финансовый сектор",
-  "Недвижимость",
-  "логистика",
-  "Промышленность",
-];
+interface ClientsProps {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  data: any;
+}
 
-export function Clients() {
+export function Clients({ data }: ClientsProps) {
+  const sectionTitle = data?.sectionTitle ?? "";
+
+  const rawItems: unknown[] = Array.isArray(data?.items) ? data.items : [];
+  // Items may be strings or objects with a `name` field
+  const CLIENTS: string[] = rawItems.map((item) =>
+    typeof item === "string" ? item : (item as { name?: string })?.name ?? ""
+  );
+
   /* Quadruple the list so the marquee never shows gaps at any viewport width */
   const repeated = [...CLIENTS, ...CLIENTS, ...CLIENTS, ...CLIENTS];
 
@@ -39,7 +44,7 @@ export function Clients() {
       {/* Figma: title at left:60px, top:160px, width:890px */}
       <AnimatedSection className={styles.titleWrap}>
         <h2 className={styles.title}>
-          Клиенты в ведущих секторах экономики
+          {sectionTitle}
         </h2>
       </AnimatedSection>
 

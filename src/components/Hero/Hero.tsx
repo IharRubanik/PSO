@@ -5,11 +5,21 @@ import Image from "next/image";
 import { Corners } from "../Corners/Corners";
 import styles from "./Hero.module.css";
 
-export function Hero() {
+interface HeroProps {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  data: any;
+  locale: string;
+}
+
+export function Hero({ data }: HeroProps) {
   const scrollToForm = () => {
     const form = document.getElementById("contact-form");
     if (form) form.scrollIntoView({ behavior: "smooth" });
   };
+
+  const title = data?.title ?? "";
+  const subtitle = data?.subtitle ?? "";
+  const cta = data?.ctaText ?? "";
 
   return (
     <section className={styles.hero}>
@@ -43,9 +53,7 @@ export function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.5 }}
         >
-          {"Защищаем "}
-          <br />
-          самое ценное
+          {title}
         </motion.h1>
         <motion.p
           className={styles.subtitle}
@@ -53,9 +61,7 @@ export function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.8 }}
         >
-          Комплексные решения безопасности для бизнеса, частной собственности и
-          мероприятий. Работаем круглосуточно и гарантируем оперативное
-          реагирование.
+          {subtitle}
         </motion.p>
 
         {/* CTA Button — inside content for tablet/mobile flow */}
@@ -67,7 +73,7 @@ export function Hero() {
           transition={{ duration: 1, delay: 1.1 }}
           whileHover={{ boxShadow: "0 0 30px rgba(194, 161, 109, 0.15)" }}
         >
-          {"Связаться  с нами"}
+          {cta}
         </motion.button>
       </div>
 
@@ -80,7 +86,7 @@ export function Hero() {
         transition={{ duration: 1, delay: 1.1 }}
         whileHover={{ boxShadow: "0 0 30px rgba(194, 161, 109, 0.15)" }}
       >
-        {"Связаться  с нами"}
+        {cta}
       </motion.button>
     </section>
   );

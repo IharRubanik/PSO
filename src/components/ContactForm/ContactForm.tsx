@@ -3,14 +3,34 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { PhoneInput } from "@/components/UI/PhoneInput";
 import { usePathname } from "next/navigation";
 import { AnimatedSection } from "../UI/AnimatedSection";
 import styles from "./ContactForm.module.css";
 
-export function ContactForm() {
+interface ContactFormProps {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  data: any;
+  locale: string;
+}
+
+export function ContactForm({ data, locale }: ContactFormProps) {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const pathname = usePathname();
+
+  const title = data?.title ?? "";
+  const description = data?.description ?? "";
+  const featureText = data?.featureText ?? "";
+  const placeholderName = data?.placeholderName ?? "";
+  const placeholderEmail = data?.placeholderEmail ?? "";
+  const placeholderMessage = data?.placeholderMessage ?? "";
+  const consentText = data?.consentText ?? "";
+  const consentLink = data?.consentLinkText ?? "";
+  const submitLabel = data?.submitText ?? "";
+  const sendingLabel = data?.sendingText ?? "";
+  const sentLabel = data?.sentText ?? "";
+  const errorSending = data?.errorText ?? "";
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -36,7 +56,7 @@ export function ContactForm() {
         form.reset();
       }, 3000);
     } catch {
-      alert("Ошибка при отправке. Попробуйте позже.");
+      alert(errorSending);
     } finally {
       setLoading(false);
     }
@@ -51,14 +71,12 @@ export function ContactForm() {
           {/* Left column */}
           <div className={styles.left}>
             <AnimatedSection>
-              <h2 className={styles.title}>Обсудить защиту</h2>
+              <h2 className={styles.title}>{title}</h2>
             </AnimatedSection>
 
             <AnimatedSection delay={0.2}>
               <p className={styles.description}>
-                Оставьте заявку, и наш охранный менеджер персонально подберёт формат
-                защиты — от физической охраны и постов до комплексных решений
-                с видеонаблюдением и пультовой охраной
+                {description}
               </p>
             </AnimatedSection>
 
@@ -73,9 +91,7 @@ export function ContactForm() {
                   />
                 </div>
                 <p className={styles.featureText}>
-                  Консультация без обязательств | Быстрый ответ менеджера |
-                  Индивидуальный подбор уровня охраны под ваш объект | Прозрачный
-                  расчет стоимости и условия сотрудничества
+                  {featureText}
                 </p>
               </div>
             </AnimatedSection>
@@ -88,26 +104,28 @@ export function ContactForm() {
                 <input
                   type="text"
                   name="name"
-                  placeholder="Имя*"
+                  placeholder={placeholderName}
                   className={styles.input}
                   required
                 />
-                <input
-                  type="tel"
+                <PhoneInput
                   name="phone"
-                  placeholder="Телефон*"
                   className={styles.input}
                   required
                 />
                 <input
                   type="email"
                   name="email"
-                  placeholder="Почта"
+                  placeholder={placeholderEmail}
                   className={styles.input}
+                  pattern="[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}"
+                  onInput={(e) => {
+                    e.currentTarget.value = e.currentTarget.value.replace(/[^a-zA-Z0-9@._+\-]/g, "");
+                  }}
                 />
                 <textarea
                   name="message"
-                  placeholder="Сообщение..."
+                  placeholder={placeholderMessage}
                   className={`${styles.input} ${styles.textarea}`}
                 />
               </div>
@@ -116,15 +134,15 @@ export function ContactForm() {
                 <input type="checkbox" required />
                 <span className={styles.checkmark} />
                 <span className={styles.checkboxText}>
-                  Я согласен(на) на обработку моих{" "}
-                  <Link href="/privacy" className={styles.privacyLink}>
-                    Персональных данных
+                  {consentText}{" "}
+                  <Link href={`/${locale}/privacy`} className={styles.privacyLink}>
+                    {consentLink}
                   </Link>
                 </span>
               </label>
 
               <button type="submit" className={styles.submit}>
-                {loading ? "Отправка..." : submitted ? "Отправлено!" : "Отправить заявку"}
+                {loading ? sendingLabel : submitted ? sentLabel : submitLabel}
               </button>
             </form>
           </AnimatedSection>

@@ -1,0 +1,251 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - banner [ref=e3]:
+      - generic [ref=e4]:
+        - navigation [ref=e5]:
+          - link:
+            - /url: /ru
+          - link:
+            - /url: /ru#services
+          - link:
+            - /url: /ru/about
+          - link:
+            - /url: /ru/contacts
+        - link "Фантом Групп" [ref=e6] [cursor=pointer]:
+          - /url: /ru
+          - img "Фантом Групп" [ref=e7]
+        - generic [ref=e8]:
+          - link "8 999 999-99-99" [ref=e9] [cursor=pointer]:
+            - /url: tel:89999999999
+          - button "Оставить заявку" [ref=e10] [cursor=pointer]
+          - generic [ref=e11]:
+            - link "Ru" [ref=e12] [cursor=pointer]:
+              - /url: /ru
+            - link "EN" [ref=e13] [cursor=pointer]:
+              - /url: /en
+    - main [ref=e14]:
+      - generic [ref=e15]:
+        - generic [ref=e16]:
+          - generic [ref=e19]:
+            - heading "Защищаем самое ценное" [level=1] [ref=e20]
+            - paragraph [ref=e21]: Комплексные решения безопасности для бизнеса, частной собственности и мероприятий. Работаем круглосуточно и гарантируем оперативное реагирование.
+          - button "Связаться с нами" [ref=e22] [cursor=pointer]
+        - generic [ref=e24]:
+          - generic [ref=e25]:
+            - heading "Услуги" [level=2] [ref=e27]
+            - paragraph [ref=e29]: Комплексные решения безопасности для бизнеса, частной собственности и мероприятий. Работаем круглосуточно и гарантируем оперативное реагирование.
+          - generic [ref=e30]:
+            - link "Личная охрана 01 Личная охрана Группа быстрого реагирования оперативно выезжает на объект при поступлении сигнала тревоги. Сотрудники быстро оценивают ситуацию, пресекают противоправные действия и обеспечивают безопасность до полного устранения угрозы. подробнее" [ref=e32] [cursor=pointer]:
+              - /url: /ru/services/personal-guard
+              - img "Личная охрана" [ref=e34]
+              - generic [ref=e41]: "01"
+              - generic [ref=e42]:
+                - generic [ref=e43]:
+                  - heading "Личная охрана" [level=3] [ref=e44]
+                  - paragraph [ref=e45]: Группа быстрого реагирования оперативно выезжает на объект при поступлении сигнала тревоги. Сотрудники быстро оценивают ситуацию, пресекают противоправные действия и обеспечивают безопасность до полного устранения угрозы.
+                - generic [ref=e46]:
+                  - generic [ref=e47]: подробнее
+                  - img [ref=e48]
+            - link "Группа быстрого реагирования 02 Группа быстрого реагирования Группа быстрого реагирования оперативно выезжает на объект при поступлении сигнала тревоги. Сотрудники быстро оценивают ситуацию, пресекают противоправные действия и обеспечивают безопасность до полного устранения угрозы. подробнее" [ref=e51] [cursor=pointer]:
+              - /url: /ru/services/rapid-response
+              - img "Группа быстрого реагирования" [ref=e53]
+              - generic [ref=e60]: "02"
+              - generic [ref=e61]:
+                - generic [ref=e62]:
+                  - heading "Группа быстрого реагирования" [level=3] [ref=e63]
+                  - paragraph [ref=e64]: Группа быстрого реагирования оперативно выезжает на объект при поступлении сигнала тревоги. Сотрудники быстро оценивают ситуацию, пресекают противоправные действия и обеспечивают безопасность до полного устранения угрозы.
+                - generic [ref=e65]:
+                  - generic [ref=e66]: подробнее
+                  - img [ref=e67]
+            - link "Объектовая безопасность 03 Объектовая безопасность подробнее" [ref=e70] [cursor=pointer]:
+              - /url: /ru/services/physical-security
+              - img "Объектовая безопасность" [ref=e72]
+              - generic [ref=e79]: "03"
+              - generic [ref=e80]:
+                - heading "Объектовая безопасность" [level=3] [ref=e82]
+                - generic [ref=e83]:
+                  - generic [ref=e84]: подробнее
+                  - img [ref=e85]
+            - link "Контрнаблюдение 04 Контрнаблюдение Персональная защита руководителей, предпринимателей и частных лиц. Наши специалисты обеспечивают безопасность клиента, контролируют окружающую обстановку и оперативно реагируют на любые потенциальные угрозы. подробнее" [ref=e88] [cursor=pointer]:
+              - /url: /ru/services/counter-surveillance
+              - img "Контрнаблюдение" [ref=e90]
+              - generic [ref=e97]: "04"
+              - generic [ref=e98]:
+                - generic [ref=e99]:
+                  - heading "Контрнаблюдение" [level=3] [ref=e100]
+                  - paragraph [ref=e101]: Персональная защита руководителей, предпринимателей и частных лиц. Наши специалисты обеспечивают безопасность клиента, контролируют окружающую обстановку и оперативно реагируют на любые потенциальные угрозы.
+                - generic [ref=e102]:
+                  - generic [ref=e103]: подробнее
+                  - img [ref=e104]
+            - link "Инкассация и иные задачи по запросу 05 Инкассация и иные задачи по запросу подробнее" [ref=e107] [cursor=pointer]:
+              - /url: /ru/services/collection
+              - img "Инкассация и иные задачи по запросу" [ref=e109]
+              - generic [ref=e116]: "05"
+              - generic [ref=e117]:
+                - heading "Инкассация и иные задачи по запросу" [level=3] [ref=e119]
+                - generic [ref=e120]:
+                  - generic [ref=e121]: подробнее
+                  - img [ref=e122]
+            - link "Комплексная защита для первых лиц и бизнеса 06 Комплексная защита для первых лиц и бизнеса подробнее" [ref=e125] [cursor=pointer]:
+              - /url: /ru/services/complex-protection
+              - img "Комплексная защита для первых лиц и бизнеса" [ref=e127]
+              - generic [ref=e134]: "06"
+              - generic [ref=e135]:
+                - heading "Комплексная защита для первых лиц и бизнеса" [level=3] [ref=e137]
+                - generic [ref=e138]:
+                  - generic [ref=e139]: подробнее
+                  - img [ref=e140]
+        - generic [ref=e144]:
+          - heading "О компании" [level=2] [ref=e146]
+          - generic [ref=e147]:
+            - generic [ref=e148]:
+              - paragraph [ref=e149]: Наша компания — это команда профессионалов с многолетним опытом работы в сфере безопасности. Мы предоставляем полный спектр охранных услуг для бизнеса, государственных организаций и частных клиентов.
+              - paragraph [ref=e150]: Главная задача нашей работы — обеспечить надежную защиту имущества, сотрудников и посетителей объектов. Мы используем современные технологии безопасности, тщательно отбираем персонал и постоянно повышаем уровень подготовки сотрудников.
+            - link "Узнать больше" [ref=e151] [cursor=pointer]:
+              - /url: /ru/about
+        - generic [ref=e154]:
+          - generic [ref=e155]:
+            - img
+            - generic [ref=e157]: "0"
+            - paragraph [ref=e158]: лет успешной работы на рынке безопасности
+          - generic [ref=e159]:
+            - img
+            - generic [ref=e160]:
+              - generic [ref=e161]: ">"
+              - generic [ref=e162]: "0"
+            - paragraph [ref=e163]: объектов находятся под нашей охраной
+          - generic [ref=e164]:
+            - img
+            - generic [ref=e165]:
+              - generic [ref=e166]: ">"
+              - generic [ref=e167]: "0"
+            - paragraph [ref=e168]: специалистов в штате компании
+          - generic [ref=e169]:
+            - img
+            - generic [ref=e171]: 24/7
+            - paragraph [ref=e172]: круглосуточный контроль безопасности
+        - generic [ref=e175]:
+          - heading "Что вы получаете от сотрудничества" [level=2] [ref=e177]
+          - generic [ref=e178]:
+            - generic [ref=e180]:
+              - generic [ref=e186]: "01"
+              - generic [ref=e187]:
+                - heading "профессиональную команду" [level=3] [ref=e188]
+                - paragraph [ref=e189]: Опытный штат бывших сотрудников спецслужб и ветеранов боевых действий.
+            - generic [ref=e191]:
+              - generic [ref=e197]: "02"
+              - generic [ref=e198]:
+                - heading "высокую степень безопасности" [level=3] [ref=e199]
+                - paragraph [ref=e200]: Взаимодействуем с государственными структурами с целью обеспечения упреждающей безопасности клиента.
+            - generic [ref=e202]:
+              - generic [ref=e208]: "03"
+              - generic [ref=e209]:
+                - heading "Комплексный анализ рисков" [level=3] [ref=e210]
+                - paragraph [ref=e211]: Закрываем вопросы безопасности клиента путем проведения глубокого анализа угроз, моделирования рисков, связанных с бизнесом и безопасностью клиента, выявления потенциальных точек уязвимости там, где обычная охрана их не видит.
+        - generic [ref=e212]:
+          - heading "Клиенты в ведущих секторах экономики" [level=2] [ref=e216]
+          - generic [ref=e219]:
+            - generic [ref=e220]:
+              - heading [level=3]
+            - generic [ref=e221]:
+              - heading [level=3]
+            - generic [ref=e222]:
+              - heading [level=3]
+            - generic [ref=e223]:
+              - heading [level=3]
+            - generic [ref=e224]:
+              - heading [level=3]
+            - generic [ref=e225]:
+              - heading [level=3]
+            - generic [ref=e226]:
+              - heading [level=3]
+            - generic [ref=e227]:
+              - heading [level=3]
+            - generic [ref=e228]:
+              - heading [level=3]
+            - generic [ref=e229]:
+              - heading [level=3]
+            - generic [ref=e230]:
+              - heading [level=3]
+            - generic [ref=e231]:
+              - heading [level=3]
+            - generic [ref=e232]:
+              - heading [level=3]
+            - generic [ref=e233]:
+              - heading [level=3]
+            - generic [ref=e234]:
+              - heading [level=3]
+            - generic [ref=e235]:
+              - heading [level=3]
+        - generic [ref=e237]:
+          - heading "Свяжитесь с нами" [level=2] [ref=e239]
+          - generic [ref=e241]:
+            - generic [ref=e242]:
+              - heading "Адрес" [level=4] [ref=e243]
+              - paragraph [ref=e244]: Москва, 1-й Красногвардейский проезд дом 22 с 1
+            - img [ref=e246]
+            - generic [ref=e247]:
+              - heading "Позвонить нам" [level=4] [ref=e248]
+              - link "8 999 999-99-99" [ref=e249] [cursor=pointer]:
+                - /url: tel:8 999 999-99-99
+            - img [ref=e251]
+            - generic [ref=e252]:
+              - heading "Написать нам" [level=4] [ref=e253]
+              - link "info@security-company.ru" [ref=e254] [cursor=pointer]:
+                - /url: mailto:info@security-company.ru
+            - img [ref=e256]
+            - generic [ref=e257]:
+              - heading "Соцсети" [level=4] [ref=e258]
+              - link "https://t.me/" [ref=e259] [cursor=pointer]:
+                - /url: https://t.me/https://t.me/
+          - img "Карта" [ref=e262]
+        - generic [ref=e265]:
+          - generic [ref=e266]:
+            - heading "Обсудить защиту" [level=2] [ref=e268]
+            - paragraph [ref=e270]: Оставьте заявку, и наш охранный менеджер персонально подберёт формат защиты — от физической охраны и постов до комплексных решений с видеонаблюдением и пультовой охраной
+            - paragraph [ref=e274]: Консультация без обязательств | Быстрый ответ менеджера | Индивидуальный подбор уровня охраны под ваш объект | Прозрачный расчет стоимости и условия сотрудничества
+          - generic [ref=e276]:
+            - generic [ref=e277]:
+              - textbox "Имя*" [ref=e278]
+              - textbox "+7 (___) ___-__-__" [ref=e279]
+              - textbox "Почта" [ref=e280]
+              - textbox "Сообщение..." [ref=e281]
+            - generic [ref=e284] [cursor=pointer]:
+              - text: Я согласен(на) на обработку моих
+              - link "Персональных данных" [ref=e285]:
+                - /url: /ru/privacy
+            - button "Отправить заявку" [ref=e286] [cursor=pointer]
+    - contentinfo [ref=e287]:
+      - generic [ref=e288]:
+        - img "Фантом Групп" [ref=e291]
+        - generic [ref=e293]:
+          - heading "Меню" [level=4] [ref=e294]
+          - navigation [ref=e295]:
+            - link [ref=e296] [cursor=pointer]:
+              - /url: /ru
+            - link [ref=e297] [cursor=pointer]:
+              - /url: /ru#services
+            - link [ref=e298] [cursor=pointer]:
+              - /url: /ru/about
+            - link [ref=e299] [cursor=pointer]:
+              - /url: /ru/contacts
+        - generic [ref=e302]:
+          - heading "Позвонить нам" [level=4] [ref=e303]
+          - link "8 999 999-99-99" [ref=e304] [cursor=pointer]:
+            - /url: tel:89999999999
+          - heading "Написать нам" [level=4] [ref=e305]
+          - link "info@security-company.ru" [ref=e306] [cursor=pointer]:
+            - /url: mailto:info@security-company.ru
+          - heading "Соцсети" [level=4] [ref=e307]
+          - link "https://t.me/" [ref=e308] [cursor=pointer]:
+            - /url: https://t.me/
+        - generic [ref=e311]:
+          - heading "О защите данных" [level=4] [ref=e312]
+          - navigation [ref=e313]:
+            - link [ref=e314] [cursor=pointer]:
+              - /url: /ru/privacy
+            - link [ref=e315] [cursor=pointer]:
+              - /url: /ru/terms
+      - paragraph [ref=e317]: 2026©Фантом групп. Все права защищены
+  - button "Open Next.js Dev Tools" [ref=e323] [cursor=pointer]:
+    - img [ref=e324]

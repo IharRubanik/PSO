@@ -5,22 +5,41 @@ import { AnimatedSection } from "../UI/AnimatedSection";
 import { YandexMap } from "../YandexMap/YandexMap";
 import styles from "./ContactInfo.module.css";
 
-export function ContactInfo() {
+interface ContactInfoProps {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  data: any;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  siteSettings: any;
+  locale: string;
+}
+
+export function ContactInfo({ data, siteSettings }: ContactInfoProps) {
+  const sectionTitle = data?.sectionTitle ?? "";
+  const labelAddress = data?.labelAddress ?? "";
+  const labelPhone = data?.labelPhone ?? "";
+  const labelEmail = data?.labelEmail ?? "";
+  const labelSocials = data?.labelSocials ?? "";
+
+  const address = siteSettings?.address ?? "";
+  const phone = siteSettings?.phone ?? "";
+  const email = siteSettings?.email ?? "";
+  const telegram = siteSettings?.telegram ?? "";
+
   return (
     <section className={styles.section}>
       <div className="noise-overlay" />
 
       <div className={styles.container}>
         <AnimatedSection>
-          <h2 className={styles.title}>Свяжитесь с нами</h2>
+          <h2 className={styles.title}>{sectionTitle}</h2>
         </AnimatedSection>
 
         <AnimatedSection delay={0.2}>
           <div className={styles.infoGrid}>
             <div className={styles.infoItem}>
-              <h4 className={styles.infoLabel}>Адрес</h4>
+              <h4 className={styles.infoLabel}>{labelAddress}</h4>
               <p className={styles.infoValue}>
-                Москва, 1-й Красногвардейский проезд дом 22 с 1
+                {address}
               </p>
             </div>
 
@@ -35,9 +54,9 @@ export function ContactInfo() {
             </div>
 
             <div className={styles.infoItem}>
-              <h4 className={styles.infoLabel}>Позвонить нам</h4>
-              <a href="tel:89999999999" className={styles.infoValue}>
-                8 999 999-99-99
+              <h4 className={styles.infoLabel}>{labelPhone}</h4>
+              <a href={`tel:${phone}`} className={styles.infoValue}>
+                {phone}
               </a>
             </div>
 
@@ -52,12 +71,12 @@ export function ContactInfo() {
             </div>
 
             <div className={styles.infoItem}>
-              <h4 className={styles.infoLabel}>Написать нам</h4>
+              <h4 className={styles.infoLabel}>{labelEmail}</h4>
               <a
-                href="mailto:info@security-company.ru"
+                href={`mailto:${email}`}
                 className={styles.infoValue}
               >
-                info@security-company.ru
+                {email}
               </a>
             </div>
 
@@ -72,14 +91,14 @@ export function ContactInfo() {
             </div>
 
             <div className={styles.infoItem}>
-              <h4 className={styles.infoLabel}>Соцсети</h4>
+              <h4 className={styles.infoLabel}>{labelSocials}</h4>
               <a
-                href="https://t.me/"
+                href={telegram ? `https://t.me/${telegram.replace(/^@/, "")}` : "https://t.me/"}
                 target="_blank"
                 rel="noopener noreferrer"
                 className={styles.infoValue}
               >
-                Telegram
+                {telegram}
               </a>
             </div>
           </div>

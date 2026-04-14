@@ -8,15 +8,14 @@ interface StatItem {
   display?: string;
   prefix?: string;
   suffix?: string;
+  displayOverride?: string;
   label: string;
 }
 
-const statsData: StatItem[] = [
-  { num: 12, label: "лет успешной работы на рынке безопасности" },
-  { num: 350, prefix: ">", label: "объектов находятся под нашей охраной" },
-  { num: 200, prefix: ">", label: "специалистов в штате компании" },
-  { display: "24/7", label: "круглосуточный контроль безопасности" },
-];
+interface StatsProps {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  data: any;
+}
 
 function easeOut(t: number): number {
   return 1 - Math.pow(1 - t, 3);
@@ -66,6 +65,8 @@ function CounterItem({ item, index }: { item: StatItem; index: number }) {
     return () => observer.disconnect();
   }, [hasAnimated, animate]);
 
+  const displayValue = item.displayOverride || item.display;
+
   return (
     <div
       className={`${styles.item} ${hasAnimated ? styles.itemVisible : ""}`}
@@ -80,8 +81,8 @@ function CounterItem({ item, index }: { item: StatItem; index: number }) {
         aria-hidden="true"
       />
       <div className={styles.number}>
-        {item.display ? (
-          <span>{item.display}</span>
+        {displayValue ? (
+          <span>{displayValue}</span>
         ) : (
           <>
             {item.prefix && (
@@ -99,13 +100,15 @@ function CounterItem({ item, index }: { item: StatItem; index: number }) {
   );
 }
 
-export function Stats() {
+export function Stats({ data }: StatsProps) {
+  const items: StatItem[] = Array.isArray(data?.items) ? data.items : [];
+
   return (
     <section className={styles.stats}>
       <div className="noise-overlay" />
       <div className={styles.container}>
         <div className={styles.grid}>
-          {statsData.map((item, i) => (
+          {items.map((item, i) => (
             <CounterItem key={i} item={item} index={i} />
           ))}
         </div>

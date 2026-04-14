@@ -1,19 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-
-// In-memory storage until PostgreSQL is connected
-// Will be replaced with Prisma when DB adapter is configured
-interface Application {
-  id: string;
-  name: string;
-  phone: string;
-  email: string | null;
-  message: string | null;
-  page: string | null;
-  status: string;
-  createdAt: string;
-}
-
-const applications: Application[] = [];
+import { getPayload } from "@/lib/payload";
 
 export async function POST(request: NextRequest) {
   try {
@@ -27,18 +13,19 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const application: Application = {
-      id: crypto.randomUUID(),
-      name,
-      phone,
-      email: email || null,
-      message: message || null,
-      page: page || null,
-      status: "NEW",
-      createdAt: new Date().toISOString(),
-    };
+    const payload = await getPayload();
 
-    applications.push(application);
+    const application = await payload.create({
+      collection: "applications",
+      data: {
+        name,
+        phone,
+        email: email || undefined,
+        message: message || undefined,
+        page: page || undefined,
+        status: "new",
+      },
+    });
 
     return NextResponse.json({ success: true, id: application.id });
   } catch {
@@ -47,8 +34,4 @@ export async function POST(request: NextRequest) {
       { status: 500 }
     );
   }
-}
-
-export async function GET() {
-  return NextResponse.json(applications);
 }
