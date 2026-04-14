@@ -2,6 +2,7 @@ import { buildConfig } from "payload";
 import { postgresAdapter } from "@payloadcms/db-postgres";
 import { sqliteAdapter } from "@payloadcms/db-sqlite";
 import { lexicalEditor } from "@payloadcms/richtext-lexical";
+import { s3Storage } from "@payloadcms/storage-s3";
 import sharp from "sharp";
 import path from "path";
 import { fileURLToPath } from "url";
@@ -56,6 +57,25 @@ export default buildConfig({
         client: { url: "file:./data/payload-dev.db" },
       }),
   sharp,
+  plugins: [
+    ...(process.env.S3_BUCKET
+      ? [
+          s3Storage({
+            collections: { media: true },
+            bucket: process.env.S3_BUCKET,
+            config: {
+              endpoint: process.env.S3_ENDPOINT,
+              region: process.env.S3_REGION || "auto",
+              credentials: {
+                accessKeyId: process.env.S3_ACCESS_KEY_ID || "",
+                secretAccessKey: process.env.S3_SECRET_ACCESS_KEY || "",
+              },
+              forcePathStyle: true,
+            },
+          }),
+        ]
+      : []),
+  ],
   typescript: {
     outputFile: path.resolve(dirname, "payload-types.ts"),
   },
