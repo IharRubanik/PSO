@@ -52,9 +52,11 @@ export default buildConfig({
   db: process.env.DATABASE_URL
     ? postgresAdapter({
         pool: { connectionString: process.env.DATABASE_URL },
+        push: true,
       })
     : sqliteAdapter({
         client: { url: "file:./data/payload-dev.db" },
+        push: true,
       }),
   sharp,
   plugins: [
