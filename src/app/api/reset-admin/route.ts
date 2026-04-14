@@ -14,7 +14,7 @@ export async function POST() {
       limit: 100,
     });
 
-    const emails = existing.docs.map((u) => ({ id: u.id, email: (u as { email?: string }).email }));
+    const emails = existing.docs.map((u: Record<string, unknown>) => ({ id: u.id, email: u.email }));
 
     // Удаляем всех существующих
     for (const u of existing.docs) {
