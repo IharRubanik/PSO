@@ -24,8 +24,8 @@ export default async function ContactsPage({
 
   return (
     <ContactsPageClient
-      data={contactsPage}
-      siteSettings={siteSettings}
+      data={contactsPage ?? {}}
+      siteSettings={siteSettings ?? {}}
       contactFormData={contactFormData}
       locale={locale}
     />

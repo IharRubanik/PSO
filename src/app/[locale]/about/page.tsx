@@ -24,7 +24,7 @@ export default async function AboutPage({
 
   return (
     <AboutPageClient
-      data={aboutPage}
+      data={aboutPage ?? {}}
       contactFormData={contactFormData}
       locale={locale}
       backText={commonTexts?.backText ?? "Назад"}
