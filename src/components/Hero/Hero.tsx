@@ -2,12 +2,13 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import type { HeroData } from "@/types/cms";
+import { resolveMediaUrl } from "@/lib/cms-helpers";
 import { Corners } from "../Corners/Corners";
 import styles from "./Hero.module.css";
 
 interface HeroProps {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  data: any;
+  data: HeroData | null;
   locale: string;
 }
 
@@ -20,13 +21,14 @@ export function Hero({ data }: HeroProps) {
   const title = data?.title ?? "";
   const subtitle = data?.subtitle ?? "";
   const cta = data?.ctaText ?? "";
+  const bgImage = resolveMediaUrl(data?.backgroundImage, "/assets/images/service1.jpg");
 
   return (
     <section className={styles.hero}>
       {/* Background */}
       <div className={styles.bg}>
         <Image
-          src="/assets/images/service1.jpg"
+          src={bgImage}
           alt=""
           fill
           priority

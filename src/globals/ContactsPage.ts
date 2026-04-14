@@ -8,12 +8,32 @@ export const ContactsPage: GlobalConfig = {
     update: ({ req: { user } }) => !!user,
   },
   admin: {
+    hideAPIURL: true,
     group: { ru: "Страницы", en: "Pages" },
   },
   fields: [
     {
       type: "tabs",
       tabs: [
+        // ── Видимость блоков ──────────────────────────────────────────
+        {
+          label: { ru: "Видимость блоков", en: "Block Visibility" },
+          fields: [
+            {
+              name: "showContactInfo",
+              type: "checkbox",
+              label: { ru: "Показывать контактную информацию и карту", en: "Show Contact Info & Map" },
+              defaultValue: true,
+            },
+            {
+              name: "showContactForm",
+              type: "checkbox",
+              label: { ru: "Показывать форму обратной связи", en: "Show Contact Form" },
+              defaultValue: true,
+            },
+          ],
+        },
+
         // ── Tab 1: Основное ──────────────────────────────────────────
         {
           label: { ru: "Основное", en: "General" },

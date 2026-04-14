@@ -8,12 +8,50 @@ export const AboutPage: GlobalConfig = {
     update: ({ req: { user } }) => !!user,
   },
   admin: {
+    hideAPIURL: true,
     group: { ru: "Страницы", en: "Pages" },
   },
   fields: [
     {
       type: "tabs",
       tabs: [
+        // ── Видимость блоков ──────────────────────────────────────────
+        {
+          label: { ru: "Видимость блоков", en: "Block Visibility" },
+          fields: [
+            {
+              name: "showAbout",
+              type: "checkbox",
+              label: { ru: "Показывать секцию «О нас»", en: "Show About Section" },
+              defaultValue: true,
+            },
+            {
+              name: "showLicenses",
+              type: "checkbox",
+              label: { ru: "Показывать лицензии", en: "Show Licenses" },
+              defaultValue: true,
+            },
+            {
+              name: "showArmament",
+              type: "checkbox",
+              label: { ru: "Показывать вооружение", en: "Show Armament" },
+              defaultValue: true,
+            },
+            {
+              name: "showTraining",
+              type: "checkbox",
+              label: { ru: "Показывать подготовку сотрудников", en: "Show Training" },
+              defaultValue: true,
+            },
+            {
+              name: "showContactForm",
+              type: "checkbox",
+              label: { ru: "Показывать форму обратной связи", en: "Show Contact Form" },
+              defaultValue: true,
+            },
+          ],
+        },
+
         // ── Tab 1: Баннер ────────────────────────────────────────────
         {
           label: { ru: "Баннер", en: "Banner" },

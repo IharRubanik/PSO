@@ -8,6 +8,7 @@ export const FooterGlobal: GlobalConfig = {
     update: ({ req: { user } }) => !!user,
   },
   admin: {
+    hideAPIURL: true,
     group: { ru: "Компоненты", en: "Components" },
   },
   fields: [
@@ -61,6 +62,7 @@ export const FooterGlobal: GlobalConfig = {
               name: "menuLinks",
               type: "array",
               label: { ru: "Ссылки меню", en: "Menu Links" },
+              maxRows: 4,
               fields: [
                 {
                   name: "label",
@@ -86,6 +88,7 @@ export const FooterGlobal: GlobalConfig = {
               name: "legalLinks",
               type: "array",
               label: { ru: "Юридические ссылки", en: "Legal Links" },
+              maxRows: 2,
               fields: [
                 {
                   name: "label",

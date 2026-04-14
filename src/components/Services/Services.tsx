@@ -3,14 +3,13 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import type { ServicesSectionData, ServiceCardData } from "@/types/cms";
 import { AnimatedSection } from "../UI/AnimatedSection";
 import styles from "./Services.module.css";
 
 interface ServicesProps {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  sectionData: any;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  services: any[];
+  sectionData: ServicesSectionData | null;
+  services: ServiceCardData[];
   locale: string;
 }
 
@@ -38,9 +37,10 @@ export function Services({ sectionData, services, locale }: ServicesProps) {
         </div>
         <div className={styles.grid}>
           {services.map((service, i) => {
+            const cardImg = service.cardImage;
             const imageUrl =
-              service.cardImage?.url ??
-              service.cardImage ??
+              (typeof cardImg === "object" && cardImg?.url) ||
+              (typeof cardImg === "string" ? cardImg : null) ||
               `/assets/images/card${i + 1}.jpg`;
 
             return (

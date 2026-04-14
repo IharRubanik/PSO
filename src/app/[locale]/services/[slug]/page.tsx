@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import { getPayload } from "@/lib/payload";
+import { extractContactFormData } from "@/lib/cms-helpers";
 import { ServiceDetailClient } from "./ServiceDetailClient";
 
 export const revalidate = 60;
@@ -12,6 +13,9 @@ export default async function ServiceDetailPage({
   const { locale, slug } = await params;
   const payload = await getPayload();
 
+  const fg = (slug: string) =>
+    payload.findGlobal({ slug: slug as "site-settings", locale: locale as "ru" | "en" }).catch(() => null);
+
   const [servicesResult, homepage, commonTexts] = await Promise.all([
     payload.find({
       collection: "services",
@@ -19,8 +23,8 @@ export default async function ServiceDetailPage({
       locale: locale as "ru" | "en",
       limit: 1,
     }),
-    payload.findGlobal({ slug: "homepage", locale: locale as "ru" | "en" }),
-    payload.findGlobal({ slug: "common-texts", locale: locale as "ru" | "en" }),
+    fg("homepage"),
+    fg("common-texts"),
   ]);
 
   const service = servicesResult.docs[0];
@@ -30,35 +34,19 @@ export default async function ServiceDetailPage({
   }
 
   // Map homepage fields to the shape ServiceDetailClient expects
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const hp = homepage as any;
+  const hp = homepage as Record<string, unknown>;
   const servicesSection = {
-    breadcrumbHome: hp?.servicesBreadcrumbHome,
-    serviceFeaturesSectionTitle: hp?.servicesFeaturesSectionTitle,
-    serviceStepsSectionTitle: hp?.servicesStepsSectionTitle,
-    serviceClientsSectionTitle: hp?.servicesClientsSectionTitle,
+    breadcrumbHome: hp?.servicesBreadcrumbHome as string | undefined,
+    serviceFeaturesSectionTitle: hp?.servicesFeaturesSectionTitle as string | undefined,
+    serviceStepsSectionTitle: hp?.servicesStepsSectionTitle as string | undefined,
+    serviceClientsSectionTitle: hp?.servicesClientsSectionTitle as string | undefined,
   };
 
-  const contactFormData = {
-    title: hp?.contactFormTitle,
-    description: hp?.contactFormDescription,
-    featureText: hp?.contactFormFeatureText,
-    featureIcon: hp?.contactFormFeatureIcon,
-    placeholderName: hp?.contactFormPlaceholderName,
-    placeholderEmail: hp?.contactFormPlaceholderEmail,
-    placeholderMessage: hp?.contactFormPlaceholderMessage,
-    consentText: hp?.contactFormConsentText,
-    consentLinkText: hp?.contactFormConsentLinkText,
-    submitText: hp?.contactFormSubmitText,
-    sendingText: hp?.contactFormSendingText,
-    sentText: hp?.contactFormSentText,
-    errorText: hp?.contactFormErrorText,
-  };
+  const contactFormData = extractContactFormData(hp);
 
   return (
     <ServiceDetailClient
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      service={service as any}
+      service={service as import("./ServiceDetailClient").ServiceData}
       servicesSection={servicesSection}
       contactFormData={contactFormData}
       locale={locale}

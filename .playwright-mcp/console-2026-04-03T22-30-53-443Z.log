@@ -1,5 +1,0 @@
-[       3ms] [ERROR] The Content Security Policy directive 'frame-ancestors' is ignored when delivered via a <meta> element. @ https://yandex.ru/legal/maps_termsofuse/ru/?lang=ru:0
-[       4ms] [WARNING] <link rel=preload> has an unsupported `type` value @ https://yandex.ru/legal/maps_termsofuse/ru/?lang=ru:0
-[       4ms] [WARNING] <link rel=preload> has an unsupported `type` value @ https://yandex.ru/legal/maps_termsofuse/ru/?lang=ru:0
-[       4ms] [WARNING] <link rel=preload> has an unsupported `type` value @ https://yandex.ru/legal/maps_termsofuse/ru/?lang=ru:0
-[       4ms] [WARNING] <link rel=preload> has an unsupported `type` value @ https://yandex.ru/legal/maps_termsofuse/ru/?lang=ru:0

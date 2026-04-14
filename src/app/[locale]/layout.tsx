@@ -55,13 +55,10 @@ export async function generateMetadata({
 
   try {
     const payload = await getPayload();
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const result = await (payload as any).findGlobal({
-      slug: "site-settings",
-      locale,
-    });
-    if (result?.metaTitle) title = result.metaTitle;
-    if (result?.metaDescription) description = result.metaDescription;
+    const result = await payload.findGlobal({ slug: "site-settings" as "site-settings", locale }) as Record<string, unknown>;
+    const seo = result?.seo as { metaTitle?: string; metaDescription?: string } | undefined;
+    if (seo?.metaTitle) title = seo.metaTitle;
+    if (seo?.metaDescription) description = seo.metaDescription;
   } catch {
     // fallback to defaults
   }
@@ -78,17 +75,16 @@ export default async function LocaleLayout({
 }) {
   const { locale } = await params;
   const payload = await getPayload();
-
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const p = payload as any;
+  const fg = (slug: string) =>
+    payload.findGlobal({ slug: slug as "site-settings", locale }).catch(() => null);
 
   const [siteSettings, navigation, footer, requestModal, commonTexts] =
     await Promise.all([
-      p.findGlobal({ slug: "site-settings", locale }).catch(() => null),
-      p.findGlobal({ slug: "navigation", locale }).catch(() => null),
-      p.findGlobal({ slug: "footer", locale }).catch(() => null),
-      p.findGlobal({ slug: "request-modal", locale }).catch(() => null),
-      p.findGlobal({ slug: "common-texts", locale }).catch(() => null),
+      fg("site-settings"),
+      fg("navigation"),
+      fg("footer"),
+      fg("request-modal"),
+      fg("common-texts"),
     ]);
 
   return (

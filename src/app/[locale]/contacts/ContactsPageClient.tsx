@@ -16,6 +16,8 @@ interface ContactsPageData {
   labelPhone?: string | null;
   labelEmail?: string | null;
   labelSocials?: string | null;
+  showContactInfo?: boolean;
+  showContactForm?: boolean;
 }
 
 interface SiteSettingsData {
@@ -25,13 +27,14 @@ interface SiteSettingsData {
   email?: string | null;
   telegram?: string | null;
   telegramLabel?: string | null;
+  yandexMapsApiKey?: string | null;
+  mapCenter?: { lng?: number | null; lat?: number | null } | null;
 }
 
 interface ContactsPageClientProps {
   data: ContactsPageData;
   siteSettings: SiteSettingsData;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  contactFormData: any;
+  contactFormData: import("@/types/cms").ContactFormData;
   locale: string;
 }
 
@@ -66,7 +69,7 @@ export function ContactsPageClient({ data, siteSettings, contactFormData, locale
       </section>
 
       {/* Contact info */}
-      <section className={styles.infoSection}>
+      {data.showContactInfo !== false && (<section className={styles.infoSection}>
         <div className="noise-overlay" />
         <div className={styles.container}>
           <AnimatedSection delay={0.2}>
@@ -135,13 +138,13 @@ export function ContactsPageClient({ data, siteSettings, contactFormData, locale
 
           <AnimatedSection delay={0.4}>
             <div className={styles.mapWrapper}>
-              <YandexMap />
+              <YandexMap apiKey={siteSettings.yandexMapsApiKey} center={siteSettings.mapCenter} />
             </div>
           </AnimatedSection>
         </div>
-      </section>
+      </section>)}
 
-      <ContactForm data={contactFormData} locale={locale} />
+      {data.showContactForm !== false && (<ContactForm data={contactFormData} locale={locale} />)}
     </>
   );
 }

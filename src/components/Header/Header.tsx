@@ -4,18 +4,16 @@ import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
+import type { NavigationData, SiteSettingsData, RequestModalData, CommonTextsData, NavLink } from "@/types/cms";
+import { resolveMediaUrl } from "@/lib/cms-helpers";
 import { RequestModal } from "@/components/RequestModal/RequestModal";
 import styles from "./Header.module.css";
 
 interface HeaderProps {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  navigation: any;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  siteSettings: any;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  requestModal: any;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  commonTexts: any;
+  navigation: NavigationData | null;
+  siteSettings: SiteSettingsData | null;
+  requestModal: RequestModalData | null;
+  commonTexts: CommonTextsData | null;
   locale: string;
 }
 
@@ -35,7 +33,7 @@ export function Header({
   // Build nav items from Payload navigation.headerNav array
   const rawNav: { label: string; href: string }[] =
     Array.isArray(navigation?.headerNav)
-      ? navigation.headerNav.map((item: any) => ({
+      ? navigation.headerNav.map((item: NavLink) => ({
           label: item.label ?? "",
           href: item.href ?? "/",
         }))

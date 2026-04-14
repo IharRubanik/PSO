@@ -8,6 +8,7 @@ export const NotFoundPage: GlobalConfig = {
     update: ({ req: { user } }) => !!user,
   },
   admin: {
+    hideAPIURL: true,
     group: { ru: "Страницы", en: "Pages" },
   },
   fields: [

@@ -1,6 +1,7 @@
 "use client";
 
 import { ReactNode } from "react";
+import type { SiteSettingsData, NavigationData, FooterData, RequestModalData, CommonTextsData } from "@/types/cms";
 import { Header } from "@/components/Header/Header";
 import { Footer } from "@/components/Footer/Footer";
 import { PageTransition } from "./PageTransition";
@@ -8,16 +9,11 @@ import { PageTransition } from "./PageTransition";
 interface ClientLayoutProps {
   children: ReactNode;
   locale: string;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  siteSettings: any;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  navigation: any;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  footer: any;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  requestModal: any;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  commonTexts: any;
+  siteSettings: SiteSettingsData | null;
+  navigation: NavigationData | null;
+  footer: FooterData | null;
+  requestModal: RequestModalData | null;
+  commonTexts: CommonTextsData | null;
 }
 
 export function ClientLayout({

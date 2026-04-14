@@ -1,4 +1,5 @@
 import { getPayload } from "@/lib/payload";
+import { extractContactFormData } from "@/lib/cms-helpers";
 import { AboutPageClient } from "./AboutPageClient";
 
 export const revalidate = 60;
@@ -10,30 +11,16 @@ export default async function AboutPage({
 }) {
   const { locale } = await params;
   const payload = await getPayload();
+  const fg = (slug: string) =>
+    payload.findGlobal({ slug: slug as "site-settings", locale: locale as "ru" | "en" }).catch(() => null);
 
   const [aboutPage, homepage, commonTexts] = await Promise.all([
-    payload.findGlobal({ slug: "about-page", locale: locale as "ru" | "en" }),
-    payload.findGlobal({ slug: "homepage", locale: locale as "ru" | "en" }),
-    payload.findGlobal({ slug: "common-texts", locale: locale as "ru" | "en" }),
+    fg("about-page"),
+    fg("homepage"),
+    fg("common-texts"),
   ]);
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const hp = homepage as any;
-  const contactFormData = {
-    title: hp?.contactFormTitle,
-    description: hp?.contactFormDescription,
-    featureText: hp?.contactFormFeatureText,
-    featureIcon: hp?.contactFormFeatureIcon,
-    placeholderName: hp?.contactFormPlaceholderName,
-    placeholderEmail: hp?.contactFormPlaceholderEmail,
-    placeholderMessage: hp?.contactFormPlaceholderMessage,
-    consentText: hp?.contactFormConsentText,
-    consentLinkText: hp?.contactFormConsentLinkText,
-    submitText: hp?.contactFormSubmitText,
-    sendingText: hp?.contactFormSendingText,
-    sentText: hp?.contactFormSentText,
-    errorText: hp?.contactFormErrorText,
-  };
+  const contactFormData = extractContactFormData(homepage as Record<string, unknown>);
 
   return (
     <AboutPageClient

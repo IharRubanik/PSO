@@ -2,6 +2,7 @@
 
 import { useState, useRef, useCallback, useEffect } from "react";
 import Image from "next/image";
+import type { ContactFormData } from "@/types/cms";
 import { PageBanner } from "@/components/PageBanner/PageBanner";
 import { ContactForm } from "@/components/ContactForm/ContactForm";
 import { AnimatedSection } from "@/components/UI/AnimatedSection";
@@ -19,29 +20,33 @@ interface AboutPageData {
   bannerImage?: { url?: string | null } | string | null;
   breadcrumbHome?: string | null;
   breadcrumbAbout?: string | null;
+  showAbout?: boolean;
   aboutSectionTitle?: string | null;
   aboutImage?: { url?: string | null } | string | null;
   aboutParagraph1?: string | null;
   aboutParagraph2?: string | null;
   aboutParagraph3?: string | null;
+  showLicenses?: boolean;
   licensesSectionTitle?: string | null;
   licenseIssuedByLabel?: string | null;
   licenseViewLabel?: string | null;
   licenses?: License[] | null;
+  showArmament?: boolean;
   armamentSectionTitle?: string | null;
   armamentImage?: { url?: string | null } | string | null;
   armamentParagraph1?: string | null;
   armamentParagraph2?: string | null;
+  showTraining?: boolean;
   trainingSectionTitle?: string | null;
   trainingImage?: { url?: string | null } | string | null;
   trainingParagraph1?: string | null;
   trainingParagraph2?: string | null;
+  showContactForm?: boolean;
 }
 
 interface AboutPageClientProps {
   data: AboutPageData;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  contactFormData: any;
+  contactFormData: ContactFormData;
   locale: string;
   backText?: string;
 }
@@ -129,7 +134,7 @@ export function AboutPageClient({ data, contactFormData, locale, backText = "Н�
       />
 
       {/* О нас */}
-      <section className={styles.aboutSection}>
+      {data.showAbout !== false && (<section className={styles.aboutSection}>
         <div className="noise-overlay" />
         <div className={styles.container}>
           <AnimatedSection>
@@ -159,10 +164,10 @@ export function AboutPageClient({ data, contactFormData, locale, backText = "Н�
             </AnimatedSection>
           </div>
         </div>
-      </section>
+      </section>)}
 
       {/* Лицензии */}
-      <section className={styles.licensesSection}>
+      {data.showLicenses !== false && (<section className={styles.licensesSection}>
         <div className="noise-overlay" />
         <div className={styles.licensesContainer}>
           <AnimatedSection>
@@ -293,10 +298,10 @@ export function AboutPageClient({ data, contactFormData, locale, backText = "Н�
             </div>
           </div>
         </div>
-      </section>
+      </section>)}
 
       {/* Вооружение */}
-      <section className={styles.armamentSection}>
+      {data.showArmament !== false && (<section className={styles.armamentSection}>
         <div className={styles.armamentBg}>
           <Image
             src={armamentImage}
@@ -320,10 +325,10 @@ export function AboutPageClient({ data, contactFormData, locale, backText = "Н�
             </div>
           </AnimatedSection>
         </div>
-      </section>
+      </section>)}
 
       {/* Подготовка сотрудников */}
-      <section className={styles.armamentSection}>
+      {data.showTraining !== false && (<section className={styles.armamentSection}>
         <div className={styles.armamentBg}>
           <Image
             src={trainingImage}
@@ -352,9 +357,9 @@ export function AboutPageClient({ data, contactFormData, locale, backText = "Н�
             </div>
           </AnimatedSection>
         </div>
-      </section>
+      </section>)}
 
-      <ContactForm data={contactFormData} locale={locale} />
+      {data.showContactForm !== false && (<ContactForm data={contactFormData} locale={locale} />)}
 
       {licenseModal && (
         <div

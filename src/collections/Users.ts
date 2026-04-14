@@ -8,6 +8,7 @@ export const Users: CollectionConfig = {
   },
   auth: true,
   admin: {
+    hideAPIURL: true,
     useAsTitle: "email",
   },
   fields: [

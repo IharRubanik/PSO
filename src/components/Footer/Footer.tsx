@@ -3,20 +3,20 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Corners } from "../Corners/Corners";
+import type { FooterData, SiteSettingsData, NavLink } from "@/types/cms";
+import { resolveMediaUrl } from "@/lib/cms-helpers";
 import { AnimatedSection } from "../UI/AnimatedSection";
 import styles from "./Footer.module.css";
 
 interface FooterProps {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  data: any;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  siteSettings: any;
+  data: FooterData | null;
+  siteSettings: SiteSettingsData | null;
   locale: string;
 }
 
 export function Footer({ data, siteSettings, locale }: FooterProps) {
   const menuLinks: { label: string; href: string }[] = Array.isArray(data?.menuLinks)
-    ? data.menuLinks.map((item: any) => ({
+    ? data.menuLinks.map((item: NavLink) => ({
         label: item.label ?? "",
         href: item.href
           ? `/${locale}${item.href === "/" ? "" : item.href}`
@@ -25,7 +25,7 @@ export function Footer({ data, siteSettings, locale }: FooterProps) {
     : [];
 
   const legalLinks: { label: string; href: string }[] = Array.isArray(data?.legalLinks)
-    ? data.legalLinks.map((item: any) => ({
+    ? data.legalLinks.map((item: NavLink) => ({
         label: item.label ?? "",
         href: item.href
           ? `/${locale}${item.href === "/" ? "" : item.href}`

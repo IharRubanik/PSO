@@ -2,16 +2,18 @@
 
 import Image from "next/image";
 import { AnimatedSection } from "../UI/AnimatedSection";
+import type { ClientsData } from "@/types/cms";
+import { resolveMediaUrl } from "@/lib/cms-helpers";
 import { Corners } from "../Corners/Corners";
 import styles from "./Clients.module.css";
 
 interface ClientsProps {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  data: any;
+  data: ClientsData | null;
 }
 
 export function Clients({ data }: ClientsProps) {
   const sectionTitle = data?.sectionTitle ?? "";
+  const bgImage = resolveMediaUrl(data?.backgroundImage, "/assets/images/partners-bg-new.png");
 
   const rawItems: unknown[] = Array.isArray(data?.items) ? data.items : [];
   // Items may be strings or objects with a `name` field
@@ -27,7 +29,7 @@ export function Clients({ data }: ClientsProps) {
       {/* Background image */}
       <div className={styles.bg}>
         <Image
-          src="/assets/images/partners-bg-new.png"
+          src={bgImage}
           alt=""
           fill
           style={{ objectFit: "cover" }}

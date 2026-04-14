@@ -8,6 +8,7 @@ export const RequestModalGlobal: GlobalConfig = {
     update: ({ req: { user } }) => !!user,
   },
   admin: {
+    hideAPIURL: true,
     group: { ru: "Компоненты", en: "Components" },
   },
   fields: [

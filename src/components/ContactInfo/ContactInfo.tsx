@@ -2,14 +2,13 @@
 
 import Image from "next/image";
 import { AnimatedSection } from "../UI/AnimatedSection";
+import type { ContactInfoData, SiteSettingsData } from "@/types/cms";
 import { YandexMap } from "../YandexMap/YandexMap";
 import styles from "./ContactInfo.module.css";
 
 interface ContactInfoProps {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  data: any;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  siteSettings: any;
+  data: ContactInfoData | null;
+  siteSettings: SiteSettingsData | null;
   locale: string;
 }
 
@@ -106,7 +105,7 @@ export function ContactInfo({ data, siteSettings }: ContactInfoProps) {
 
         {/* Figma: map at top=429, full-width, h=642 */}
         <div className={styles.mapWrapper}>
-          <YandexMap />
+          <YandexMap apiKey={siteSettings?.yandexMapsApiKey} center={siteSettings?.mapCenter} />
         </div>
       </div>
     </section>

@@ -4,20 +4,22 @@ import { useEffect, useRef, useState } from "react";
 import styles from "./YandexMap.module.css";
 import darkStyle from "../../../customization.json";
 
-const MAP_CENTER = [37.534, 55.749]; // [lng, lat]
-const MAP_ZOOM = 13;
-const API_KEY = "7ba124fd-0581-4e1e-8cbd-2eefa636a90f";
+const DEFAULT_CENTER = [37.534, 55.749];
+const DEFAULT_ZOOM = 13;
+const DEFAULT_API_KEY = "7ba124fd-0581-4e1e-8cbd-2eefa636a90f";
 
 declare global {
   interface Window {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    ymaps3?: any;
+    ymaps3?: Record<string, unknown> & {
+      ready: Promise<void>;
+      import: (module: string) => Promise<Record<string, unknown>>;
+    };
   }
 }
 
 let apiLoadPromise: Promise<void> | null = null;
 
-function loadApi(): Promise<void> {
+function loadApi(apiKey: string): Promise<void> {
   if (apiLoadPromise) return apiLoadPromise;
 
   apiLoadPromise = (async () => {
@@ -25,7 +27,7 @@ function loadApi(): Promise<void> {
 
     await new Promise<void>((resolve, reject) => {
       const script = document.createElement("script");
-      script.src = `https://api-maps.yandex.ru/v3/?apikey=${API_KEY}&lang=ru_RU`;
+      script.src = `https://api-maps.yandex.ru/v3/?apikey=${apiKey}&lang=ru_RU`;
       script.async = true;
       script.onload = () => {
         let attempts = 0;
@@ -49,10 +51,21 @@ function loadApi(): Promise<void> {
   return apiLoadPromise;
 }
 
-export function YandexMap() {
+export interface YandexMapProps {
+  apiKey?: string | null;
+  center?: { lng?: number | null; lat?: number | null } | null;
+}
+
+export function YandexMap({ apiKey, center }: YandexMapProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const mapInitialized = useRef(false);
   const [mapLoaded, setMapLoaded] = useState(false);
+
+  const mapCenter = [
+    center?.lng ?? DEFAULT_CENTER[0],
+    center?.lat ?? DEFAULT_CENTER[1],
+  ];
+  const resolvedApiKey = apiKey || DEFAULT_API_KEY;
 
   useEffect(() => {
     if (mapInitialized.current) return;
@@ -60,7 +73,7 @@ export function YandexMap() {
 
     async function init() {
       try {
-        await loadApi();
+        await loadApi(resolvedApiKey);
         const el = containerRef.current;
         if (!el) return;
 
@@ -72,19 +85,20 @@ export function YandexMap() {
     }
 
     async function initMap(el: HTMLDivElement) {
-      await window.ymaps3.ready;
-      const { YMap, YMapDefaultSchemeLayer, YMapDefaultFeaturesLayer, YMapMarker, YMapControls } = window.ymaps3;
-      const { YMapZoomControl } = await window.ymaps3.import("@yandex/ymaps3-controls@0.0.1");
+      const ymaps = window.ymaps3;
+      if (!ymaps) return;
+      await ymaps.ready;
+      const { YMap, YMapDefaultSchemeLayer, YMapDefaultFeaturesLayer, YMapMarker, YMapControls } = ymaps as Record<string, new (...args: unknown[]) => { addChild: (child: unknown) => unknown }>;
+      const { YMapZoomControl } = await ymaps.import("@yandex/ymaps3-controls@0.0.1") as Record<string, new (...args: unknown[]) => unknown>;
 
       const map = new YMap(el, {
-        location: { center: MAP_CENTER, zoom: MAP_ZOOM },
+        location: { center: mapCenter, zoom: DEFAULT_ZOOM },
         behaviors: ["drag", "pinchZoom", "dblClick"],
       });
 
       map.addChild(new YMapDefaultSchemeLayer({ customization: darkStyle }));
       map.addChild(new YMapDefaultFeaturesLayer());
 
-      // Zoom controls
       map.addChild(
         new YMapControls({ position: "right" }).addChild(new YMapZoomControl())
       );
@@ -96,10 +110,11 @@ export function YandexMap() {
           <span style="position:absolute;top:50%;left:50%;width:14px;height:14px;transform:translate(-50%,-50%);background:#d2b689;border-radius:50%"></span>
         </div>
       `;
-      map.addChild(new YMapMarker({ coordinates: MAP_CENTER }, markerEl));
+      map.addChild(new YMapMarker({ coordinates: mapCenter }, markerEl));
     }
 
     init();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

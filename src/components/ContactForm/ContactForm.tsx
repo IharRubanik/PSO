@@ -5,12 +5,13 @@ import Image from "next/image";
 import Link from "next/link";
 import { PhoneInput } from "@/components/UI/PhoneInput";
 import { usePathname } from "next/navigation";
+import type { ContactFormData } from "@/types/cms";
+import { resolveMediaUrl } from "@/lib/cms-helpers";
 import { AnimatedSection } from "../UI/AnimatedSection";
 import styles from "./ContactForm.module.css";
 
 interface ContactFormProps {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  data: any;
+  data: ContactFormData | null;
   locale: string;
 }
 
@@ -22,6 +23,7 @@ export function ContactForm({ data, locale }: ContactFormProps) {
   const title = data?.title ?? "";
   const description = data?.description ?? "";
   const featureText = data?.featureText ?? "";
+  const featureIconUrl = resolveMediaUrl(data?.featureIcon, "/assets/images/icon-shield-crosshair.svg");
   const placeholderName = data?.placeholderName ?? "";
   const placeholderEmail = data?.placeholderEmail ?? "";
   const placeholderMessage = data?.placeholderMessage ?? "";
@@ -39,7 +41,7 @@ export function ContactForm({ data, locale }: ContactFormProps) {
 
     setLoading(true);
     try {
-      await fetch("/api/applications", {
+      await fetch("/api/submit-application", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -84,7 +86,7 @@ export function ContactForm({ data, locale }: ContactFormProps) {
               <div className={styles.features}>
                 <div className={styles.featureIcon}>
                   <Image
-                    src="/assets/images/icon-shield-crosshair.svg"
+                    src={featureIconUrl}
                     alt=""
                     width={110}
                     height={110}

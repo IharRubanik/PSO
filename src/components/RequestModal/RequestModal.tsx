@@ -3,20 +3,24 @@
 import { useState, useEffect } from "react";
 import { createPortal } from "react-dom";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import type { RequestModalData } from "@/types/cms";
 import { PhoneInput } from "@/components/UI/PhoneInput";
 import styles from "./RequestModal.module.css";
 
 interface RequestModalProps {
   open: boolean;
   onClose: () => void;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  data: any;
+  data: RequestModalData | null;
   locale: string;
 }
 
 export function RequestModal({ open, onClose, data, locale }: RequestModalProps) {
   const [agreed, setAgreed] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     setMounted(true);
@@ -54,6 +58,38 @@ export function RequestModal({ open, onClose, data, locale }: RequestModalProps)
   const closeAriaLabel: string = data?.closeAriaLabel ?? "Закрыть";
   const privacyHref = `/${locale}/privacy`;
 
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+
+    setLoading(true);
+    try {
+      await fetch("/api/submit-application", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: formData.get("name"),
+          phone: formData.get("phone"),
+          email: formData.get("email") || null,
+          message: formData.get("message") || null,
+          page: pathname,
+        }),
+      });
+      setSubmitted(true);
+      setTimeout(() => {
+        setSubmitted(false);
+        setAgreed(false);
+        form.reset();
+        onClose();
+      }, 2000);
+    } catch {
+      alert("Ошибка при отправке");
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return createPortal(
     <div className={styles.overlay} onClick={onClose}>
       <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
@@ -68,22 +104,18 @@ export function RequestModal({ open, onClose, data, locale }: RequestModalProps)
         <h2 className={styles.title}>{title}</h2>
         <p className={styles.subtitle}>{subtitle}</p>
 
-        <form
-          className={styles.form}
-          onSubmit={(e) => {
-            e.preventDefault();
-            onClose();
-          }}
-        >
+        <form className={styles.form} onSubmit={handleSubmit}>
           <input
             type="text"
+            name="name"
             placeholder={placeholderName}
             required
             className={styles.input}
           />
-          <PhoneInput className={styles.input} required />
+          <PhoneInput name="phone" className={styles.input} required />
           <input
             type="email"
+            name="email"
             placeholder={placeholderEmail}
             className={styles.input}
             pattern="[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}"
@@ -95,6 +127,7 @@ export function RequestModal({ open, onClose, data, locale }: RequestModalProps)
             }}
           />
           <textarea
+            name="message"
             placeholder={placeholderMessage}
             className={styles.textarea}
             rows={4}
@@ -114,8 +147,8 @@ export function RequestModal({ open, onClose, data, locale }: RequestModalProps)
             </span>
           </label>
 
-          <button type="submit" className={styles.submit} disabled={!agreed}>
-            {submitLabel}
+          <button type="submit" className={styles.submit} disabled={!agreed || loading}>
+            {loading ? "Отправка..." : submitted ? "Отправлено!" : submitLabel}
           </button>
         </form>
       </div>

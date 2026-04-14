@@ -8,6 +8,7 @@ export const Navigation: GlobalConfig = {
     update: ({ req: { user } }) => !!user,
   },
   admin: {
+    hideAPIURL: true,
     group: { ru: "Компоненты", en: "Components" },
   },
   fields: [
@@ -21,6 +22,7 @@ export const Navigation: GlobalConfig = {
               name: "headerNav",
               type: "array",
               label: { ru: "Пункты меню в шапке", en: "Header Navigation Items" },
+              maxRows: 4,
               fields: [
                 {
                   name: "label",

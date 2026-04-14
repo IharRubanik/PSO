@@ -1,17 +1,11 @@
 "use client";
 
+import type { AdvantagesData, AdvantageItem } from "@/types/cms";
 import { AnimatedSection } from "../UI/AnimatedSection";
 import styles from "./Advantages.module.css";
 
-interface AdvantageItem {
-  number: string;
-  title: string;
-  text: string;
-}
-
 interface AdvantagesProps {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  data: any;
+  data: AdvantagesData | null;
 }
 
 export function Advantages({ data }: AdvantagesProps) {

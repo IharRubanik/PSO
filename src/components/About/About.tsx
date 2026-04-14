@@ -2,12 +2,13 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import type { AboutSectionData } from "@/types/cms";
+import { resolveMediaUrl } from "@/lib/cms-helpers";
 import { AnimatedSection } from "../UI/AnimatedSection";
 import styles from "./About.module.css";
 
 interface AboutProps {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  data: any;
+  data: AboutSectionData | null;
   locale: string;
 }
 
@@ -16,13 +17,14 @@ export function About({ data, locale }: AboutProps) {
   const paragraph1 = data?.paragraph1 ?? "";
   const paragraph2 = data?.paragraph2 ?? "";
   const buttonText = data?.buttonText ?? "";
+  const bgImage = resolveMediaUrl(data?.backgroundImage, "/assets/images/about-section-bg-new.png");
 
   return (
     <section className={styles.about} id="about">
       {/* Background */}
       <div className={styles.bg}>
         <Image
-          src="/assets/images/about-section-bg-new.png"
+          src={bgImage}
           alt=""
           fill
           style={{ objectFit: "cover" }}

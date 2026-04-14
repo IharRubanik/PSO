@@ -4,6 +4,7 @@ export const SiteSettings: GlobalConfig = {
   slug: "site-settings",
   label: { ru: "Настройки сайта", en: "Site Settings" },
   admin: {
+    hideAPIURL: true,
     group: { ru: "Настройки", en: "Settings" },
   },
   access: {
@@ -59,6 +60,52 @@ export const SiteSettings: GlobalConfig = {
       defaultValue: "Telegram",
     },
     {
+      name: "smtp",
+      type: "group",
+      label: { ru: "Уведомления о заявках", en: "Application Notifications" },
+      admin: {
+        description: {
+          ru: "Настройки отправки заявок на email. Для Яндекса: smtp.yandex.ru, порт 465, SSL. Нужен пароль приложения (id.yandex.ru/security/app-passwords).",
+          en: "Email notification settings for applications.",
+        },
+      },
+      fields: [
+        {
+          name: "notificationEmail",
+          type: "email",
+          label: { ru: "Куда отправлять заявки", en: "Send applications to" },
+          admin: {
+            description: { ru: "Email получателя заявок. Пусто = уведомления выключены.", en: "Recipient email. Empty = disabled." },
+          },
+        },
+        {
+          name: "smtpHost",
+          type: "text",
+          label: { ru: "SMTP хост", en: "SMTP Host" },
+          defaultValue: "smtp.yandex.ru",
+        },
+        {
+          name: "smtpPort",
+          type: "number",
+          label: { ru: "SMTP порт", en: "SMTP Port" },
+          defaultValue: 465,
+        },
+        {
+          name: "smtpUser",
+          type: "email",
+          label: { ru: "SMTP логин (email отправителя)", en: "SMTP login (sender email)" },
+        },
+        {
+          name: "smtpPassword",
+          type: "text",
+          label: { ru: "SMTP пароль (пароль приложения)", en: "SMTP password (app password)" },
+          admin: {
+            description: { ru: "Для Яндекса — пароль приложения, НЕ основной пароль", en: "For Yandex — app password, NOT main password" },
+          },
+        },
+      ],
+    },
+    {
       name: "yandexMapsApiKey",
       type: "text",
       label: { ru: "API ключ Яндекс Карт", en: "Yandex Maps API Key" },
@@ -89,18 +136,6 @@ export const SiteSettings: GlobalConfig = {
       label: { ru: "Копирайт", en: "Copyright" },
       localized: true,
       defaultValue: "2026©Фантом групп. Все права защищены",
-    },
-    {
-      name: "logo",
-      type: "upload",
-      label: { ru: "Логотип (шапка)", en: "Logo (header)" },
-      relationTo: "media",
-    },
-    {
-      name: "logoFooter",
-      type: "upload",
-      label: { ru: "Логотип (подвал)", en: "Logo (footer)" },
-      relationTo: "media",
     },
     {
       name: "seo",

@@ -8,12 +8,68 @@ export const Homepage: GlobalConfig = {
     update: ({ req: { user } }) => !!user,
   },
   admin: {
+    hideAPIURL: true,
     group: { ru: "Страницы", en: "Pages" },
   },
   fields: [
     {
       type: "tabs",
       tabs: [
+        // ── Tab 0: Visibility ────────────────────────────────────────
+        {
+          label: { ru: "Видимость блоков", en: "Block Visibility" },
+          fields: [
+            {
+              name: "showHero",
+              type: "checkbox",
+              label: { ru: "Показывать баннер (Hero)", en: "Show Hero Banner" },
+              defaultValue: true,
+            },
+            {
+              name: "showServices",
+              type: "checkbox",
+              label: { ru: "Показывать секцию услуг", en: "Show Services Section" },
+              defaultValue: true,
+            },
+            {
+              name: "showAbout",
+              type: "checkbox",
+              label: { ru: "Показывать секцию «О компании»", en: "Show About Section" },
+              defaultValue: true,
+            },
+            {
+              name: "showStats",
+              type: "checkbox",
+              label: { ru: "Показывать статистику", en: "Show Statistics" },
+              defaultValue: true,
+            },
+            {
+              name: "showAdvantages",
+              type: "checkbox",
+              label: { ru: "Показывать преимущества", en: "Show Advantages" },
+              defaultValue: true,
+            },
+            {
+              name: "showClients",
+              type: "checkbox",
+              label: { ru: "Показывать клиентов", en: "Show Clients" },
+              defaultValue: true,
+            },
+            {
+              name: "showContactInfo",
+              type: "checkbox",
+              label: { ru: "Показывать контактную информацию", en: "Show Contact Info" },
+              defaultValue: true,
+            },
+            {
+              name: "showContactForm",
+              type: "checkbox",
+              label: { ru: "Показывать форму обратной связи", en: "Show Contact Form" },
+              defaultValue: true,
+            },
+          ],
+        },
+
         // ── Tab 1: Hero ──────────────────────────────────────────────
         {
           label: { ru: "Баннер (Hero)", en: "Hero Banner" },
@@ -185,6 +241,7 @@ export const Homepage: GlobalConfig = {
                   type: "text",
                   label: { ru: "Переопределение отображения", en: "Display Override" },
                   admin: {
+    hideAPIURL: true,
                     description: {
                       ru: "Если заполнено — отображается вместо числа (например «24/7»)",
                       en: "If set — displayed instead of the number (e.g. «24/7»)",
@@ -414,6 +471,32 @@ export const Homepage: GlobalConfig = {
               label: { ru: "Текст ошибки отправки", en: "Error Text" },
               localized: true,
               defaultValue: "Ошибка при отправке. Попробуйте позже.",
+            },
+          ],
+        },
+
+        // ── Tab 9: SEO ───────────────────────────────────────────────
+        {
+          label: "SEO",
+          fields: [
+            {
+              name: "seo",
+              type: "group",
+              label: "SEO",
+              fields: [
+                {
+                  name: "metaTitle",
+                  type: "text",
+                  label: { ru: "Meta Title", en: "Meta Title" },
+                  localized: true,
+                },
+                {
+                  name: "metaDescription",
+                  type: "textarea",
+                  label: { ru: "Meta Description", en: "Meta Description" },
+                  localized: true,
+                },
+              ],
             },
           ],
         },

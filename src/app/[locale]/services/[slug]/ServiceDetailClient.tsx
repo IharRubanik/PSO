@@ -21,7 +21,7 @@ interface MediaField {
   url?: string | null;
 }
 
-interface ServiceData {
+export interface ServiceData {
   bannerTitle?: string | null;
   breadcrumbLabel?: string | null;
   bannerImage?: MediaField | string | null;
@@ -45,8 +45,7 @@ interface ServicesSectionData {
 interface ServiceDetailClientProps {
   service: ServiceData;
   servicesSection: ServicesSectionData;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  contactFormData: any;
+  contactFormData: import("@/types/cms").ContactFormData;
   locale: string;
   backText?: string;
 }

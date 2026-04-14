@@ -14,7 +14,7 @@ export const Applications: CollectionConfig = {
   },
   access: {
     read: ({ req: { user } }) => !!user,
-    create: () => true,
+    create: ({ req: { user } }) => !user,
     update: ({ req: { user } }) => !!user,
     delete: ({ req: { user } }) => !!user,
   },

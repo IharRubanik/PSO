@@ -7,6 +7,7 @@ export const Services: CollectionConfig = {
     plural: { ru: "Услуги", en: "Services" },
   },
   admin: {
+    hideAPIURL: true,
     useAsTitle: "title",
     group: { ru: "Страницы", en: "Pages" },
   },
@@ -100,6 +101,7 @@ export const Services: CollectionConfig = {
       name: "steps",
       type: "array",
       label: { ru: "Этапы сотрудничества", en: "Cooperation Steps" },
+      maxRows: 3,
       fields: [
         {
           name: "number",

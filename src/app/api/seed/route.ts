@@ -1,3 +1,4 @@
+import type { Payload } from "payload";
 import { getPayload } from "payload";
 import config from "@/payload.config";
 import ruDict from "@/dictionaries/ru.json";
@@ -6,16 +7,18 @@ import { NextResponse } from "next/server";
 import path from "path";
 import fs from "fs";
 
-/* eslint-disable @typescript-eslint/no-explicit-any */
+/* Seed script works with arbitrary dictionary shapes from JSON.
+   Using Record<string, ...> with nested indexing is the cleanest
+   approach without generating types from the JSON schema. */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type Dict = Record<string, any>;
+type GlobalData = Record<string, unknown>;
+type ArrayMapFn = (existing: { id: string }, idx: number) => Record<string, unknown>;
 
-/**
- * Seed a global that has NO array fields.
- * Simple: updateGlobal with RU, then updateGlobal with EN.
- */
-async function seedSimpleGlobal(payload: any, slug: string, ruData: any, enData: any) {
-  await payload.updateGlobal({ slug, locale: "ru", data: ruData });
+async function seedSimpleGlobal(payload: Payload, slug: string, ruData: GlobalData, enData: GlobalData | null) {
+  await payload.updateGlobal({ slug: slug as "site-settings", locale: "ru", data: ruData });
   if (enData) {
-    await payload.updateGlobal({ slug, locale: "en", data: enData });
+    await payload.updateGlobal({ slug: slug as "site-settings", locale: "en", data: enData });
   }
 }
 
@@ -32,7 +35,7 @@ async function seedSimpleGlobal(payload: any, slug: string, ruData: any, enData:
  *   - sectionN.p5_1, p5_2 …    → same
  *   - sectionN.p6_1 …          → same
  */
-function buildLexicalContent(dict: Record<string, any>): object {
+function buildLexicalContent(dict: Record<string, unknown>): object {
   function textNode(text: string) {
     return { type: "text", text, version: 1 };
   }
@@ -61,17 +64,16 @@ function buildLexicalContent(dict: Record<string, any>): object {
   const children: object[] = [];
 
   // intro paragraphs (privacyPage only)
-  if (dict.intro1) children.push(paragraph(dict.intro1));
-  if (dict.intro2) children.push(paragraph(dict.intro2));
+  if (dict.intro1) children.push(paragraph(dict.intro1 as string));
+  if (dict.intro2) children.push(paragraph(dict.intro2 as string));
 
   // sections 1-7
   for (let i = 1; i <= 7; i++) {
-    const sec = dict[`section${i}`];
+    const sec = dict[`section${i}`] as Record<string, string> | undefined;
     if (!sec) continue;
 
     if (sec.title) children.push(heading(sec.title));
 
-    // collect all paragraph keys in insertion order
     const paraKeys = Object.keys(sec).filter((k) => k !== "title");
     for (const key of paraKeys) {
       if (sec[key]) children.push(paragraph(sec[key]));
@@ -100,37 +102,34 @@ function buildLexicalContent(dict: Record<string, any>): object {
  * @param arrayFields — map of arrayFieldName → function(existingItem, index) => EN data for that row
  */
 async function seedGlobalWithArrays(
-  payload: any,
+  payload: Payload,
   slug: string,
-  ruData: any,
-  enScalarData: any,
-  arrayFields: Record<string, (existing: any, idx: number) => any>,
+  ruData: GlobalData,
+  enScalarData: GlobalData,
+  arrayFields: Record<string, ArrayMapFn>,
 ) {
-  // Step 1: Create/update with RU locale (arrays get auto IDs)
-  await payload.updateGlobal({ slug, locale: "ru", data: ruData });
+  await payload.updateGlobal({ slug: slug as "site-settings", locale: "ru", data: ruData });
 
-  // Step 2: Read back to get array item IDs
-  const saved = await payload.findGlobal({ slug, locale: "ru" });
+  const saved = await payload.findGlobal({ slug: slug as "site-settings", locale: "ru" }) as GlobalData;
 
-  // Step 3: Build EN data with existing IDs
-  const enData: any = { ...enScalarData };
+  const enData: GlobalData = { ...enScalarData };
   for (const [fieldName, mapFn] of Object.entries(arrayFields)) {
-    const existingItems = (saved as any)[fieldName] || [];
-    enData[fieldName] = existingItems.map((item: any, idx: number) => ({
-      id: item.id, // preserve the ID so Payload updates the row instead of replacing
+    const existingItems = (saved[fieldName] ?? []) as { id: string }[];
+    enData[fieldName] = existingItems.map((item, idx) => ({
+      id: item.id,
       ...mapFn(item, idx),
     }));
   }
 
-  await payload.updateGlobal({ slug, locale: "en", data: enData });
+  await payload.updateGlobal({ slug: slug as "site-settings", locale: "en", data: enData });
 }
 
 async function uploadMedia(
-  payload: any,
+  payload: Payload,
   filename: string,
   altRu: string,
   altEn: string,
-): Promise<string> {
+): Promise<string | number> {
   // Check if already exists
   const existing = await payload.find({
     collection: "media",
@@ -173,8 +172,8 @@ async function uploadMedia(
 export async function POST() {
   try {
     const payload = await getPayload({ config });
-    const ru = ruDict as any;
-    const en = enDict as any;
+    const ru = ruDict as Dict;
+    const en = enDict as Dict;
 
     // ─── PHASE 1: Upload all media ───────────────────────────────────────────
 
@@ -223,7 +222,7 @@ export async function POST() {
     );
 
     // Service card images (card1–card6)
-    const cardImages: string[] = [];
+    const cardImages: (string | number)[] = [];
     for (let i = 1; i <= 6; i++) {
       const id = await uploadMedia(
         payload,
@@ -254,19 +253,19 @@ export async function POST() {
       "Personal guard clients background image",
     );
 
-    // About page license images (license-1 through license-4; index 4 reuses license-1)
-    const licenseImages: string[] = [];
-    for (let i = 1; i <= 4; i++) {
-      const id = await uploadMedia(
-        payload,
-        `license-${i}.jpg`,
-        `Изображение лицензии ${i}`,
-        `License image ${i}`,
-      );
-      licenseImages.push(id);
-    }
-    // 5th license entry reuses license-1.jpg (already uploaded — uploadMedia is idempotent)
-    const imgLicense5 = licenseImages[0];
+    // About page license images
+    const imgLicense1 = await uploadMedia(
+      payload,
+      "license-1.jpg",
+      "Изображение лицензии 1",
+      "License image 1",
+    );
+    const imgLicense4 = await uploadMedia(
+      payload,
+      "license-4.jpg",
+      "Изображение лицензии 4",
+      "License image 4",
+    );
 
     // About page section images
     const imgArmamentBg = await uploadMedia(
@@ -334,7 +333,7 @@ export async function POST() {
       },
       // EN array mappers
       {
-        headerNav: (_existing: any, idx: number) => {
+        headerNav: (_existing, idx) => {
           const enNavItems = [
             { label: en.header.nav.home },
             { label: en.header.nav.services },
@@ -358,7 +357,7 @@ export async function POST() {
         label: ru.stats.items[3]?.label,
       },
     ];
-    const statsEnLabels = en.stats.items.map((i: any) => i.label);
+    const statsEnLabels = (en.stats.items as { label: string }[]).map((i) => i.label);
 
     await seedGlobalWithArrays(
       payload,
@@ -392,7 +391,7 @@ export async function POST() {
         statsItems: statsRuItems,
         // Advantages
         advantagesSectionTitle: ru.advantages.sectionTitle,
-        advantagesItems: ru.advantages.items.map((item: any) => ({
+        advantagesItems: (ru.advantages.items as { number: string; title: string; text: string }[]).map((item) => ({
           number: item.number,
           title: item.title,
           text: item.text,
@@ -469,14 +468,14 @@ export async function POST() {
       },
       // EN array mappers
       {
-        statsItems: (_existing: any, idx: number) => ({
+        statsItems: (_existing, idx) => ({
           label: statsEnLabels[idx] || "",
         }),
-        advantagesItems: (_existing: any, idx: number) => ({
+        advantagesItems: (_existing, idx) => ({
           title: en.advantages.items[idx]?.title || "",
           text: en.advantages.items[idx]?.text || "",
         }),
-        clientsItems: (_existing: any, idx: number) => ({
+        clientsItems: (_existing, idx) => ({
           name: en.clients.items[idx] || "",
         }),
       },
@@ -545,7 +544,7 @@ export async function POST() {
       },
       // EN array mappers
       {
-        menuLinks: (_existing: any, idx: number) => {
+        menuLinks: (_existing, idx) => {
           const labels = [
             en.header.nav.home,
             en.header.nav.services,
@@ -554,7 +553,7 @@ export async function POST() {
           ];
           return { label: labels[idx] || "" };
         },
-        legalLinks: (_existing: any, idx: number) => {
+        legalLinks: (_existing, idx) => {
           const labels = [en.footer.legal.privacy, en.footer.legal.terms];
           return { label: labels[idx] || "" };
         },
@@ -564,14 +563,14 @@ export async function POST() {
     // 13. About Page (HAS array: licenses)
     // licenses: num is NOT localized, title/issuer are localized, image is NOT localized
     const licenseImageIds = [
-      licenseImages[0],
-      licenseImages[1],
-      licenseImages[2],
-      licenseImages[3],
-      imgLicense5,
+      imgLicense1,
+      imgLicense1,
+      imgLicense1,
+      imgLicense4,
+      imgLicense1,
     ];
-    const ruLicenses = ru.aboutPage.licenses as any[];
-    const enLicenses = en.aboutPage.licenses as any[];
+    const ruLicenses = ru.aboutPage.licenses as { num: string; title: string; issuer: string }[];
+    const enLicenses = en.aboutPage.licenses as { title: string; issuer: string }[];
 
     await seedGlobalWithArrays(
       payload,
@@ -590,11 +589,11 @@ export async function POST() {
         licensesSectionTitle: ru.aboutPage.licensesSectionTitle,
         licenseIssuedByLabel: ru.aboutPage.licenseIssuedBy,
         licenseViewLabel: ru.aboutPage.licenseView,
-        licenses: ruLicenses.map((l: any, idx: number) => ({
+        licenses: ruLicenses.map((l, idx) => ({
           num: l.num,
           title: l.title,
           issuer: l.issuer,
-          image: licenseImageIds[idx] ?? licenseImages[0],
+          image: licenseImageIds[idx] ?? imgLicense1,
         })),
         armamentSectionTitle: ru.aboutPage.armamentSectionTitle,
         armamentImage: imgArmamentBg,
@@ -626,7 +625,7 @@ export async function POST() {
       },
       // EN array mappers
       {
-        licenses: (_existing: any, idx: number) => ({
+        licenses: (_existing, idx) => ({
           title: enLicenses[idx]?.title || "",
           issuer: enLicenses[idx]?.issuer || "",
         }),
@@ -754,8 +753,8 @@ export async function POST() {
 
     for (let i = 0; i < serviceList.length; i++) {
       const svc = serviceList[i];
-      const ruItem = (ru.services.items as any)[svc.slug];
-      const enItem = (en.services.items as any)[svc.slug];
+      const ruItem = (ru.services.items as Record<string, { title?: string; description?: string }>)[svc.slug];
+      const enItem = (en.services.items as Record<string, { title?: string; description?: string }>)[svc.slug];
       const slugData = ru.servicesPage?.slugs?.[svc.slug];
       const enSlugData = en.servicesPage?.slugs?.[svc.slug];
 
@@ -789,7 +788,7 @@ export async function POST() {
             featureParagraph3: slugData?.featureParagraph3 || "",
             featureParagraph4: slugData?.featureParagraph4 || "",
             steps:
-              slugData?.steps?.map((s: any) => ({
+              (slugData?.steps as { number: string; title: string; text: string }[] | undefined)?.map((s) => ({
                 number: s.number,
                 title: s.title,
                 text: s.text,
@@ -805,8 +804,9 @@ export async function POST() {
           id: doc.id,
           locale: "ru",
         });
-        const savedSteps = (saved as any).steps || [];
-        const savedTargetClients = (saved as any).targetClients || [];
+        const savedDoc = saved as Record<string, unknown>;
+        const savedSteps = (savedDoc.steps ?? []) as { id: string }[];
+        const savedTargetClients = (savedDoc.targetClients ?? []) as { id: string }[];
 
         // ── Step 3: Update EN locale with existing array IDs ──
         await payload.update({
@@ -824,22 +824,21 @@ export async function POST() {
             featureParagraph3: enSlugData?.featureParagraph3 || "",
             featureParagraph4: enSlugData?.featureParagraph4 || "",
             // steps: preserve IDs, only update localized fields (title, text)
-            steps: savedSteps.map((existing: any, idx: number) => ({
-              id: existing.id,
-              title: enSlugData?.steps?.[idx]?.title || "",
-              text: enSlugData?.steps?.[idx]?.text || "",
+            steps: savedSteps.map((item, idx) => ({
+              id: item.id,
+              title: (enSlugData?.steps as { title: string; text: string }[] | undefined)?.[idx]?.title || "",
+              text: (enSlugData?.steps as { title: string; text: string }[] | undefined)?.[idx]?.text || "",
             })),
-            // targetClients: preserve IDs, only update localized field (name)
-            targetClients: savedTargetClients.map((existing: any, idx: number) => ({
-              id: existing.id,
-              name: enSlugData?.targetClients?.[idx] || "",
+            targetClients: savedTargetClients.map((item, idx) => ({
+              id: item.id,
+              name: (enSlugData?.targetClients as string[] | undefined)?.[idx] || "",
             })),
           },
         });
       } else {
         // Service already exists — update image fields
         const docId = existing.docs[0].id;
-        const imageUpdate: any = {
+        const imageUpdate: Record<string, unknown> = {
           cardImage: svc.cardImageId,
         };
         if (isPersonalGuard) {

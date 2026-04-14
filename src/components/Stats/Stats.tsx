@@ -1,20 +1,11 @@
 "use client";
 
 import { useEffect, useRef, useState, useCallback } from "react";
+import type { StatsData, StatItem } from "@/types/cms";
 import styles from "./Stats.module.css";
 
-interface StatItem {
-  num?: number;
-  display?: string;
-  prefix?: string;
-  suffix?: string;
-  displayOverride?: string;
-  label: string;
-}
-
 interface StatsProps {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  data: any;
+  data: StatsData | null;
 }
 
 function easeOut(t: number): number {

@@ -7,6 +7,7 @@ export const Media: CollectionConfig = {
     plural: { ru: "Медиа", en: "Media" },
   },
   admin: {
+    hideAPIURL: true,
   },
   upload: {
     staticDir: "public/media",

@@ -6,7 +6,9 @@ import { Advantages } from "@/components/Advantages/Advantages";
 import { Clients } from "@/components/Clients/Clients";
 import { ContactInfo } from "@/components/ContactInfo/ContactInfo";
 import { ContactForm } from "@/components/ContactForm/ContactForm";
+import type { HeroData, ServicesSectionData, AboutSectionData, StatsData, AdvantagesData, ClientsData, ContactInfoData, StatItem, AdvantageItem, ClientItem, MediaField } from "@/types/cms";
 import { getPayload } from "@/lib/payload";
+import { extractContactFormData } from "@/lib/cms-helpers";
 
 export const revalidate = 60;
 
@@ -17,111 +19,86 @@ export default async function HomePage({
 }) {
   const { locale } = await params;
   const payload = await getPayload();
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const p = payload as any;
 
   const [
     homepage,
     servicesData,
     siteSettings,
   ] = await Promise.all([
-    p.findGlobal({ slug: "homepage", locale }).catch(() => null),
-    p.find({ collection: "services", locale, sort: "sortOrder", limit: 100 }).catch(() => ({ docs: [] })),
-    p.findGlobal({ slug: "site-settings", locale }).catch(() => null),
+    payload.findGlobal({ slug: "homepage" as "homepage", locale }).catch(() => null) as Promise<Record<string, unknown> | null>,
+    payload.find({ collection: "services", locale, sort: "sortOrder", limit: 100 }).catch(() => ({ docs: [] })),
+    payload.findGlobal({ slug: "site-settings" as "site-settings", locale }).catch(() => null),
   ]);
 
   // Map flat prefixed fields back to the shape each component expects
-  const heroData = homepage
+  const hp = homepage as Record<string, unknown> | null;
+  const s = (key: string) => hp?.[key] as string | undefined;
+
+  const heroData: HeroData | null = hp
+    ? { title: s("heroTitle"), subtitle: s("heroSubtitle"), ctaText: s("heroCtaText"), backgroundImage: hp.heroBackgroundImage as MediaField | string | undefined }
+    : null;
+
+  const servicesSectionData: ServicesSectionData | null = hp
     ? {
-        title: homepage.heroTitle,
-        subtitle: homepage.heroSubtitle,
-        ctaText: homepage.heroCtaText,
-        backgroundImage: homepage.heroBackgroundImage,
+        sectionTitle: s("servicesSectionTitle"),
+        description: s("servicesDescription"),
+        learnMoreText: s("servicesLearnMoreText"),
+        showAllText: s("servicesShowAllText"),
+        breadcrumbHome: s("servicesBreadcrumbHome"),
+        serviceFeaturesSectionTitle: s("servicesFeaturesSectionTitle"),
+        serviceStepsSectionTitle: s("servicesStepsSectionTitle"),
+        serviceClientsSectionTitle: s("servicesClientsSectionTitle"),
       }
     : null;
 
-  const servicesSectionData = homepage
+  const aboutData: AboutSectionData | null = hp
     ? {
-        sectionTitle: homepage.servicesSectionTitle,
-        description: homepage.servicesDescription,
-        learnMoreText: homepage.servicesLearnMoreText,
-        showAllText: homepage.servicesShowAllText,
-        breadcrumbHome: homepage.servicesBreadcrumbHome,
-        serviceFeaturesSectionTitle: homepage.servicesFeaturesSectionTitle,
-        serviceStepsSectionTitle: homepage.servicesStepsSectionTitle,
-        serviceClientsSectionTitle: homepage.servicesClientsSectionTitle,
+        sectionTitle: s("aboutSectionTitle"),
+        paragraph1: s("aboutParagraph1"),
+        paragraph2: s("aboutParagraph2"),
+        buttonText: s("aboutButtonText"),
+        backgroundImage: hp.aboutBackgroundImage as MediaField | string | undefined,
       }
     : null;
 
-  const aboutData = homepage
+  const statsData: StatsData | null = hp
+    ? { items: hp.statsItems as StatItem[] | undefined }
+    : null;
+
+  const advantagesData: AdvantagesData | null = hp
+    ? { sectionTitle: s("advantagesSectionTitle"), items: hp.advantagesItems as AdvantageItem[] | undefined }
+    : null;
+
+  const clientsData: ClientsData | null = hp
     ? {
-        sectionTitle: homepage.aboutSectionTitle,
-        paragraph1: homepage.aboutParagraph1,
-        paragraph2: homepage.aboutParagraph2,
-        buttonText: homepage.aboutButtonText,
-        backgroundImage: homepage.aboutBackgroundImage,
+        sectionTitle: s("clientsSectionTitle"),
+        backgroundImage: hp.clientsBackgroundImage as MediaField | string | undefined,
+        items: hp.clientsItems as ClientItem[] | undefined,
       }
     : null;
 
-  const statsData = homepage
+  const contactInfoData: ContactInfoData | null = hp
     ? {
-        items: homepage.statsItems,
+        sectionTitle: s("contactInfoSectionTitle"),
+        labelAddress: s("contactInfoLabelAddress"),
+        labelPhone: s("contactInfoLabelPhone"),
+        labelEmail: s("contactInfoLabelEmail"),
+        labelSocials: s("contactInfoLabelSocials"),
       }
     : null;
 
-  const advantagesData = homepage
-    ? {
-        sectionTitle: homepage.advantagesSectionTitle,
-        items: homepage.advantagesItems,
-      }
-    : null;
-
-  const clientsData = homepage
-    ? {
-        sectionTitle: homepage.clientsSectionTitle,
-        backgroundImage: homepage.clientsBackgroundImage,
-        items: homepage.clientsItems,
-      }
-    : null;
-
-  const contactInfoData = homepage
-    ? {
-        sectionTitle: homepage.contactInfoSectionTitle,
-        labelAddress: homepage.contactInfoLabelAddress,
-        labelPhone: homepage.contactInfoLabelPhone,
-        labelEmail: homepage.contactInfoLabelEmail,
-        labelSocials: homepage.contactInfoLabelSocials,
-      }
-    : null;
-
-  const contactFormData = homepage
-    ? {
-        title: homepage.contactFormTitle,
-        description: homepage.contactFormDescription,
-        featureText: homepage.contactFormFeatureText,
-        featureIcon: homepage.contactFormFeatureIcon,
-        placeholderName: homepage.contactFormPlaceholderName,
-        placeholderEmail: homepage.contactFormPlaceholderEmail,
-        placeholderMessage: homepage.contactFormPlaceholderMessage,
-        consentText: homepage.contactFormConsentText,
-        consentLinkText: homepage.contactFormConsentLinkText,
-        submitText: homepage.contactFormSubmitText,
-        sendingText: homepage.contactFormSendingText,
-        sentText: homepage.contactFormSentText,
-        errorText: homepage.contactFormErrorText,
-      }
-    : null;
+  const contactFormData = extractContactFormData(hp);
 
   return (
     <>
-      <Hero data={heroData} locale={locale} />
-      <Services sectionData={servicesSectionData} services={servicesData?.docs ?? []} locale={locale} />
-      <About data={aboutData} locale={locale} />
-      <Stats data={statsData} />
-      <Advantages data={advantagesData} />
-      <Clients data={clientsData} />
-      <ContactInfo data={contactInfoData} siteSettings={siteSettings} locale={locale} />
-      <ContactForm data={contactFormData} locale={locale} />
+      {hp?.showHero !== false && <Hero data={heroData} locale={locale} />}
+      {hp?.showServices !== false && <Services sectionData={servicesSectionData} services={servicesData?.docs ?? []} locale={locale} />}
+      {hp?.showAbout !== false && <About data={aboutData} locale={locale} />}
+      {hp?.showStats !== false && <Stats data={statsData} />}
+      {hp?.showAdvantages !== false && <Advantages data={advantagesData} />}
+      {hp?.showClients !== false && <Clients data={clientsData} />}
+      {hp?.showContactInfo !== false && <ContactInfo data={contactInfoData} siteSettings={siteSettings} locale={locale} />}
+      {hp?.showContactForm !== false && <ContactForm data={contactFormData} locale={locale} />}
     </>
   );
 }
