@@ -346,76 +346,7 @@ export async function POST() {
       },
     );
 
-    // 3. Hero Section (NO arrays — simple)
-    await seedSimpleGlobal(
-      payload,
-      "hero-section",
-      {
-        title: ru.hero.title,
-        subtitle: ru.hero.subtitle,
-        ctaText: ru.hero.cta,
-        backgroundImage: imgHeroBg,
-      },
-      {
-        title: en.hero.title,
-        subtitle: en.hero.subtitle,
-        ctaText: en.hero.cta,
-      },
-    );
-
-    // 4. Services Section (NO arrays — simple)
-    await seedSimpleGlobal(
-      payload,
-      "services-section",
-      {
-        sectionTitle: ru.services.sectionTitle,
-        description: ru.services.description,
-        learnMoreText: ru.services.learnMore,
-        showAllText: ru.common.showAll,
-        breadcrumbHome: ru.common.home,
-        serviceFeaturesSectionTitle:
-          ru.servicesPage?.serviceFeaturesSectionTitle || "Особенности услуги",
-        serviceStepsSectionTitle:
-          ru.servicesPage?.serviceStepsSectionTitle || "Этапы сотрудничества",
-        serviceClientsSectionTitle:
-          ru.servicesPage?.serviceClientsSectionTitle || "Кому подойдёт наша услуга",
-      },
-      {
-        sectionTitle: en.services.sectionTitle,
-        description: en.services.description,
-        learnMoreText: en.services.learnMore,
-        showAllText: en.common.showAll,
-        breadcrumbHome: en.common.home,
-        serviceFeaturesSectionTitle:
-          en.servicesPage?.serviceFeaturesSectionTitle || "Service Features",
-        serviceStepsSectionTitle:
-          en.servicesPage?.serviceStepsSectionTitle || "Cooperation Steps",
-        serviceClientsSectionTitle:
-          en.servicesPage?.serviceClientsSectionTitle || "Who This Service Is For",
-      },
-    );
-
-    // 5. About Section — homepage (NO arrays — simple)
-    await seedSimpleGlobal(
-      payload,
-      "about-section",
-      {
-        sectionTitle: ru.about.sectionTitle,
-        paragraph1: ru.about.paragraph1,
-        paragraph2: ru.about.paragraph2,
-        buttonText: ru.about.button,
-        backgroundImage: imgAboutSectionBg,
-      },
-      {
-        sectionTitle: en.about.sectionTitle,
-        paragraph1: en.about.paragraph1,
-        paragraph2: en.about.paragraph2,
-        buttonText: en.about.button,
-      },
-    );
-
-    // 6. Stats Section (HAS array: items)
-    // label is localized, num/prefix/suffix/displayOverride are NOT localized
+    // 3. Homepage (single global with tabs — HAS arrays: statsItems, advantagesItems, clientsItems)
     const statsRuItems = [
       { num: 12, prefix: "", suffix: "", displayOverride: "", label: ru.stats.items[0]?.label },
       { num: 350, prefix: ">", suffix: "", displayOverride: "", label: ru.stats.items[1]?.label },
@@ -431,123 +362,123 @@ export async function POST() {
 
     await seedGlobalWithArrays(
       payload,
-      "stats-section",
-      // RU data
+      "homepage",
+      // RU data (all sections combined with prefixed field names)
       {
-        items: statsRuItems,
-      },
-      // EN scalar data (none for stats)
-      {},
-      // EN array mappers
-      {
-        items: (_existing: any, idx: number) => ({
-          label: statsEnLabels[idx] || "",
-        }),
-      },
-    );
-
-    // 7. Advantages Section (HAS array: items)
-    // number is NOT localized; title, text are localized
-    await seedGlobalWithArrays(
-      payload,
-      "advantages-section",
-      // RU data
-      {
-        sectionTitle: ru.advantages.sectionTitle,
-        items: ru.advantages.items.map((item: any) => ({
+        // Hero
+        heroTitle: ru.hero.title,
+        heroSubtitle: ru.hero.subtitle,
+        heroCtaText: ru.hero.cta,
+        heroBackgroundImage: imgHeroBg,
+        // Services
+        servicesSectionTitle: ru.services.sectionTitle,
+        servicesDescription: ru.services.description,
+        servicesLearnMoreText: ru.services.learnMore,
+        servicesShowAllText: ru.common.showAll,
+        servicesBreadcrumbHome: ru.common.home,
+        servicesFeaturesSectionTitle:
+          ru.servicesPage?.serviceFeaturesSectionTitle || "Особенности услуги",
+        servicesStepsSectionTitle:
+          ru.servicesPage?.serviceStepsSectionTitle || "Этапы сотрудничества",
+        servicesClientsSectionTitle:
+          ru.servicesPage?.serviceClientsSectionTitle || "Кому подойдёт наша услуга",
+        // About
+        aboutSectionTitle: ru.about.sectionTitle,
+        aboutParagraph1: ru.about.paragraph1,
+        aboutParagraph2: ru.about.paragraph2,
+        aboutButtonText: ru.about.button,
+        aboutBackgroundImage: imgAboutSectionBg,
+        // Stats
+        statsItems: statsRuItems,
+        // Advantages
+        advantagesSectionTitle: ru.advantages.sectionTitle,
+        advantagesItems: ru.advantages.items.map((item: any) => ({
           number: item.number,
           title: item.title,
           text: item.text,
         })),
+        // Clients
+        clientsSectionTitle: ru.clients.sectionTitle,
+        clientsBackgroundImage: imgClientsBg,
+        clientsItems: ru.clients.items.map((name: string) => ({ name })),
+        // Contact Info
+        contactInfoSectionTitle: ru.contactInfo.sectionTitle,
+        contactInfoLabelAddress: ru.contactInfo.labelAddress,
+        contactInfoLabelPhone: ru.contactInfo.labelPhone,
+        contactInfoLabelEmail: ru.contactInfo.labelEmail,
+        contactInfoLabelSocials: ru.contactInfo.labelSocials,
+        // Contact Form
+        contactFormTitle: ru.contactForm.title,
+        contactFormDescription: ru.contactForm.description,
+        contactFormFeatureText: ru.contactForm.featureText,
+        contactFormFeatureIcon: imgFeatureIcon,
+        contactFormPlaceholderName: ru.contactForm.placeholderName,
+        contactFormPlaceholderEmail: ru.contactForm.placeholderEmail,
+        contactFormPlaceholderMessage: ru.contactForm.placeholderMessage,
+        contactFormConsentText: ru.contactForm.consentText,
+        contactFormConsentLinkText: ru.contactForm.consentLink,
+        contactFormSubmitText: ru.contactForm.submit,
+        contactFormSendingText: ru.contactForm.sending,
+        contactFormSentText: ru.contactForm.sent,
+        contactFormErrorText: ru.contactForm.errorSending,
       },
-      // EN scalar data
+      // EN scalar data (all non-array localized fields)
       {
-        sectionTitle: en.advantages.sectionTitle,
+        // Hero
+        heroTitle: en.hero.title,
+        heroSubtitle: en.hero.subtitle,
+        heroCtaText: en.hero.cta,
+        // Services
+        servicesSectionTitle: en.services.sectionTitle,
+        servicesDescription: en.services.description,
+        servicesLearnMoreText: en.services.learnMore,
+        servicesShowAllText: en.common.showAll,
+        servicesBreadcrumbHome: en.common.home,
+        servicesFeaturesSectionTitle:
+          en.servicesPage?.serviceFeaturesSectionTitle || "Service Features",
+        servicesStepsSectionTitle:
+          en.servicesPage?.serviceStepsSectionTitle || "Cooperation Steps",
+        servicesClientsSectionTitle:
+          en.servicesPage?.serviceClientsSectionTitle || "Who This Service Is For",
+        // About
+        aboutSectionTitle: en.about.sectionTitle,
+        aboutParagraph1: en.about.paragraph1,
+        aboutParagraph2: en.about.paragraph2,
+        aboutButtonText: en.about.button,
+        // Advantages
+        advantagesSectionTitle: en.advantages.sectionTitle,
+        // Contact Info
+        contactInfoSectionTitle: en.contactInfo.sectionTitle,
+        contactInfoLabelAddress: en.contactInfo.labelAddress,
+        contactInfoLabelPhone: en.contactInfo.labelPhone,
+        contactInfoLabelEmail: en.contactInfo.labelEmail,
+        contactInfoLabelSocials: en.contactInfo.labelSocials,
+        // Contact Form
+        contactFormTitle: en.contactForm.title,
+        contactFormDescription: en.contactForm.description,
+        contactFormFeatureText: en.contactForm.featureText,
+        contactFormPlaceholderName: en.contactForm.placeholderName,
+        contactFormPlaceholderEmail: en.contactForm.placeholderEmail,
+        contactFormPlaceholderMessage: en.contactForm.placeholderMessage,
+        contactFormConsentText: en.contactForm.consentText,
+        contactFormConsentLinkText: en.contactForm.consentLink,
+        contactFormSubmitText: en.contactForm.submit,
+        contactFormSendingText: en.contactForm.sending,
+        contactFormSentText: en.contactForm.sent,
+        contactFormErrorText: en.contactForm.errorSending,
       },
       // EN array mappers
       {
-        items: (_existing: any, idx: number) => ({
+        statsItems: (_existing: any, idx: number) => ({
+          label: statsEnLabels[idx] || "",
+        }),
+        advantagesItems: (_existing: any, idx: number) => ({
           title: en.advantages.items[idx]?.title || "",
           text: en.advantages.items[idx]?.text || "",
         }),
-      },
-    );
-
-    // 8. Clients Section (HAS array: items)
-    // name is localized
-    await seedGlobalWithArrays(
-      payload,
-      "clients-section",
-      // RU data
-      {
-        sectionTitle: ru.clients.sectionTitle,
-        backgroundImage: imgClientsBg,
-        items: ru.clients.items.map((name: string) => ({ name })),
-      },
-      // EN scalar data
-      {
-        sectionTitle: en.clients.sectionTitle,
-      },
-      // EN array mappers
-      {
-        items: (_existing: any, idx: number) => ({
+        clientsItems: (_existing: any, idx: number) => ({
           name: en.clients.items[idx] || "",
         }),
-      },
-    );
-
-    // 9. Contact Info Section (NO arrays — simple)
-    await seedSimpleGlobal(
-      payload,
-      "contact-info-section",
-      {
-        sectionTitle: ru.contactInfo.sectionTitle,
-        labelAddress: ru.contactInfo.labelAddress,
-        labelPhone: ru.contactInfo.labelPhone,
-        labelEmail: ru.contactInfo.labelEmail,
-        labelSocials: ru.contactInfo.labelSocials,
-      },
-      {
-        sectionTitle: en.contactInfo.sectionTitle,
-        labelAddress: en.contactInfo.labelAddress,
-        labelPhone: en.contactInfo.labelPhone,
-        labelEmail: en.contactInfo.labelEmail,
-        labelSocials: en.contactInfo.labelSocials,
-      },
-    );
-
-    // 10. Contact Form Section (NO arrays — simple)
-    await seedSimpleGlobal(
-      payload,
-      "contact-form-section",
-      {
-        title: ru.contactForm.title,
-        description: ru.contactForm.description,
-        featureText: ru.contactForm.featureText,
-        featureIcon: imgFeatureIcon,
-        placeholderName: ru.contactForm.placeholderName,
-        placeholderEmail: ru.contactForm.placeholderEmail,
-        placeholderMessage: ru.contactForm.placeholderMessage,
-        consentText: ru.contactForm.consentText,
-        consentLinkText: ru.contactForm.consentLink,
-        submitText: ru.contactForm.submit,
-        sendingText: ru.contactForm.sending,
-        sentText: ru.contactForm.sent,
-        errorText: ru.contactForm.errorSending,
-      },
-      {
-        title: en.contactForm.title,
-        description: en.contactForm.description,
-        featureText: en.contactForm.featureText,
-        placeholderName: en.contactForm.placeholderName,
-        placeholderEmail: en.contactForm.placeholderEmail,
-        placeholderMessage: en.contactForm.placeholderMessage,
-        consentText: en.contactForm.consentText,
-        consentLinkText: en.contactForm.consentLink,
-        submitText: en.contactForm.submit,
-        sendingText: en.contactForm.sending,
-        sentText: en.contactForm.sent,
-        errorText: en.contactForm.errorSending,
       },
     );
 

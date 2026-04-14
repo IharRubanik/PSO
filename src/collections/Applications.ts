@@ -11,7 +11,6 @@ export const Applications: CollectionConfig = {
     defaultColumns: ["name", "phone", "email", "status", "createdAt"],
     description: { ru: "Заявки с форм обратной связи на сайте", en: "Applications from website contact forms" },
     hideAPIURL: true,
-    group: { ru: "Заявки", en: "Applications" },
   },
   access: {
     read: ({ req: { user } }) => !!user,

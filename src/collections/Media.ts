@@ -7,7 +7,6 @@ export const Media: CollectionConfig = {
     plural: { ru: "Медиа", en: "Media" },
   },
   admin: {
-    group: { ru: "Настройки", en: "Settings" },
   },
   upload: {
     staticDir: "public/media",

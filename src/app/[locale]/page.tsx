@@ -21,28 +21,96 @@ export default async function HomePage({
   const p = payload as any;
 
   const [
-    heroData,
-    servicesSectionData,
+    homepage,
     servicesData,
-    aboutData,
-    statsData,
-    advantagesData,
-    clientsData,
-    contactInfoData,
-    contactFormData,
     siteSettings,
   ] = await Promise.all([
-    p.findGlobal({ slug: "hero-section", locale }).catch(() => null),
-    p.findGlobal({ slug: "services-section", locale }).catch(() => null),
+    p.findGlobal({ slug: "homepage", locale }).catch(() => null),
     p.find({ collection: "services", locale, sort: "sortOrder", limit: 100 }).catch(() => ({ docs: [] })),
-    p.findGlobal({ slug: "about-section", locale }).catch(() => null),
-    p.findGlobal({ slug: "stats-section", locale }).catch(() => null),
-    p.findGlobal({ slug: "advantages-section", locale }).catch(() => null),
-    p.findGlobal({ slug: "clients-section", locale }).catch(() => null),
-    p.findGlobal({ slug: "contact-info-section", locale }).catch(() => null),
-    p.findGlobal({ slug: "contact-form-section", locale }).catch(() => null),
     p.findGlobal({ slug: "site-settings", locale }).catch(() => null),
   ]);
+
+  // Map flat prefixed fields back to the shape each component expects
+  const heroData = homepage
+    ? {
+        title: homepage.heroTitle,
+        subtitle: homepage.heroSubtitle,
+        ctaText: homepage.heroCtaText,
+        backgroundImage: homepage.heroBackgroundImage,
+      }
+    : null;
+
+  const servicesSectionData = homepage
+    ? {
+        sectionTitle: homepage.servicesSectionTitle,
+        description: homepage.servicesDescription,
+        learnMoreText: homepage.servicesLearnMoreText,
+        showAllText: homepage.servicesShowAllText,
+        breadcrumbHome: homepage.servicesBreadcrumbHome,
+        serviceFeaturesSectionTitle: homepage.servicesFeaturesSectionTitle,
+        serviceStepsSectionTitle: homepage.servicesStepsSectionTitle,
+        serviceClientsSectionTitle: homepage.servicesClientsSectionTitle,
+      }
+    : null;
+
+  const aboutData = homepage
+    ? {
+        sectionTitle: homepage.aboutSectionTitle,
+        paragraph1: homepage.aboutParagraph1,
+        paragraph2: homepage.aboutParagraph2,
+        buttonText: homepage.aboutButtonText,
+        backgroundImage: homepage.aboutBackgroundImage,
+      }
+    : null;
+
+  const statsData = homepage
+    ? {
+        items: homepage.statsItems,
+      }
+    : null;
+
+  const advantagesData = homepage
+    ? {
+        sectionTitle: homepage.advantagesSectionTitle,
+        items: homepage.advantagesItems,
+      }
+    : null;
+
+  const clientsData = homepage
+    ? {
+        sectionTitle: homepage.clientsSectionTitle,
+        backgroundImage: homepage.clientsBackgroundImage,
+        items: homepage.clientsItems,
+      }
+    : null;
+
+  const contactInfoData = homepage
+    ? {
+        sectionTitle: homepage.contactInfoSectionTitle,
+        labelAddress: homepage.contactInfoLabelAddress,
+        labelPhone: homepage.contactInfoLabelPhone,
+        labelEmail: homepage.contactInfoLabelEmail,
+        labelSocials: homepage.contactInfoLabelSocials,
+      }
+    : null;
+
+  const contactFormData = homepage
+    ? {
+        title: homepage.contactFormTitle,
+        description: homepage.contactFormDescription,
+        featureText: homepage.contactFormFeatureText,
+        featureIcon: homepage.contactFormFeatureIcon,
+        placeholderName: homepage.contactFormPlaceholderName,
+        placeholderEmail: homepage.contactFormPlaceholderEmail,
+        placeholderMessage: homepage.contactFormPlaceholderMessage,
+        consentText: homepage.contactFormConsentText,
+        consentLinkText: homepage.contactFormConsentLinkText,
+        submitText: homepage.contactFormSubmitText,
+        sendingText: homepage.contactFormSendingText,
+        sentText: homepage.contactFormSentText,
+        errorText: homepage.contactFormErrorText,
+      }
+    : null;
 
   return (
     <>

@@ -1,5 +1,5 @@
 import { buildConfig } from "payload";
-import { sqliteAdapter } from "@payloadcms/db-sqlite";
+import { postgresAdapter } from "@payloadcms/db-postgres";
 import { lexicalEditor } from "@payloadcms/richtext-lexical";
 import sharp from "sharp";
 import path from "path";
@@ -13,14 +13,7 @@ import { Services } from "./collections/Services";
 import { Applications } from "./collections/Applications";
 import { SiteSettings } from "./globals/SiteSettings";
 import { Navigation } from "./globals/Navigation";
-import { HeroSection } from "./globals/HeroSection";
-import { ServicesSection } from "./globals/ServicesSection";
-import { AboutSection } from "./globals/AboutSection";
-import { StatsSection } from "./globals/StatsSection";
-import { AdvantagesSection } from "./globals/AdvantagesSection";
-import { ClientsSection } from "./globals/ClientsSection";
-import { ContactInfoSection } from "./globals/ContactInfoSection";
-import { ContactFormSection } from "./globals/ContactFormSection";
+import { Homepage } from "./globals/Homepage";
 import { RequestModalGlobal } from "./globals/RequestModalGlobal";
 import { FooterGlobal } from "./globals/FooterGlobal";
 import { AboutPage } from "./globals/AboutPage";
@@ -35,35 +28,28 @@ const dirname = path.dirname(filename);
 
 export default buildConfig({
   editor: lexicalEditor(),
-  collections: [Applications, Services, Users, Media],
+  collections: [Applications, Services, Media, Users],
   globals: [
-    // Б. Главная страница
-    HeroSection,
-    ServicesSection,
-    AboutSection,
-    StatsSection,
-    AdvantagesSection,
-    ClientsSection,
-    ContactInfoSection,
-    ContactFormSection,
-    // В. Страницы
+    // Главная страница
+    Homepage,
+    // Страницы
     AboutPage,
     ContactsPage,
     PrivacyPage,
     TermsPage,
     NotFoundPage,
-    // Г. Компоненты
+    // Компоненты
     Navigation,
     RequestModalGlobal,
     FooterGlobal,
     CommonTexts,
-    // Д. Настройки
+    // Настройки
     SiteSettings,
   ],
   secret: process.env.PAYLOAD_SECRET || "",
-  db: sqliteAdapter({
-    client: {
-      url: "file:./data/payload.db",
+  db: postgresAdapter({
+    pool: {
+      connectionString: process.env.DATABASE_URL || "",
     },
   }),
   sharp,
