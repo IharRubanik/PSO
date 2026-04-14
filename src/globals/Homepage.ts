@@ -241,7 +241,6 @@ export const Homepage: GlobalConfig = {
                   type: "text",
                   label: { ru: "Переопределение отображения", en: "Display Override" },
                   admin: {
-    hideAPIURL: true,
                     description: {
                       ru: "Если заполнено — отображается вместо числа (например «24/7»)",
                       en: "If set — displayed instead of the number (e.g. «24/7»)",
