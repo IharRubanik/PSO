@@ -77,6 +77,7 @@ export default buildConfig({
   },
   admin: {
     user: Users.slug,
+    theme: "dark",
     components: {
       graphics: {
         Icon: "@/admin/graphics/Icon#Icon",
