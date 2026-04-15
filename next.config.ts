@@ -23,8 +23,7 @@ const nextConfig: NextConfig = {
   },
   async headers() {
     return [
-      { source: "/admin", headers: [cspHeader] },
-      { source: "/admin/:path*", headers: [cspHeader] },
+      { source: "/:path*", headers: [cspHeader] },
     ];
   },
 };
