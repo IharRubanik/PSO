@@ -289,9 +289,23 @@ html body .template-minimal .template-minimal__wrap {
 }
 
 /* Field wrappers share the top bar background */
-.field-type__wrap,
-.field-type__wrap.field-type {
+html body .field-type__wrap,
+html body [class*="field-type"] .field-type__wrap,
+html body .field-type {
   background: #14110f !important;
+}
+
+/* Kill Chrome autofill blue tint on login inputs */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active,
+textarea:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px #1a1816 inset !important;
+  -webkit-text-fill-color: #e5dfda !important;
+  caret-color: #e5dfda !important;
+  background-color: #1a1816 !important;
+  transition: background-color 5000s ease-in-out 0s !important;
 }
 
 /* Scrollbars */
