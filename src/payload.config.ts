@@ -2,6 +2,8 @@ import { buildConfig } from "payload";
 import { postgresAdapter } from "@payloadcms/db-postgres";
 import { sqliteAdapter } from "@payloadcms/db-sqlite";
 import { lexicalEditor } from "@payloadcms/richtext-lexical";
+import { cloudStoragePlugin } from "@payloadcms/plugin-cloud-storage";
+import { vercelBlobAdapter } from "./lib/vercelBlobAdapter";
 import sharp from "sharp";
 import path from "path";
 import { fileURLToPath } from "url";
@@ -56,6 +58,16 @@ export default buildConfig({
         client: { url: "file:./data/payload-dev.db" },
       }),
   sharp,
+  plugins: [
+    cloudStoragePlugin({
+      collections: {
+        media: {
+          adapter: vercelBlobAdapter,
+          disableLocalStorage: true,
+        },
+      },
+    }),
+  ],
   typescript: {
     outputFile: path.resolve(dirname, "payload-types.ts"),
   },
