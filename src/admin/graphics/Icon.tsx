@@ -4,6 +4,6 @@ export const Icon: React.FC = () => (
   <img
     src="/assets/images/logo.svg"
     alt="PSO"
-    style={{ height: "28px", width: "auto" }}
+    style={{ height: "42px", width: "auto" }}
   />
 );
