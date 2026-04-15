@@ -7,6 +7,28 @@ const nextConfig: NextConfig = {
     contentDispositionType: "attachment",
     unoptimized: true,
   },
+  async headers() {
+    return [
+      {
+        source: "/admin/:path*",
+        headers: [
+          {
+            key: "Content-Security-Policy",
+            value: [
+              "default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https:",
+              "script-src 'self' 'unsafe-inline' 'unsafe-eval' blob:",
+              "style-src 'self' 'unsafe-inline'",
+              "img-src 'self' data: blob: https:",
+              "font-src 'self' data:",
+              "connect-src 'self' https: blob:",
+              "worker-src 'self' blob:",
+              "frame-src 'self'",
+            ].join("; "),
+          },
+        ],
+      },
+    ];
+  },
 };
 
 export default withPayload(nextConfig);
