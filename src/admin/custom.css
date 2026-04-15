@@ -1,0 +1,244 @@
+/* ===== Site fonts (match main site) ===== */
+@font-face {
+  font-family: "Furore";
+  src: url("/assets/fonts/furore/Furore.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Proxima Nova";
+  src: url("/assets/fonts/proxima-nova/proximanova_regular.ttf") format("truetype");
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Proxima Nova";
+  src: url("/assets/fonts/proxima-nova/proximanova_bold.otf") format("opentype");
+  font-weight: 700;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Proxima Nova";
+  src: url("/assets/fonts/proxima-nova/proximanova_light.otf") format("opentype");
+  font-weight: 300;
+  font-display: swap;
+}
+
+/* ===== Palette overrides (dark theme) ===== */
+html[data-theme="dark"],
+:root[data-theme="dark"] {
+  /* base backgrounds */
+  --theme-bg: #14110f;
+  --theme-input-bg: #1a1816;
+  --theme-elevation-0: #0a0908;
+  --theme-elevation-50: #14110f;
+  --theme-elevation-100: #1a1816;
+  --theme-elevation-150: #1f1c1a;
+  --theme-elevation-200: #24211f;
+  --theme-elevation-250: #2a2725;
+  --theme-elevation-300: #393634;
+  --theme-elevation-400: #49443d;
+  --theme-elevation-500: #5a5755;
+  --theme-elevation-600: #6b6864;
+  --theme-elevation-700: #8a8581;
+  --theme-elevation-800: #b3ada8;
+  --theme-elevation-850: #c9c3be;
+  --theme-elevation-900: #d9d2ce;
+  --theme-elevation-950: #e5dfda;
+  --theme-elevation-1000: #f2f2f2;
+
+  /* text */
+  --theme-text: #d9d2ce;
+
+  /* accent / success / warning reusing gold palette */
+  --color-success-500: #c2a16d;
+  --color-success-600: #d2b689;
+  --color-success-700: #e4cba4;
+  --color-success-400: #a88857;
+  --theme-success-500: #c2a16d;
+  --theme-success-600: #d2b689;
+
+  /* error stays warm but readable on dark */
+  --color-error-500: #d98b6b;
+  --color-error-600: #e4a483;
+}
+
+/* ===== Global body ===== */
+body,
+.payload__content,
+.payload-default-theme {
+  font-family: "Proxima Nova", sans-serif;
+  background: #14110f;
+  color: #d9d2ce;
+}
+
+/* Headings use display font */
+h1, h2, h3, h4,
+.dashboard__label,
+.view-description__title,
+.doc-header__title,
+.nav-group__label,
+.step-nav h1 {
+  font-family: "Furore", sans-serif !important;
+  letter-spacing: 0.02em;
+  color: #e5dfda;
+}
+
+/* ===== Sidebar / nav ===== */
+.nav,
+.nav__wrap,
+.nav__scroll {
+  background: #0a0908;
+  border-right: 1px solid #24211f;
+}
+
+.nav-group__content a,
+.nav-group__content button {
+  color: #b3ada8;
+  transition: color 0.15s;
+}
+.nav-group__content a:hover,
+.nav-group__content a.active,
+.nav-group__content button:hover {
+  color: #c2a16d;
+}
+
+/* Sidebar active item indicator */
+.nav-group__content a.active::before {
+  background: #c2a16d;
+}
+
+/* ===== Top bar ===== */
+.app-header,
+.step-nav {
+  background: #14110f;
+  border-bottom: 1px solid #24211f;
+}
+
+/* ===== Cards / panels ===== */
+.dashboard__card,
+.card,
+.collapsible__content,
+.doc-tabs,
+.drawer__content,
+.gutter {
+  background: #1a1816;
+  border: 1px solid #24211f;
+}
+
+.dashboard__card:hover {
+  border-color: #c2a16d;
+}
+
+/* ===== Inputs ===== */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+input[type="search"],
+textarea,
+select,
+.rs__control,
+.react-datepicker__input-container input {
+  background: #1a1816 !important;
+  border: 1px solid #393634 !important;
+  color: #e5dfda !important;
+}
+input:focus,
+textarea:focus,
+select:focus,
+.rs__control--is-focused {
+  border-color: #c2a16d !important;
+  box-shadow: 0 0 0 1px rgba(194, 161, 109, 0.3) !important;
+}
+
+/* React-select dropdown */
+.rs__menu {
+  background: #1a1816 !important;
+  border: 1px solid #393634 !important;
+}
+.rs__option--is-focused {
+  background: #24211f !important;
+  color: #c2a16d !important;
+}
+.rs__option--is-selected {
+  background: #c2a16d !important;
+  color: #14110f !important;
+}
+
+/* ===== Buttons ===== */
+.btn--style-primary,
+button.btn--style-primary,
+a.btn--style-primary {
+  background: linear-gradient(90deg, #c2a16d 0%, #e2caa4 55.77%, #c2a16d 100%);
+  color: #14110f !important;
+  border: none;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+.btn--style-primary:hover {
+  background: linear-gradient(90deg, #d2b689 0%, #e4cba4 55.77%, #d2b689 100%);
+  color: #0a0908 !important;
+}
+
+.btn--style-secondary {
+  background: transparent;
+  color: #c2a16d !important;
+  border: 1px solid #c2a16d !important;
+}
+.btn--style-secondary:hover {
+  background: rgba(194, 161, 109, 0.1);
+}
+
+/* ===== Links ===== */
+a {
+  color: #c2a16d;
+}
+a:hover {
+  color: #e4cba4;
+}
+
+/* ===== Tables / rows ===== */
+.table thead th {
+  background: #14110f;
+  color: #b3ada8;
+  font-family: "Furore", sans-serif;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-size: 12px;
+  border-bottom: 1px solid #24211f;
+}
+.table tbody tr {
+  background: #1a1816;
+  border-bottom: 1px solid #24211f;
+}
+.table tbody tr:hover {
+  background: #24211f;
+}
+
+/* ===== Login screen ===== */
+.template-minimal {
+  background: #14110f;
+}
+.template-minimal__wrap,
+.login__wrap {
+  background: #1a1816;
+  border: 1px solid #24211f;
+}
+
+/* Scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #0a0908;
+}
+::-webkit-scrollbar-thumb {
+  background: #393634;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #5a5755;
+}
