@@ -286,6 +286,12 @@ a:hover {
   padding: 20px !important;
 }
 
+/* Field wrappers share the top bar background */
+.field-type__wrap,
+.field-type__wrap.field-type {
+  background: #14110f !important;
+}
+
 /* Scrollbars */
 ::-webkit-scrollbar {
   width: 8px;
