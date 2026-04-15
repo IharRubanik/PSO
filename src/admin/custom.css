@@ -160,11 +160,15 @@ h1, h2, h3, h4,
 
 /* Breadcrumb popup button ("Панель ⌄") needs side breathing room */
 .step-nav__popup-button,
-.popup-button,
-.step-nav a,
-.step-nav__step {
+.popup-button {
   padding-left: 10px !important;
   padding-right: 10px !important;
+}
+
+/* React-select control padding */
+.rs__control,
+[class*="-control"].rs__control {
+  padding: 0 8px !important;
 }
 
 /* ===== Cards / panels ===== */
