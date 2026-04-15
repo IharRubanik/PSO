@@ -95,20 +95,43 @@ h1, h2, h3, h4,
   border-right: 1px solid #24211f;
 }
 
-.nav-group__content a,
-.nav-group__content button {
-  color: #b3ada8;
-  transition: color 0.15s;
+/* Group labels ("КОЛЛЕКЦИИ", "СТРАНИЦЫ", ...) */
+.nav-group__toggle {
+  color: #c2a16d !important;
+  font-family: "Furore", sans-serif !important;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 12px;
 }
-.nav-group__content a:hover,
-.nav-group__content a.active,
-.nav-group__content button:hover {
-  color: #c2a16d;
+.nav-group__toggle:hover {
+  color: #e4cba4 !important;
+}
+.nav-group__toggle .stroke,
+.nav-group__indicator .stroke {
+  stroke: #c2a16d !important;
 }
 
-/* Sidebar active item indicator */
-.nav-group__content a.active::before {
-  background: #c2a16d;
+/* Individual sidebar links */
+.nav__link {
+  color: #b3ada8 !important;
+  transition: color 0.15s;
+}
+.nav__link:hover,
+.nav__link:focus-visible {
+  color: #e4cba4 !important;
+}
+
+/* Active link (rendered as plain div) */
+.nav__link:not(a) {
+  color: #c2a16d !important;
+  font-weight: 700;
+}
+.nav__link-indicator {
+  background: #c2a16d !important;
+}
+
+.nav__link-label {
+  color: inherit !important;
 }
 
 /* ===== Top bar ===== */
