@@ -5,13 +5,13 @@ const cspHeader = {
   key: "Content-Security-Policy",
   value: [
     "default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https:",
-    "script-src 'self' 'unsafe-inline' 'unsafe-eval' blob:",
-    "style-src 'self' 'unsafe-inline'",
+    "script-src 'self' 'unsafe-inline' 'unsafe-eval' blob: https:",
+    "style-src 'self' 'unsafe-inline' https:",
     "img-src 'self' data: blob: https:",
-    "font-src 'self' data:",
-    "connect-src 'self' https: blob:",
+    "font-src 'self' data: https:",
+    "connect-src 'self' https: blob: wss:",
     "worker-src 'self' blob:",
-    "frame-src 'self'",
+    "frame-src 'self' https:",
   ].join("; "),
 };
 
