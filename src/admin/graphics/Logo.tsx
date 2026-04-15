@@ -2,8 +2,8 @@ import React from "react";
 
 export const Logo: React.FC = () => (
   <img
-    src="/assets/images/logo-full.svg"
+    src="/assets/images/admin-logo.svg"
     alt="PSO"
-    style={{ maxWidth: "220px", width: "100%", height: "auto" }}
+    style={{ maxWidth: "180px", width: "100%", height: "auto" }}
   />
 );
