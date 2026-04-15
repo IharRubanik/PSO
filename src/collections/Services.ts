@@ -124,6 +124,13 @@ export const Services: CollectionConfig = {
       ],
     },
     {
+      name: "clientsSectionTitle",
+      type: "text",
+      label: { ru: "Заголовок секции «Кому подойдёт»", en: "Clients Section Title" },
+      localized: true,
+      defaultValue: "Кому подойдёт наша услуга",
+    },
+    {
       name: "targetClients",
       type: "array",
       label: { ru: "Целевые клиенты", en: "Target Clients" },

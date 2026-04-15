@@ -71,6 +71,8 @@ export async function POST() {
       // ---- homepage locales — SEO ----
       `ALTER TABLE homepage_locales ADD COLUMN IF NOT EXISTS seo_meta_title varchar`,
       `ALTER TABLE homepage_locales ADD COLUMN IF NOT EXISTS seo_meta_description varchar`,
+      // ---- services locales — per-service clients section title ----
+      `ALTER TABLE services_locales ADD COLUMN IF NOT EXISTS clients_section_title varchar`,
     ];
 
     const results: string[] = [];

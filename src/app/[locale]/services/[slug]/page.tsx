@@ -39,7 +39,9 @@ export default async function ServiceDetailPage({
     breadcrumbHome: hp?.servicesBreadcrumbHome as string | undefined,
     serviceFeaturesSectionTitle: hp?.servicesFeaturesSectionTitle as string | undefined,
     serviceStepsSectionTitle: hp?.servicesStepsSectionTitle as string | undefined,
-    serviceClientsSectionTitle: hp?.servicesClientsSectionTitle as string | undefined,
+    serviceClientsSectionTitle:
+      ((service as Record<string, unknown>)?.clientsSectionTitle as string | undefined) ||
+      (hp?.servicesClientsSectionTitle as string | undefined),
   };
 
   const contactFormData = extractContactFormData(hp);
