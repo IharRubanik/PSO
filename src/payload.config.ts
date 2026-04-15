@@ -79,8 +79,8 @@ export default buildConfig({
     user: Users.slug,
     components: {
       graphics: {
-        Icon: "/admin/graphics/Icon#Icon",
-        Logo: "/admin/graphics/Logo#Logo",
+        Icon: "@/admin/graphics/Icon#Icon",
+        Logo: "@/admin/graphics/Logo#Logo",
       },
     },
     meta: {
