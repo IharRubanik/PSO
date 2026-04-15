@@ -158,6 +158,15 @@ h1, h2, h3, h4,
   padding-bottom: 12px !important;
 }
 
+/* Breadcrumb popup button ("Панель ⌄") needs side breathing room */
+.step-nav__popup-button,
+.popup-button,
+.step-nav a,
+.step-nav__step {
+  padding-left: 10px !important;
+  padding-right: 10px !important;
+}
+
 /* ===== Cards / panels ===== */
 .dashboard__card,
 .card,
