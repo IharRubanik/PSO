@@ -22,6 +22,10 @@ export const Media: CollectionConfig = {
   },
   upload: {
     mimeTypes: ["image/jpeg", "image/png", "image/svg+xml", "image/webp"],
+    formatOptions: {
+      format: "webp",
+      options: { quality: 85 },
+    },
     imageSizes: [
       {
         name: "card",
