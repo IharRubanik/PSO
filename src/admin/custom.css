@@ -281,6 +281,10 @@ a:hover {
   background: #1a1816;
   border: 1px solid #24211f;
 }
+.login__form,
+.login__form.form {
+  padding: 20px !important;
+}
 
 /* Scrollbars */
 ::-webkit-scrollbar {
