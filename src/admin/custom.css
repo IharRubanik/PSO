@@ -277,7 +277,8 @@ a:hover {
   background: #14110f;
 }
 .template-minimal__wrap,
-.login__wrap {
+.login__wrap,
+html body .template-minimal .template-minimal__wrap {
   background: #1a1816;
   border: 1px solid #24211f;
   padding: 20px !important;
