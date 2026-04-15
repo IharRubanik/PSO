@@ -91,7 +91,7 @@ h1, h2, h3, h4,
 .nav,
 .nav__wrap,
 .nav__scroll {
-  background: #0a0908;
+  background: #14110f !important;
   border-right: 1px solid #24211f;
 }
 
