@@ -25,9 +25,11 @@
   font-display: swap;
 }
 
-/* ===== Palette overrides (dark theme) ===== */
+/* ===== Palette overrides (applied to both themes) ===== */
+html,
 html[data-theme="dark"],
-:root[data-theme="dark"] {
+html[data-theme="light"],
+:root {
   /* base backgrounds */
   --theme-bg: #14110f;
   --theme-input-bg: #1a1816;
