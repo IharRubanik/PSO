@@ -280,6 +280,7 @@ a:hover {
 .login__wrap {
   background: #1a1816;
   border: 1px solid #24211f;
+  padding: 20px !important;
 }
 .login__form,
 .login__form.form {
