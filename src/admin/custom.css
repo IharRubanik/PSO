@@ -146,9 +146,16 @@ h1, h2, h3, h4,
 .template-default__main,
 .collection-list,
 .dashboard,
-.doc-header,
 .gutter {
   padding-top: 32px;
+}
+
+/* Document header (with Save button) keeps symmetric padding */
+.doc-header,
+.doc-controls,
+.doc-controls__wrapper {
+  padding-top: 12px !important;
+  padding-bottom: 12px !important;
 }
 
 /* ===== Cards / panels ===== */
