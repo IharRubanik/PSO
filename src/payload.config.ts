@@ -86,8 +86,6 @@ export default buildConfig({
     meta: {
       titleSuffix: " — PSO",
     },
-    custom: {},
-    css: path.resolve(dirname, "./admin/custom.css"),
   },
   localization: {
     locales: [
