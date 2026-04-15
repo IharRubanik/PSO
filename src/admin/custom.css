@@ -118,6 +118,16 @@ h1, h2, h3, h4,
   border-bottom: 1px solid #24211f;
 }
 
+/* Breathing room between header and content */
+.template-default__wrap > main,
+.template-default__main,
+.collection-list,
+.dashboard,
+.doc-header,
+.gutter {
+  padding-top: 32px;
+}
+
 /* ===== Cards / panels ===== */
 .dashboard__card,
 .card,
