@@ -15,6 +15,7 @@
     "@payloadcms/plugin-cloud-storage": "^3.82.1",
     "@payloadcms/richtext-lexical": "^3.82.1",
     "@payloadcms/storage-vercel-blob": "^3.82.1",
+    "@payloadcms/ui": "^3.82.1",
     "@prisma/client": "^7.6.0",
     "@vercel/blob": "^2.3.3",
     "dotenv": "^17.4.2",
