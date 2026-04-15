@@ -2,7 +2,9 @@ import { NextResponse } from "next/server";
 import { getPayload } from "@/lib/payload";
 
 /**
- * Временный endpoint — добавляет недостающие колонки в Postgres на проде.
+ * Временный endpoint — восстанавливает upload-relation колонки,
+ * которые были ошибочно дропнуты предыдущей версией этого endpoint,
+ * и добавляет недостающие колонки в Postgres на проде.
  * После успешного выполнения удалить.
  */
 export async function POST() {
@@ -12,7 +14,35 @@ export async function POST() {
     const db = (payload.db as any).drizzle;
 
     const queries = [
-      // site_settings
+      // ---- Restore upload-relation (*_id integer) columns ----
+      `ALTER TABLE homepage ADD COLUMN IF NOT EXISTS hero_background_image_id integer`,
+      `ALTER TABLE homepage ADD COLUMN IF NOT EXISTS about_background_image_id integer`,
+      `ALTER TABLE homepage ADD COLUMN IF NOT EXISTS clients_background_image_id integer`,
+      `ALTER TABLE homepage ADD COLUMN IF NOT EXISTS contact_form_feature_icon_id integer`,
+      `ALTER TABLE about_page ADD COLUMN IF NOT EXISTS banner_image_id integer`,
+      `ALTER TABLE about_page ADD COLUMN IF NOT EXISTS about_image_id integer`,
+      `ALTER TABLE about_page ADD COLUMN IF NOT EXISTS armament_image_id integer`,
+      `ALTER TABLE about_page ADD COLUMN IF NOT EXISTS training_image_id integer`,
+      `ALTER TABLE about_page_licenses ADD COLUMN IF NOT EXISTS image_id integer`,
+      `ALTER TABLE services ADD COLUMN IF NOT EXISTS card_image_id integer`,
+      `ALTER TABLE services ADD COLUMN IF NOT EXISTS banner_image_id integer`,
+      `ALTER TABLE services ADD COLUMN IF NOT EXISTS feature_image_id integer`,
+      `ALTER TABLE services ADD COLUMN IF NOT EXISTS clients_background_image_id integer`,
+      // ---- Drop obsolete varchar columns left by broken migration ----
+      `ALTER TABLE homepage DROP COLUMN IF EXISTS hero_background_image`,
+      `ALTER TABLE homepage DROP COLUMN IF EXISTS about_background_image`,
+      `ALTER TABLE homepage DROP COLUMN IF EXISTS clients_background_image`,
+      `ALTER TABLE homepage DROP COLUMN IF EXISTS contact_form_feature_icon`,
+      `ALTER TABLE about_page DROP COLUMN IF EXISTS banner_image`,
+      `ALTER TABLE about_page DROP COLUMN IF EXISTS about_image`,
+      `ALTER TABLE about_page DROP COLUMN IF EXISTS armament_image`,
+      `ALTER TABLE about_page DROP COLUMN IF EXISTS training_image`,
+      `ALTER TABLE about_page_licenses DROP COLUMN IF EXISTS image`,
+      `ALTER TABLE services DROP COLUMN IF EXISTS card_image`,
+      `ALTER TABLE services DROP COLUMN IF EXISTS banner_image`,
+      `ALTER TABLE services DROP COLUMN IF EXISTS feature_image`,
+      `ALTER TABLE services DROP COLUMN IF EXISTS clients_background_image`,
+      // ---- site_settings ----
       `ALTER TABLE site_settings ADD COLUMN IF NOT EXISTS smtp_notification_email varchar`,
       `ALTER TABLE site_settings ADD COLUMN IF NOT EXISTS smtp_smtp_host varchar`,
       `ALTER TABLE site_settings ADD COLUMN IF NOT EXISTS smtp_smtp_port numeric`,
@@ -20,7 +50,7 @@ export async function POST() {
       `ALTER TABLE site_settings ADD COLUMN IF NOT EXISTS smtp_smtp_password varchar`,
       `ALTER TABLE site_settings ADD COLUMN IF NOT EXISTS map_center_lng numeric`,
       `ALTER TABLE site_settings ADD COLUMN IF NOT EXISTS map_center_lat numeric`,
-      // homepage visibility
+      // ---- homepage visibility ----
       `ALTER TABLE homepage ADD COLUMN IF NOT EXISTS show_hero boolean DEFAULT true`,
       `ALTER TABLE homepage ADD COLUMN IF NOT EXISTS show_services boolean DEFAULT true`,
       `ALTER TABLE homepage ADD COLUMN IF NOT EXISTS show_about boolean DEFAULT true`,
@@ -29,16 +59,16 @@ export async function POST() {
       `ALTER TABLE homepage ADD COLUMN IF NOT EXISTS show_clients boolean DEFAULT true`,
       `ALTER TABLE homepage ADD COLUMN IF NOT EXISTS show_contact_info boolean DEFAULT true`,
       `ALTER TABLE homepage ADD COLUMN IF NOT EXISTS show_contact_form boolean DEFAULT true`,
-      // about_page visibility
+      // ---- about_page visibility ----
       `ALTER TABLE about_page ADD COLUMN IF NOT EXISTS show_about boolean DEFAULT true`,
       `ALTER TABLE about_page ADD COLUMN IF NOT EXISTS show_licenses boolean DEFAULT true`,
       `ALTER TABLE about_page ADD COLUMN IF NOT EXISTS show_armament boolean DEFAULT true`,
       `ALTER TABLE about_page ADD COLUMN IF NOT EXISTS show_training boolean DEFAULT true`,
       `ALTER TABLE about_page ADD COLUMN IF NOT EXISTS show_contact_form boolean DEFAULT true`,
-      // contacts_page visibility
+      // ---- contacts_page visibility ----
       `ALTER TABLE contacts_page ADD COLUMN IF NOT EXISTS show_contact_info boolean DEFAULT true`,
       `ALTER TABLE contacts_page ADD COLUMN IF NOT EXISTS show_contact_form boolean DEFAULT true`,
-      // homepage locales — SEO
+      // ---- homepage locales — SEO ----
       `ALTER TABLE homepage_locales ADD COLUMN IF NOT EXISTS seo_meta_title varchar`,
       `ALTER TABLE homepage_locales ADD COLUMN IF NOT EXISTS seo_meta_description varchar`,
     ];
