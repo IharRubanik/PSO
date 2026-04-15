@@ -10,7 +10,6 @@ export const Media: CollectionConfig = {
     hideAPIURL: true,
   },
   upload: {
-    staticDir: "public/media",
     mimeTypes: ["image/jpeg", "image/png", "image/svg+xml", "image/webp"],
     imageSizes: [
       {
