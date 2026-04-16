@@ -157,24 +157,27 @@
   align-items: center;
 }
 
-.langActive {
-  font-family: var(--font-body-bold);
-  font-weight: 700;
-  font-size: 1.04vw;
-  line-height: 1.2;
-  text-transform: uppercase;
-  color: var(--color-white);
-  padding-right: 0.31vw;
-  border-right: 1px solid rgba(255, 255, 255, 0.4);
-}
-
+.langActive,
 .langInactive {
   font-family: var(--font-body-bold);
   font-weight: 700;
   font-size: 1.04vw;
   line-height: 1.2;
   text-transform: uppercase;
+}
+
+.langActive {
+  color: var(--color-white);
+}
+
+.langInactive {
   color: rgba(255, 255, 255, 0.6);
+}
+
+/* Divider sits between languages, not on the active one */
+.lang > *:first-child {
+  padding-right: 0.31vw;
+  border-right: 1px solid rgba(255, 255, 255, 0.4);
 }
 
 /* ===== BURGER ===== */
@@ -474,13 +477,12 @@
     background: rgba(255, 255, 255, 0.1);
   }
 
-  .langActive {
-    font-size: 2.6vw;
-    padding-right: 0.78vw;
-  }
-
+  .langActive,
   .langInactive {
     font-size: 2.6vw;
+  }
+  .menuOpen .lang > *:first-child {
+    padding-right: 0.78vw;
   }
 }
 
@@ -591,12 +593,11 @@
     width: 92vw;
   }
 
-  .langActive {
-    font-size: 5.33vw;
-    padding-right: 1.6vw;
-  }
-
+  .langActive,
   .langInactive {
     font-size: 5.33vw;
+  }
+  .menuOpen .lang > *:first-child {
+    padding-right: 1.6vw;
   }
 }
