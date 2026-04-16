@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
 import type { HeroData } from "@/types/cms";
 import { resolveMediaUrl } from "@/lib/cms-helpers";
 import { Corners } from "../Corners/Corners";
@@ -22,32 +21,21 @@ export function Hero({ data }: HeroProps) {
   const subtitle = data?.subtitle ?? "";
   const cta = data?.ctaText ?? "";
   const bgImage = resolveMediaUrl(data?.backgroundImage, "/assets/images/service1.jpg");
-  const bgVideo = data?.backgroundVideo ? resolveMediaUrl(data.backgroundVideo, "") : "";
 
   return (
     <section className={styles.hero}>
       {/* Background */}
       <div className={styles.bg}>
-        {bgVideo ? (
-          <video
-            src={bgVideo}
-            poster={bgImage}
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="auto"
-            style={{ width: "100%", height: "100%", objectFit: "cover" }}
-          />
-        ) : (
-          <Image
-            src={bgImage}
-            alt=""
-            fill
-            priority
-            style={{ objectFit: "cover" }}
-          />
-        )}
+        <video
+          src="/assets/videos/hero.mp4"
+          poster={bgImage}
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          style={{ width: "100%", height: "100%", objectFit: "cover" }}
+        />
       </div>
       <div className={styles.gradient} />
 

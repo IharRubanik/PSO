@@ -44,7 +44,6 @@ export interface HeroData {
   subtitle?: string | null;
   ctaText?: string | null;
   backgroundImage?: MediaField | string | null;
-  backgroundVideo?: MediaField | string | null;
 }
 
 export interface AboutSectionData {

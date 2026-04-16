@@ -99,14 +99,8 @@ export const Homepage: GlobalConfig = {
             {
               name: "heroBackgroundImage",
               type: "upload",
-              label: { ru: "Фоновое изображение", en: "Background Image" },
+              label: { ru: "Фоновое изображение (используется как poster для видео)", en: "Background Image (used as video poster)" },
               relationTo: "media",
-            },
-            {
-              name: "heroBackgroundVideo",
-              type: "upload",
-              label: { ru: "Фоновое видео (приоритетнее картинки)", en: "Background Video (overrides image)" },
-              relationTo: "media-videos",
             },
           ],
         },

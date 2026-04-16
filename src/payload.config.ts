@@ -1,27 +1,7 @@
 import { buildConfig } from "payload";
 import { postgresAdapter } from "@payloadcms/db-postgres";
 import { sqliteAdapter } from "@payloadcms/db-sqlite";
-import {
-  lexicalEditor,
-  BoldFeature,
-  ItalicFeature,
-  UnderlineFeature,
-  StrikethroughFeature,
-  SubscriptFeature,
-  SuperscriptFeature,
-  InlineCodeFeature,
-  ParagraphFeature,
-  HeadingFeature,
-  AlignFeature,
-  IndentFeature,
-  UnorderedListFeature,
-  OrderedListFeature,
-  ChecklistFeature,
-  LinkFeature,
-  BlockquoteFeature,
-  HorizontalRuleFeature,
-  InlineToolbarFeature,
-} from "@payloadcms/richtext-lexical";
+import { lexicalEditor } from "@payloadcms/richtext-lexical";
 import { cloudStoragePlugin } from "@payloadcms/plugin-cloud-storage";
 import { vercelBlobAdapter } from "./lib/vercelBlobAdapter";
 import sharp from "sharp";
@@ -32,7 +12,6 @@ import { ru } from "@payloadcms/translations/languages/ru";
 import { en } from "@payloadcms/translations/languages/en";
 import { Users } from "./collections/Users";
 import { Media } from "./collections/Media";
-import { MediaVideo } from "./collections/MediaVideo";
 import { Services } from "./collections/Services";
 import { Applications } from "./collections/Applications";
 import { SiteSettings } from "./globals/SiteSettings";
@@ -51,29 +30,8 @@ const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
 
 export default buildConfig({
-  editor: lexicalEditor({
-    features: [
-      BoldFeature(),
-      ItalicFeature(),
-      UnderlineFeature(),
-      StrikethroughFeature(),
-      SubscriptFeature(),
-      SuperscriptFeature(),
-      InlineCodeFeature(),
-      ParagraphFeature(),
-      HeadingFeature(),
-      AlignFeature(),
-      IndentFeature(),
-      UnorderedListFeature(),
-      OrderedListFeature(),
-      ChecklistFeature(),
-      LinkFeature(),
-      BlockquoteFeature(),
-      HorizontalRuleFeature(),
-      InlineToolbarFeature(),
-    ],
-  }),
-  collections: [Applications, Services, Media, MediaVideo, Users],
+  editor: lexicalEditor(),
+  collections: [Applications, Services, Media, Users],
   globals: [
     // Главная страница
     Homepage,
@@ -104,10 +62,6 @@ export default buildConfig({
     cloudStoragePlugin({
       collections: {
         media: {
-          adapter: vercelBlobAdapter,
-          disableLocalStorage: true,
-        },
-        "media-videos": {
           adapter: vercelBlobAdapter,
           disableLocalStorage: true,
         },
