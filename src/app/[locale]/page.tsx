@@ -35,7 +35,7 @@ export default async function HomePage({
   const s = (key: string) => hp?.[key] as string | undefined;
 
   const heroData: HeroData | null = hp
-    ? { title: s("heroTitle"), subtitle: s("heroSubtitle"), ctaText: s("heroCtaText"), backgroundImage: hp.heroBackgroundImage as MediaField | string | undefined, backgroundVideoUrl: s("heroBackgroundVideoUrl") }
+    ? { title: s("heroTitle"), subtitle: s("heroSubtitle"), ctaText: s("heroCtaText"), backgroundImage: hp.heroBackgroundImage as MediaField | string | undefined, backgroundVideo: hp.heroBackgroundVideo as MediaField | string | undefined }
     : null;
 
   const servicesSectionData: ServicesSectionData | null = hp

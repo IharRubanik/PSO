@@ -22,7 +22,9 @@ export function Hero({ data }: HeroProps) {
   const subtitle = data?.subtitle ?? "";
   const cta = data?.ctaText ?? "";
   const bgImage = resolveMediaUrl(data?.backgroundImage, "/assets/images/service1.jpg");
-  const bgVideo = data?.backgroundVideoUrl?.trim();
+  const bgVideo = data?.backgroundVideo
+    ? resolveMediaUrl(data.backgroundVideo, "")
+    : "";
 
   return (
     <section className={styles.hero}>

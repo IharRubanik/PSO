@@ -103,11 +103,12 @@ export const Homepage: GlobalConfig = {
               relationTo: "media",
             },
             {
-              name: "heroBackgroundVideoUrl",
-              type: "text",
-              label: { ru: "URL фонового видео (mp4/webm)", en: "Background Video URL (mp4/webm)" },
+              name: "heroBackgroundVideo",
+              type: "upload",
+              label: { ru: "Фоновое видео (приоритетнее картинки)", en: "Background Video (overrides image)" },
+              relationTo: "media",
               admin: {
-                description: { ru: "Прямая ссылка на mp4/webm. Если задана — играет вместо картинки.", en: "Direct link to mp4/webm. If set, plays instead of the image." },
+                description: { ru: "Загрузи mp4 или webm. Если задано — играет вместо картинки.", en: "Upload mp4 or webm. If set, plays instead of the image." },
               },
             },
           ],

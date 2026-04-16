@@ -21,30 +21,14 @@ export const Media: CollectionConfig = {
     hideAPIURL: true,
   },
   upload: {
-    mimeTypes: ["image/jpeg", "image/png", "image/svg+xml", "image/webp"],
-    formatOptions: {
-      format: "webp",
-      options: { quality: 85 },
-    },
-    imageSizes: [
-      {
-        name: "card",
-        width: 600,
-        height: 800,
-        position: "centre",
-      },
-      {
-        name: "banner",
-        width: 1920,
-        height: 800,
-        position: "centre",
-      },
-      {
-        name: "thumbnail",
-        width: 400,
-        height: 300,
-        position: "centre",
-      },
+    mimeTypes: [
+      "image/jpeg",
+      "image/png",
+      "image/svg+xml",
+      "image/webp",
+      "video/mp4",
+      "video/webm",
+      "video/quicktime",
     ],
   },
   access: {
@@ -55,12 +39,29 @@ export const Media: CollectionConfig = {
   },
   hooks: {
     beforeOperation: [
-      ({ args, operation }) => {
+      async ({ args, operation }) => {
         if (operation !== "create" && operation !== "update") return args;
         const file = args?.req?.file;
-        if (file && typeof file.name === "string") {
-          file.name = sanitizeFilename(file.name);
+        if (!file || typeof file.name !== "string") return args;
+
+        file.name = sanitizeFilename(file.name);
+
+        const mime = file.mimetype || "";
+        const shouldConvert =
+          mime.startsWith("image/") && mime !== "image/svg+xml";
+        if (shouldConvert && file.data) {
+          const sharpMod = await import("sharp");
+          const sharp = sharpMod.default;
+          const buf = Buffer.isBuffer(file.data)
+            ? file.data
+            : Buffer.from(file.data);
+          const webp = await sharp(buf).webp({ quality: 85 }).toBuffer();
+          file.data = webp;
+          file.mimetype = "image/webp";
+          file.size = webp.length;
+          file.name = file.name.replace(/\.[^.]+$/, ".webp");
         }
+
         return args;
       },
     ],
@@ -69,7 +70,7 @@ export const Media: CollectionConfig = {
     {
       name: "alt",
       type: "text",
-      label: { ru: "Alt текст", en: "Alt Text" },
+      label: { ru: "Alt текст / описание", en: "Alt / description" },
       localized: true,
     },
   ],
