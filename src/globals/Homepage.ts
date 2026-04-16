@@ -102,6 +102,14 @@ export const Homepage: GlobalConfig = {
               label: { ru: "Фоновое изображение (используется как poster для видео)", en: "Background Image (used as video poster)" },
               relationTo: "media",
             },
+            {
+              name: "heroBackgroundVideoUrl",
+              type: "text",
+              label: { ru: "URL фонового видео (mp4/webm)", en: "Background Video URL (mp4/webm)" },
+              admin: {
+                description: { ru: "Прямая ссылка на mp4/webm. Если задана — играет вместо картинки.", en: "Direct link to mp4/webm. If set, plays instead of the image." },
+              },
+            },
           ],
         },
 

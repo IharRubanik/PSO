@@ -75,6 +75,7 @@ export async function POST() {
       `ALTER TABLE services_locales ADD COLUMN IF NOT EXISTS clients_section_title varchar`,
       // ---- homepage hero background video ----
       `ALTER TABLE homepage ADD COLUMN IF NOT EXISTS hero_background_video_id integer`,
+      `ALTER TABLE homepage ADD COLUMN IF NOT EXISTS hero_background_video_url varchar`,
     ];
 
     const results: string[] = [];
