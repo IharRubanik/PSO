@@ -10,7 +10,7 @@ const cspHeader = {
     "img-src 'self' data: blob: https:",
     "font-src 'self' data: https:",
     "connect-src 'self' https: blob: wss:",
-    "worker-src 'self' blob:",
+    "worker-src 'self' blob: data:",
     "frame-src 'self' https:",
   ].join("; "),
 };
