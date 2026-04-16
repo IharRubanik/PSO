@@ -12,6 +12,7 @@ import { ru } from "@payloadcms/translations/languages/ru";
 import { en } from "@payloadcms/translations/languages/en";
 import { Users } from "./collections/Users";
 import { Media } from "./collections/Media";
+import { MediaVideo } from "./collections/MediaVideo";
 import { Services } from "./collections/Services";
 import { Applications } from "./collections/Applications";
 import { SiteSettings } from "./globals/SiteSettings";
@@ -31,7 +32,7 @@ const dirname = path.dirname(filename);
 
 export default buildConfig({
   editor: lexicalEditor(),
-  collections: [Applications, Services, Media, Users],
+  collections: [Applications, Services, Media, MediaVideo, Users],
   globals: [
     // Главная страница
     Homepage,
@@ -62,6 +63,10 @@ export default buildConfig({
     cloudStoragePlugin({
       collections: {
         media: {
+          adapter: vercelBlobAdapter,
+          disableLocalStorage: true,
+        },
+        "media-videos": {
           adapter: vercelBlobAdapter,
           disableLocalStorage: true,
         },

@@ -22,18 +22,32 @@ export function Hero({ data }: HeroProps) {
   const subtitle = data?.subtitle ?? "";
   const cta = data?.ctaText ?? "";
   const bgImage = resolveMediaUrl(data?.backgroundImage, "/assets/images/service1.jpg");
+  const bgVideo = data?.backgroundVideo ? resolveMediaUrl(data.backgroundVideo, "") : "";
 
   return (
     <section className={styles.hero}>
       {/* Background */}
       <div className={styles.bg}>
-        <Image
-          src={bgImage}
-          alt=""
-          fill
-          priority
-          style={{ objectFit: "cover" }}
-        />
+        {bgVideo ? (
+          <video
+            src={bgVideo}
+            poster={bgImage}
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
+            style={{ width: "100%", height: "100%", objectFit: "cover" }}
+          />
+        ) : (
+          <Image
+            src={bgImage}
+            alt=""
+            fill
+            priority
+            style={{ objectFit: "cover" }}
+          />
+        )}
       </div>
       <div className={styles.gradient} />
 
