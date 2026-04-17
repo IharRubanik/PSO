@@ -10,7 +10,7 @@ import type { HeroData, ServicesSectionData, AboutSectionData, StatsData, Advant
 import { getPayload } from "@/lib/payload";
 import { extractContactFormData } from "@/lib/cms-helpers";
 
-export const revalidate = 60;
+export const dynamic = "force-dynamic";
 
 export default async function HomePage({
   params,

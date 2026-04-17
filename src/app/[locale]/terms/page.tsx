@@ -4,7 +4,7 @@ import { AnimatedSection } from "@/components/UI/AnimatedSection";
 import { RichText } from "@/components/RichText/RichText";
 import styles from "./page.module.css";
 
-export const revalidate = 60;
+export const dynamic = "force-dynamic";
 
 export default async function TermsPage({
   params,

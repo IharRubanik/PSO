@@ -6,7 +6,7 @@ import { getPayload } from "@/lib/payload";
 import { ClientLayout } from "@/components/UI/ClientLayout";
 import "../globals.css";
 
-export const revalidate = 60;
+export const dynamic = "force-dynamic";
 
 const furore = localFont({
   src: "../../../public/assets/fonts/furore/Furore.otf",

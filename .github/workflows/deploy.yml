@@ -1,0 +1,47 @@
+name: Deploy to VDS
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deploy to server
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ vars.SERVER_HOST }}
+          username: ${{ vars.SERVER_USER }}
+          key: ${{ secrets.SERVER_SSH_KEY }}
+          script: |
+            set -e
+            cd /opt/pso
+
+            echo "=== Git pull ==="
+            git pull origin master
+
+            echo "=== Install dependencies ==="
+            npm ci --prefer-offline
+
+            echo "=== Build ==="
+            NODE_OPTIONS="--max_old_space_size=1536" npm run build
+
+            echo "=== Restart app ==="
+            pm2 restart pso
+
+            echo "=== Cleanup ==="
+            # npm cache
+            npm cache clean --force
+            # старые Docker образы и кэш сборщика
+            docker system prune -f
+            # логи PM2 старше 7 дней
+            find /var/log/pso -name "*.log" -mtime +7 -delete 2>/dev/null || true
+
+            echo "=== Disk usage ==="
+            df -h /
+
+            echo "=== Done ==="

@@ -2,7 +2,7 @@ import { getPayload } from "@/lib/payload";
 import { extractContactFormData } from "@/lib/cms-helpers";
 import { AboutPageClient } from "./AboutPageClient";
 
-export const revalidate = 60;
+export const dynamic = "force-dynamic";
 
 export default async function AboutPage({
   params,

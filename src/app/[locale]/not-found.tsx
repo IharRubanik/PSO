@@ -2,7 +2,7 @@ import Link from "next/link";
 import { getPayload } from "@/lib/payload";
 import styles from "./not-found.module.css";
 
-export const revalidate = 60;
+export const dynamic = "force-dynamic";
 
 export default async function NotFound() {
   const payload = await getPayload();
