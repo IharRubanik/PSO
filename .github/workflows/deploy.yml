@@ -24,7 +24,6 @@ jobs:
             echo "=== Git sync ==="
             git fetch origin master
             git reset --hard origin/master
-            git clean -fd --exclude='.env' --exclude='public/media' --exclude='ecosystem.config.cjs' --exclude='nginx/certbot'
 
             echo "=== Install dependencies ==="
             npm ci --prefer-offline
