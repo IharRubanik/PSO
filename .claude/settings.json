@@ -1,9 +1,0 @@
-{
-  "permissions": {
-    "allow": [
-      "WebSearch",
-      "WebFetch(domain:payloadcms.com)",
-      "WebFetch(domain:www.buildwithmatija.com)"
-    ]
-  }
-}
