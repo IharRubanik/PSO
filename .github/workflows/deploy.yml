@@ -33,4 +33,15 @@ jobs:
             echo "=== Restart app ==="
             pm2 restart pso
 
+            echo "=== Cleanup ==="
+            # npm cache
+            npm cache clean --force
+            # старые Docker образы и кэш сборщика
+            docker system prune -f
+            # логи PM2 старше 7 дней
+            find /var/log/pso -name "*.log" -mtime +7 -delete 2>/dev/null || true
+
+            echo "=== Disk usage ==="
+            df -h /
+
             echo "=== Done ==="
