@@ -43,3 +43,8 @@ next-env.d.ts
 /src/generated/prisma
 data/
 .playwright-mcp/
+
+# claude
+CLAUDE.md
+AGENTS.md
+.claude/
