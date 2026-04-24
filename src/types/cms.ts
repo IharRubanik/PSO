@@ -22,6 +22,8 @@ export interface SiteSettingsData {
   address?: string | null;
   telegram?: string | null;
   telegramLabel?: string | null;
+  max?: string | null;
+  maxLabel?: string | null;
   yandexMapsApiKey?: string | null;
   mapCenter?: { lng?: number | null; lat?: number | null } | null;
   copyright?: string | null;
