@@ -27,6 +27,8 @@ interface SiteSettingsData {
   email?: string | null;
   telegram?: string | null;
   telegramLabel?: string | null;
+  max?: string | null;
+  maxLabel?: string | null;
   yandexMapsApiKey?: string | null;
   mapCenter?: { lng?: number | null; lat?: number | null } | null;
 }
@@ -132,6 +134,16 @@ export function ContactsPageClient({ data, siteSettings, contactFormData, locale
                 >
                   {siteSettings.telegramLabel ?? "Telegram"}
                 </a>
+                {siteSettings.max && (
+                  <a
+                    href={siteSettings.max}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={styles.infoValue}
+                  >
+                    {siteSettings.maxLabel ?? "Max"}
+                  </a>
+                )}
               </div>
             </div>
           </AnimatedSection>

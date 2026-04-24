@@ -50,6 +50,8 @@ export async function POST() {
       `ALTER TABLE site_settings ADD COLUMN IF NOT EXISTS smtp_smtp_password varchar`,
       `ALTER TABLE site_settings ADD COLUMN IF NOT EXISTS map_center_lng numeric`,
       `ALTER TABLE site_settings ADD COLUMN IF NOT EXISTS map_center_lat numeric`,
+      `ALTER TABLE site_settings ADD COLUMN IF NOT EXISTS max varchar`,
+      `ALTER TABLE site_settings_locales ADD COLUMN IF NOT EXISTS max_label varchar`,
       // ---- homepage visibility ----
       `ALTER TABLE homepage ADD COLUMN IF NOT EXISTS show_hero boolean DEFAULT true`,
       `ALTER TABLE homepage ADD COLUMN IF NOT EXISTS show_services boolean DEFAULT true`,

@@ -9,10 +9,11 @@
 /* Figma: image h=137.63%, top=-28.3% — image is taller than section, shifted up */
 .bg {
   position: absolute;
-  left: -1.88vw;
+  object-fit: cover;
+  left: 0;
   right: 0;
-  top: -29.3%;
-  height: 137.63%;
+  top: 0;
+  height: 100%;
   z-index: 0;
   overflow: hidden;
 }

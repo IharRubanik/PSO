@@ -36,6 +36,7 @@ export function Footer({ data, siteSettings, locale }: FooterProps) {
   const phone: string = siteSettings?.phone ?? "";
   const email: string = siteSettings?.email ?? "";
   const telegram: string = siteSettings?.telegram ?? "";
+  const max: string = siteSettings?.max ?? "";
 
   const colMenuTitle: string = data?.colMenuTitle ?? "";
   const colPhoneTitle: string = data?.colPhoneTitle ?? "";
@@ -113,17 +114,29 @@ export function Footer({ data, siteSettings, locale }: FooterProps) {
               </>
             )}
 
-            {telegram && (
+            {(telegram || max) && (
               <>
                 <h4 className={`${styles.columnTitle} ${styles.mt}`}>{colSocialsTitle}</h4>
-                <a
-                  href="https://t.me/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={styles.contactValue}
-                >
-                  {telegram}
-                </a>
+                {telegram && (
+                  <a
+                    href={telegram}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={styles.contactValue}
+                  >
+                    {telegram}
+                  </a>
+                )}
+                {max && (
+                  <a
+                    href={max}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={styles.contactValue}
+                  >
+                    {max}
+                  </a>
+                )}
               </>
             )}
           </div>

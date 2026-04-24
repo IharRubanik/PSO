@@ -60,6 +60,19 @@ export const SiteSettings: GlobalConfig = {
       defaultValue: "Telegram",
     },
     {
+      name: "max",
+      type: "text",
+      label: { ru: "Max ссылка", en: "Max Link" },
+      defaultValue: "https://max.ru/",
+    },
+    {
+      name: "maxLabel",
+      type: "text",
+      label: { ru: "Max — подпись", en: "Max Label" },
+      localized: true,
+      defaultValue: "Max",
+    },
+    {
       name: "smtp",
       type: "group",
       label: { ru: "Уведомления о заявках", en: "Application Notifications" },
