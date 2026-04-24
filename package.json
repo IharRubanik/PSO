@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "prisma generate && next build",
+    "build": "next build",
     "start": "next start",
     "lint": "eslint"
   },
@@ -16,7 +16,6 @@
     "@payloadcms/richtext-lexical": "^3.82.1",
     "@payloadcms/storage-vercel-blob": "^3.82.1",
     "@payloadcms/ui": "^3.82.1",
-    "@prisma/client": "^7.6.0",
     "@vercel/blob": "^2.3.3",
     "dotenv": "^17.4.2",
     "framer-motion": "^12.38.0",
@@ -24,7 +23,6 @@
     "next": "15.4.11",
     "nodemailer": "^8.0.5",
     "payload": "^3.82.1",
-    "prisma": "^7.6.0",
     "react": "19.2.4",
     "react-dom": "19.2.4",
     "sharp": "^0.34.5"
