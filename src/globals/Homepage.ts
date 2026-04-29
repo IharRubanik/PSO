@@ -99,7 +99,19 @@ export const Homepage: GlobalConfig = {
             {
               name: "heroBackgroundImage",
               type: "upload",
-              label: { ru: "Фоновое изображение (используется как poster для видео)", en: "Background Image (used as video poster)" },
+              label: { ru: "Фоновое изображение — ДЕСКТОП", en: "Background Image — DESKTOP" },
+              relationTo: "media",
+            },
+            {
+              name: "heroBackgroundImageTablet",
+              type: "upload",
+              label: { ru: "Фоновое изображение — ПЛАНШЕТ (если пусто, берётся десктоп)", en: "Background Image — TABLET (falls back to desktop)" },
+              relationTo: "media",
+            },
+            {
+              name: "heroBackgroundImageMobile",
+              type: "upload",
+              label: { ru: "Фоновое изображение — МОБИЛЬНЫЙ (если пусто, берётся планшет/десктоп)", en: "Background Image — MOBILE (falls back to tablet/desktop)" },
               relationTo: "media",
             },
             {
@@ -215,7 +227,19 @@ export const Homepage: GlobalConfig = {
             {
               name: "aboutBackgroundImage",
               type: "upload",
-              label: { ru: "Фоновое изображение", en: "Background Image" },
+              label: { ru: "Фоновое изображение — ДЕСКТОП", en: "Background Image — DESKTOP" },
+              relationTo: "media",
+            },
+            {
+              name: "aboutBackgroundImageTablet",
+              type: "upload",
+              label: { ru: "Фоновое изображение — ПЛАНШЕТ", en: "Background Image — TABLET" },
+              relationTo: "media",
+            },
+            {
+              name: "aboutBackgroundImageMobile",
+              type: "upload",
+              label: { ru: "Фоновое изображение — МОБИЛЬНЫЙ", en: "Background Image — MOBILE" },
               relationTo: "media",
             },
           ],
@@ -322,7 +346,19 @@ export const Homepage: GlobalConfig = {
             {
               name: "clientsBackgroundImage",
               type: "upload",
-              label: { ru: "Фоновое изображение", en: "Background Image" },
+              label: { ru: "Фоновое изображение — ДЕСКТОП", en: "Background Image — DESKTOP" },
+              relationTo: "media",
+            },
+            {
+              name: "clientsBackgroundImageTablet",
+              type: "upload",
+              label: { ru: "Фоновое изображение — ПЛАНШЕТ", en: "Background Image — TABLET" },
+              relationTo: "media",
+            },
+            {
+              name: "clientsBackgroundImageMobile",
+              type: "upload",
+              label: { ru: "Фоновое изображение — МОБИЛЬНЫЙ", en: "Background Image — MOBILE" },
               relationTo: "media",
             },
             {

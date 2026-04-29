@@ -15,6 +15,23 @@ export function resolveMediaUrl(
   return field.url || fallback;
 }
 
+/**
+ * Build a desktop/tablet/mobile URL set from three optional Payload media
+ * fields. Each missing variant falls back to the previous (mobile → tablet →
+ * desktop → fallback URL).
+ */
+export function pickResponsiveSources(
+  desktop: { url?: string | null } | string | null | undefined,
+  tablet: { url?: string | null } | string | null | undefined,
+  mobile: { url?: string | null } | string | null | undefined,
+  fallback: string,
+): { desktop: string; tablet: string; mobile: string } {
+  const d = resolveMediaUrl(desktop, fallback);
+  const t = resolveMediaUrl(tablet, d);
+  const m = resolveMediaUrl(mobile, t);
+  return { desktop: d, tablet: t, mobile: m };
+}
+
 /** Extract SEO metadata from a Payload global that has a `seo` group */
 export function extractSeoMetadata(
   global: Record<string, unknown> | null,

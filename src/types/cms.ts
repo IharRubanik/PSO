@@ -46,6 +46,8 @@ export interface HeroData {
   subtitle?: string | null;
   ctaText?: string | null;
   backgroundImage?: MediaField | string | null;
+  backgroundImageTablet?: MediaField | string | null;
+  backgroundImageMobile?: MediaField | string | null;
   backgroundVideo?: MediaField | string | null;
 }
 
@@ -55,6 +57,8 @@ export interface AboutSectionData {
   paragraph2?: string | null;
   buttonText?: string | null;
   backgroundImage?: MediaField | string | null;
+  backgroundImageTablet?: MediaField | string | null;
+  backgroundImageMobile?: MediaField | string | null;
 }
 
 export interface StatItem {
@@ -88,6 +92,8 @@ export interface ClientItem {
 export interface ClientsData {
   sectionTitle?: string | null;
   backgroundImage?: MediaField | string | null;
+  backgroundImageTablet?: MediaField | string | null;
+  backgroundImageMobile?: MediaField | string | null;
   items?: (string | ClientItem)[];
 }
 
@@ -176,5 +182,7 @@ export interface ServiceCardData {
   title?: string | null;
   shortDescription?: string | null;
   cardImage?: MediaField | string | null;
+  cardImageTablet?: MediaField | string | null;
+  cardImageMobile?: MediaField | string | null;
   sortOrder?: number;
 }

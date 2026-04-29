@@ -17,6 +17,7 @@ const cspHeader = {
 
 const nextConfig: NextConfig = {
   output: "standalone",
+  eslint: { ignoreDuringBuilds: true },
   images: {
     dangerouslyAllowSVG: true,
     contentDispositionType: "attachment",

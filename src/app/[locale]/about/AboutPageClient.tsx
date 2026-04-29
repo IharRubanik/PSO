@@ -3,10 +3,31 @@
 import { useState, useRef, useCallback, useEffect } from "react";
 import Image from "next/image";
 import type { ContactFormData } from "@/types/cms";
+import { pickResponsiveSources } from "@/lib/cms-helpers";
 import { PageBanner } from "@/components/PageBanner/PageBanner";
 import { ContactForm } from "@/components/ContactForm/ContactForm";
 import { AnimatedSection } from "@/components/UI/AnimatedSection";
 import styles from "./page.module.css";
+
+interface ResponsiveBgProps {
+  desktop: string;
+  tablet: string;
+  mobile: string;
+}
+
+function ResponsiveBg({ desktop, tablet, mobile }: ResponsiveBgProps) {
+  return (
+    <picture>
+      <source media="(max-width: 640px)" srcSet={mobile} />
+      <source media="(max-width: 1024px)" srcSet={tablet} />
+      <img
+        src={desktop}
+        alt=""
+        style={{ width: "100%", height: "100%", objectFit: "cover" }}
+      />
+    </picture>
+  );
+}
 
 interface License {
   num: string;
@@ -15,14 +36,20 @@ interface License {
   image?: { url?: string | null } | string | null;
 }
 
+type Img = { url?: string | null } | string | null;
+
 interface AboutPageData {
   bannerTitle?: string | null;
-  bannerImage?: { url?: string | null } | string | null;
+  bannerImage?: Img;
+  bannerImageTablet?: Img;
+  bannerImageMobile?: Img;
   breadcrumbHome?: string | null;
   breadcrumbAbout?: string | null;
   showAbout?: boolean;
   aboutSectionTitle?: string | null;
-  aboutImage?: { url?: string | null } | string | null;
+  aboutImage?: Img;
+  aboutImageTablet?: Img;
+  aboutImageMobile?: Img;
   aboutParagraph1?: string | null;
   aboutParagraph2?: string | null;
   aboutParagraph3?: string | null;
@@ -33,12 +60,16 @@ interface AboutPageData {
   licenses?: License[] | null;
   showArmament?: boolean;
   armamentSectionTitle?: string | null;
-  armamentImage?: { url?: string | null } | string | null;
+  armamentImage?: Img;
+  armamentImageTablet?: Img;
+  armamentImageMobile?: Img;
   armamentParagraph1?: string | null;
   armamentParagraph2?: string | null;
   showTraining?: boolean;
   trainingSectionTitle?: string | null;
-  trainingImage?: { url?: string | null } | string | null;
+  trainingImage?: Img;
+  trainingImageTablet?: Img;
+  trainingImageMobile?: Img;
   trainingParagraph1?: string | null;
   trainingParagraph2?: string | null;
   showContactForm?: boolean;
@@ -108,9 +139,24 @@ export function AboutPageClient({ data, contactFormData, locale, backText = "Н�
   );
 
   const bannerImage = getImageUrl(data.bannerImage, "/assets/images/service1.jpg");
-  const aboutImage = getImageUrl(data.aboutImage, "/assets/images/about-section-bg.jpg");
-  const armamentImage = getImageUrl(data.armamentImage, "/assets/images/armament-bg.jpg");
-  const trainingImage = getImageUrl(data.trainingImage, "/assets/images/training-bg.jpg");
+  const aboutSources = pickResponsiveSources(
+    data.aboutImage,
+    data.aboutImageTablet,
+    data.aboutImageMobile,
+    "/assets/images/about-section-bg.jpg",
+  );
+  const armamentSources = pickResponsiveSources(
+    data.armamentImage,
+    data.armamentImageTablet,
+    data.armamentImageMobile,
+    "/assets/images/armament-bg.jpg",
+  );
+  const trainingSources = pickResponsiveSources(
+    data.trainingImage,
+    data.trainingImageTablet,
+    data.trainingImageMobile,
+    "/assets/images/training-bg.jpg",
+  );
 
   const trainingSectionTitle = data.trainingSectionTitle ?? "Подготовка\nсотрудников";
 
@@ -146,12 +192,7 @@ export function AboutPageClient({ data, contactFormData, locale, backText = "Н�
           <div className={styles.aboutGrid}>
             <AnimatedSection direction="left">
               <div className={styles.aboutImage}>
-                <Image
-                  src={aboutImage}
-                  alt=""
-                  fill
-                  style={{ objectFit: "cover" }}
-                />
+                <ResponsiveBg {...aboutSources} />
               </div>
             </AnimatedSection>
 
@@ -303,12 +344,7 @@ export function AboutPageClient({ data, contactFormData, locale, backText = "Н�
       {/* Вооружение */}
       {data.showArmament !== false && (<section className={styles.armamentSection}>
         <div className={styles.armamentBg}>
-          <Image
-            src={armamentImage}
-            alt=""
-            fill
-            style={{ objectFit: "cover" }}
-          />
+          <ResponsiveBg {...armamentSources} />
         </div>
         <div className={styles.armamentGradient} />
         <div className="noise-overlay" />
@@ -330,12 +366,7 @@ export function AboutPageClient({ data, contactFormData, locale, backText = "Н�
       {/* Подготовка сотрудников */}
       {data.showTraining !== false && (<section className={styles.armamentSection}>
         <div className={styles.armamentBg}>
-          <Image
-            src={trainingImage}
-            alt=""
-            fill
-            style={{ objectFit: "cover" }}
-          />
+          <ResponsiveBg {...trainingSources} />
         </div>
         <div className={styles.armamentGradient} />
         <div className="noise-overlay" />

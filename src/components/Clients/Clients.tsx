@@ -1,9 +1,8 @@
 "use client";
 
-import Image from "next/image";
 import { AnimatedSection } from "../UI/AnimatedSection";
 import type { ClientsData } from "@/types/cms";
-import { resolveMediaUrl } from "@/lib/cms-helpers";
+import { pickResponsiveSources } from "@/lib/cms-helpers";
 import { Corners } from "../Corners/Corners";
 import styles from "./Clients.module.css";
 
@@ -13,7 +12,12 @@ interface ClientsProps {
 
 export function Clients({ data }: ClientsProps) {
   const sectionTitle = data?.sectionTitle ?? "";
-  const bgImage = resolveMediaUrl(data?.backgroundImage, "/assets/images/partners-bg-new.png");
+  const sources = pickResponsiveSources(
+    data?.backgroundImage,
+    data?.backgroundImageTablet,
+    data?.backgroundImageMobile,
+    "/assets/images/partners-bg-new.png",
+  );
 
   const rawItems: unknown[] = Array.isArray(data?.items) ? data.items : [];
   // Items may be strings or objects with a `name` field
@@ -28,13 +32,15 @@ export function Clients({ data }: ClientsProps) {
     <section className={styles.section}>
       {/* Background image */}
       <div className={styles.bg}>
-        <Image
-          src={bgImage}
-          alt=""
-          fill
-          style={{ objectFit: "cover" }}
-          priority={false}
-        />
+        <picture>
+          <source media="(max-width: 640px)" srcSet={sources.mobile} />
+          <source media="(max-width: 1024px)" srcSet={sources.tablet} />
+          <img
+            src={sources.desktop}
+            alt=""
+            style={{ width: "100%", height: "100%", objectFit: "cover" }}
+          />
+        </picture>
       </div>
 
       {/* Figma: gradient from rgba(0,0,0,0.4) to rgba(0,0,0,0.6) at 70.278% */}

@@ -1,11 +1,32 @@
 "use client";
 
-import Image from "next/image";
+import { pickResponsiveSources } from "@/lib/cms-helpers";
 import { PageBanner } from "@/components/PageBanner/PageBanner";
 import { ContactForm } from "@/components/ContactForm/ContactForm";
 import { AnimatedSection } from "@/components/UI/AnimatedSection";
 import { Corners } from "@/components/Corners/Corners";
 import styles from "./page.module.css";
+
+interface ResponsiveBgProps {
+  desktop: string;
+  tablet: string;
+  mobile: string;
+  alt?: string;
+}
+
+function ResponsiveBg({ desktop, tablet, mobile, alt = "" }: ResponsiveBgProps) {
+  return (
+    <picture>
+      <source media="(max-width: 640px)" srcSet={mobile} />
+      <source media="(max-width: 1024px)" srcSet={tablet} />
+      <img
+        src={desktop}
+        alt={alt}
+        style={{ width: "100%", height: "100%", objectFit: "cover" }}
+      />
+    </picture>
+  );
+}
 
 interface Step {
   number?: string | null;
@@ -25,7 +46,11 @@ export interface ServiceData {
   bannerTitle?: string | null;
   breadcrumbLabel?: string | null;
   bannerImage?: MediaField | string | null;
+  bannerImageTablet?: MediaField | string | null;
+  bannerImageMobile?: MediaField | string | null;
   featureImage?: MediaField | string | null;
+  featureImageTablet?: MediaField | string | null;
+  featureImageMobile?: MediaField | string | null;
   featureParagraph1?: string | null;
   featureParagraph2?: string | null;
   featureParagraph3?: string | null;
@@ -33,6 +58,9 @@ export interface ServiceData {
   steps?: Step[] | null;
   targetClients?: TargetClient[] | null;
   clientsBackgroundImage?: MediaField | string | null;
+  clientsBackgroundImageTablet?: MediaField | string | null;
+  clientsBackgroundImageMobile?: MediaField | string | null;
+  clientsSectionTitle?: string | null;
 }
 
 interface ServicesSectionData {
@@ -67,8 +95,18 @@ export function ServiceDetailClient({
   backText = "Назад",
 }: ServiceDetailClientProps) {
   const bannerImage = getImageUrl(service.bannerImage, "/assets/images/service-personal-security.jpg");
-  const featureImage = getImageUrl(service.featureImage, "/assets/images/service-about.jpg");
-  const clientsBgImage = getImageUrl(service.clientsBackgroundImage, "/assets/images/service-clients-bg.png");
+  const featureSources = pickResponsiveSources(
+    service.featureImage,
+    service.featureImageTablet,
+    service.featureImageMobile,
+    "/assets/images/service-about.jpg",
+  );
+  const clientsBgSources = pickResponsiveSources(
+    service.clientsBackgroundImage,
+    service.clientsBackgroundImageTablet,
+    service.clientsBackgroundImageMobile,
+    "/assets/images/service-clients-bg.png",
+  );
 
   const steps = service.steps ?? [];
   const targetClients = service.targetClients ?? [];
@@ -99,12 +137,7 @@ export function ServiceDetailClient({
           <div className={styles.twoColGrid}>
             <AnimatedSection direction="left">
               <div className={styles.imageBlock}>
-                <Image
-                  src={featureImage}
-                  alt=""
-                  fill
-                  style={{ objectFit: "cover" }}
-                />
+                <ResponsiveBg {...featureSources} />
               </div>
             </AnimatedSection>
 
@@ -154,12 +187,7 @@ export function ServiceDetailClient({
       {/* Кому подойдёт */}
       <section className={styles.clientsSection}>
         <div className={styles.clientsBg}>
-          <Image
-            src={clientsBgImage}
-            alt=""
-            fill
-            style={{ objectFit: "cover" }}
-          />
+          <ResponsiveBg {...clientsBgSources} />
         </div>
         <div className={styles.clientsOverlay} />
         <div className="noise-overlay" />

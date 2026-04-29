@@ -66,7 +66,19 @@ export const AboutPage: GlobalConfig = {
             {
               name: "bannerImage",
               type: "upload",
-              label: { ru: "Изображение баннера", en: "Banner Image" },
+              label: { ru: "Изображение баннера — ДЕСКТОП", en: "Banner Image — DESKTOP" },
+              relationTo: "media",
+            },
+            {
+              name: "bannerImageTablet",
+              type: "upload",
+              label: { ru: "Изображение баннера — ПЛАНШЕТ", en: "Banner Image — TABLET" },
+              relationTo: "media",
+            },
+            {
+              name: "bannerImageMobile",
+              type: "upload",
+              label: { ru: "Изображение баннера — МОБИЛЬНЫЙ", en: "Banner Image — MOBILE" },
               relationTo: "media",
             },
           ],
@@ -107,7 +119,19 @@ export const AboutPage: GlobalConfig = {
             {
               name: "aboutImage",
               type: "upload",
-              label: { ru: "Изображение секции «О нас»", en: "About Section Image" },
+              label: { ru: "Изображение секции «О нас» — ДЕСКТОП", en: "About Section Image — DESKTOP" },
+              relationTo: "media",
+            },
+            {
+              name: "aboutImageTablet",
+              type: "upload",
+              label: { ru: "Изображение секции «О нас» — ПЛАНШЕТ", en: "About Section Image — TABLET" },
+              relationTo: "media",
+            },
+            {
+              name: "aboutImageMobile",
+              type: "upload",
+              label: { ru: "Изображение секции «О нас» — МОБИЛЬНЫЙ", en: "About Section Image — MOBILE" },
               relationTo: "media",
             },
             {
@@ -211,7 +235,19 @@ export const AboutPage: GlobalConfig = {
             {
               name: "armamentImage",
               type: "upload",
-              label: { ru: "Изображение секции «Вооружение»", en: "Armament Section Image" },
+              label: { ru: "Изображение «Вооружение» — ДЕСКТОП", en: "Armament Image — DESKTOP" },
+              relationTo: "media",
+            },
+            {
+              name: "armamentImageTablet",
+              type: "upload",
+              label: { ru: "Изображение «Вооружение» — ПЛАНШЕТ", en: "Armament Image — TABLET" },
+              relationTo: "media",
+            },
+            {
+              name: "armamentImageMobile",
+              type: "upload",
+              label: { ru: "Изображение «Вооружение» — МОБИЛЬНЫЙ", en: "Armament Image — MOBILE" },
               relationTo: "media",
             },
             {
@@ -247,7 +283,19 @@ export const AboutPage: GlobalConfig = {
             {
               name: "trainingImage",
               type: "upload",
-              label: { ru: "Изображение секции «Подготовка»", en: "Training Section Image" },
+              label: { ru: "Изображение «Подготовка» — ДЕСКТОП", en: "Training Image — DESKTOP" },
+              relationTo: "media",
+            },
+            {
+              name: "trainingImageTablet",
+              type: "upload",
+              label: { ru: "Изображение «Подготовка» — ПЛАНШЕТ", en: "Training Image — TABLET" },
+              relationTo: "media",
+            },
+            {
+              name: "trainingImageMobile",
+              type: "upload",
+              label: { ru: "Изображение «Подготовка» — МОБИЛЬНЫЙ", en: "Training Image — MOBILE" },
               relationTo: "media",
             },
             {

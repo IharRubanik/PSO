@@ -1,9 +1,8 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import type { AboutSectionData } from "@/types/cms";
-import { resolveMediaUrl } from "@/lib/cms-helpers";
+import { pickResponsiveSources } from "@/lib/cms-helpers";
 import { AnimatedSection } from "../UI/AnimatedSection";
 import styles from "./About.module.css";
 
@@ -17,18 +16,26 @@ export function About({ data, locale }: AboutProps) {
   const paragraph1 = data?.paragraph1 ?? "";
   const paragraph2 = data?.paragraph2 ?? "";
   const buttonText = data?.buttonText ?? "";
-  const bgImage = resolveMediaUrl(data?.backgroundImage, "/assets/images/about-section-bg-new.png");
+  const sources = pickResponsiveSources(
+    data?.backgroundImage,
+    data?.backgroundImageTablet,
+    data?.backgroundImageMobile,
+    "/assets/images/about-section-bg-new.png",
+  );
 
   return (
     <section className={styles.about} id="about">
       {/* Background */}
       <div className={styles.bg}>
-        <Image
-          src={bgImage}
-          alt=""
-          fill
-          style={{ objectFit: "cover" }}
-        />
+        <picture>
+          <source media="(max-width: 640px)" srcSet={sources.mobile} />
+          <source media="(max-width: 1024px)" srcSet={sources.tablet} />
+          <img
+            src={sources.desktop}
+            alt=""
+            style={{ width: "100%", height: "100%", objectFit: "cover" }}
+          />
+        </picture>
       </div>
       <div className="noise-overlay" />
 

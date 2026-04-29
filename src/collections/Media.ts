@@ -30,6 +30,7 @@ export const Media: CollectionConfig = {
       "video/webm",
       "video/quicktime",
     ],
+    crop: true,
   },
   access: {
     read: () => true,

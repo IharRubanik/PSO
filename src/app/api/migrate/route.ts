@@ -52,6 +52,63 @@ export async function POST() {
       `ALTER TABLE site_settings ADD COLUMN IF NOT EXISTS map_center_lat numeric`,
       `ALTER TABLE site_settings ADD COLUMN IF NOT EXISTS max varchar`,
       `ALTER TABLE site_settings_locales ADD COLUMN IF NOT EXISTS max_label varchar`,
+      // ---- responsive image upload fields (tablet + mobile siblings) ----
+      // Homepage hero
+      `ALTER TABLE homepage ADD COLUMN IF NOT EXISTS hero_background_image_tablet_id integer`,
+      `ALTER TABLE homepage ADD COLUMN IF NOT EXISTS hero_background_image_mobile_id integer`,
+      // Homepage about section
+      `ALTER TABLE homepage ADD COLUMN IF NOT EXISTS about_background_image_tablet_id integer`,
+      `ALTER TABLE homepage ADD COLUMN IF NOT EXISTS about_background_image_mobile_id integer`,
+      // Homepage clients section
+      `ALTER TABLE homepage ADD COLUMN IF NOT EXISTS clients_background_image_tablet_id integer`,
+      `ALTER TABLE homepage ADD COLUMN IF NOT EXISTS clients_background_image_mobile_id integer`,
+      // AboutPage banner
+      `ALTER TABLE about_page ADD COLUMN IF NOT EXISTS banner_image_tablet_id integer`,
+      `ALTER TABLE about_page ADD COLUMN IF NOT EXISTS banner_image_mobile_id integer`,
+      // AboutPage about
+      `ALTER TABLE about_page ADD COLUMN IF NOT EXISTS about_image_tablet_id integer`,
+      `ALTER TABLE about_page ADD COLUMN IF NOT EXISTS about_image_mobile_id integer`,
+      // AboutPage armament
+      `ALTER TABLE about_page ADD COLUMN IF NOT EXISTS armament_image_tablet_id integer`,
+      `ALTER TABLE about_page ADD COLUMN IF NOT EXISTS armament_image_mobile_id integer`,
+      // AboutPage training
+      `ALTER TABLE about_page ADD COLUMN IF NOT EXISTS training_image_tablet_id integer`,
+      `ALTER TABLE about_page ADD COLUMN IF NOT EXISTS training_image_mobile_id integer`,
+      // Services
+      `ALTER TABLE services ADD COLUMN IF NOT EXISTS card_image_tablet_id integer`,
+      `ALTER TABLE services ADD COLUMN IF NOT EXISTS card_image_mobile_id integer`,
+      `ALTER TABLE services ADD COLUMN IF NOT EXISTS banner_image_tablet_id integer`,
+      `ALTER TABLE services ADD COLUMN IF NOT EXISTS banner_image_mobile_id integer`,
+      `ALTER TABLE services ADD COLUMN IF NOT EXISTS feature_image_tablet_id integer`,
+      `ALTER TABLE services ADD COLUMN IF NOT EXISTS feature_image_mobile_id integer`,
+      `ALTER TABLE services ADD COLUMN IF NOT EXISTS clients_background_image_tablet_id integer`,
+      `ALTER TABLE services ADD COLUMN IF NOT EXISTS clients_background_image_mobile_id integer`,
+      // ---- responsive image variants: tablet + mobile siblings ----
+      // homepage
+      `ALTER TABLE homepage ADD COLUMN IF NOT EXISTS hero_background_image_tablet_id integer`,
+      `ALTER TABLE homepage ADD COLUMN IF NOT EXISTS hero_background_image_mobile_id integer`,
+      `ALTER TABLE homepage ADD COLUMN IF NOT EXISTS about_background_image_tablet_id integer`,
+      `ALTER TABLE homepage ADD COLUMN IF NOT EXISTS about_background_image_mobile_id integer`,
+      `ALTER TABLE homepage ADD COLUMN IF NOT EXISTS clients_background_image_tablet_id integer`,
+      `ALTER TABLE homepage ADD COLUMN IF NOT EXISTS clients_background_image_mobile_id integer`,
+      // about_page
+      `ALTER TABLE about_page ADD COLUMN IF NOT EXISTS banner_image_tablet_id integer`,
+      `ALTER TABLE about_page ADD COLUMN IF NOT EXISTS banner_image_mobile_id integer`,
+      `ALTER TABLE about_page ADD COLUMN IF NOT EXISTS about_image_tablet_id integer`,
+      `ALTER TABLE about_page ADD COLUMN IF NOT EXISTS about_image_mobile_id integer`,
+      `ALTER TABLE about_page ADD COLUMN IF NOT EXISTS armament_image_tablet_id integer`,
+      `ALTER TABLE about_page ADD COLUMN IF NOT EXISTS armament_image_mobile_id integer`,
+      `ALTER TABLE about_page ADD COLUMN IF NOT EXISTS training_image_tablet_id integer`,
+      `ALTER TABLE about_page ADD COLUMN IF NOT EXISTS training_image_mobile_id integer`,
+      // services
+      `ALTER TABLE services ADD COLUMN IF NOT EXISTS card_image_tablet_id integer`,
+      `ALTER TABLE services ADD COLUMN IF NOT EXISTS card_image_mobile_id integer`,
+      `ALTER TABLE services ADD COLUMN IF NOT EXISTS banner_image_tablet_id integer`,
+      `ALTER TABLE services ADD COLUMN IF NOT EXISTS banner_image_mobile_id integer`,
+      `ALTER TABLE services ADD COLUMN IF NOT EXISTS feature_image_tablet_id integer`,
+      `ALTER TABLE services ADD COLUMN IF NOT EXISTS feature_image_mobile_id integer`,
+      `ALTER TABLE services ADD COLUMN IF NOT EXISTS clients_background_image_tablet_id integer`,
+      `ALTER TABLE services ADD COLUMN IF NOT EXISTS clients_background_image_mobile_id integer`,
       // ---- homepage visibility ----
       `ALTER TABLE homepage ADD COLUMN IF NOT EXISTS show_hero boolean DEFAULT true`,
       `ALTER TABLE homepage ADD COLUMN IF NOT EXISTS show_services boolean DEFAULT true`,

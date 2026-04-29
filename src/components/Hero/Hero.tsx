@@ -1,9 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
 import type { HeroData } from "@/types/cms";
-import { resolveMediaUrl } from "@/lib/cms-helpers";
+import { resolveMediaUrl, pickResponsiveSources } from "@/lib/cms-helpers";
 import { Corners } from "../Corners/Corners";
 import styles from "./Hero.module.css";
 
@@ -21,7 +20,14 @@ export function Hero({ data }: HeroProps) {
   const title = data?.title ?? "";
   const subtitle = data?.subtitle ?? "";
   const cta = data?.ctaText ?? "";
-  const bgImage = resolveMediaUrl(data?.backgroundImage, "/assets/images/service1.jpg");
+  const fallback = "/assets/images/service1.jpg";
+  const bgImage = resolveMediaUrl(data?.backgroundImage, fallback);
+  const sources = pickResponsiveSources(
+    data?.backgroundImage,
+    data?.backgroundImageTablet,
+    data?.backgroundImageMobile,
+    fallback,
+  );
   const bgVideo = data?.backgroundVideo
     ? resolveMediaUrl(data.backgroundVideo, "")
     : "";
@@ -42,13 +48,17 @@ export function Hero({ data }: HeroProps) {
             style={{ width: "100%", height: "100%", objectFit: "cover" }}
           />
         ) : (
-          <Image
-            src={bgImage}
-            alt=""
-            fill
-            priority
-            style={{ objectFit: "cover" }}
-          />
+          <picture>
+            <source media="(max-width: 640px)" srcSet={sources.mobile} />
+            <source media="(max-width: 1024px)" srcSet={sources.tablet} />
+            <img
+              src={sources.desktop}
+              alt=""
+              loading="eager"
+              fetchPriority="high"
+              style={{ width: "100%", height: "100%", objectFit: "cover" }}
+            />
+          </picture>
         )}
       </div>
       <div className={styles.gradient} />

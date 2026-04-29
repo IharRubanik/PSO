@@ -1,9 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import type { ServicesSectionData, ServiceCardData } from "@/types/cms";
+import { pickResponsiveSources } from "@/lib/cms-helpers";
 import { AnimatedSection } from "../UI/AnimatedSection";
 import styles from "./Services.module.css";
 
@@ -37,11 +37,13 @@ export function Services({ sectionData, services, locale }: ServicesProps) {
         </div>
         <div className={styles.grid}>
           {services.map((service, i) => {
-            const cardImg = service.cardImage;
-            const imageUrl =
-              (typeof cardImg === "object" && cardImg?.url) ||
-              (typeof cardImg === "string" ? cardImg : null) ||
-              `/assets/images/card${i + 1}.jpg`;
+            const fallback = `/assets/images/card${i + 1}.jpg`;
+            const sources = pickResponsiveSources(
+              service.cardImage,
+              service.cardImageTablet,
+              service.cardImageMobile,
+              fallback,
+            );
 
             return (
               <AnimatedSection
@@ -51,7 +53,15 @@ export function Services({ sectionData, services, locale }: ServicesProps) {
               >
                 <Link href={`/${locale}/services/${service.slug}`} className={styles.card}>
                   <div className={styles.cardBg}>
-                    <Image src={imageUrl} alt={service.title ?? ""} fill style={{ objectFit: "cover" }} />
+                    <picture>
+                      <source media="(max-width: 640px)" srcSet={sources.mobile} />
+                      <source media="(max-width: 1024px)" srcSet={sources.tablet} />
+                      <img
+                        src={sources.desktop}
+                        alt={service.title ?? ""}
+                        style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                      />
+                    </picture>
                   </div>
                   <div className={styles.cardOverlay} />
 

@@ -40,7 +40,19 @@ export const Services: CollectionConfig = {
     {
       name: "cardImage",
       type: "upload",
-      label: { ru: "Изображение карточки", en: "Card Image" },
+      label: { ru: "Изображение карточки — ДЕСКТОП", en: "Card Image — DESKTOP" },
+      relationTo: "media",
+    },
+    {
+      name: "cardImageTablet",
+      type: "upload",
+      label: { ru: "Изображение карточки — ПЛАНШЕТ", en: "Card Image — TABLET" },
+      relationTo: "media",
+    },
+    {
+      name: "cardImageMobile",
+      type: "upload",
+      label: { ru: "Изображение карточки — МОБИЛЬНЫЙ", en: "Card Image — MOBILE" },
       relationTo: "media",
     },
     {
@@ -52,7 +64,19 @@ export const Services: CollectionConfig = {
     {
       name: "bannerImage",
       type: "upload",
-      label: { ru: "Изображение баннера", en: "Banner Image" },
+      label: { ru: "Изображение баннера — ДЕСКТОП", en: "Banner Image — DESKTOP" },
+      relationTo: "media",
+    },
+    {
+      name: "bannerImageTablet",
+      type: "upload",
+      label: { ru: "Изображение баннера — ПЛАНШЕТ", en: "Banner Image — TABLET" },
+      relationTo: "media",
+    },
+    {
+      name: "bannerImageMobile",
+      type: "upload",
+      label: { ru: "Изображение баннера — МОБИЛЬНЫЙ", en: "Banner Image — MOBILE" },
       relationTo: "media",
     },
     {
@@ -70,7 +94,19 @@ export const Services: CollectionConfig = {
     {
       name: "featureImage",
       type: "upload",
-      label: { ru: "Изображение особенностей", en: "Feature Image" },
+      label: { ru: "Изображение особенностей — ДЕСКТОП", en: "Feature Image — DESKTOP" },
+      relationTo: "media",
+    },
+    {
+      name: "featureImageTablet",
+      type: "upload",
+      label: { ru: "Изображение особенностей — ПЛАНШЕТ", en: "Feature Image — TABLET" },
+      relationTo: "media",
+    },
+    {
+      name: "featureImageMobile",
+      type: "upload",
+      label: { ru: "Изображение особенностей — МОБИЛЬНЫЙ", en: "Feature Image — MOBILE" },
       relationTo: "media",
     },
     {
@@ -147,7 +183,19 @@ export const Services: CollectionConfig = {
     {
       name: "clientsBackgroundImage",
       type: "upload",
-      label: { ru: "Фоновое изображение для клиентов", en: "Clients Background Image" },
+      label: { ru: "Фон для клиентов — ДЕСКТОП", en: "Clients Background — DESKTOP" },
+      relationTo: "media",
+    },
+    {
+      name: "clientsBackgroundImageTablet",
+      type: "upload",
+      label: { ru: "Фон для клиентов — ПЛАНШЕТ", en: "Clients Background — TABLET" },
+      relationTo: "media",
+    },
+    {
+      name: "clientsBackgroundImageMobile",
+      type: "upload",
+      label: { ru: "Фон для клиентов — МОБИЛЬНЫЙ", en: "Clients Background — MOBILE" },
       relationTo: "media",
     },
     {

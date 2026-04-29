@@ -35,7 +35,15 @@ export default async function HomePage({
   const s = (key: string) => hp?.[key] as string | undefined;
 
   const heroData: HeroData | null = hp
-    ? { title: s("heroTitle"), subtitle: s("heroSubtitle"), ctaText: s("heroCtaText"), backgroundImage: hp.heroBackgroundImage as MediaField | string | undefined, backgroundVideo: hp.heroBackgroundVideo as MediaField | string | undefined }
+    ? {
+        title: s("heroTitle"),
+        subtitle: s("heroSubtitle"),
+        ctaText: s("heroCtaText"),
+        backgroundImage: hp.heroBackgroundImage as MediaField | string | undefined,
+        backgroundImageTablet: hp.heroBackgroundImageTablet as MediaField | string | undefined,
+        backgroundImageMobile: hp.heroBackgroundImageMobile as MediaField | string | undefined,
+        backgroundVideo: hp.heroBackgroundVideo as MediaField | string | undefined,
+      }
     : null;
 
   const servicesSectionData: ServicesSectionData | null = hp
@@ -58,6 +66,8 @@ export default async function HomePage({
         paragraph2: s("aboutParagraph2"),
         buttonText: s("aboutButtonText"),
         backgroundImage: hp.aboutBackgroundImage as MediaField | string | undefined,
+        backgroundImageTablet: hp.aboutBackgroundImageTablet as MediaField | string | undefined,
+        backgroundImageMobile: hp.aboutBackgroundImageMobile as MediaField | string | undefined,
       }
     : null;
 
@@ -73,6 +83,8 @@ export default async function HomePage({
     ? {
         sectionTitle: s("clientsSectionTitle"),
         backgroundImage: hp.clientsBackgroundImage as MediaField | string | undefined,
+        backgroundImageTablet: hp.clientsBackgroundImageTablet as MediaField | string | undefined,
+        backgroundImageMobile: hp.clientsBackgroundImageMobile as MediaField | string | undefined,
         items: hp.clientsItems as ClientItem[] | undefined,
       }
     : null;
